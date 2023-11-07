@@ -30,7 +30,8 @@ export const config = createConfig({
     new WalletConnectConnector({
       chains,
       options: {
-        projectId: "861ef743dceed75deb813e6d390dc4a8",
+        // projectId: "861ef743dceed75deb813e6d390dc4a8",
+        projectId: "210cfee78530f21547d0fd2f7b02e7b9",
       },
     }),
     // new InjectedConnector({

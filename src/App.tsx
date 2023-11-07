@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Lobby from "@/pages/Lobby";
 
-// import MatchRoom from "@src/pages/MatchRoom";
+import MatchRoom from "@/pages/MatchRoom";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       {/* Auth Provider */}
       <Routes>
         <Route path="/" element={<Lobby />} />
-        {/* <Route path="room/*" element={<MatchRoom />} /> */}
+        <Route path="match-room/*" element={<MatchRoom />} />
       </Routes>
     </BrowserRouter>
   );

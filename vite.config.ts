@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+// import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
+
 import unocss from "unocss/vite";
 import path from "path";
 
@@ -8,11 +10,19 @@ export default defineConfig({
   plugins: [unocss(), react()],
   resolve: {
     alias: {
+      // BUILD
       "@": path.resolve(__dirname, "./src"),
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@game": path.resolve(__dirname, "./src/_game"),
     },
   },
+  esbuild: {
+    jsxFactory: "React.createElement",
+    jsxFragment: "React.Fragment",
+    target: "esnext",
+  },
+  assetsInclude: ["**/*.gltf", "**/*.json", "**/*.mp3", "**/*.cube"],
 });
 
 // import { defineConfig } from 'vite'
