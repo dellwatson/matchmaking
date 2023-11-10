@@ -8,12 +8,15 @@ import {
   Float,
   Hud,
   PivotControls,
+  useTexture,
 } from "@react-three/drei";
 import TestTerrains from "./terrains/test-terrains";
 import SpaceShip from "./star-ship";
+// import Effects from "./3d/Effects2";
 import Effects from "./3d/Effects";
+// import { Effects }d from "@components/showroom/Effects";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { Suspense, useLayoutEffect, useRef, useState } from "react";
 import Stars from "./3d/Stars";
 import Gamestate from "./gamestate";
 import Camera from "./camera";
@@ -21,6 +24,13 @@ import Camera from "./camera";
 import Movement from "./movement";
 import Interface from "./hud";
 // import { LayerMaterial, Color, Depth } from 'lamina'
+import bgSpace from "@assets/hydra_constellation.jpg";
+
+function Scene() {
+  const backgroundSpace = useTexture(bgSpace);
+
+  return <primitive attach="background" object={backgroundSpace} />;
+}
 
 export default function SoloGameApp() {
   //   const { fov } = useStore((state) => state.mutation);
@@ -29,18 +39,17 @@ export default function SoloGameApp() {
   return (
     <Canvas
       linear
-      className="border"
       mode="concurrent"
       style={{ height: "100vh", width: "100vw" }}
       dpr={[1, 1.5]}
-      // gl={{ antialias: false }}
-      // // camera={{ position: [0, 0, 2000], near: 0.01, far: 10000 }}
-      onCreated={({ gl, camera }) => {
-        //   actions.init(camera);
+      onCreated={({ gl }) => {
         // gl.toneMapping = THREE.ReinhardToneMapping;
         // gl.setClearColor(new THREE.Color("#020209"));
+        // console.log("Tone Mapping:", gl.toneMapping);
+        // console.log("Clear Color:", gl.getClearColor());
         gl.toneMapping = THREE.Uncharted2ToneMapping;
-        gl.setClearColor(new THREE.Color("#020209"));
+        // gl.setClearColor(new THREE.Color("#020209"));
+        // gl.setClearColor(new THREE.Color("#0x000000"));
       }}
       gl={{
         alpha: false,
@@ -50,6 +59,17 @@ export default function SoloGameApp() {
         depth: true,
       }}
     >
+      <Suspense fallback={null}>
+        <Scene />
+      </Suspense>
+
+      {/* <spotLight
+        intensity={1.5}
+        position={[0, 0, 2000]}
+        penumbra={1}
+        color="red"
+      /> */}
+
       {/* <PivotControls
         autoTransform={false}
         activeAxes={[true, false, true]}
@@ -69,23 +89,21 @@ export default function SoloGameApp() {
 
       {/* hierrachy order is important?? */}
       <Movement />
-
       {/* <Perf position="top-left" /> */}
       {/* <fog attach="fog" args={["#070710", 100, 700]} /> */}
       {/* <Stats /> */}
+      {/* <Stars /> */}
       <TestTerrains />
       <SpaceShip />
       <Environment preset="city" />
-      {/* <Stars /> */}
       <Gamestate />
       <Camera />
 
-      {/* <OrbitControls /> */}
       {/* <Suspense fallback={null}>
           <Rocks />
           <Planets />
         </Suspense> */}
-      {/* <Effects /> */}
+      <Effects />
     </Canvas>
   );
 }

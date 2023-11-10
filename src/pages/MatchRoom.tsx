@@ -3,22 +3,32 @@ import Interface from "@/_game/hud";
 import GameOverModal from "@/components/_ui/modal/gameover-modal";
 import ShowRoom from "@/components/showroom";
 import React from "react";
-
-// cheat detection
-// room-id eligible identify
-// nft  use
-
+import ImageSpace from "@/assets/hydra_constellation.jpg";
+import "./room.css";
 // canvas for gameplay
 export default function MatchRoom() {
   return (
-    <div className="absolute">
+    <div
+      // style={{
+      //   width: "100%",
+      //   height: "100%",
+      //   backgroundImage: `url(${ImageSpace})`,
+      //   backgroundSize: "cover", // Adjust the sizing as needed
+      // }}
+      className="absolute "
+    >
+      {/* <div className="absolute matchRoom border " /> */}
       {/* MatchRoomx */}
       {/* <ShowRoom /> */}
       <Interface />
       <SoloGameApp />
-      <GameOverModal />
+      {/* <GameOverModal /> */}
       {/* game over modal */}
       {/* result match */}
     </div>
   );
 }
+
+// cheat detection
+// room-id eligible identify
+// nft  use

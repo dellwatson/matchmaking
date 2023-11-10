@@ -1,11 +1,11 @@
 import React from "react";
 import Lights from "./Lights";
-// import Particles from "../../obstacles/Particles";
+import Particles from "@/_game/celestial/Particles";
 import Skybox from "./Skybox";
 import Flares from "./Flares";
 import ProcedurObstacle from "@/_game/celestial/Obstacles/obb";
-import RockTest from "@/_game/celestial/Obstacles";
-// import Rings from "@/_game/celestial/Rings";
+// import RockTest from "@/_game/celestial/Obstacles";
+import Rings from "@/_game/celestial/Rings";
 
 export default function TestTerrains() {
   return (
@@ -30,8 +30,8 @@ export default function TestTerrains() {
 
       {/* <RockTest /> */}
       <ProcedurObstacle />
-      {/* <Rings /> */}
-      {/* <Particles /> */}
+      <Rings />
+      <Particles />
       {/* <Skybox /> */}
       {/* <Flares /> */}
     </>

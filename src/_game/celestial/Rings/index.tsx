@@ -13,15 +13,15 @@ const material = new THREE.MeshBasicMaterial({
 export default function Rings() {
   const { rings } = useStore((state) => state?.mutation);
 
-  console.log(rings, "rings");
+  // console.log(rings, "rings");
 
   return rings.map(([pos, matrix], i) => {
     const f = (Math.sin(i / 10) * Math.PI) / 2;
-    console.log(f, pos, "pos", matrix);
+    // console.log(f, pos, "pos", matrix);
     return (
       <mesh
         key={i}
-        position={pos}
+        position={[0, 0, 500]}
         scale={[30 + i * 5 * f, 30 + i * 5 * f, 30 + i * 5 * f]}
         onUpdate={(self) => {
           // console.log(self, "self");

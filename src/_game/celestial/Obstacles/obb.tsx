@@ -7,8 +7,12 @@ import * as THREE from "three";
 import useStore from "@/_game/store";
 import obstacleStore, { INTERVAL } from "./obstacle-store";
 import ROCK from "./rock.gltf";
+import Effects from "../../3d/Effects";
+import Particles from "../Particles";
 
 export default function Obstacle() {
+  const gltf = useLoader(GLTFLoader, ROCK);
+
   const groupA = obstacleStore((s) => s.group_rocksA);
   const groupB = obstacleStore((s) => s.group_rocksB);
   const groupC = obstacleStore((s) => s.group_rocksC);
@@ -34,42 +38,40 @@ export default function Obstacle() {
       }
     }, groupValue[0]);
 
-    console.log(
-      Math.floor(CURRENT_SHIP_Z),
-      groupValue[0]?.value,
-      groupValue[1]?.value,
-      groupValue[2]?.value,
-      "closer_z"
-    );
-
     if (CURRENT_SHIP_Z > closer_z?.value) {
       // update
-      console.log(closer_z?.title, " closer_z?.title");
       regenerateRandom(closer_z?.title, closer_z?.value);
     }
   });
 
   return (
     <>
-      <GroupRocks {...{ arr: groupA }} />
-      <GroupRocks {...{ arr: groupB }} />
-      <GroupRocks {...{ arr: groupC }} />
+      <GroupRocks {...{ arr: groupA, gltf }} />
+      <GroupRocks {...{ arr: groupB, gltf }} />
+      <GroupRocks {...{ arr: groupC, gltf }} />
     </>
   );
 }
 
-const GroupRocks = ({ arr = [] }) => {
-  const gltf = useLoader(GLTFLoader, ROCK);
-
+const GroupRocks = ({ arr = [], gltf }) => {
   return (
     !!arr?.length &&
-    arr?.map((data) => <ClonedRock key={data?.guid} data={data} {...gltf} />)
+    arr?.map((data) => {
+      return (
+        <>
+          <Particles />
+          <ClonedRock key={data?.guid} data={data} {...gltf} />
+        </>
+      );
+    })
   );
 };
 
 const ClonedRock = React.memo(({ nodes, materials, data }) => {
   const ref = useRef();
-  const ship = useStore((s) => s.ship);
+  const updateGame = useStore((s) => s.updateGame);
+  const shipBox = useStore((s) => s.shipBox);
+  const rockBox = new THREE.Box3();
 
   // Generate random rotations for each axis independently
   const randomRotationX = (Math.random() * 2 - 1) * (Math.PI / 180) * 10; // Random rotation in radians, between -10 and 10 degrees
@@ -81,8 +83,12 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
   const maxRotationSpeedY = 0.2; // Adjust this value as needed
   const maxRotationSpeedZ = 0.2; // Adjust this value as needed
 
+  useEffect(() => {
+    rockBox.setFromObject(ref.current);
+  }, [rockBox]);
+
   useFrame((state, delta) => {
-    if (ref?.current && ref.current.rotation) {
+    if (ref?.current && ref?.current?.rotation) {
       // Apply rotation increments based on delta and clamp them
       ref.current.rotation.x += Math.min(
         randomRotationX * delta,
@@ -96,6 +102,12 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
         randomRotationZ * delta,
         maxRotationSpeedZ
       );
+    }
+  });
+
+  useFrame((state, delta) => {
+    if (shipBox.intersectsBox(rockBox)) {
+      // updateGame();
     }
   });
   return (

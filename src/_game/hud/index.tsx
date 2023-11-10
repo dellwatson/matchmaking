@@ -29,7 +29,7 @@ export default function Interface() {
       <div className=" border-gray-600 flex justify-end items-end ">
         {/* abilities */}
 
-        <div className="flex space-x-2">
+        {/* <div className="flex space-x-2">
           {[1, 1, 1, 1].map((item, i) => (
             <div
               key={`box-ability-${i}`}
@@ -38,7 +38,7 @@ export default function Interface() {
               {item}
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

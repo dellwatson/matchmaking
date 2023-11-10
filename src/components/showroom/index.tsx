@@ -41,6 +41,7 @@ function AnimatedCamera() {
 export default function App() {
   return (
     <Canvas
+      frameloop="demand"
       gl={{ logarithmicDepthBuffer: true, antialias: false }}
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 15], fov: 25 }}

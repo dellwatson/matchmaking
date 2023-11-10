@@ -7,7 +7,6 @@ const pressed = [];
 function useKeys(target, event, up = true) {
   useEffect(() => {
     const downHandler = (e) => {
-      console.log("pressed", e.key);
       if (target.indexOf(e.key) !== -1) {
         const isRepeating = !!pressed[e.keyCode];
         pressed[e.keyCode] = true;

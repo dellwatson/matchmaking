@@ -1,3 +1,4 @@
+import useStore from "@/_game/store";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
@@ -7,6 +8,10 @@ export default function GameOverModal({
   closeModal = () => {},
 }) {
   let [isOpen, setIsOpen] = useState(false);
+
+  const game_over = useStore((s) => s.game_over);
+
+  // TODO: SHOWS CALCULATE DATA
 
   //   function closeModal() {
   //     setIsOpen(false);
@@ -18,7 +23,7 @@ export default function GameOverModal({
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={!!game_over} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}

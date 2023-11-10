@@ -13,6 +13,7 @@ const MAX_FLIP = 0.5;
 export default function Movement() {
   // subscribe to controller updates on mount
   const ship = useStore((s) => s.ship);
+  const speed = useStore((s) => s.speed);
   const controls = controlStore((s) => s.controls);
   const controlsRef = useRef(controls);
 
@@ -28,7 +29,8 @@ export default function Movement() {
   useFrame((state, delta) => {
     if (controlsRef.current?.controls) {
       const { left, right, up, down } = controlsRef.current?.controls;
-      const accelDelta = 1 * delta * 2; // 1.5
+      const accelDelta = 1 * delta * 2;
+      // const accelDelta = speed;
 
       // // this will reset back to original position
       // if ((left && right) || (!left && !right)) {

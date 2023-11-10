@@ -1,0 +1,8 @@
+/* MatchRoom.module.css */
+.matchRoom {
+  /* z-index: 0; */
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/hydra_constellation.jpg); /* Adjust the path to your image */
+  background-size: cover; /* Adjust the sizing as needed */
+}

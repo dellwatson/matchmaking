@@ -18,17 +18,33 @@ const useStore = create((set, get) => {
     set,
     get,
     ship: createRef(),
+    shipBox: new THREE.Box3(new THREE.Vector3(), new THREE.Vector3()),
+    // shipBox: new THREE.Box3(),
     exhaust: createRef(),
     camera: createRef(),
     // camera: undefined,
-
-    controls: {
-      left: false,
-      right: false,
-      up: false,
-      down: false,
+    game_over: null,
+    speed: 200,
+    increaseSpeed: (v) => {
+      set({
+        speed: v,
+      });
     },
-    mode_control: "keyboard",
+    updateGame: () => {
+      // update game-over + modal + gamestate
+      set({
+        game_over: true,
+      });
+    },
+
+    //
+    // controls: {
+    //   left: false,
+    //   right: false,
+    //   up: false,
+    //   down: false,
+    // },
+    // mode_control: "keyboard",
 
     sound: false,
     points: 0,
@@ -230,21 +246,6 @@ function randomRings(count, track) {
       track.binormals[pick]
     );
 
-    console.log(
-      "rings",
-      i,
-      pos,
-      "pos-arry",
-      pos.toArray(),
-      segments,
-      "segments",
-      lookAt,
-      "trackbinomilas:",
-      track.binormals[pick],
-      matrix
-    );
-
-    //
     temp.push([pos.toArray(), matrix]);
   }
   return temp;
