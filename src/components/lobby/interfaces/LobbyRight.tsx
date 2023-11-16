@@ -6,9 +6,10 @@ import Discord from "./community/discord";
 
 export default function LobbyRight() {
   return (
-    <div className="absolute right-0 mt-16 ">
+    <div className="absolute right-0 mt-16 z-10">
       <NewsSection />
       <Discord />
+      {/* FEEDBACK MODAL */}
     </div>
   );
 }

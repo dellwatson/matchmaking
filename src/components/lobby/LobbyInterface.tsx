@@ -7,13 +7,13 @@ import GlowingText from "../_ui/text/glowing-text";
 import CornerBox from "../_ui/box/CornerBox";
 import DailyPerformances from "./daily-performances";
 
-export default function LobbyInterface() {
+export default function Layout() {
   // mobile interfaces too
   return (
-    <div className="absolute z-10 w-full    border-red-500">
+    <div className="absolute z-10 w-full  ">
       <LobbyTop />
       {/* <LobbyLeft /> */}
-      <LobbyRight />
+      {/* <LobbyRight /> */}
     </div>
   );
 }

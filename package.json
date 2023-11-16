@@ -18,6 +18,7 @@
     "@react-three/fiber": "8.9.1",
     "@react-three/postprocessing": "^2.15.1",
     "@unocss/reset": "^0.55.2",
+    "@web3modal/wagmi": "^3.2.1",
     "detect-gpu": "^5.0.37",
     "i18next": "^23.4.4",
     "lamina": "^1.1.23",
@@ -34,7 +35,7 @@
     "swiper": "^10.3.1",
     "three": "^0.151.3",
     "three.quarks": "^0.10.6",
-    "view": "^1.1.1",
+    "viem": "^1.19.0",
     "wagmi": "^1.3.10",
     "zustand": "^4.4.1"
   },

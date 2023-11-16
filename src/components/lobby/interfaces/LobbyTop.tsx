@@ -1,29 +1,28 @@
-import Avatar from "@/components/_ui/profile/avatar";
-import { RiFullscreenFill, RiSettings3Line } from "react-icons/ri";
+import {
+  RiFullscreenFill,
+  RiSettings3Line,
+  RiNotification2Fill,
+} from "react-icons/ri";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { MdLanguage } from "react-icons/md";
 import LobbySound from "./settings/sound";
 import { useState } from "react";
 import SettingsModal from "./settings/settings-modal";
 import CornerBox from "@/components/_ui/box/CornerBox";
+import Auth from "../auth";
 
 const LobbyTop = () => {
   return (
     <div className="absolute w-full flex justify-between p-4">
-      <div className="flex">
-        {/* profiles */}
-        {/* profile, notif, inventory? 0x , tokens */}
-        <Avatar />
-        <div className="ml-4 flex flex-col justify-center">
-          ALL-IN
-          <br />
-          <div className="text-green-400">ONLINE</div>
-        </div>
+      <div className="flex cursor-pointer w-full ">
+        <Auth />
       </div>
 
-      <div>
+      <div className="flex w-full ">
         <NavsLobby />
       </div>
       {/* <div>players active</div> */}
-      <div className="flex cursor-pointer ">
+      <div className="flex cursor-pointer w-full justify-end">
         {/* settings,
         language,
         lndscape?,
@@ -32,8 +31,11 @@ const LobbyTop = () => {
         {/* <Language /> */}
         {/* SOUND */}
         <LobbySound />
+        <Notif />
+        {/* <Language /> */}
         <Settings />
         <FullScreen />
+        <NavBar />
       </div>
     </div>
   );
@@ -43,8 +45,8 @@ export default LobbyTop;
 
 const NavsLobby = () => {
   return (
-    <div className=" flex space-x-4">
-      {["Home", "Inventory", "Shop"].map((item, i) => (
+    <div className=" flex space-x-4 ">
+      {["Home", "Shop", "Inventory"].map((item, i) => (
         <CornerBox
           corner={false}
           border
@@ -58,22 +60,35 @@ const NavsLobby = () => {
   );
 };
 
-const ProfileArea = () => {
-  // else walletconnect or login
-  return (
-    <div>
-      <div>{/* Avatar */}</div>
-
-      {/* wallet connect  */}
-    </div>
-  );
-};
-
 const FullScreen = () => {
   // onclick fullscreen
   return (
     <div className="p-2">
       <RiFullscreenFill size={24} />
+    </div>
+  );
+};
+const NavBar = () => {
+  // onclick fullscreen
+  return (
+    <div className="p-2">
+      <RxHamburgerMenu size={24} />
+    </div>
+  );
+};
+const Notif = () => {
+  // onclick fullscreen
+  return (
+    <div className="p-2">
+      <RiNotification2Fill size={24} />
+    </div>
+  );
+};
+const Language = () => {
+  // onclick fullscreen
+  return (
+    <div className="p-2">
+      <MdLanguage size={24} />
     </div>
   );
 };
@@ -94,10 +109,10 @@ const Settings = () => {
     </div>
   );
 };
-const Language = () => {
-  // onclick fullscreen
-  return <div className="">EN</div>;
-};
+// const Language = () => {
+//   // onclick fullscreen
+//   return <div className="">EN</div>;
+// };
 
 const Row = () => {
   return <div></div>;

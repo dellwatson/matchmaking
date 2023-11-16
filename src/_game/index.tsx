@@ -24,7 +24,8 @@ import Camera from "./camera";
 import Movement from "./movement";
 import Interface from "./hud";
 // import { LayerMaterial, Color, Depth } from 'lamina'
-import bgSpace from "@assets/hydra_constellation.jpg";
+import bgSpace from "@assets/4k_stars.jpg";
+// import bgSpace from "@assets/hydra_constellation.jpg";
 
 function Scene() {
   const backgroundSpace = useTexture(bgSpace);

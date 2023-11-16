@@ -39,6 +39,12 @@ function AnimatedCamera() {
 }
 
 export default function App() {
+  if (true)
+    return (
+      <Canvas>
+        <color attach="background" args={["#15151a"]} />
+      </Canvas>
+    );
   return (
     <Canvas
       frameloop="demand"
@@ -52,7 +58,6 @@ export default function App() {
       >
         <Ship />
       </Float>
-      {/* <Lamborghini rotation={[0, Math.PI / 1.5, 0]} scale={0.015} /> */}
       <hemisphereLight intensity={0.5} />
       <ContactShadows
         resolution={1024}
@@ -79,11 +84,8 @@ export default function App() {
         <ringGeometry args={[0.9, 1, 3, 1]} />
         <meshStandardMaterial color="white" roughness={0.75} />
       </mesh>
-      {/* We're building a cube-mapped environment declaratively.
-          Anything you put in here will be filmed (once) by a cubemap-camera
-          and applied to the scenes environment, and optionally background. */}
+
       <Environment resolution={512}>
-        {/* Ceiling */}
         <Lightformer
           intensity={2}
           rotation-x={Math.PI / 2}
@@ -139,7 +141,6 @@ export default function App() {
           position={[50, 2, 0]}
           scale={[100, 2, 1]}
         />
-        {/* Key */}
         <Lightformer
           form="ring"
           color="red"

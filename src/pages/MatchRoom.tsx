@@ -3,10 +3,9 @@ import Interface from "@/_game/hud";
 import GameOverModal from "@/components/_ui/modal/gameover-modal";
 import ShowRoom from "@/components/showroom";
 import React from "react";
-import ImageSpace from "@/assets/hydra_constellation.jpg";
-import "./room.css";
+
 // canvas for gameplay
-export default function MatchRoom() {
+export default function MatchRoomPage() {
   return (
     <div
       // style={{
