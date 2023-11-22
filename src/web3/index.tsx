@@ -2,7 +2,7 @@ import { createConfig, configureChains, mainnet } from "wagmi";
 // import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
-import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
+// import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 // import { InjectedConnector } from "wagmi/connectors/injected";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
@@ -70,17 +70,17 @@ const metadata = {
 
 // 3. Create modal
 
-export const config = defaultWagmiConfig({ chains, projectId, metadata }); //web3modal
-export const config2 = createConfig({
+export const configx = defaultWagmiConfig({ chains, projectId, metadata }); //web3modal
+export const config = createConfig({
   autoConnect: true,
   connectors: [
     new MetaMaskConnector({ chains }),
-    new CoinbaseWalletConnector({
-      chains,
-      options: {
-        appName: "star-ex",
-      },
-    }),
+    // new CoinbaseWalletConnector({
+    //   chains,
+    //   options: {
+    //     appName: "star-ex",
+    //   },
+    // }),
     new WalletConnectConnector({
       chains,
       options: {
@@ -101,10 +101,10 @@ export const config2 = createConfig({
   webSocketPublicClient,
 });
 
-createWeb3Modal({
-  wagmiConfig: config,
-  projectId,
-  chains,
+// createWeb3Modal({
+//   wagmiConfig: config,
+//   projectId,
+//   chains,
 
-  themeMode: "dark",
-});
+//   themeMode: "dark",
+// });

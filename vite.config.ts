@@ -4,6 +4,9 @@ import react from "@vitejs/plugin-react-swc";
 
 import unocss from "unocss/vite";
 import path from "path";
+//
+import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+import nodePolyfills from "rollup-plugin-polyfill-node";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,6 +32,27 @@ export default defineConfig({
     "**/*.cube",
     "**/*.hdr",
   ],
+  build: {
+    rollupOptions: {
+      plugins: [
+        nodePolyfills({
+          include: null,
+        }),
+      ],
+    },
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: "globalThis",
+      },
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          buffer: true,
+        }),
+      ],
+    },
+  },
 });
 
 // import { defineConfig } from 'vite'

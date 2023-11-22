@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node --max_old_space_size=4024 node_modules/.bin/vite build",
+    "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -61,7 +61,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^0.6.15",
-    "rollup-plugin-polyfill-node": "^0.12.0",
+    "rollup-plugin-polyfill-node": "^0.13.0",
     "sass": "^1.69.5",
     "storybook": "^7.5.1",
     "styled-components": "^6.0.8",
