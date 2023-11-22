@@ -4,7 +4,7 @@ import Rarity from "../_ui/utils/Rarity";
 import ProgressBar from "../_ui/utils/ProgressBar";
 import Traits from "../_ui/block/traits";
 
-export default function ModalDetail({ data = {} }) {
+export default function ModalDetail({ data = {}, type = "shop" }) {
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {

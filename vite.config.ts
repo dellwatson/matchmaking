@@ -22,7 +22,13 @@ export default defineConfig({
     jsxFragment: "React.Fragment",
     target: "esnext",
   },
-  assetsInclude: ["**/*.gltf", "**/*.json", "**/*.mp3", "**/*.cube"],
+  assetsInclude: [
+    "**/*.gltf",
+    "**/*.json",
+    "**/*.mp3",
+    "**/*.cube",
+    "**/*.hdr",
+  ],
 });
 
 // import { defineConfig } from 'vite'

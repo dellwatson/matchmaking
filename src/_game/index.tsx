@@ -25,6 +25,7 @@ import Movement from "./movement";
 import Interface from "./hud";
 // import { LayerMaterial, Color, Depth } from 'lamina'
 import bgSpace from "@assets/4k_stars.jpg";
+import useStore from "./store";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function Scene() {
@@ -35,7 +36,7 @@ function Scene() {
 
 export default function SoloGameApp() {
   //   const { fov } = useStore((state) => state.mutation);
-  //   const actions = useStore((state) => state.actions);
+  const actions = useStore((state) => state.actions);
 
   return (
     <Canvas
@@ -44,6 +45,8 @@ export default function SoloGameApp() {
       style={{ height: "100vh", width: "100vw" }}
       dpr={[1, 1.5]}
       onCreated={({ gl }) => {
+        actions.init();
+
         // gl.toneMapping = THREE.ReinhardToneMapping;
         // gl.setClearColor(new THREE.Color("#020209"));
         // console.log("Tone Mapping:", gl.toneMapping);

@@ -7,8 +7,9 @@ function useMediumRssFeed() {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl =
-      "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/kindeck-social-app";
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${
+      import.meta.env.VITE_CHAIN
+    }`;
 
     // Make the API request
     fetch(apiUrl)

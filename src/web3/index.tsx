@@ -8,9 +8,47 @@ import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { WALLETCONNECT_ID } from "@/utils/constant/wallet-helper";
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
+import { polygon, polygonMumbai } from "viem/chains";
+
+import { Chain } from "@wagmi/core";
+
+export const lukso_testnet = {
+  id: 4201,
+  name: "Lukso T",
+  network: "lukso",
+  nativeCurrency: {
+    decimals: 18,
+    name: "LYX",
+    symbol: "LYXt",
+  },
+  rpcUrls: {
+    public: { http: ["https://rpc.testnet.lukso.network"] },
+    default: { http: ["https://rpc.testnet.lukso.network"] },
+  },
+  blockExplorers: {
+    etherscan: {
+      name: "Explorer",
+      url: "https://explorer.execution.testnet.lukso.network",
+    },
+    default: {
+      name: "Explorer",
+      url: "https://explorer.execution.testnet.lukso.network",
+    },
+  },
+  // contracts: {
+  //   multicall3: {
+  //     address: '0xca11bde05977b3631167028862be2a173976ca11',
+  //     blockCreated: 11_907_934,
+  //   },
+  // },
+} as const satisfies Chain;
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
+  [
+    // mainnet,
+    lukso_testnet,
+    polygonMumbai,
+  ],
   [publicProvider()]
 );
 

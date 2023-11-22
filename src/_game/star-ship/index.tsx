@@ -21,6 +21,9 @@ const v = new Vector3();
 export default function SpaceShip() {
   const directionalLight = useRef();
 
+  const mutation = useStore((state) => state.mutation);
+  const { clock } = mutation;
+
   const ship = useStore((s) => s?.ship);
   const boundingBox = useStore((s) => s?.shipBox);
   // const boundingBox = new THREE.Box3(new THREE.Vector3(), new THREE.Vector3()); // Create a bounding box
@@ -42,16 +45,12 @@ export default function SpaceShip() {
   useFrame((state, delta) => {
     boundingBox?.setFromObject(ship.current);
 
-    // console.log(boundingBox?.min?.z, "shipbox");
-    // console.log(boundingBox?.current?.m, "shipbox");
-    // if (ship.current) {
-    //   boundingBox
-    //     ?.copy(ship.current?.geometry?.boundingBox)
-    //     .applyMatrix4(ship.current?.matrixWorld);
-    // }
+    // main.current.position.z = Math.sin(clock.getElapsedTime() * 40) * Math.PI * 0.2
 
-    // ref.current.rotation.x = ref.current.rotation.y += 0.01
-    batchRenderer.update(delta);
+    exhaust.current.scale.x = 1 + Math.sin(clock.getElapsedTime() * 200);
+    exhaust.current.scale.y = 1 + Math.sin(clock.getElapsedTime() * 200);
+
+    // batchRenderer.update(delta);
   });
   const { scene } = useThree();
 

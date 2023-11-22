@@ -1,6 +1,6 @@
 import React from "react";
 import Rarity from "../utils/Rarity";
-import ModalDetail from "@/components/shop/modal-detail-item";
+import ModalDetail from "@/components/product/modal-detail-item";
 
 export default function Card(
   {
