@@ -2,18 +2,8 @@ import { DockCard } from "./DockCard";
 import { DockDivider } from "./DockDivider";
 import { Dock } from "./Dock";
 import useStore from "@/store/lobby-store";
-
+import { CiLock } from "react-icons/ci";
 // import styles from "./styles.module.scss";
-
-const GRADIENTS = [
-  "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
-  "https://products.ls.graphics/mesh-gradients/images/04.-Hopbush_1-p-130x130q80.jpeg",
-  "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
-  "https://products.ls.graphics/mesh-gradients/images/09.-Light-Sky-Blue-p-130x130q80.jpeg",
-  // "https://products.ls.graphics/mesh-gradients/images/36.-Pale-Chestnut-p-130x130q80.jpeg",
-];
-
-// const GARAGE = ["glass", "glass", "glass", "glass", "glass"];
 
 export default function DockMacos() {
   const { garage, selectShip } = useStore();
@@ -24,7 +14,9 @@ export default function DockMacos() {
         {garage.map((src, index) =>
           src ? (
             <DockCard onClick={() => selectShip(src)} key={`dock-mc-${index}`}>
-              <div>{index + 1}</div>
+              <div className="flex justify-center items-center">
+                {index === 0 ? index + 1 : <CiLock />}
+              </div>
             </DockCard>
           ) : (
             <DockDivider key={index} />

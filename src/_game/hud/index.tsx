@@ -1,5 +1,6 @@
 import React from "react";
 import Controller from "./controller";
+import Abilities from "./abilities";
 
 export default function Interface() {
   // divide to 4
@@ -12,6 +13,7 @@ export default function Interface() {
       <div className=" border-gray-600 flex flex-col items-end ">
         {/* SETTINGS */}
         <div className="flex">
+          <div>PROTOTYPE</div>
           {[1, 1, 1, 1].map((item, i) => (
             <div
               key={`box-ability-${i}`}
@@ -23,22 +25,16 @@ export default function Interface() {
         </div>
         <div className="p-4 text-xl">Distances</div>
       </div>
-      <div className=" border-gray-600 relative">
+      <div className=" border-gray-600 relative ">
         <Controller />
+        {/* <div className="relative bottom-10 border">
+          <div className="w-2/6 h-6 bg-red-300"></div>
+          <div className="w-1/6 h-2 bg-blue-300"></div>
+        </div> */}
       </div>
       <div className=" border-gray-600 flex justify-end items-end ">
         {/* abilities */}
-
-        {/* <div className="flex space-x-2">
-          {[1, 1, 1, 1].map((item, i) => (
-            <div
-              key={`box-ability-${i}`}
-              className="p-20 border border-gray-300 backdrop-blur-xl rounded-md "
-            >
-              {item}
-            </div>
-          ))}
-        </div> */}
+        <Abilities />
       </div>
     </div>
   );

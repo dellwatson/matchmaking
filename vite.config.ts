@@ -4,13 +4,16 @@ import react from "@vitejs/plugin-react-swc";
 
 import unocss from "unocss/vite";
 import path from "path";
-//
-import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
-import nodePolyfills from "rollup-plugin-polyfill-node";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [unocss(), react()],
+  plugins: [
+    unocss(),
+    react(),
+    // nodePolyfills({
+    //   include: ["node_modules/**/*.js", new RegExp("node_modules/.vite/.*js")],
+    // }),
+  ],
   resolve: {
     alias: {
       // BUILD
@@ -18,41 +21,67 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components"),
       "@game": path.resolve(__dirname, "./src/_game"),
+
+      // web3modal?
+      // stream: "stream-browserify",
+      // process: "process/browser",
+      // https: "agent-base",
     },
   },
-  esbuild: {
-    jsxFactory: "React.createElement",
-    jsxFragment: "React.Fragment",
-    target: "esnext",
-  },
+  // esbuild: {
+  //   jsxFactory: "React.createElement",
+  //   jsxFragment: "React.Fragment",
+  //   target: "esnext",
+  // },
   assetsInclude: [
-    "**/*.gltf",
     "**/*.json",
+    "**/*.gltf",
     "**/*.mp3",
     "**/*.cube",
     "**/*.hdr",
   ],
-  build: {
-    rollupOptions: {
-      plugins: [
-        nodePolyfills({
-          include: null,
-        }),
-      ],
-    },
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      define: {
-        global: "globalThis",
-      },
-      plugins: [
-        NodeGlobalsPolyfillPlugin({
-          buffer: true,
-        }),
-      ],
-    },
-  },
+  // build: {
+  //   commonjsOptions: {
+  //     transformMixedEsModules: true,
+  //   },
+  // },
+  // build: {
+  //   rollupOptions: {
+  //     // external: [
+  //     //   "node_modules/@wagmi/connectors/node_modules/@coinbase/wallet-sdk/dist/index.js",
+  //     //   "node_modules/@rollup/plugin-node-resolve/dist/es/index.js",
+  //     // ],
+  //     plugins: [
+  //       // require("@rollup/plugin-json")(),
+  //       // require("@rollup/plugin-node-resolve")({
+  //       //   // Specify the 'json' option to resolve JSON files
+  //       //   json: true,
+  //       // }),
+  //       //   nodePolyfills({
+  //       //     // include: null,
+  //       //     // include: [
+  //       //     //   "node_modules/**/*.js",
+  //       //     //   new RegExp("node_modules/.vite/.*js"),
+  //       //     // ],
+  //       //   }),
+  //     ],
+  //   },
+  //   commonjsOptions: {
+  //     transformMixedEsModules: true,
+  //   },
+  // },
+  // optimizeDeps: {
+  //   esbuildOptions: {
+  //     define: {
+  //       global: "globalThis",
+  //     },
+  //     plugins: [
+  //       NodeGlobalsPolyfillPlugin({
+  //         buffer: true,
+  //       }),
+  //     ],
+  //   },
+  // },
 });
 
 // import { defineConfig } from 'vite'

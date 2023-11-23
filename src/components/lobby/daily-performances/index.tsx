@@ -13,7 +13,7 @@ export default function DailyPerformances() {
   const springApi = useSpringRef();
   const springs = useSpring({
     from: {
-      strokeDashoffset: 120,
+      strokeDashoffset: 100,
     },
     to: {
       strokeDashoffset: 0,
@@ -50,19 +50,19 @@ export default function DailyPerformances() {
         <div className="grid grid-cols-2">
           <div className="col-span-1">
             <div className="mb-2">
-              Staking 1: 23H 32
+              Staking Ship 1: 23H 32
               <br />
-              20 GEMS
+              <div className="text-green-500">20 GEMS</div>
             </div>
             <div className="mb-2">
-              Staking 1: 23H 32
+              Staking Ship 2: 23H 32
               <br />
-              20 GEMS
+              <div className="text-green-500">20 GEMS</div>
             </div>
             <div className="mb-2">
-              Staking 1: 23H 32
+              Staking Ship 3: 23H 32
               <br />
-              20 GEMS
+              <div className="text-green-500">20 GEMS</div>
             </div>
           </div>
           <div className="col-span-1 relative">

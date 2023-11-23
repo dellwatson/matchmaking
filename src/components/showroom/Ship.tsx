@@ -96,6 +96,9 @@ const Ship = forwardRef((props, ref) => {
         geometry={nodes.Cube005_3.geometry}
         material={materials.Window_Frame}
       >
+        {selected?.materialMesh === "refraction" && (
+          <MeshRefractionMaterial envMap={texture} toneMapped={true} />
+        )}
         {props?.ExhaustMiddle}
       </mesh>
       <mesh

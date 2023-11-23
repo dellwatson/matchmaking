@@ -2,7 +2,7 @@ import React from "react";
 import Lights from "./Lights";
 import Particles from "@/_game/celestial/Particles";
 import Skybox from "./Skybox";
-import Flares from "./Flares";
+// import Flares from "./Flares";
 import ProcedurObstacle from "@/_game/celestial/Obstacles/obb";
 // import RockTest from "@/_game/celestial/Obstacles";
 import Rings from "@/_game/celestial/Rings";

@@ -1,25 +1,15 @@
 import Ship from "@/components/showroom/Ship";
-import {
-  Environment,
-  Float,
-  PerspectiveCamera,
-  PivotControls,
-} from "@react-three/drei";
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import useStore from "../store";
-import { useFrame, useThree } from "@react-three/fiber";
-import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
-import { useControls } from "leva";
+import { useFrame } from "@react-three/fiber";
+// import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
+// import { useControls } from "leva";
 // import ATOM_EFFECT from "./atom.json";
-import { BatchedRenderer, QuarksLoader } from "three.quarks";
-import { ATOM } from "./atom";
-import * as THREE from "three";
-import Effects from "../3d/Effects";
 
-const v = new Vector3();
+// const v = new Vector3();
 
 export default function SpaceShip() {
-  const directionalLight = useRef();
+  // const directionalLight = useRef();
 
   const mutation = useStore((state) => state.mutation);
   const { clock } = mutation;
@@ -31,14 +21,12 @@ export default function SpaceShip() {
   const exhaust = useStore((s) => s?.exhaust);
   // console.log(exhaust, ship, "current ref");
 
-  const camera = useStore((s) => s.camera);
+  // const camera = useStore((s) => s.camera);
 
-  let lastRotationTime = 0;
-  let rotationStartTime = 0;
-  const rotationInterval = 5000; // 5 seconds in milliseconds
-  const rotationDuration = 1000; // 1 second in milliseconds
-
-  const [batchRenderer, setBatchRenderer] = useState(new BatchedRenderer());
+  // let lastRotationTime = 0;
+  // let rotationStartTime = 0;
+  // const rotationInterval = 5000; // 5 seconds in milliseconds
+  // const rotationDuration = 1000; // 1 second in milliseconds
 
   useEffect(() => {}, [ship]);
 
@@ -49,30 +37,8 @@ export default function SpaceShip() {
 
     exhaust.current.scale.x = 1 + Math.sin(clock.getElapsedTime() * 200);
     exhaust.current.scale.y = 1 + Math.sin(clock.getElapsedTime() * 200);
-
-    // batchRenderer.update(delta);
   });
-  const { scene } = useThree();
 
-  // MOVE: effects
-  useEffect(() => {
-    if (ship.current) {
-      const loader = new QuarksLoader();
-
-      loader.setCrossOrigin("");
-
-      const obj = loader.parse(ATOM);
-      obj.traverse((child) => {
-        if (child.type === "ParticleEmitter") {
-          batchRenderer.addSystem(child.system);
-        }
-      });
-      obj.scale.set(0.3, 0.3, 0.3);
-      ship.current.add(obj);
-      // ship.current.add(batchRenderer);
-      scene.add(batchRenderer);
-    }
-  }, []);
   return (
     <>
       <Ship

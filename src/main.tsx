@@ -13,7 +13,7 @@ import { config } from "./web3";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <WagmiConfig config={config}>
-      <div />
+      <App />
     </WagmiConfig>
   </React.StrictMode>
 );

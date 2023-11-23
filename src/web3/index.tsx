@@ -7,10 +7,13 @@ import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { WALLETCONNECT_ID } from "@/utils/constant/wallet-helper";
-import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { polygon, polygonMumbai } from "viem/chains";
+import { defaultWagmiConfig, createWeb3Modal } from "@web3modal/wagmi/react";
 
 import { Chain } from "@wagmi/core";
+// const createWeb3ModalPromise = import("@web3modal/wagmi/react").then(
+//   (module) => module.createWeb3Modal
+// );
 
 export const lukso_testnet = {
   id: 4201,
@@ -46,7 +49,7 @@ export const lukso_testnet = {
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
-    lukso_testnet,
+    // lukso_testnet,
     polygonMumbai,
   ],
   [publicProvider()]
@@ -70,41 +73,43 @@ const metadata = {
 
 // 3. Create modal
 
-export const configx = defaultWagmiConfig({ chains, projectId, metadata }); //web3modal
-export const config = createConfig({
-  autoConnect: true,
-  connectors: [
-    new MetaMaskConnector({ chains }),
-    // new CoinbaseWalletConnector({
-    //   chains,
-    //   options: {
-    //     appName: "star-ex",
-    //   },
-    // }),
-    new WalletConnectConnector({
-      chains,
-      options: {
-        // projectId: "861ef743dceed75deb813e6d390dc4a8",
-        projectId: WALLETCONNECT_ID,
-      },
-    }),
-    // new InjectedConnector({
-    //   chains,
-    //   options: {
-    //     name: "Injected",
-    //     shimDisconnect: true,
-    //   },
-    // }),
-  ],
+export const config = defaultWagmiConfig({ chains, projectId, metadata }); //web3modal
+// export const config = createConfig({
+//   autoConnect: true,
+//   connectors: [
+//     new MetaMaskConnector({ chains }),
+//     // new CoinbaseWalletConnector({
+//     //   chains,
+//     //   options: {
+//     //     appName: "star-ex",
+//     //   },
+//     // }),
+//     new WalletConnectConnector({
+//       chains,
+//       options: {
+//         // projectId: "861ef743dceed75deb813e6d390dc4a8",
+//         projectId: WALLETCONNECT_ID,
+//       },
+//     }),
+//     // new WalletConnectConnector({
+//     //   chains,
+//     //   options: { projectId, showQrModal: false, metadata },
+//     // }),
+//     // new InjectedConnector({ chains, options: { shimDisconnect: true } }),
+//     // new CoinbaseWalletConnector({
+//     //   chains,
+//     //   options: { appName: metadata?.name ?? "Unknown" },
+//     // }),
+//   ],
 
-  publicClient,
-  webSocketPublicClient,
-});
-
-// createWeb3Modal({
-//   wagmiConfig: config,
-//   projectId,
-//   chains,
-
-//   themeMode: "dark",
+//   publicClient,
+//   webSocketPublicClient,
 // });
+
+createWeb3Modal({
+  wagmiConfig: config,
+  projectId,
+  chains,
+
+  // themeMode: "dark",
+});

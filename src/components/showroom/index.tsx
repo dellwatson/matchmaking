@@ -16,7 +16,6 @@ import useStore from "@/store/lobby-store";
 // todo: refactor ship component for modularity
 export default function ShowRoom() {
   const { garage, selectedShip } = useStore();
-  console.log(selectedShip, "selectedship");
   return (
     <Canvas
       frameloop="demand"
@@ -41,7 +40,7 @@ export default function ShowRoom() {
         minPolarAngle={Math.PI / 2.2}
         maxPolarAngle={Math.PI / 2.2}
       />
-      {/* <AnimatedCamera /> */}
+      <AnimatedCamera />
     </Canvas>
   );
 }

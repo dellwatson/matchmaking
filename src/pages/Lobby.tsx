@@ -41,9 +41,10 @@ export default function LobbyPage() {
 
   return (
     <div className="absolute dark:bg-black  h-full w-full overflow-hidden">
-      {/* <LobbyLeft />
+      <LobbyLeft />
       <LobbyRight />
-      <Layout /> */}
+
+      <Layout />
       <ShowRoom />
       <LobbyInterfaceBot />
 
