@@ -23,7 +23,7 @@ export default function ShowRoom() {
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 15], fov: 25 }}
     >
-      <Stats />
+      {/* <Stats /> */}
       <color attach="background" args={["#15151a"]} />
       <Float
         floatingRange={[0, 0]} //

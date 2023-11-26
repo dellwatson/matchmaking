@@ -115,7 +115,7 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                         )}
                         {page === "inventory" && (
                           <button className="bg-green-500 p-4 rounded-md font-bold uppercase px-8">
-                            equip
+                            equipped
                           </button>
                         )}
                         <div className="text-end">
