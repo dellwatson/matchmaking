@@ -3,18 +3,33 @@ import GlowingText from "@/components/_ui/text/glowing-text";
 import { useNavigate } from "react-router-dom";
 import SVG_EXPLORE from "@assets/svg/lobby/play-icon.svg";
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
+import ModalPlay from "./modal-play";
+import { Switch } from "@headlessui/react";
+
 export default function Play() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   return (
     <>
       <div className="absolute bottom-1 right-1 font-bold m-4 cursor-pointer">
-        <div className="absolute w-full ">
-          <div className="relative bottom-7 p-2 pt-1 pb-3 border rounded-md border-red-500 bg-red-500 w-full opacity-75">
-            <div className="text-xs flex justify-between font-normal">
-              <div className="text-green-500">2300 explorer</div>
-              <div>mode: solo expedition</div>
+        <div onClick={openModal} className="absolute w-full ">
+          <div className="relative bottom-7 p-2 pt-1 pb-3 border rounded-md border-red-500 bg-red-500 w-full ">
+            <div className="text-xs flex justify-between font-bold text-white uppercase">
+              <div className="text-green-900">
+                {/* 2300 explorer */}
+                Ticket: OFF
+              </div>
+              <div>mode: solo</div>
             </div>
           </div>
         </div>
@@ -28,6 +43,7 @@ export default function Play() {
         <CornerBox
           onClick={() => {
             navigate("/match-room");
+            // RESET GAME STORE
           }}
           border
           classNameOutside=" p-8 w-[300px] "
@@ -45,6 +61,13 @@ export default function Play() {
           </GlowingText>
         </CornerBox>
       </div>
+      <ModalPlay
+        {...{
+          isOpen,
+          closeModal,
+          openModal,
+        }}
+      />
     </>
   );
 }

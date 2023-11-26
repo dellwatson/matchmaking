@@ -6,7 +6,12 @@ export default function Abilities() {
   // get from profile the ability
   const { abilities, activate } = abilityStore();
   return (
-    <div className="flex space-x-2 cursor-pointer">
+    <div
+      className="flex space-x-2 cursor-pointer ,"
+      //   style={{
+      //     transform: `skew(5deg, 5deg)`,
+      //   }}
+    >
       {abilities.map((item, i) => (
         <div
           key={`box-ability-${i}`}

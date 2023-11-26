@@ -1,6 +1,6 @@
 // on mobile have peek
 import CornerBox from "@/components/_ui/box/CornerBox";
-import DailyPerformances from "../daily-performances";
+import DailyPerformances from "./performances";
 import Claim from "./claim";
 
 export default function LobbyLeft() {

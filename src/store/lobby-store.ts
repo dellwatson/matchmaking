@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const useStore = create((set, get) => {
+const lobbyStore = create((set, get) => {
   // load data from wallets?
   const garage = [
     {
@@ -41,6 +41,7 @@ const useStore = create((set, get) => {
     get,
     garage,
     selectedShip: garage[0],
+    selectedShipGame: null,
     selectShip: (selectedShip: any) => {
       set({
         selectedShip,
@@ -49,4 +50,4 @@ const useStore = create((set, get) => {
   };
 });
 
-export default useStore;
+export default lobbyStore;

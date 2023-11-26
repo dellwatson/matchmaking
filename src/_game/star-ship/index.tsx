@@ -2,6 +2,7 @@ import Ship from "@/components/showroom/Ship";
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import useStore from "../store";
 import { useFrame } from "@react-three/fiber";
+import Buster from "../hud/abilities/category/shield/Buster";
 // import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
 // import { useControls } from "leva";
 // import ATOM_EFFECT from "./atom.json";
@@ -41,7 +42,14 @@ export default function SpaceShip() {
 
   return (
     <>
+      <Buster />
       <Ship
+        {...{
+          selected: {
+            color: "white",
+            materialMesh: "transmission",
+          },
+        }}
         ref={ship}
         // rotation={[0.3, 0, 0]}
         ExhaustMiddle={

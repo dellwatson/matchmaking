@@ -6,7 +6,7 @@ export default function ShopPage() {
     <div className="absolute dark:bg-black  h-full w-full overflow-hidden">
       <Layout />
       {/* <Shop /> */}
-      <ProductDisplay />
+      <ProductDisplay page="shop" />
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import { Transition } from "@headlessui/react";
 
-export default function ProgressBar({ progress = 40 }) {
+export default function ProgressBar({
+  rounded = "xl",
+  title = "progress",
+  progress = 40,
+}) {
   return (
     <Transition
       show={progress > 0} // Show when progress is greater than 0
@@ -14,13 +18,15 @@ export default function ProgressBar({ progress = 40 }) {
       {/* {(ref) => ( */}
       <div
         // ref={ref}
-        className="w-full bg-gray-900 overflow-hidden mb-2 alternative"
+        className={`w-full bg-gray-900 overflow-hidden mb-2 alternative rounded-${rounded} `}
       >
         <div
-          className={`h-full bg-green-600 p-2 `}
+          className={`h-full ${
+            progress !== 100 ? "bg-green-600" : "bg-blue-600"
+          } p-2 uppercase text-xs font-bold rounded-${rounded}`}
           style={{ width: `${progress}%` }}
         >
-          Progress
+          {title}
         </div>
       </div>
       {/* )} */}

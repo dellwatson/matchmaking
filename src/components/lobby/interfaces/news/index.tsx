@@ -5,7 +5,7 @@ import React from "react";
 const NewsSection = () => {
   const { data, isLoading, error } = useMediumRssFeed();
   return (
-    <div className="max-h-[400px] h-[400px] ">
+    <div className="relative max-h-[400px] h-[400px] ">
       {/* carousel */}
       {/* news on dekstop */}
       <Slider

@@ -43,7 +43,7 @@ const LobbyTop = () => {
 
 export default LobbyTop;
 
-const FullScreen = () => {
+export const FullScreen = () => {
   // onclick fullscreen
   return (
     <div className="p-2">
@@ -75,7 +75,7 @@ const Language = () => {
     </div>
   );
 };
-const Settings = () => {
+export const Settings = () => {
   // onclick fullscreen
   const [visible, setVisible] = useState(false);
 

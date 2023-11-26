@@ -2,34 +2,34 @@ import { useControls, folder } from "leva";
 import React from "react";
 
 export default function Lights() {
-  const ambient = useControls("ambient", {
-    intesity: {
-      value: 0.25,
-      label: "intesity",
-      min: 0,
-      max: 5,
-    },
-    enabled: {
-      value: true,
-    },
-  });
-  const directionalL = useControls("directional", {
-    intesity: {
-      value: 0.25,
-      label: "intesity",
-      min: 0,
-      max: 5,
-    },
-    enabled: {
-      value: true,
-      label: "enabled",
-    },
-  });
+  // const ambient = useControls("ambient", {
+  //   intesity: {
+  //     value: 0.25,
+  //     label: "intesity",
+  //     min: 0,
+  //     max: 5,
+  //   },
+  //   enabled: {
+  //     value: true,
+  //   },
+  // });
+  // const directionalL = useControls("directional", {
+  //   intesity: {
+  //     value: 0.25,
+  //     label: "intesity",
+  //     min: 0,
+  //     max: 5,
+  //   },
+  //   enabled: {
+  //     value: true,
+  //     label: "enabled",
+  //   },
+  // });
 
   return (
     <>
-      {ambient?.enabled && <ambientLight {...ambient} />}
-      {directionalL?.enabled && <directionalLight {...directionalL} />}
+      {/* {ambient?.enabled && <ambientLight {...ambient} />}
+      {directionalL?.enabled && <directionalLight {...directionalL} />} */}
       {/* <ambientLight
         {...{
           intensity: 1,

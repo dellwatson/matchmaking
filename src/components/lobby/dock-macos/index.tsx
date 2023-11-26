@@ -14,8 +14,8 @@ export default function DockMacos() {
         {garage.map((src, index) =>
           src ? (
             <DockCard onClick={() => selectShip(src)} key={`dock-mc-${index}`}>
-              <div className="flex justify-center items-center">
-                {index === 0 ? index + 1 : <CiLock />}
+              <div className="flex justify-center items-center font-bold text-green-500">
+                {index === 0 ? index + 1 : <CiLock color="orange" />}
               </div>
             </DockCard>
           ) : (

@@ -1,7 +1,9 @@
 import useStore from "@/_game/store";
+import useTX from "@/helpers/hooks/useTX";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAccount } from "wagmi";
 
 export default function ModalClaim({
   isOpen,
@@ -35,22 +37,22 @@ export default function ModalClaim({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-medium leading-6 text-gray-200"
                   >
                     GET YOUR DAILY FREE CLAIM
                   </Dialog.Title>
-                  <div className="my-2">
+                  <br />
+                  <br />
+                  <br />
+                  {/* <div className="my-2">
                     <p className="text-sm text-gray-500">
                       *This is just prototype claim
                     </p>
-                  </div>
-                  <div className="flex w-full justify-between py-3 border-b-1">
-                    <div>100 GEMS</div>
-                    <button>Claim</button>
-                  </div>
+                  </div> */}
+                  <GemClaim />
                   <div className="flex w-full justify-between py-3 border-b-1">
                     <div>1 Ticket</div>
                     <button>Claim</button>
@@ -72,3 +74,16 @@ export default function ModalClaim({
     </>
   );
 }
+
+const GemClaim = () => {
+  const { address } = useAccount();
+  const { write, isLoading } = useTX("gemtoken", "mintToken", [address, 100]);
+  return (
+    <div className="flex w-full justify-between py-3 border-b-1">
+      <div>100 GEMS</div>
+      <button disabled={isLoading} onClick={() => write?.()}>
+        {isLoading ? "loading" : "Claim"}
+      </button>
+    </div>
+  );
+};

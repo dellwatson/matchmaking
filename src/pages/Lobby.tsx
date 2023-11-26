@@ -16,6 +16,7 @@ import {
 import LSP8ABI from "../web3/abis/lsp8";
 import ERCGEM from "../web3/abis/erc20";
 import { parseEther } from "viem";
+import { Canvas } from "@react-three/fiber";
 export default function LobbyPage() {
   // load from DB? and wallet?
   // set main vehicle on lobby
@@ -45,6 +46,7 @@ export default function LobbyPage() {
       <LobbyRight />
 
       <Layout />
+      {/* <Canvas /> */}
       <ShowRoom />
       <LobbyInterfaceBot />
 

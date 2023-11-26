@@ -1,7 +1,7 @@
 import LobbyTop from "./interfaces/LobbyTop";
 import Garage from "./garage";
-import Play from "./play";
-import Pass from "./pass";
+import Play from "./interfaces/play";
+import Pass from "./interfaces/pass";
 
 export default function Layout() {
   // mobile interfaces too
@@ -19,7 +19,7 @@ export function LobbyInterfaceBot() {
   return (
     <div className="absolute z-10 w-full ">
       <Garage />
-      {/* <Pass /> */}
+      <Pass />
       <Play />
     </div>
   );

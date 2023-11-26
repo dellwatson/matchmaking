@@ -1,6 +1,6 @@
 import SoloGameApp from "@/_game";
 import Interface from "@/_game/hud";
-import GameOverModal from "@/components/_ui/modal/gameover-modal";
+import GameOverModal from "@/components/gameover/gameover-modal";
 import ShowRoom from "@/components/showroom";
 import React from "react";
 
@@ -21,7 +21,7 @@ export default function MatchRoomPage() {
       {/* <ShowRoom /> */}
       <Interface />
       <SoloGameApp />
-      {/* <GameOverModal /> */}
+      <GameOverModal />
       {/* game over modal */}
       {/* result match */}
     </div>
@@ -31,3 +31,19 @@ export default function MatchRoomPage() {
 // cheat detection
 // room-id eligible identify
 // nft  use
+
+// ${base}
+// text-align: right;
+// top: 40px;
+// right: 50px;
+// font-size: 2em;
+// transform: skew(-5deg, -5deg);
+// pointer-events: all;
+// cursor: pointer;
+// & > a {
+//   color: indianred;
+//   text-decoration: none;
+// }
+// @media only screen and (max-width: 900px) {
+//   font-size: 1.5em;
+// }

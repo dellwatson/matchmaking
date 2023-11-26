@@ -3,15 +3,19 @@ import useStore from "../../../../store";
 import { BatchedRenderer, QuarksLoader } from "three.quarks";
 import { ATOM } from "./atom";
 import { useFrame, useThree } from "@react-three/fiber";
+import abilityStore from "../../ability-store";
 
 export default function Buster() {
   const ship = useStore((s) => s?.ship);
+  const active = abilityStore((s) => s?.active);
 
   const [batchRenderer, setBatchRenderer] = useState(new BatchedRenderer());
   const { scene } = useThree();
 
   useFrame((state, delta) => {
-    batchRenderer.update(delta);
+    if (active) {
+      batchRenderer.update(delta);
+    }
   });
 
   useEffect(() => {
@@ -26,7 +30,7 @@ export default function Buster() {
           batchRenderer.addSystem(child.system);
         }
       });
-      obj.scale.set(0.3, 0.3, 0.3);
+      obj.scale.set(1, 1, 1);
       ship.current.add(obj);
       // ship.current.add(batchRenderer);
       scene.add(batchRenderer);

@@ -14,7 +14,7 @@ function Joystick(props) {
     if (containerRef.current) {
       joystick = nipplejs.create({
         zone: containerRef.current,
-        mode: "dynamic",
+        mode: "semi",
         // mode: "static",
         size: 150,
         color: "yellow",

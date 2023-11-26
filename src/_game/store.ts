@@ -4,6 +4,7 @@ import { addEffect } from "@react-three/fiber";
 import { create } from "zustand";
 import * as audio from "./audio";
 import { createRef } from "react";
+import abilityStore from "./hud/abilities/ability-store";
 
 let guid = 1;
 
@@ -32,9 +33,14 @@ const useStore = create((set, get) => {
     },
     updateGame: () => {
       // update game-over + modal + gamestate
-      set({
-        game_over: true,
-      });
+      // need to get active from abilityStore
+      const active = abilityStore.getState().active;
+      console.log(active, "active?");
+      if (!active) {
+        set({
+          game_over: true,
+        });
+      }
     },
 
     //

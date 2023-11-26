@@ -39,7 +39,7 @@ export default function DailyPerformances() {
         <div>
           {TASKS.map((item, i) => (
             <div key={`task-daily-${i}`} className="">
-              <ProgressBar {...item} />
+              <ProgressBar rounded="none" {...item} />
             </div>
           ))}
         </div>
@@ -91,15 +91,20 @@ export default function DailyPerformances() {
 
 const TASKS = [
   {
-    title: "Facility",
-    progress: 40,
-  },
-  {
-    title: "Facility",
+    title: "Claim your gems 10x",
     progress: 67,
   },
   {
-    title: "Facility",
+    title: "Purchase 3 ships",
+    progress: 40,
+  },
+
+  {
+    title: "Play and get items 10x",
     progress: 90,
+  },
+  {
+    title: "Feedback and subscribe 1x",
+    progress: 100,
   },
 ];

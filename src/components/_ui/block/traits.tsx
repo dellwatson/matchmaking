@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Traits() {
+export default function Traits({ title = "title", value = "subtitle" }) {
   return (
-    <div className="flex">
-      <div className="text-sm">size:</div>
-      <div>XS</div>
+    <div className="flex flex-col  ">
+      <div className="text-sm font-thin">{title}:</div>
+      <div className="text-orange-500 text-xl font-bold">{value || "-"}</div>
     </div>
   );
 }
