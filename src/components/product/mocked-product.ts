@@ -20,7 +20,7 @@ export const mocked_data = [
     category: "ship",
     address: getContractAddress(SHIP_NFT),
     contract_type: SHIP_NFT,
-
+    listedStoreId: 2,
     stats: true,
     type: "xs",
     rarity: "common-test",
@@ -172,6 +172,7 @@ export const mocked_ticket = [
     category: "consumption",
     address: getContractAddress(TICKET_NFT),
     contract_type: TICKET_NFT,
+    listedStoreId: 1,
 
     type: "xs",
     rarity: "common",
@@ -218,6 +219,8 @@ export const mocked_ticket = [
 export const mocked_pass = [
   {
     title: "Season Pass",
+    listedStoreId: 0,
+
     category: "tools",
     address: getContractAddress(PASS_NFT),
     contract_type: PASS_NFT,

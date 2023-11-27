@@ -46,7 +46,7 @@ export function getContractAddress(type = "") {
 
     case SHOP:
       // return "0x558A682636988925F48eF58d3975293665b69C86"; // SHOP
-      return "0x21D344ddB590C202b7420f5666E89B9a76790157"; // SHOP
+      return "0x5f88fA8735542bfB3eE6D6CC3d3C3a393E8d943F"; // SHOP
 
     default:
       return "0x0000000000000000000000000000000000000000";
