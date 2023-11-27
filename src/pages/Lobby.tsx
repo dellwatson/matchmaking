@@ -46,8 +46,8 @@ export default function LobbyPage() {
       <LobbyRight />
 
       <Layout />
-      <Canvas />
-      {/* <ShowRoom /> */}
+      {/* <Canvas /> */}
+      <ShowRoom />
       <LobbyInterfaceBot />
 
       {/* <button
