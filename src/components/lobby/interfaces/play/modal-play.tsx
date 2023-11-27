@@ -1,8 +1,14 @@
 import useStore from "@/_game/store";
 import { Title } from "@/components/_ui/text";
+import useReadContract from "@/helpers/hooks/useReadContract";
+import useTX from "@/helpers/hooks/useTX";
+import { EXPLORE_PLAY, TICKET_NFT } from "@/web3/contract-list";
 import { Dialog, Switch, Transition, Tab } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { formatUnits, getContractAddress } from "viem";
+import { useAccount } from "wagmi";
+import { toast } from "react-toastify";
 
 export default function ModalPlay({
   isOpen = false,
@@ -51,12 +57,7 @@ export default function ModalPlay({
                       <span className="text-red-600">INACTIVE</span>
                     </div>
 
-                    <div>
-                      TICKET (8) &nbsp;
-                      <button className="px-4 p-2 bg-orange-500 rounded-sm">
-                        USE
-                      </button>
-                    </div>
+                    <TicketUsage />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -67,6 +68,36 @@ export default function ModalPlay({
     </>
   );
 }
+
+const TicketUsage = () => {
+  const { address } = useAccount();
+  const { data, isLoading } = useReadContract(TICKET_NFT, "balanceOf", [
+    address,
+  ]);
+  // const { data, isLoading } = useReadContract(TICKET_NFT, "tokenIdsOf", [
+  //   address,
+  // ]);
+  // console.log(data, "data ticket");
+
+  // const {} = useTX(EXPLORE_PLAY, "lockNFT",[
+  //   getContractAddress(TICKET_NFT),
+  // ])
+  return (
+    <div>
+      TICKET ({!!data ? formatUnits(data) : "0"}) &nbsp;
+      <button
+        onClick={() => {
+          // lockNFT
+          toast("Realm Gate is not opened yet");
+        }}
+        className="px-4 p-2 bg-orange-500 rounded-sm"
+      >
+        USE
+      </button>
+    </div>
+  );
+};
+
 function MyToggle() {
   const [enabled, setEnabled] = useState(false);
 

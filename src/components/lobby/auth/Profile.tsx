@@ -1,9 +1,18 @@
 import Avatar from "@/components/_ui/profile/avatar";
+import useReadContract from "@/helpers/hooks/useReadContract";
 import { GravatarUrl } from "@/utils/Gravatar";
-import { useAccount } from "wagmi";
+import { TOKEN_GEM } from "@/web3/contract-list";
+import { formatEther, formatUnits, parseEther } from "viem";
+import { useAccount, useNetwork } from "wagmi";
 
 export default function Profile() {
   const { address } = useAccount();
+  const { data, isError, isLoading } = useReadContract(TOKEN_GEM, "balanceOf", [
+    address,
+  ]);
+
+  const { chain } = useNetwork();
+
   return (
     <div className="flex">
       {/* profiles */}
@@ -15,7 +24,12 @@ export default function Profile() {
         <w3m-account-button balance="hide" />
         <div className="mt-1 text-center">
           GEMS: &nbsp;
-          <span className="font-bold text-green-300">200</span>
+          <span className="font-bold text-green-300">
+            {!isLoading && data ? formatUnits(data, 18) : "-"}
+          </span>
+          <br />
+          {chain?.id !== Number(import.meta.env.VITE_CHAIN_ID) &&
+            "wrong network"}
         </div>
       </div>
     </div>

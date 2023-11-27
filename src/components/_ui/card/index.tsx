@@ -1,6 +1,7 @@
 import React from "react";
 import Rarity from "../utils/Rarity";
 import ModalDetail from "@/components/product/modal-detail-item";
+import { CiLock } from "react-icons/ci";
 
 export default function Card({
   item,
@@ -27,14 +28,25 @@ export default function Card({
               {item?.price[0]?.price} {item?.price[0]?.payment_token}{" "}
             </div>
           )}
-          <img
-            src={item?.imageUrl}
-            className="w-full h-full object-cover opacity-75"
-          />
+          {!item?.locked ? (
+            <img
+              src={item?.imageUrl}
+              className="w-full h-full object-cover opacity-75"
+            />
+          ) : (
+            <div className="flex justify-center items-center h-full">
+              <CiLock size={30} />
+            </div>
+          )}
         </div>
 
         <div className="flex items-center justify-center my-4">
           <Rarity />
+          {item?.stakeable && (
+            <div className="uppercase rounded-xl border bg-purple-400 p-2 px-6 ml-2">
+              Stakeable
+            </div>
+          )}
         </div>
         <div className="p-6 uppercase">
           <ModalDetail {...{ data: item, page }} />

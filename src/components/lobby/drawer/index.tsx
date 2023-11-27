@@ -8,6 +8,7 @@ import {
   useSpringRef,
 } from "@react-spring/web";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { toast } from "react-toastify";
 
 import styles from "./styles.module.scss";
 export default function Drawer({ direction = "left" }) {
@@ -65,9 +66,11 @@ export default function Drawer({ direction = "left" }) {
         <div className="m-2">*note: navbar is under development</div>
 
         {transition((style, item, I) => {
-          console.log(style, item, "HUH", I);
           return (
             <animated.div
+              onClick={() => {
+                toast("Navbar feature is locked due to security issue");
+              }}
               // className={styles.item}
               className={`m-2 bg-black p-6 uppercase font-bold cursor-pointer`}
               style={{ ...style }}

@@ -35,15 +35,33 @@ export default function ModalPass({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-gray-600 min-h-[400px] p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-xl leading-6 text-gray-200 font-bold"
                   >
                     {/* GET YOUR DAILY FREE CLAIM */}
-                    SEASON PASS
+                    SEASON PASS <span className="text-red-500">(INACTIVE)</span>
                   </Dialog.Title>
-                  TBC
+                  <br />
+                  <br />
+                  <div>
+                    Unlock boundless adventures with our exclusive NFT Season
+                    Pass! Valid for one month{" "}
+                    <span className="text-red-500">(5mins on prototype)</span>,
+                    this pass grants you unrestricted access to dimension space
+                    without the need for tickets. Every match within this
+                    celestial realm brings the chance to discover rare drop
+                    items, enhancing your gameplay and elevating your cosmic
+                    journey. Seize the opportunity to maximize your exploration,
+                    as each passing season promises fresh challenges and
+                    valuable rewards. Your ticket to limitless exploration
+                    awaits with the NFT Season Pass!
+                  </div>
+                  <br />
+                  <br />
+
+                  <div>Get it in the shop!</div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

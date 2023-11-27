@@ -42,15 +42,13 @@ export default function LobbyPage() {
 
   return (
     <div className="absolute dark:bg-black  h-full w-full overflow-hidden">
-      {/* <LobbyLeft />
+      <LobbyLeft />
       <LobbyRight />
 
-      <Layout /> */}
-      {/* <Canvas /> */}
+      <Layout />
+      <Canvas />
       {/* <ShowRoom /> */}
-      <div className="w-full h-full flex">DEMO REVEAL IN ...</div>
-
-      {/* <LobbyInterfaceBot /> */}
+      <LobbyInterfaceBot />
 
       {/* <button
         disabled={!write}

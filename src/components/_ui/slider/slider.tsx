@@ -43,15 +43,20 @@ const Slider = ({ id = "default", data = [], isLoading }) => {
                 />
                 <div className="absolute  w-full h-full bg-black opacity-75"></div>
               </div>
-
-              <div className=" relative text-white flex  px-4 pt-4 ">
-                <div className="bg-red-500 p-2 rounded-sm">
-                  NEWS
-                  {/* UPDATE */}
+              <div
+                onClick={() => {
+                  window.open(item?.link, "_blank");
+                }}
+              >
+                <div className=" relative text-white flex  px-4 pt-4 ">
+                  <div className="bg-red-500 p-2 rounded-sm">
+                    NEWS
+                    {/* UPDATE */}
+                  </div>
                 </div>
-              </div>
-              <div className="relative  h-full text-white p-4 font-bold">
-                {item?.title}
+                <div className="relative  h-full text-white p-4 font-bold">
+                  {item?.title}
+                </div>
               </div>
             </div>
           </SwiperSlide>

@@ -3,6 +3,8 @@ import { Fragment, useState } from "react";
 import Rarity from "../_ui/utils/Rarity";
 import ProgressBar from "../_ui/utils/ProgressBar";
 import Traits from "../_ui/block/traits";
+import { shortenEthAddress } from "@/utils/ethaddress";
+import BuyProduct from "./buy-product";
 
 export default function ModalDetail({ data = {}, page = "inventory" }) {
   let [isOpen, setIsOpen] = useState(false);
@@ -19,10 +21,10 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
     <>
       <button
         type="button"
-        onClick={openModal}
-        className="rounded-md  bg-black/50 px-4 py-2 text-sm font-thin text-white hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+        onClick={!data?.locked ? openModal : () => {}}
+        className="rounded-md uppercase bg-black/50 px-4 py-2 text-sm font-thin text-white hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
       >
-        VIEW MORE
+        {!data?.locked ? "VIEW MORE" : "out of stock"}
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -51,20 +53,23 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full xl:max-w-2/4 max-w-full  transform overflow-hidden rounded-2xl bg-gray-700 p-6 text-left align-middle shadow-xl transition-all">
-                  <div className="header-modal flex justify-between items-center">
+                  <div className="header-modal flex justify-between items-center mb-4">
                     <Dialog.Title
                       as="h3"
                       className="text-xl  leading-6 text-gray-300 font-bold"
                     >
                       {data?.title || "TITLE"}
                     </Dialog.Title>
-                    <button
+                    <div className="font-bold">
+                      {data?.address && shortenEthAddress(data?.address)}
+                    </div>
+                    {/* <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Close
-                    </button>
+                    </button> */}
                   </div>
                   <div className="grid xl:grid-cols-2">
                     <div className="col-span-1">
@@ -119,9 +124,19 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                           </button>
                         )}
                         <div className="text-end">
-                          <button className="bg-red-500 p-4 rounded-md font-bold uppercase px-8">
-                            {page !== "inventory" ? "BUY" : "SELL"}
-                          </button>
+                          {page !== "inventory" && (
+                            <BuyProduct {...{ product: data }} />
+                          )}
+                          {page === "inventory" && data?.stakeable && (
+                            <button
+                              onClick={() => {
+                                alert("Staking feature is not available yet");
+                              }}
+                              className="bg-orange-500 p-4 rounded-md font-bold uppercase px-8"
+                            >
+                              "STAKE"
+                            </button>
+                          )}
                         </div>
                       </div>
                       <div className=" flex justify-between items-center my-4">
@@ -140,9 +155,13 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                           </div>
 
                           <br />
-                          <ProgressBar title={"durability"} progress={50} />
-                          <ProgressBar title={"control"} progress={40} />
-                          <ProgressBar title={"luck"} progress={20} />
+                          {data?.status && (
+                            <>
+                              <ProgressBar title={"durability"} progress={50} />
+                              <ProgressBar title={"control"} progress={40} />
+                              <ProgressBar title={"luck"} progress={20} />
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>

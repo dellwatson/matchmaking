@@ -6,11 +6,13 @@ import Pass from "./interfaces/pass";
 export default function Layout() {
   // mobile interfaces too
   return (
-    <div className="absolute z-10 w-full  ">
-      <LobbyTop />
-      {/* <LobbyLeft /> */}
-      {/* <LobbyRight /> */}
-    </div>
+    <>
+      <div className="absolute z-10 w-full  ">
+        <LobbyTop />
+        {/* <LobbyLeft /> */}
+        {/* <LobbyRight /> */}
+      </div>
+    </>
   );
 }
 

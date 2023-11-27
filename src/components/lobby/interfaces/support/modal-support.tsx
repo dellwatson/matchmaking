@@ -45,6 +45,7 @@ export default function ModalSupport({
                     className="text-lg font-medium leading-6 text-gray-300 text-center"
                   >
                     Give us your feedback❤️
+                    {/* donate */}
                   </Dialog.Title>
                   <div className="flex justify-center mt-4">
                     <div className="my-2 flex-col w-2/3 items-end ">

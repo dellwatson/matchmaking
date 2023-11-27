@@ -5,7 +5,12 @@ import { FaDiscord } from "react-icons/fa";
 //
 export default function Discord() {
   return (
-    <div>
+    <div
+      className="cursor-pointer"
+      onClick={() => {
+        window.open("https://discord.gg/TcCSNkZg5F", "_blank");
+      }}
+    >
       <CornerBox
         border
         corner={false}

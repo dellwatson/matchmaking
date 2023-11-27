@@ -49,8 +49,8 @@ export const lukso_testnet = {
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
-    // lukso_testnet,
-    polygonMumbai,
+    lukso_testnet,
+    // polygonMumbai,
   ],
   [publicProvider()]
 );

@@ -1,9 +1,11 @@
 import useStore from "@/_game/store";
 import useTX from "@/helpers/hooks/useTX";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
+import { toast } from "react-toastify";
+import { CLAIM_MANAGER, TOKEN_GEM } from "@/web3/contract-list";
 
 export default function ModalClaim({
   isOpen,
@@ -53,17 +55,11 @@ export default function ModalClaim({
                     </p>
                   </div> */}
                   <GemClaim />
-                  <div className="flex w-full justify-between py-3 border-b-1">
-                    <div>1 Ticket</div>
-                    <button>Claim</button>
-                  </div>
-                  <div className="flex w-full justify-between py-3 border-b-1">
-                    <div>200 Points</div>
-                    <button>Claim</button>
-                  </div>
+                  <TicketClaim />
+                  <PointsClaim />
                   <div className="flex w-full justify-between py-3 ">
                     <div></div>
-                    <button>Claim All</button>
+                    <button disabled>Claim All</button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -77,11 +73,86 @@ export default function ModalClaim({
 
 const GemClaim = () => {
   const { address } = useAccount();
-  const { write, isLoading } = useTX("gemtoken", "mintToken", [address, 100]);
+  const { data, write, isLoading, isSuccess } = useTX(TOKEN_GEM, "mintToken", [
+    address,
+    100,
+  ]);
+  useEffect(() => {
+    if (isSuccess) {
+      // alert(data?.hash);
+      toast(`hash: ${data?.hash}`);
+      // refresh balance
+    }
+  }, [isSuccess]);
+  //
   return (
     <div className="flex w-full justify-between py-3 border-b-1">
       <div>100 GEMS</div>
-      <button disabled={isLoading} onClick={() => write?.()}>
+      <button
+        disabled={isLoading}
+        onClick={async () => {
+          toast("Making transaction");
+          write?.();
+        }}
+      >
+        {isLoading ? "loading" : "Claim"}
+      </button>
+    </div>
+  );
+};
+const TicketClaim = () => {
+  const { address } = useAccount();
+  const { data, write, isLoading, isSuccess } = useTX(CLAIM_MANAGER, "claim", [
+    [5],
+    [1],
+    [0],
+  ]);
+  useEffect(() => {
+    if (isSuccess) {
+      // alert(data?.hash);
+      toast(`hash: ${data?.hash}`);
+      // refresh balance
+    }
+  }, [isSuccess]);
+  return (
+    <div className="flex w-full justify-between py-3 border-b-1">
+      <div>1 Realm Ticket</div>
+      <button
+        disabled={isLoading}
+        onClick={async () => {
+          toast("Making transaction");
+          write?.();
+        }}
+      >
+        {isLoading ? "loading" : "Claim"}
+      </button>
+    </div>
+  );
+};
+const PointsClaim = () => {
+  const { address } = useAccount();
+  const { data, write, isLoading, isSuccess } = useTX(CLAIM_MANAGER, "claim", [
+    [1],
+    [200],
+    [0],
+  ]);
+  useEffect(() => {
+    if (isSuccess) {
+      // alert(data?.hash);
+      toast(`hash: ${data?.hash}`);
+      // refresh balance
+    }
+  }, [isSuccess]);
+  return (
+    <div className="flex w-full justify-between py-3 border-b-1">
+      <div>200 Points</div>
+      <button
+        disabled={isLoading}
+        onClick={async () => {
+          toast("Making transaction");
+          write?.();
+        }}
+      >
         {isLoading ? "loading" : "Claim"}
       </button>
     </div>
