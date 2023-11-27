@@ -36,7 +36,7 @@ export function getContractAddress(type = "") {
       return "0x7A596d23C80000Cc3aeCf9CdD6be086cd8A2AB6C"; // NFTPASS
 
     case TICKET_NFT:
-      return "0xA31A54e4C258B1BE8cE887a2724906BfCe88Cc6A"; // NFTTICKET
+      return "0xd290428E60932A34551CD385AdcBB9FAf8850c89"; // NFTTICKET
 
     case CLAIM_MANAGER:
       return "0xE2eec3443AF330514E9fb6B3Fa6880f56c069D8C"; // MANAGERCLAIM

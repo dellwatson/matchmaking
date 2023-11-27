@@ -33,7 +33,7 @@ export default function ProductDisplay({
       ? Array.from({ length: data.ticket }, () => ({ ...mocked_ticket[0] }))
       : []),
   ];
-  const DATA_INVENTORY = [_shipTotal, [], _passTotal, _ticketTotal];
+  const DATA_INVENTORY = [_shipTotal, [], _ticketTotal, _passTotal];
   const COLOR_bg = page === "inventory" ? "bg-green-800" : "bg-slate-600";
   return (
     <div className=" w-full h-full border-red-500 pt-24 xl:px-6">

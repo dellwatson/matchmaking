@@ -77,14 +77,13 @@ const TicketUsage = () => {
   // const { data, isLoading } = useReadContract(TICKET_NFT, "tokenIdsOf", [
   //   address,
   // ]);
-  // console.log(data, "data ticket");
 
   // const {} = useTX(EXPLORE_PLAY, "lockNFT",[
   //   getContractAddress(TICKET_NFT),
   // ])
   return (
     <div>
-      TICKET ({!!data ? formatUnits(data) : "0"}) &nbsp;
+      TICKET ({!!data ? parseInt(data) : "0"}) &nbsp;
       <button
         onClick={() => {
           // lockNFT

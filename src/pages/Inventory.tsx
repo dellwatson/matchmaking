@@ -34,9 +34,9 @@ export default function InventoryPage() {
           {...{
             // todo: refactor better load
             data: {
-              ship: !!dataShip ? formatUnits(dataShip) : 0,
-              pass: !!dataPass ? formatUnits(dataPass) : 0,
-              ticket: !!dataTicket ? formatUnits(dataTicket) : 0,
+              ship: !!dataShip ? parseInt(dataShip) : 0,
+              pass: !!dataPass ? parseInt(dataPass) : 0,
+              ticket: !!dataTicket ? parseInt(dataTicket) : 0,
             },
           }}
         />
