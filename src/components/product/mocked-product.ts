@@ -36,7 +36,7 @@ export const mocked_data = [
     price: [
       {
         payment_token: "GEMS",
-        price: 25000,
+        price: 25,
         network: "",
       },
     ],
@@ -186,7 +186,7 @@ export const mocked_ticket = [
     price: [
       {
         payment_token: "GEMS",
-        price: 1000,
+        price: 1,
         network: "",
       },
     ],
@@ -237,7 +237,7 @@ export const mocked_pass = [
     price: [
       {
         payment_token: "GEMS",
-        price: 10000,
+        price: 10,
         network: "",
       },
     ],

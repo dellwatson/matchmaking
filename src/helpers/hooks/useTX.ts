@@ -1,24 +1,55 @@
-import { getContractAddress, getContractABI } from "@/web3/contract-list";
+import {
+  getContractAddress,
+  getContractABI,
+  CHAIN_ID,
+} from "@/web3/contract-list";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import {
   useContractWrite,
   usePrepareContractWrite,
   erc721ABI,
   erc20ABI,
+  useNetwork,
 } from "wagmi";
 
 export default function useTX(type = "", functionName = "", args = []) {
+  const { chain } = useNetwork();
   const { config } = usePrepareContractWrite({
     address: getContractAddress(type),
     abi: getContractABI(type),
     functionName,
     args,
+    chainId: CHAIN_ID,
   });
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
+  const { data, isLoading, isSuccess, write, error } = useContractWrite(
+    // config
+    {
+      address: getContractAddress(type),
+      abi: getContractABI(type),
+      functionName,
+      args,
+      chainId: Number(CHAIN_ID),
+    }
+  );
+
+  const _write = () => {
+    if (chain?.id !== Number(CHAIN_ID)) {
+      // todo: switch network 1st
+      toast?.error("Error, wrong network");
+    }
+    write?.();
+  };
+
   console.log(
     data,
     isLoading,
     isSuccess,
-    type
+    type,
+    error,
+    "errorerrorerror",
+    getContractAddress(type),
+    CHAIN_ID
     // getContractABI(type)
   );
 
@@ -26,7 +57,7 @@ export default function useTX(type = "", functionName = "", args = []) {
     data,
     isLoading,
     isSuccess,
-    write,
+    write: _write,
   };
 
   //   return (

@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
-import { CLAIM_MANAGER, TOKEN_GEM } from "@/web3/contract-list";
+import { CHAIN_ID, CLAIM_MANAGER, TOKEN_GEM } from "@/web3/contract-list";
 
 export default function ModalClaim({
   isOpen,
@@ -57,10 +57,10 @@ export default function ModalClaim({
                   <GemClaim />
                   <TicketClaim />
                   <PointsClaim />
-                  <div className="flex w-full justify-between py-3 ">
+                  {/* <div className="flex w-full justify-between py-3 ">
                     <div></div>
                     <button disabled>Claim All</button>
-                  </div>
+                  </div> */}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -100,13 +100,19 @@ const GemClaim = () => {
     </div>
   );
 };
+
+// uint256[] memory contractIndices,
+// uint256[] memory amounts,
+// uint256[] memory ids
+const _X =
+  import.meta.env.VITE_SECOND === "true" ? [[1], [1], [0]] : [[5], [1], [0]];
 const TicketClaim = () => {
   const { address } = useAccount();
-  const { data, write, isLoading, isSuccess } = useTX(CLAIM_MANAGER, "claim", [
-    [5],
-    [1],
-    [0],
-  ]);
+  const { data, write, isLoading, isSuccess } = useTX(
+    CLAIM_MANAGER,
+    "claim",
+    _X
+  );
   useEffect(() => {
     if (isSuccess) {
       // alert(data?.hash);
@@ -129,13 +135,18 @@ const TicketClaim = () => {
     </div>
   );
 };
+
+const _POINTS =
+  import.meta.env.VITE_SECOND === "true"
+    ? [[5], [200], [0]]
+    : [[1], [200], [0]];
 const PointsClaim = () => {
   const { address } = useAccount();
-  const { data, write, isLoading, isSuccess } = useTX(CLAIM_MANAGER, "claim", [
-    [1],
-    [200],
-    [0],
-  ]);
+  const { data, write, isLoading, isSuccess } = useTX(
+    CLAIM_MANAGER,
+    "claim",
+    _POINTS
+  );
   useEffect(() => {
     if (isSuccess) {
       // alert(data?.hash);

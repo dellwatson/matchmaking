@@ -1,4 +1,8 @@
-import { getContractABI, getContractAddress } from "@/web3/contract-list";
+import {
+  CHAIN_ID,
+  getContractABI,
+  getContractAddress,
+} from "@/web3/contract-list";
 import { useContractRead } from "wagmi";
 
 export default function useReadContract(
@@ -11,15 +15,17 @@ export default function useReadContract(
     abi: getContractABI(type),
     functionName,
     args,
+    chainId: Number(CHAIN_ID),
   });
-  // console.log(
-  //   data,
-  //   isError,
-  //   isLoading,
-  //   "data, isError, isLoading",
-  //   getContractAddress(type),
-  //   type
-  // );
+
+  console.log(
+    data,
+    isError,
+    isLoading,
+    "data, isError, isLoading",
+    getContractAddress(type),
+    type
+  );
 
   return {
     data,

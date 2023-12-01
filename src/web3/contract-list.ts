@@ -8,6 +8,8 @@ import managerClaim from "@/web3/abis/manager-claim";
 import explorePlay from "@/web3/abis/explore-play";
 import shop from "@/web3/abis/shop";
 
+export const CHAIN_ID = import.meta.env.VITE_CHAIN_ID;
+
 export const TOKEN_GEM = "gemtoken";
 export const EXPOINTS = "expoints";
 export const ASSET_NFT = "asset";
@@ -18,41 +20,49 @@ export const CLAIM_MANAGER = "managerclaim";
 export const EXPLORE_PLAY = "exploreplay";
 export const SHOP = "shop";
 
+export const ADDRESS_TOKEN_GEM = import.meta.env.VITE_ADDRESS_TOKEN_GEM;
+export const ADDRESS_EXPOINTS = import.meta.env.VITE_ADDRESS_EXPOINTS;
+export const ADDRESS_ASSET_NFT = import.meta.env.VITE_ADDRESS_ASSET_NFT;
+export const ADDRESS_SHIP_NFT = import.meta.env.VITE_ADDRESS_SHIP_NFT;
+export const ADDRESS_PASS_NFT = import.meta.env.VITE_ADDRESS_PASS_NFT;
+export const ADDRESS_TICKET_NFT = import.meta.env.VITE_ADDRESS_TICKET_NFT;
+export const ADDRESS_CLAIM_MANAGER = import.meta.env.VITE_ADDRESS_CLAIM_MANAGER;
+export const ADDRESS_EXPLORE_PLAY = import.meta.env.VITE_ADDRESS_EXPLORE_PLAY;
+export const ADDRESS_SHOP = import.meta.env.VITE_ADDRESS_SHOP;
+
 export function getContractAddress(type = "") {
   switch (type) {
     case TOKEN_GEM:
-      return "0x5c347CE1CA5606d992Fb31AB529C8A3d55a6E2d4"; // GEMTOKEN
+      return ADDRESS_TOKEN_GEM; // GEMTOKEN
 
     case EXPOINTS:
-      return "0x283C4Cc50D0209dA029b9a599EB28C80B3957B34"; // EXPOINTS
+      return ADDRESS_EXPOINTS; // EXPOINTS
 
     case ASSET_NFT:
-      return "0xd65d3146f6a46158741DB47E56da197115879938"; // NFTASSET
+      return ADDRESS_ASSET_NFT; // NFTASSET
 
     case SHIP_NFT:
-      return "0x9cf184163351a9b2cAb63a351F34532EA2913764"; // NFTSHIP
+      return ADDRESS_SHIP_NFT; // NFTSHIP
 
     case PASS_NFT:
-      return "0x7A596d23C80000Cc3aeCf9CdD6be086cd8A2AB6C"; // NFTPASS
+      return ADDRESS_PASS_NFT; // NFTPASS
 
     case TICKET_NFT:
-      return "0xd290428E60932A34551CD385AdcBB9FAf8850c89"; // NFTTICKET
+      return ADDRESS_TICKET_NFT; // NFTTICKET
 
     case CLAIM_MANAGER:
-      return "0xE2eec3443AF330514E9fb6B3Fa6880f56c069D8C"; // MANAGERCLAIM
+      return ADDRESS_CLAIM_MANAGER; // MANAGERCLAIM
 
     case EXPLORE_PLAY:
-      return "0xA31A54e4C258B1BE8cE887a2724906BfCe88Cc6A"; // EXPLOREPLAY
+      return ADDRESS_EXPLORE_PLAY; // EXPLOREPLAY
 
     case SHOP:
-      // return "0x558A682636988925F48eF58d3975293665b69C86"; // SHOP
-      return "0x5f88fA8735542bfB3eE6D6CC3d3C3a393E8d943F"; // SHOP
+      return ADDRESS_SHOP; // SHOP
 
     default:
       return "0x0000000000000000000000000000000000000000";
   }
 }
-
 export function getContractABI(type = "") {
   switch (type) {
     case "gemtoken":
