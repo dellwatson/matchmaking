@@ -19,10 +19,10 @@ import { klaytn_testnet, lukso_testnet } from "./custom-chains";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
-    mainnet,
+    // mainnet,
     klaytnBaobab, //1001
     // klaytn_testnet,
-    // lukso_testnet, //4201
+    lukso_testnet, //4201
     // polygonMumbai,
   ],
   [publicProvider()]
