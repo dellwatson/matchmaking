@@ -92,32 +92,42 @@ const ClonedRock = React.memo(
     //     console.log("INTERSECT WITH BOX");
     //   }
     // });
-
     return (
-      <group
+      <mesh
         ref={ref}
-        name="group-ROCK"
+        // scale={[20, 20, 20]}
         position={data.offset}
         scale={[data.scale, data.scale, data.scale]}
       >
-        <group
-          // position={[
-          //   -0.016298329457640648, -0.012838120572268963, 0.24073271453380585,
-          // ]}
-          // rotation={[
-          //   3.0093872578726644, 0.27444228385461117, -0.22745113653772078,
-          // ]}
-          scale={[20, 20, 20]}
-        >
-          <mesh
-            name="single-rock"
-            geometry={nodes.node_id4_Material_52_0.geometry}
-            material={materials.Material_52}
-            material-roughness={1}
-            material-metalness={1}
-          />
-        </group>
-      </group>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial />
+      </mesh>
     );
+    // return (
+    //   <group
+    //     ref={ref}
+    //     name="group-ROCK"
+    //     position={data.offset}
+    //     scale={[data.scale, data.scale, data.scale]}
+    //   >
+    //     <group
+    //       // position={[
+    //       //   -0.016298329457640648, -0.012838120572268963, 0.24073271453380585,
+    //       // ]}
+    //       // rotation={[
+    //       //   3.0093872578726644, 0.27444228385461117, -0.22745113653772078,
+    //       // ]}
+    //       scale={[20, 20, 20]}
+    //     >
+    //       <mesh
+    //         name="single-rock"
+    //         geometry={nodes.node_id4_Material_52_0.geometry}
+    //         material={materials.Material_52}
+    //         material-roughness={1}
+    //         material-metalness={1}
+    //       />
+    //     </group>
+    //   </group>
+    // );
   }
 );

@@ -13,8 +13,10 @@ export default function Card({
   //
 }) {
   return (
-    <div className="p-6 rounded-md ">
-      <div className="text-center mb-4 font-bold text-xl">{item?.title}</div>
+    <div className="p-2 xl:p-6 rounded-md ">
+      <div className="text-center mb-4 font-bold  text-sm xl2:text-xl">
+        {item?.title}
+      </div>
       <div
         onClick={() => {}}
         className="

@@ -11,9 +11,9 @@ export default function Interface() {
     <div className="border-red-500 w-full h-full grid grid-cols-2 grid-rows-2 bg-transparent absolute z-5 p-2">
       <div className="border-gray-600 ">
         {/* MAP */}
-        <Radar />
+        {/* <Radar /> */}
       </div>
-      <div className=" border-gray-600 flex flex-col items-end ">
+      <div className="border border-gray-600 flex flex-col items-end ">
         <div className="flex">
           <Menu />
         </div>
@@ -21,10 +21,10 @@ export default function Interface() {
           <Distance />
         </div>
       </div>
-      <div className=" border-gray-600 relative ">
+      <div className="border border-gray-600 relative ">
         <Controller />
       </div>
-      <div className=" border-gray-600 flex justify-end items-end ">
+      <div className="border border-gray-600 flex justify-end items-end ">
         <Abilities />
       </div>
     </div>

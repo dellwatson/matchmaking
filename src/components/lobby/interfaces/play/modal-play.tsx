@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { formatUnits, getContractAddress } from "viem";
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
+import NetworkSelect from "@/components/_ui/select/NetworkSelect";
 
 export default function ModalPlay({
   isOpen = false,
@@ -49,6 +50,9 @@ export default function ModalPlay({
                   >
                     MODE GAMEPLAY
                   </Dialog.Title>
+                  <div className="flex justify-center items-center w-full">
+                    <NetworkSelect />
+                  </div>
                   <TabsPlay />
 
                   <div className="border bg-gray-800 p-4 mt-4 rounded-md font-bold flex justify-between items-center">

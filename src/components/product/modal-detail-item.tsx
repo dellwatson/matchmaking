@@ -5,6 +5,7 @@ import ProgressBar from "../_ui/utils/ProgressBar";
 import Traits from "../_ui/block/traits";
 import { shortenEthAddress } from "@/utils/ethaddress";
 import BuyProduct from "./buy-product";
+import NetworkSelect from "../_ui/select/NetworkSelect";
 
 export default function ModalDetail({ data = {}, page = "inventory" }) {
   let [isOpen, setIsOpen] = useState(false);
@@ -52,8 +53,10 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full xl:max-w-2/4 max-w-full  transform overflow-hidden rounded-2xl bg-gray-700 p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full  xl2:max-w-2/4 max-w-full  transform overflow-scroll rounded-2xl bg-gray-700 p-6 text-left align-middle shadow-xl transition-all">
                   <div className="header-modal flex justify-between items-center mb-4">
+                    <NetworkSelect />
+
                     <Dialog.Title
                       as="h3"
                       className="text-xl  leading-6 text-gray-300 font-bold"
@@ -71,8 +74,10 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                       Close
                     </button> */}
                   </div>
+                  <NetworkSelect />
+
                   <div className="grid xl:grid-cols-2">
-                    <div className="col-span-1">
+                    <div className="col-span-1 mt-16">
                       <div className="w-[400px] bg-black h-[400px]">
                         <img
                           src={data?.imageUrl}

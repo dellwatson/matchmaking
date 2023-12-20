@@ -14,7 +14,7 @@ export default function CardList({ page = "inventory", _data = [], tabs = 0 }) {
   const DATA = page === "inventory" ? _data[tabs] : SHOP_ARRAY[tabs];
 
   return (
-    <div className=" grid xl:grid-cols-4  md:grid-cols-3  xl:gap-4 ">
+    <div className=" grid xl:grid-cols-2 xl2:grid-cols-4  md:grid-cols-2 gap-1 xl:gap-4 overflow-y-scroll">
       {DATA?.map((item, i) => (
         <Card {...{ item, page }} key={i} />
       ))}

@@ -11,7 +11,7 @@ export default function LobbyRight() {
       <NewsSection />
       <Discord />
       <br />
-      <Support />
+      {/* <Support /> */}
       {/* FEEDBACK MODAL */}
     </div>
   );

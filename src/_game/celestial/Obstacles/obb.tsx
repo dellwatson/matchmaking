@@ -107,9 +107,10 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
 
   useFrame((state, delta) => {
     if (shipBox.intersectsBox(rockBox)) {
-      updateGame();
+      // updateGame();
     }
   });
+
   return (
     <group
       ref={ref}
@@ -117,15 +118,33 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
       position={data.offset}
       scale={[data.scale, data.scale, data.scale]}
     >
-      <group scale={[20, 20, 20]}>
-        <mesh
-          //   name="single-rock"
-          geometry={nodes.node_id4_Material_52_0.geometry}
-          material={materials.Material_52}
-          material-roughness={1}
-          material-metalness={1}
-        />
-      </group>
+      <mesh
+        ref={ref}
+        scale={[20, 20, 20]}
+        // scale={[data.scale, data.scale, data.scale]}
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="hotpink" />
+      </mesh>
     </group>
   );
+
+  // return (
+  //   <group
+  //     ref={ref}
+  //     //   name="group-ROCK"
+  //     position={data.offset}
+  //     scale={[data.scale, data.scale, data.scale]}
+  //   >
+  //     <group scale={[20, 20, 20]}>
+  //       <mesh
+  //         //   name="single-rock"
+  //         geometry={nodes.node_id4_Material_52_0.geometry}
+  //         material={materials.Material_52}
+  //         material-roughness={1}
+  //         material-metalness={1}
+  //       />
+  //     </group>
+  //   </group>
+  // );
 });

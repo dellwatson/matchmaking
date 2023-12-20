@@ -51,7 +51,10 @@ export default function SoloGameApp() {
         // gl.setClearColor(new THREE.Color("#020209"));
         // console.log("Tone Mapping:", gl.toneMapping);
         // console.log("Clear Color:", gl.getClearColor());
-        gl.toneMapping = THREE.Uncharted2ToneMapping;
+        // gl.toneMapping = THREE.Uncharted2ToneMapping;
+        gl.setClearColor(new THREE.Color("black"));
+        // gl.setClearColor(new THREE.Color("indianred"));
+
         // gl.setClearColor(new THREE.Color("#020209"));
         // gl.setClearColor(new THREE.Color("#0x000000"));
       }}
@@ -63,9 +66,9 @@ export default function SoloGameApp() {
         depth: true,
       }}
     >
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <Scene />
-      </Suspense>
+      </Suspense> */}
 
       {/* <spotLight
         intensity={1.5}

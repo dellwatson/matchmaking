@@ -30,7 +30,7 @@ export default function TestTerrains() {
 
       {/* <RockTest /> */}
       <ProcedurObstacle />
-      <Rings />
+      {/* <Rings /> */}
       <Particles />
       {/* <Skybox /> */}
       {/* <Flares /> */}
