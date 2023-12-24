@@ -1,3 +1,4 @@
+import networkStore from "@/store/network-store";
 import {
   CHAIN_ID,
   getContractABI,
@@ -10,8 +11,10 @@ export default function useReadContract(
   functionName = "",
   args = []
 ) {
+  const { selectedNetwork } = networkStore();
+
   const { data, isError, isLoading } = useContractRead({
-    address: getContractAddress(type),
+    address: getContractAddress(type, selectedNetwork.chainId),
     abi: getContractABI(type),
     functionName,
     args,
@@ -23,7 +26,7 @@ export default function useReadContract(
     isError,
     isLoading,
     "data, isError, isLoading",
-    getContractAddress(type),
+    getContractAddress(type, selectedNetwork.chainId),
     type
   );
 

@@ -15,14 +15,21 @@ import { Chain } from "@wagmi/core";
 //   (module) => module.createWeb3Modal
 // );
 import { klaytnBaobab } from "viem/chains";
-import { klaytn_testnet, lukso_testnet } from "./custom-chains";
+import {
+  inevm_caldera,
+  klaytn_testnet,
+  lukso_testnet,
+  viction_testnet,
+} from "./custom-chains";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
     klaytnBaobab, //1001
+    inevm_caldera,
+    viction_testnet,
     // klaytn_testnet,
-    lukso_testnet, //4201
+    // lukso_testnet, //4201
     // polygonMumbai,
   ],
   [publicProvider()]

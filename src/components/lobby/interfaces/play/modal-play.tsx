@@ -6,7 +6,7 @@ import { EXPLORE_PLAY, TICKET_NFT } from "@/web3/contract-list";
 import { Dialog, Switch, Transition, Tab } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { formatUnits, getContractAddress } from "viem";
+
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
 import NetworkSelect from "@/components/_ui/select/NetworkSelect";

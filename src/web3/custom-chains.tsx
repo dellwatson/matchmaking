@@ -3,27 +3,52 @@ import { Chain } from "@wagmi/core";
 //   (module) => module.createWeb3Modal
 // );
 
-export const lukso_testnet = {
-  id: 4201,
-  name: "Lukso T",
-  network: "lukso",
+export const inevm_caldera = {
+  id: 1738,
+  name: "INEVM Caldera",
+  network: "INEVM",
   nativeCurrency: {
     decimals: 18,
-    name: "LYX",
-    symbol: "LYXt",
+    name: "INJ",
+    symbol: "INJ",
   },
   rpcUrls: {
-    public: { http: ["https://rpc.testnet.lukso.network"] },
-    default: { http: ["https://rpc.testnet.lukso.network"] },
+    public: { http: ["https://inevm-rpc.caldera.dev"] },
+    default: { http: ["https://inevm-rpc.caldera.dev"] },
   },
   blockExplorers: {
     etherscan: {
       name: "Explorer",
-      url: "https://explorer.execution.testnet.lukso.network",
+      url: "https://inevm.calderaexplorer.xyz/",
     },
     default: {
       name: "Explorer",
-      url: "https://explorer.execution.testnet.lukso.network",
+      url: "https://inevm.calderaexplorer.xyz/",
+    },
+  },
+} as const satisfies Chain;
+
+export const viction_testnet = {
+  id: 89,
+  name: "New Viction Testnet",
+  network: "New Viction Testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "VIC",
+    symbol: "VIC",
+  },
+  rpcUrls: {
+    public: { http: ["https://rpc-testnet.viction.xyz"] },
+    default: { http: ["https://rpc-testnet.viction.xyz"] },
+  },
+  blockExplorers: {
+    etherscan: {
+      name: "Explorer",
+      url: "https://testnet.vicscan.xyz/",
+    },
+    default: {
+      name: "Explorer",
+      url: "https://testnet.vicscan.xyz/",
     },
   },
   // contracts: {

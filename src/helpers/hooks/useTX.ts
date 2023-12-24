@@ -1,3 +1,4 @@
+import networkStore from "@/store/network-store";
 import {
   getContractAddress,
   getContractABI,
@@ -11,32 +12,44 @@ import {
   erc721ABI,
   erc20ABI,
   useNetwork,
+  useSwitchNetwork,
 } from "wagmi";
 
 export default function useTX(type = "", functionName = "", args = []) {
   const { chain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
+  //request network change
+  const { selectedNetwork } = networkStore();
+
+  // useEffect(() => {
+  //   if (chain?.id !== Number(selectedNetwork?.chainId)) {
+  //     switchNetwork?.(selectedNetwork?.chainId);
+  //   }
+  // }, [chain?.id]);
+
   const { config } = usePrepareContractWrite({
-    address: getContractAddress(type),
+    address: getContractAddress(type, selectedNetwork?.chainId),
     abi: getContractABI(type),
     functionName,
     args,
-    chainId: CHAIN_ID,
+    chainId: selectedNetwork?.chainId,
   });
   const { data, isLoading, isSuccess, write, error } = useContractWrite(
     // config
     {
-      address: getContractAddress(type),
+      address: getContractAddress(type, selectedNetwork?.chainId),
       abi: getContractABI(type),
       functionName,
       args,
-      chainId: Number(CHAIN_ID),
+      chainId: Number(selectedNetwork?.chainId),
     }
   );
 
   const _write = () => {
-    if (chain?.id !== Number(CHAIN_ID)) {
+    if (chain?.id !== Number(selectedNetwork?.chainId)) {
       // todo: switch network 1st
-      toast?.error("Error, wrong network");
+      // toast?.error("Error, wrong network");
+      switchNetwork?.(selectedNetwork?.chainId);
     }
     write?.();
   };
@@ -49,7 +62,7 @@ export default function useTX(type = "", functionName = "", args = []) {
     error,
     "errorerrorerror",
     getContractAddress(type),
-    CHAIN_ID
+    selectedNetwork?.chainId
     // getContractABI(type)
   );
 

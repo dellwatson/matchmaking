@@ -22,6 +22,11 @@ export default function NavHeader() {
         path: "/inventory",
         disable: !address,
       },
+      // {
+      //   title: "Wormhole",
+      //   path: "/Wormhole",
+      //   disable: true,
+      // },
     ],
     [address]
   );

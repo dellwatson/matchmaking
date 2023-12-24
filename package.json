@@ -29,6 +29,7 @@
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
     "react-dom": "^18.2.0",
+    "react-fullscreen-crossbrowser": "^1.1.3",
     "react-i18next": "^13.1.2",
     "react-icons": "^4.11.0",
     "react-neon-components": "^0.2.0",

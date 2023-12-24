@@ -1,4 +1,5 @@
 import useTX from "@/helpers/hooks/useTX";
+import networkStore from "@/store/network-store";
 import { SHOP, TOKEN_GEM, getContractAddress } from "@/web3/contract-list";
 
 import { toast } from "react-toastify";
@@ -12,13 +13,15 @@ const _SECOND = import.meta.env.VITE_SECOND === "true" ? 3 : 2;
 // uint256 tokenType
 
 export default function BuyProduct({ product }) {
+  const { selectedNetwork } = networkStore();
+
   // First useTX for approval
   const {
     data: approvalData,
     isLoading: isApprovalLoading,
     write: approve,
   } = useTX(TOKEN_GEM, "approve", [
-    getContractAddress(SHOP),
+    getContractAddress(SHOP, selectedNetwork.chainId),
     product?.price[0]?.price * 2 * 1000000000000000000,
   ]);
 
@@ -30,7 +33,7 @@ export default function BuyProduct({ product }) {
   } = useTX(SHOP, "buyProduct", [
     product?.listedStoreId,
     product?.price[0]?.price * 1000000000000000000,
-    getContractAddress(TOKEN_GEM),
+    getContractAddress(TOKEN_GEM, selectedNetwork.chainId),
     1, // quantity
     // 2,  // contract type //KLAYTN -->
     product?.category === "ship" ? _SECOND : 2,

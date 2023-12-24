@@ -1,5 +1,6 @@
 import Avatar from "@/components/_ui/profile/avatar";
 import useReadContract from "@/helpers/hooks/useReadContract";
+import networkStore from "@/store/network-store";
 import { GravatarUrl } from "@/utils/Gravatar";
 import { TOKEN_GEM } from "@/web3/contract-list";
 import { formatEther, formatUnits, parseEther } from "viem";
@@ -12,6 +13,7 @@ export default function Profile() {
   ]);
 
   const { chain } = useNetwork();
+  const { selectedNetwork } = networkStore();
 
   return (
     <div className="flex">
@@ -23,13 +25,12 @@ export default function Profile() {
       <div className="ml-4 flex flex-col justify-center">
         <w3m-account-button balance="hide" />
         <div className="mt-1 text-center">
-          GEMS: &nbsp;
+          fUSD: &nbsp;
           <span className="font-bold text-green-300">
             {!isLoading && data ? formatUnits(data, 18) : "-"}
           </span>
           <br />
-          {chain?.id !== Number(import.meta.env.VITE_CHAIN_ID) &&
-            "wrong network"}
+          {chain?.id !== Number(selectedNetwork.chainId) && "wrong network"}
         </div>
       </div>
     </div>

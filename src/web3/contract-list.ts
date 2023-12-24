@@ -20,44 +20,104 @@ export const CLAIM_MANAGER = "managerclaim";
 export const EXPLORE_PLAY = "exploreplay";
 export const SHOP = "shop";
 
-export const ADDRESS_TOKEN_GEM = import.meta.env.VITE_ADDRESS_TOKEN_GEM;
-export const ADDRESS_EXPOINTS = import.meta.env.VITE_ADDRESS_EXPOINTS;
-export const ADDRESS_ASSET_NFT = import.meta.env.VITE_ADDRESS_ASSET_NFT;
-export const ADDRESS_SHIP_NFT = import.meta.env.VITE_ADDRESS_SHIP_NFT;
-export const ADDRESS_PASS_NFT = import.meta.env.VITE_ADDRESS_PASS_NFT;
-export const ADDRESS_TICKET_NFT = import.meta.env.VITE_ADDRESS_TICKET_NFT;
-export const ADDRESS_CLAIM_MANAGER = import.meta.env.VITE_ADDRESS_CLAIM_MANAGER;
-export const ADDRESS_EXPLORE_PLAY = import.meta.env.VITE_ADDRESS_EXPLORE_PLAY;
-export const ADDRESS_SHOP = import.meta.env.VITE_ADDRESS_SHOP;
+// export const ADDRESS_TOKEN_GEM = import.meta.env.VITE_ADDRESS_TOKEN_GEM;
+// export const ADDRESS_EXPOINTS = import.meta.env.VITE_ADDRESS_EXPOINTS;
+// export const ADDRESS_ASSET_NFT = import.meta.env.VITE_ADDRESS_ASSET_NFT;
+// export const ADDRESS_SHIP_NFT = import.meta.env.VITE_ADDRESS_SHIP_NFT;
+// export const ADDRESS_PASS_NFT = import.meta.env.VITE_ADDRESS_PASS_NFT;
+// export const ADDRESS_TICKET_NFT = import.meta.env.VITE_ADDRESS_TICKET_NFT;
+// export const ADDRESS_CLAIM_MANAGER = import.meta.env.VITE_ADDRESS_CLAIM_MANAGER;
+// export const ADDRESS_EXPLORE_PLAY = import.meta.env.VITE_ADDRESS_EXPLORE_PLAY;
+// export const ADDRESS_SHOP = import.meta.env.VITE_ADDRESS_SHOP;
 
-export function getContractAddress(type = "") {
+const ADDRESS_CONTRACT = [
+  {
+    name: "viction testnet",
+    chainId: 89,
+    list: {
+      ADDRESS_TOKEN_GEM: "0x...",
+      ADDRESS_EXPOINTS: "0x...",
+      ADDRESS_ASSET_NFT: "0x...",
+      ADDRESS_SHIP_NFT: "0x...",
+      ADDRESS_PASS_NFT: "0x...",
+      ADDRESS_TICKET_NFT: "0x...",
+      ADDRESS_CLAIM_MANAGER: "0x...",
+      ADDRESS_EXPLORE_PLAY: "0x...",
+      ADDRESS_SHOP: "0x...",
+      // Add more addresses as needed
+    },
+  },
+  {
+    name: "inevm caldera",
+    chainId: 1738,
+    list: {
+      ADDRESS_TOKEN_GEM: "0x...",
+      ADDRESS_EXPOINTS: "0x...",
+      ADDRESS_ASSET_NFT: "0x...",
+      ADDRESS_SHIP_NFT: "0x...",
+      ADDRESS_PASS_NFT: "0x...",
+      ADDRESS_TICKET_NFT: "0x...",
+      ADDRESS_CLAIM_MANAGER: "0x...",
+      ADDRESS_EXPLORE_PLAY: "0x...",
+      ADDRESS_SHOP: "0x...",
+      // Add more addresses as needed
+    },
+  },
+  {
+    name: "klaytn baobab",
+    chainId: 1001,
+    list: {
+      ADDRESS_TOKEN_GEM: "0xFe9DF23d3EFAB6cC71D3395aFFB3aa505d1935eB",
+      ADDRESS_EXPOINTS: "0x16F0EB9CD042e3D9e519baf660c18f4E8E4eF93e",
+      ADDRESS_ASSET_NFT: "0xE39C0AAA925337a5499A2cCe0D906cc38B5CEA54",
+      ADDRESS_SHIP_NFT: "0x9D2067BeB1c165FDE0F89E40Bd97f3276C153385",
+      ADDRESS_PASS_NFT: "0x5b6288be71623E408D61D0417A51572d7CBC10e2",
+      ADDRESS_TICKET_NFT: "0xbe0833eB8f4Ff9BD5aEAFc2ee61925a227D58ABA",
+      ADDRESS_CLAIM_MANAGER: "0xC8E633D1Da2b23A12458682cB0d065A4452b6030",
+      ADDRESS_EXPLORE_PLAY: "0x9EcB83f041a8A3b76bcd9DafC078812047535ABc",
+      ADDRESS_SHOP: "0xa921a43516A0c85504d61bd3BD8bcE354a7bBEf1",
+      // Add more addresses as needed
+    },
+  },
+];
+
+export function getContractAddress(type = "", chainId = 1001) {
+  const BASE_CONTRACT = ADDRESS_CONTRACT.find(
+    (contract) => contract.chainId === chainId
+  );
+
+  if (!BASE_CONTRACT) {
+    console.error(`No contract found for chainId: ${chainId}`);
+    return "0x0000000000000000000000000000000000000000";
+  }
+
   switch (type) {
     case TOKEN_GEM:
-      return ADDRESS_TOKEN_GEM; // GEMTOKEN
+      return BASE_CONTRACT.list.ADDRESS_TOKEN_GEM; // GEMTOKEN
 
     case EXPOINTS:
-      return ADDRESS_EXPOINTS; // EXPOINTS
+      return BASE_CONTRACT.list.ADDRESS_EXPOINTS; // EXPOINTS
 
     case ASSET_NFT:
-      return ADDRESS_ASSET_NFT; // NFTASSET
+      return BASE_CONTRACT.list.ADDRESS_ASSET_NFT; // NFTASSET
 
     case SHIP_NFT:
-      return ADDRESS_SHIP_NFT; // NFTSHIP
+      return BASE_CONTRACT.list.ADDRESS_SHIP_NFT; // NFTSHIP
 
     case PASS_NFT:
-      return ADDRESS_PASS_NFT; // NFTPASS
+      return BASE_CONTRACT.list.ADDRESS_PASS_NFT; // NFTPASS
 
     case TICKET_NFT:
-      return ADDRESS_TICKET_NFT; // NFTTICKET
+      return BASE_CONTRACT.list.ADDRESS_TICKET_NFT; // NFTTICKET
 
     case CLAIM_MANAGER:
-      return ADDRESS_CLAIM_MANAGER; // MANAGERCLAIM
+      return BASE_CONTRACT.list.ADDRESS_CLAIM_MANAGER; // MANAGERCLAIM
 
     case EXPLORE_PLAY:
-      return ADDRESS_EXPLORE_PLAY; // EXPLOREPLAY
+      return BASE_CONTRACT.list.ADDRESS_EXPLORE_PLAY; // EXPLOREPLAY
 
     case SHOP:
-      return ADDRESS_SHOP; // SHOP
+      return BASE_CONTRACT.list.ADDRESS_SHOP; // SHOP
 
     default:
       return "0x0000000000000000000000000000000000000000";

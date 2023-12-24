@@ -17,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <WagmiConfig config={config}>
       <ToastContainer />
-
       <App />
     </WagmiConfig>
   </React.StrictMode>

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
 import { CHAIN_ID, CLAIM_MANAGER, TOKEN_GEM } from "@/web3/contract-list";
+import NetworkSelect from "@/components/_ui/select/NetworkSelect";
 
 export default function ModalClaim({
   isOpen,
@@ -47,6 +48,7 @@ export default function ModalClaim({
                     GET YOUR DAILY FREE CLAIM
                   </Dialog.Title>
                   <br />
+                  <NetworkSelect />
                   <br />
                   <br />
                   {/* <div className="my-2">
@@ -87,7 +89,7 @@ const GemClaim = () => {
   //
   return (
     <div className="flex w-full justify-between py-3 border-b-1">
-      <div>100 GEMS</div>
+      <div>100 fUSD (fake USD)</div>
       <button
         disabled={isLoading}
         onClick={async () => {
@@ -106,6 +108,8 @@ const GemClaim = () => {
 // uint256[] memory ids
 const _X =
   import.meta.env.VITE_SECOND === "true" ? [[1], [1], [0]] : [[5], [1], [0]];
+
+//
 const TicketClaim = () => {
   const { address } = useAccount();
   const { data, write, isLoading, isSuccess } = useTX(

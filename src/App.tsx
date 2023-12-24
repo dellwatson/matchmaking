@@ -11,9 +11,13 @@ import ShopPage from "./pages/Shop";
 import LobbyPage from "@/pages/Lobby";
 import { useEffect, useState } from "react";
 import { getGPUTier } from "detect-gpu";
+import FullScreen from "react-fullscreen-crossbrowser";
+import globalStore from "./store/global-store";
 
 function App() {
+  const { isFullScreen } = globalStore();
   const [block, setBlock] = useState(false);
+
   useEffect(() => {
     const getGPU = async () => {
       const gpuTier = await getGPUTier();
@@ -23,6 +27,8 @@ function App() {
     };
     getGPU();
   }, []);
+
+  useEffect(() => {}, []);
 
   if (block) {
     return (
@@ -35,12 +41,18 @@ function App() {
   return (
     <BrowserRouter>
       {/* Auth Provider */}
-      <Routes>
-        <Route path="/" element={<LobbyPage />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/inventory" element={<InventoryPage />} />
-        <Route path="match-room/*" element={<MatchRoom />} />
-      </Routes>
+      {/* <div className="p-2 bg-red-800 font-bold uppercase flex justify-between fixed z-999 w-full">
+        Announcement: Caldera testnet currently in problem, please try the other
+        available network
+      </div> */}
+      <FullScreen enabled={isFullScreen}>
+        <Routes>
+          <Route path="/" element={<LobbyPage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/inventory" element={<InventoryPage />} />
+          <Route path="match-room/*" element={<MatchRoom />} />
+        </Routes>
+      </FullScreen>
     </BrowserRouter>
   );
 }
