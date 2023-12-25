@@ -16,7 +16,7 @@ const LobbyTop = () => {
   const [showAnnounce, setShow] = useState(true);
   return (
     <>
-      {showAnnounce && (
+      {/* {showAnnounce && (
         <div className="p-2 bg-red-800 font-bold uppercase flex justify-between  z-999 w-full">
           <div />
           Caldera testnet currently in problem, please try the other available
@@ -25,7 +25,7 @@ const LobbyTop = () => {
             X
           </div>
         </div>
-      )}
+      )} */}
       <div className="absolute w-full flex justify-between p-4">
         <div className="flex cursor-pointer w-full  ">
           <Auth />

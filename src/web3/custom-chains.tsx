@@ -3,6 +3,30 @@ import { Chain } from "@wagmi/core";
 //   (module) => module.createWeb3Modal
 // );
 
+export const aeron_testnet = {
+  id: 462,
+  name: "Aeron Testnet",
+  network: "Aeron",
+  nativeCurrency: {
+    decimals: 18,
+    name: "TAREA",
+    symbol: "TAREA",
+  },
+  rpcUrls: {
+    public: { http: ["https://testnet-rpc.areon.network/"] },
+    default: { http: ["https://testnet-rpc.areon.network/"] },
+  },
+  blockExplorers: {
+    etherscan: {
+      name: "Explorer",
+      url: "https://areonscan.com",
+    },
+    default: {
+      name: "Explorer",
+      url: "https://areonscan.com",
+    },
+  },
+} as const satisfies Chain;
 export const inevm_caldera = {
   id: 1738,
   name: "INEVM Caldera",
