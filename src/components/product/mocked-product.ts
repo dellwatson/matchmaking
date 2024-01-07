@@ -35,7 +35,7 @@ export const mocked_data = [
     tags: [],
     price: [
       {
-        payment_token: "GEMS",
+        payment_token: "fUSD",
         price: 25,
         network: "",
       },
@@ -116,7 +116,7 @@ export const mocked_default = [
     tags: [],
     price: [
       // {
-      //   payment_token: "GEMS",
+      //   payment_token: "fUSD",
       //   price: 30,
       //   network: "",
       // },
@@ -185,7 +185,7 @@ export const mocked_ticket = [
     tags: [],
     price: [
       {
-        payment_token: "GEMS",
+        payment_token: "fUSD",
         price: 1,
         network: "",
       },
@@ -236,7 +236,7 @@ export const mocked_pass = [
     tags: [],
     price: [
       {
-        payment_token: "GEMS",
+        payment_token: "fUSD",
         price: 10,
         network: "",
       },
@@ -278,7 +278,7 @@ export const mocked_ammo = [
     tags: [],
     price: [
       // {
-      //   payment_token: "GEMS",
+      //   payment_token: "fUSD",
       //   price: 30,
       //   network: "",
       // },
@@ -348,7 +348,7 @@ export const mocked_energy = [
     tags: [],
     price: [
       // {
-      //   payment_token: "GEMS",
+      //   payment_token: "fUSD",
       //   price: 30,
       //   network: "",
       // },

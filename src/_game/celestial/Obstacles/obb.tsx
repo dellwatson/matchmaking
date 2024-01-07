@@ -107,7 +107,7 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
 
   useFrame((state, delta) => {
     if (shipBox.intersectsBox(rockBox)) {
-      // updateGame();
+      updateGame();
     }
   });
 

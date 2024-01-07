@@ -124,6 +124,7 @@ const TicketClaim = () => {
       // refresh balance
     }
   }, [isSuccess]);
+
   return (
     <div className="flex w-full justify-between py-3 border-b-1">
       <div>1 Realm Ticket</div>

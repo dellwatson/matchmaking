@@ -25,9 +25,9 @@ export default function Play() {
         <div onClick={openModal} className="absolute w-full ">
           <div className="relative bottom-7 p-2 pt-1 pb-3 border rounded-md border-red-500 bg-red-500 w-full ">
             <div className="text-xs flex justify-between font-bold text-white uppercase">
-              <div className="text-green-900">
+              <div className="text-green-200">
                 {/* 2300 explorer */}
-                Ticket: OFF
+                Ticket: DEMO-VIC
               </div>
               <div>mode: solo</div>
             </div>

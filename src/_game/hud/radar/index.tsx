@@ -10,8 +10,10 @@ export default function Radar() {
       }
       className="w-80 h-80   backdrop-blur-xl rounded-full "
     >
-      <div className="absolute font-bold z-10 w-full h-full flex justify-center items-center uppercase text-[60px]">
-        prototype
+      <div className="absolute font-bold z-10 w-full h-full flex justify-center items-center text-center uppercase text-[60px]">
+        prototype <br /> Viction
+        <br />
+        Dimension
       </div>
       <img
         style={{
