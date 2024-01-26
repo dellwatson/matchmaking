@@ -12,12 +12,15 @@ import { config } from "./web3";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { StarknetProvider } from "./web3/starknet-provider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <WagmiConfig config={config}>
-      <ToastContainer />
-      <App />
-    </WagmiConfig>
+    <StarknetProvider>
+      <WagmiConfig config={config}>
+        <ToastContainer />
+        <App />
+      </WagmiConfig>
+    </StarknetProvider>
   </React.StrictMode>
 );

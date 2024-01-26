@@ -3,6 +3,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { FaCircleChevronUp, FaCircleChevronDown } from "react-icons/fa6";
 import networkStore, { EVM_NETWORK } from "@/store/network-store";
 import { useSwitchNetwork } from "wagmi";
+import authStore from "@/store/auth-store";
 //
 
 export default function NetworkSelect() {
@@ -10,14 +11,27 @@ export default function NetworkSelect() {
 
   const { selectedNetwork, setNetwork } = networkStore();
   const { switchNetwork } = useSwitchNetwork();
+  const { setModalReveal } = authStore();
 
   return (
     <div className="fixed bg-gray-900 rounded-md top-16 w-72">
+      {/* IF PROFILES SELECT EMPTY -> show not connected */}
       <Listbox
         value={selectedNetwork}
         onChange={(v) => {
-          setNetwork(v);
-          switchNetwork(v?.chainId);
+          if (v?.type === "starknet") {
+            // check connector not --> useAccount or checkLengthProfile
+            let starknetConnected = true; // replace later
+            if (!starknetConnected) {
+              setModalReveal(true); // modal reveal ONYL STARKNET?
+            }
+
+            setNetwork(v);
+          } else {
+            // if already connect to  wallet
+            switchNetwork(v?.chainId);
+            setNetwork(v);
+          }
         }}
       >
         <div className="relative mt-1">

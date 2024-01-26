@@ -27,7 +27,7 @@ export default function Play() {
             <div className="text-xs flex justify-between font-bold text-white uppercase">
               <div className="text-green-200">
                 {/* 2300 explorer */}
-                Ticket: DEMO-VIC
+                Ticket: OFF
               </div>
               <div>mode: solo</div>
             </div>

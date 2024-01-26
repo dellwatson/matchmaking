@@ -11,6 +11,7 @@ import Auth from "../auth";
 import NavHeader from "./NavHeader";
 import Drawer from "../drawer";
 import globalStore from "@/store/global-store";
+import { toast, useToast } from "react-toastify";
 
 const LobbyTop = () => {
   const [showAnnounce, setShow] = useState(true);
@@ -60,10 +61,14 @@ export default LobbyTop;
 export const FullScreen = () => {
   // onclick fullscreen
   const { setFullScreen, isFullScreen } = globalStore();
+
   return (
     <div className="p-2">
       <RiFullscreenFill
-        onClick={() => setFullScreen(!isFullScreen)}
+        onClick={() => {
+          toast("Fullscreen is still on development, modal won't shows up");
+          setFullScreen(!isFullScreen);
+        }}
         size={24}
       />
     </div>

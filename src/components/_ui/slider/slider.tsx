@@ -11,6 +11,15 @@ import "./styles.css";
 // import required modules
 import { Autoplay, EffectCube, Pagination } from "swiper/modules";
 
+function extractImageSrc(htmlString) {
+  const regex = /<img[^>]+src="([^">]+)"/;
+  const match = htmlString.match(regex);
+  if (match) {
+    return match[1]; // The captured src value
+  }
+  return null; // If no match is found
+}
+
 const Slider = ({ id = "default", data = [], isLoading }) => {
   return (
     <Swiper
@@ -39,7 +48,7 @@ const Slider = ({ id = "default", data = [], isLoading }) => {
                 <img
                   className="absolute w-[300px] h-[300px] "
                   style={{ objectFit: "cover" }}
-                  src={item?.thumbnail}
+                  src={extractImageSrc(item?.content)}
                 />
                 <div className="absolute  w-full h-full bg-black opacity-75"></div>
               </div>

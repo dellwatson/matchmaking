@@ -28,6 +28,8 @@ export default function Obstacle() {
     // GET 3 POSITONS:
     // AND SORT
     //update box axis calculation
+    const CURRENT_SHIP_X = ship?.current?.position?.x;
+    const CURRENT_SHIP_Y = ship?.current?.position?.y;
     const CURRENT_SHIP_Z = ship?.current?.position?.z;
 
     const closer_z = groupValue.reduce((lowest, currentValue) => {

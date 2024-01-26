@@ -7,6 +7,7 @@ import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
 import { CHAIN_ID, CLAIM_MANAGER, TOKEN_GEM } from "@/web3/contract-list";
 import NetworkSelect from "@/components/_ui/select/NetworkSelect";
+import { useTXStarknet } from "@/helpers/hooks/useTXStarknet";
 
 export default function ModalClaim({
   isOpen,
@@ -73,6 +74,53 @@ export default function ModalClaim({
   );
 }
 
+// uint256[] memory contractIndices,
+// uint256[] memory amounts,
+// uint256[] memory ids
+const _X =
+  import.meta.env.VITE_SECOND === "true" ? [[1], [1], [0]] : [[5], [1], [0]];
+
+//
+const TicketClaim = () => {
+  const { address } = useAccount();
+  const { data, write, isLoading, isSuccess } = useTX(
+    CLAIM_MANAGER,
+    "claim",
+    _X
+  );
+
+  const { writeAsync, data: dataStarknet, isPending } = useTXStarknet();
+  console.log(dataStarknet, isPending, "STARKNET CLAIM TICKET");
+
+  useEffect(() => {
+    if (isSuccess) {
+      // alert(data?.hash);
+      toast(`hash: ${data?.hash}`);
+      // refresh balance
+    }
+  }, [isSuccess]);
+
+  return (
+    <div className="flex w-full justify-between py-3 border-b-1">
+      <div>1 Realm Ticket</div>
+      <button
+        disabled={isLoading}
+        onClick={async () => {
+          toast("Making transaction");
+          // if (isStarknet) {
+          // writeStarknet?.();
+          writeAsync();
+          // } else {
+          //   write?.();
+          // }
+        }}
+      >
+        {isLoading ? "loading" : "Claim"}
+      </button>
+    </div>
+  );
+};
+
 const GemClaim = () => {
   const { address } = useAccount();
   const { data, write, isLoading, isSuccess } = useTX(TOKEN_GEM, "mintToken", [
@@ -102,45 +150,6 @@ const GemClaim = () => {
     </div>
   );
 };
-
-// uint256[] memory contractIndices,
-// uint256[] memory amounts,
-// uint256[] memory ids
-const _X =
-  import.meta.env.VITE_SECOND === "true" ? [[1], [1], [0]] : [[5], [1], [0]];
-
-//
-const TicketClaim = () => {
-  const { address } = useAccount();
-  const { data, write, isLoading, isSuccess } = useTX(
-    CLAIM_MANAGER,
-    "claim",
-    _X
-  );
-  useEffect(() => {
-    if (isSuccess) {
-      // alert(data?.hash);
-      toast(`hash: ${data?.hash}`);
-      // refresh balance
-    }
-  }, [isSuccess]);
-
-  return (
-    <div className="flex w-full justify-between py-3 border-b-1">
-      <div>1 Realm Ticket</div>
-      <button
-        disabled={isLoading}
-        onClick={async () => {
-          toast("Making transaction");
-          write?.();
-        }}
-      >
-        {isLoading ? "loading" : "Claim"}
-      </button>
-    </div>
-  );
-};
-
 const _POINTS =
   import.meta.env.VITE_SECOND === "true"
     ? [[5], [200], [0]]

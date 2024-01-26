@@ -4,6 +4,7 @@ import React from "react";
 
 const NewsSection = () => {
   const { data, isLoading, error } = useMediumRssFeed();
+  console.log(data, "data medium");
   return (
     <div className="relative max-h-[400px] h-[400px] ">
       {/* carousel */}
