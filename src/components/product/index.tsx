@@ -12,7 +12,6 @@ export default function ProductDisplay({
   page = "inventory",
   data = { ship: 0, pass: 0, ticket: 0 },
 }) {
-  console.log(data, "product Display");
 
   const [tabs, setTabs] = useState(0);
   const [visible, setVisible] = useState(true);

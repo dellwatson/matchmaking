@@ -40,7 +40,7 @@ const LobbyTop = () => {
           {/* settings,
         language,
         lndscape?,
-      fullscreen */}
+          fullscreen */}
 
           {/* <Language /> */}
           {/* SOUND */}

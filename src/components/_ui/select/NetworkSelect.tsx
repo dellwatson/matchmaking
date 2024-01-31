@@ -14,7 +14,7 @@ export default function NetworkSelect() {
   const { setModalReveal } = authStore();
 
   return (
-    <div className="fixed bg-gray-900 rounded-md top-16 w-72">
+    <div className=" bg-gray-900 rounded-md top-16 w-72">
       {/* IF PROFILES SELECT EMPTY -> show not connected */}
       <Listbox
         value={selectedNetwork}
@@ -32,8 +32,7 @@ export default function NetworkSelect() {
             switchNetwork(v?.chainId);
             setNetwork(v);
           }
-        }}
-      >
+        }}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
             <span className="block truncate">{selectedNetwork.name}</span>
@@ -48,8 +47,7 @@ export default function NetworkSelect() {
             as={Fragment}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+            leaveTo="opacity-0">
             <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
               {EVM_NETWORK.map((person, personIdx) => (
                 <Listbox.Option
@@ -59,15 +57,13 @@ export default function NetworkSelect() {
                       active ? "bg-amber-100 text-amber-900" : "text-gray-900"
                     }`
                   }
-                  value={person}
-                >
+                  value={person}>
                   {({ selected }) => (
                     <>
                       <span
                         className={`block truncate ${
                           selected ? "font-medium" : "font-normal"
-                        }`}
-                      >
+                        }`}>
                         {person.name}
                       </span>
                       {selected ? (

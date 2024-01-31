@@ -6,6 +6,10 @@ import Traits from "../_ui/block/traits";
 import { shortenEthAddress } from "@/utils/ethaddress";
 import BuyProduct from "./buy-product";
 import NetworkSelect from "../_ui/select/NetworkSelect";
+import InfoNetwork from "./info-network";
+import { Listbox } from "@headlessui/react";
+import { FaCircleChevronUp, FaCircleChevronDown } from "react-icons/fa6";
+import networkStore from "@/store/network-store";
 
 export default function ModalDetail({ data = {}, page = "inventory" }) {
   let [isOpen, setIsOpen] = useState(false);
@@ -23,8 +27,7 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
       <button
         type="button"
         onClick={!data?.locked ? openModal : () => {}}
-        className="rounded-md uppercase bg-black/50 px-4 py-2 text-sm font-thin text-white hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-      >
+        className="rounded-md uppercase bg-black/50 px-4 py-2 text-sm font-thin text-white hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
         {!data?.locked ? "VIEW MORE" : "out of stock"}
       </button>
 
@@ -37,13 +40,12 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+            leaveTo="opacity-0">
             <div className="fixed inset-0 bg-black/50" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full  items-center justify-center p-4 text-center">
+            <div className="flex h-full   items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -51,16 +53,14 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                 enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="w-full  xl2:max-w-2/4 max-w-full  transform overflow-scroll rounded-2xl bg-gray-700 p-6 text-left align-middle shadow-xl transition-all">
+                leaveTo="opacity-0 scale-95">
+                <Dialog.Panel className="w-full  xl:max-w-3/4 max-w-full  transform overflow-scroll rounded-2xl bg-gray-700 p-6 text-left align-middle shadow-xl transition-all">
                   <div className="header-modal flex justify-between items-center mb-4">
                     <NetworkSelect />
 
                     <Dialog.Title
                       as="h3"
-                      className="text-xl  leading-6 text-gray-300 font-bold"
-                    >
+                      className="text-xl  leading-6 text-gray-300 font-bold">
                       {data?.title || "TITLE"}
                     </Dialog.Title>
                     <div className="font-bold">
@@ -74,7 +74,7 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                       Close
                     </button> */}
                   </div>
-                  <NetworkSelect />
+                  {/* <NetworkSelect /> */}
 
                   <div className="grid xl:grid-cols-2">
                     <div className="col-span-1 mt-16">
@@ -104,52 +104,15 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                           {data?.description}
                         </p>
                       </div>
-
-                      <div className="my-6 flex justify-between my-4 uppercase">
-                        <div>
-                          Total Supply
-                          <br />
-                          <span className="text-xl font-bold text-green-500">
-                            {data?.totalSupply}
-                          </span>
-                        </div>
-                        {page !== "inventory" && (
-                          <div className="text-center">
-                            Price
-                            <br />
-                            <div className="text-xl font-bold text-green-500">
-                              {data?.price[0]?.price}{" "}
-                              {data?.price[0]?.payment_token}{" "}
-                            </div>
-                          </div>
-                        )}
-                        {page === "inventory" && (
-                          <button className="bg-green-500 p-4 rounded-md font-bold uppercase px-8">
-                            equipped
-                          </button>
-                        )}
-                        <div className="text-end">
-                          {page !== "inventory" && (
-                            <BuyProduct {...{ product: data }} />
-                          )}
-                          {page === "inventory" && data?.stakeable && (
-                            <button
-                              onClick={() => {
-                                alert("Staking feature is not available yet");
-                              }}
-                              className="bg-orange-500 p-4 rounded-md font-bold uppercase px-8"
-                            >
-                              "STAKE"
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                      <div className=" flex justify-between items-center my-4">
-                        <div className="w-full pr-6 uppercase">Details:</div>
+                      {/*  */}
+                      <PurchaseOptions {...{ page, data }} />
+                      <div className=" flex justify-between items-center mt-4">
+                        <div className="w-full pr-6 uppercase ">Details: </div>
                         <div>
                           <Rarity />
                         </div>
                       </div>
+                      <InfoNetwork />
                       {/*  */}
                       <div className=" flex justify-between my-4 capitalize">
                         <div className="w-full pr-6">
@@ -182,3 +145,141 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
     </>
   );
 }
+
+// change according to network
+const TOKENS_PAYMENT = [
+  {
+    id: 1,
+    name: "ART",
+    unavailable: false,
+    native: true,
+    price: 0.025,
+    weiValue: "0000000",
+  },
+  {
+    id: 2,
+    name: "fUSD",
+    unavailable: false,
+    address: "0x",
+    price: 200,
+    weiValue: "0000000",
+  },
+];
+
+const TokenOptions = ({
+  TOKEN_LIST = [],
+  selectedPerson,
+  setSelectedPerson,
+  price = 25,
+}) => {
+  const { selectedNetwork } = networkStore();
+  return (
+    <div className=" rounded-md top-16 w-50 ">
+      <Listbox value={selectedPerson} onChange={setSelectedPerson}>
+        <div className="relative bg-gray-900  p-2">
+          <Listbox.Button>
+            <span className="text-xl font-bold text-green-500">
+              {price} &nbsp;
+              {selectedPerson?.native
+                ? selectedNetwork?.native
+                : selectedPerson.name}{" "}
+            </span>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <FaCircleChevronDown
+                className="h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              />
+            </span>
+          </Listbox.Button>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0">
+            <Listbox.Options>
+              {TOKEN_LIST.map((token) => (
+                <Listbox.Option
+                  key={token.id}
+                  value={token}
+                  // disabled={price.unavailable}
+                >
+                  {({ active, selected }) => (
+                    <li
+                      className={` cursor-pointer ${
+                        active || selected
+                          ? "bg-blue-500 text-white"
+                          : "bg-white text-black"
+                      }`}>
+                      {price} &nbsp;
+                      {token?.native
+                        ? selectedNetwork?.native
+                        : token.name}{" "}
+                    </li>
+                  )}
+                  {/* <div className="text-xl ">
+              {token?.price} {token.name}{" "}
+            </div> */}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
+        </div>
+      </Listbox>
+    </div>
+  );
+};
+
+const PurchaseOptions = ({ page, data }) => {
+  const [selectedPerson, setSelectedPerson] = useState(TOKENS_PAYMENT[0]);
+
+  return (
+    <div className="my-6 flex justify-between my-4 uppercase">
+      <div>
+        Total Supply
+        <br />
+        <span className="text-xl font-bold text-green-500">
+          {data?.totalSupply}
+        </span>
+      </div>
+      {page !== "inventory" && (
+        <div className="text-center">
+          Price
+          <br />
+          <TokenOptions
+            {...{
+              TOKEN_LIST: TOKENS_PAYMENT,
+              selectedPerson,
+              setSelectedPerson,
+              price: data?.price[0]?.price,
+            }}
+          />
+        </div>
+      )}
+      {page === "inventory" && (
+        <button className="bg-green-500 p-4 rounded-md font-bold uppercase px-8">
+          equipped
+        </button>
+      )}
+      <div className="text-end">
+        {page !== "inventory" && (
+          <BuyProduct
+            {...{
+              product: data,
+              tokenSelected: selectedPerson,
+              price: data?.price[0]?.price,
+            }}
+          />
+        )}
+        {page === "inventory" && data?.stakeable && (
+          <button
+            onClick={() => {
+              alert("Staking feature is not available yet");
+            }}
+            className="bg-orange-500 p-4 rounded-md font-bold uppercase px-8">
+            "STAKE"
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};

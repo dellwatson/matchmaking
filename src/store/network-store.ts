@@ -1,10 +1,9 @@
 import { create } from "zustand";
 
 export const EVM_NETWORK = [
-  { name: "L2-Starknet-goerli", chainId: 5, type: "starknet" },
-  { name: "Viction Testnet", chainId: 89 },
-  { name: "KLAYTN-baobab", chainId: 1001 },
-  { name: "INEVM Caldera", chainId: 1738 },
+  { name: "L2-Starknet-goerli", chainId: 5, type: "starknet", native: "ETH" },
+  { name: "Artela", chainId: 11822, native: "ART" },
+  { name: "Aeron", chainId: 462, native: "TAREA" },
   // { name: "Starknet testnet" },
 ];
 

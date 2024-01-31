@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { CHAIN_ID, CLAIM_MANAGER, TOKEN_GEM } from "@/web3/contract-list";
 import NetworkSelect from "@/components/_ui/select/NetworkSelect";
 import { useTXStarknet } from "@/helpers/hooks/useTXStarknet";
+import networkStore from "@/store/network-store";
 
 export default function ModalClaim({
   isOpen,
@@ -25,8 +26,7 @@ export default function ModalClaim({
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+            leaveTo="opacity-0">
             <div className="fixed inset-0 bg-black opacity-75" />
           </Transition.Child>
 
@@ -39,13 +39,11 @@ export default function ModalClaim({
                 enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
+                leaveTo="opacity-0 scale-95">
                 <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-200"
-                  >
+                    className="text-lg font-medium leading-6 text-gray-200">
                     GET YOUR DAILY FREE CLAIM
                   </Dialog.Title>
                   <br />
@@ -81,7 +79,9 @@ const _X =
   import.meta.env.VITE_SECOND === "true" ? [[1], [1], [0]] : [[5], [1], [0]];
 
 //
-const TicketClaim = () => {
+const TicketClaim = ({ isStarknet = false }) => {
+  const { selectedNetwork } = networkStore();
+
   const { address } = useAccount();
   const { data, write, isLoading, isSuccess } = useTX(
     CLAIM_MANAGER,
@@ -102,19 +102,18 @@ const TicketClaim = () => {
 
   return (
     <div className="flex w-full justify-between py-3 border-b-1">
-      <div>1 Realm Ticket</div>
+      <div>1 Realm Ticket {selectedNetwork?.name}</div>
       <button
         disabled={isLoading}
         onClick={async () => {
           toast("Making transaction");
-          // if (isStarknet) {
-          // writeStarknet?.();
-          writeAsync();
-          // } else {
-          //   write?.();
-          // }
-        }}
-      >
+          if (isStarknet) {
+            // writeStarknet?.();
+            writeAsync();
+          } else {
+            write?.();
+          }
+        }}>
         {isLoading ? "loading" : "Claim"}
       </button>
     </div>
@@ -143,8 +142,7 @@ const GemClaim = () => {
         onClick={async () => {
           toast("Making transaction");
           write?.();
-        }}
-      >
+        }}>
         {isLoading ? "loading" : "Claim"}
       </button>
     </div>
@@ -176,8 +174,7 @@ const PointsClaim = () => {
         onClick={async () => {
           toast("Making transaction");
           write?.();
-        }}
-      >
+        }}>
         {isLoading ? "loading" : "Claim"}
       </button>
     </div>

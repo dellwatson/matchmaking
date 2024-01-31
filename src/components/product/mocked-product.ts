@@ -21,6 +21,7 @@ export const mocked_data = [
     address: getContractAddress(SHIP_NFT),
     contract_type: SHIP_NFT,
     listedStoreId: 2,
+    listedStoreIdERC20: 5,
     stats: true,
     type: "xs",
     rarity: "common-test",

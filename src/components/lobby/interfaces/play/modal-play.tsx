@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
 import NetworkSelect from "@/components/_ui/select/NetworkSelect";
+import networkStore from "@/store/network-store";
 
 export default function ModalPlay({
   isOpen = false,
@@ -27,8 +28,7 @@ export default function ModalPlay({
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+            leaveTo="opacity-0">
             <div className="fixed inset-0 bg-black opacity-75" />
           </Transition.Child>
 
@@ -41,13 +41,11 @@ export default function ModalPlay({
                 enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
+                leaveTo="opacity-0 scale-95">
                 <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-gray-400 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-xl font-bold text-center font-bold leading-6 text-gray-900"
-                  >
+                    className="text-xl font-bold text-center font-bold leading-6 text-gray-900">
                     MODE GAMEPLAY
                   </Dialog.Title>
                   <div className="flex justify-center items-center w-full">
@@ -75,6 +73,7 @@ export default function ModalPlay({
 
 const TicketUsage = () => {
   const { address } = useAccount();
+  const { selectedNetwork } = networkStore();
   const { data, isLoading } = useReadContract(TICKET_NFT, "balanceOf", [
     address,
   ]);
@@ -87,14 +86,14 @@ const TicketUsage = () => {
   // ])
   return (
     <div>
-      TICKET ({!!data ? parseInt(data) : "0"}) &nbsp;
+      {selectedNetwork && selectedNetwork?.name} TICKET (
+      {!!data ? parseInt(data) : "0"}) &nbsp;
       <button
         onClick={() => {
           // lockNFT
           toast("Realm Gate is not opened yet");
         }}
-        className="px-4 p-2 bg-orange-500 rounded-sm"
-      >
+        className="px-4 p-2 bg-orange-500 rounded-sm">
         USE
       </button>
     </div>
@@ -110,8 +109,7 @@ function MyToggle() {
         checked={enabled}
         onChange={setEnabled}
         className={`${enabled ? "bg-teal-900" : "bg-teal-700"}
-          relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
-      >
+          relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}>
         <span className="sr-only">Use setting</span>
         <span
           aria-hidden="true"
@@ -149,8 +147,7 @@ function TabsPlay() {
                     ? "bg-white text-blue-700 shadow"
                     : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
                 )
-              }
-            >
+              }>
               {category}
             </Tab>
           ))}
@@ -162,8 +159,7 @@ function TabsPlay() {
               className={classNames(
                 "rounded-xl bg- p-3",
                 "ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 min-h-60"
-              )}
-            >
+              )}>
               {idx === 0 && (
                 <>
                   <Title>Solo Expeditions: Cosmic Survival Challenge</Title>

@@ -15,7 +15,13 @@ import {
   useSwitchNetwork,
 } from "wagmi";
 
-export default function useTX(type = "", functionName = "", args = []) {
+export default function useTX(
+  type = "",
+  functionName = "",
+  args = [],
+  rest = {}
+) {
+  console.log(rest, "rest");
   const { chain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();
   //request network change
@@ -27,13 +33,13 @@ export default function useTX(type = "", functionName = "", args = []) {
   //   }
   // }, [chain?.id]);
 
-  const { config } = usePrepareContractWrite({
-    address: getContractAddress(type, selectedNetwork?.chainId),
-    abi: getContractABI(type),
-    functionName,
-    args,
-    chainId: selectedNetwork?.chainId,
-  });
+  // const { config } = usePrepareContractWrite({
+  //   address: getContractAddress(type, selectedNetwork?.chainId),
+  //   abi: getContractABI(type),
+  //   functionName,
+  //   args,
+  //   chainId: selectedNetwork?.chainId,
+  // });
   const { data, isLoading, isSuccess, write, error } = useContractWrite(
     // config
     {
@@ -42,6 +48,7 @@ export default function useTX(type = "", functionName = "", args = []) {
       functionName,
       args,
       chainId: Number(selectedNetwork?.chainId),
+      ...rest,
     }
   );
 
@@ -51,23 +58,27 @@ export default function useTX(type = "", functionName = "", args = []) {
       // toast?.error("Error, wrong network");
       switchNetwork?.(selectedNetwork?.chainId);
     }
-    write?.();
+    return write?.();
   };
 
-  console.log(
-    data,
-    isLoading,
-    isSuccess,
-    type,
-    error,
-    "errorerrorerror",
-    getContractAddress(type),
-    selectedNetwork?.chainId
-    // getContractABI(type)
-  );
+  // console.log(
+  //   data,
+  //   isLoading,
+  //   isSuccess,
+  //   type,
+  //   error,
+  //   "errorerrorerror",
+  //   getContractAddress(type, selectedNetwork?.chainId),
+  //   selectedNetwork?.chainId,
+  //   chain,
+  //   Number(selectedNetwork?.chainId),
+  //   "HELLOS"
+  //   // getContractABI(type)
+  // );
 
   return {
     data,
+    error,
     isLoading,
     isSuccess,
     write: _write,

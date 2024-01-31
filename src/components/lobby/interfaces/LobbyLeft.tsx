@@ -9,7 +9,7 @@ export default function LobbyLeft() {
       <Claim />
       <div className="absolute">
         <CornerBox
-          classNameOutside=" w-[400px] xl:min-h-[700px] "
+          classNameOutside=" w-[400px] xl:min-h-[500px] "
           className="w-full h-full "
           background="rgba(0, 0, 0, 0.9)"
         >

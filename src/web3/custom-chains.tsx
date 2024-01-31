@@ -28,26 +28,26 @@ export const aeron_testnet = {
   },
 } as const satisfies Chain;
 export const inevm_caldera = {
-  id: 1738,
-  name: "INEVM Caldera",
-  network: "INEVM",
+  id: 11822,
+  name: "Artela testnet",
+  network: "ARTELA",
   nativeCurrency: {
     decimals: 18,
-    name: "INJ",
-    symbol: "INJ",
+    name: "ART",
+    symbol: "ART",
   },
   rpcUrls: {
-    public: { http: ["https://inevm-rpc.caldera.dev"] },
-    default: { http: ["https://inevm-rpc.caldera.dev"] },
+    public: { http: ["https://betanet-rpc1.artela.network/"] },
+    default: { http: ["https://betanet-rpc1.artela.network/"] },
   },
   blockExplorers: {
     etherscan: {
       name: "Explorer",
-      url: "https://inevm.calderaexplorer.xyz/",
+      url: "https://betanet-scan.artela.network/",
     },
     default: {
       name: "Explorer",
-      url: "https://inevm.calderaexplorer.xyz/",
+      url: "https://betanet-scan.artela.network/",
     },
   },
 } as const satisfies Chain;

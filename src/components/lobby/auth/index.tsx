@@ -21,7 +21,7 @@ export default function Auth() {
     <div className="absolute">
       {/* wallet */}
       {/* if !auth.length  OPEN MODAL BUTTON else: Profiles */}
-      {!profiles?.length ? (
+      {/* {!profiles?.length ? (
         <>
           <Button
             label="CONNECT"
@@ -33,7 +33,6 @@ export default function Auth() {
         </>
       ) : (
         <div>
-          {/* Profiles stack */}
           {profiles?.map((item, i) => (
             //absolute? gravatar
             <div onClick={() => setModalReveal(true)} key={i}>
@@ -45,21 +44,17 @@ export default function Auth() {
                   <div className="mb-2">{shortenEthAddress(item?.address)}</div>
 
                   <div>{item?.chain?.name}</div>
-                  {/* network */}
-                  {/* connected */}
-                  {/* <div>Disc</div> */}
                 </div>
               </div>
             </div>
           ))}
-          {/* click to show modal */}
         </div>
       )}
-      <ModalAuth />
-      {/* 
+      <ModalAuth /> */}
+
       <div className="absolute">
         {!address ? <ModalConnect /> : <Profile />}
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -44,7 +44,7 @@ export default function DailyPerformances() {
           ))}
         </div>
       </div>
-      <div className="p-4 px-6 ">
+      {/* <div className="p-4 px-6 ">
         <Title>STAKING:</Title>
         <br />
         <div className="grid grid-cols-2">
@@ -84,7 +84,7 @@ export default function DailyPerformances() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

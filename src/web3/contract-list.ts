@@ -32,6 +32,38 @@ export const SHOP = "shop";
 
 const ADDRESS_CONTRACT = [
   {
+    name: "Aeron",
+    chainId: 462,
+    list: {
+      ADDRESS_EXPOINTS: "0xE39C0AAA925337a5499A2cCe0D906cc38B5CEA54",
+      ADDRESS_TOKEN_GEM: "0xbe0833eB8f4Ff9BD5aEAFc2ee61925a227D58ABA",
+      ADDRESS_ASSET_NFT: "0xC8E633D1Da2b23A12458682cB0d065A4452b6030",
+      ADDRESS_TICKET_NFT: "0x5b6288be71623E408D61D0417A51572d7CBC10e2",
+      ADDRESS_PASS_NFT: "0x9EcB83f041a8A3b76bcd9DafC078812047535ABc",
+      ADDRESS_STARSHIP_NFT: "0xa921a43516A0c85504d61bd3BD8bcE354a7bBEf1",
+      ADDRESS_SHOP: "0xed3f3e6eBf67cf360C5EF3f650e0E69CC3a70CAb",
+      ADDRESS_CLAIM_MANAGER: "0x5c347CE1CA5606d992Fb31AB529C8A3d55a6E2d4",
+      ADDRESS_EXPLORE_PLAY: "0x283C4Cc50D0209dA029b9a599EB28C80B3957B34",
+      // Add more addresses as needed
+    },
+  },
+  {
+    name: "Artela",
+    chainId: 11822,
+    list: {
+      ADDRESS_EXPOINTS: "0xFe9DF23d3EFAB6cC71D3395aFFB3aa505d1935eB",
+      ADDRESS_TOKEN_GEM: "0x16F0EB9CD042e3D9e519baf660c18f4E8E4eF93e",
+      ADDRESS_ASSET_NFT: "0x9D2067BeB1c165FDE0F89E40Bd97f3276C153385",
+      ADDRESS_TICKET_NFT: "0xE39C0AAA925337a5499A2cCe0D906cc38B5CEA54",
+      ADDRESS_PASS_NFT: "0xbe0833eB8f4Ff9BD5aEAFc2ee61925a227D58ABA",
+      ADDRESS_STARSHIP_NFT: "0xC8E633D1Da2b23A12458682cB0d065A4452b6030",
+      ADDRESS_SHOP: "0x5b6288be71623E408D61D0417A51572d7CBC10e2",
+      ADDRESS_CLAIM_MANAGER: "0x9EcB83f041a8A3b76bcd9DafC078812047535ABc",
+      ADDRESS_EXPLORE_PLAY: "0xa921a43516A0c85504d61bd3BD8bcE354a7bBEf1",
+      // Add more addresses as needed
+    },
+  },
+  {
     name: "viction testnet",
     chainId: 89,
     list: {
@@ -81,10 +113,12 @@ const ADDRESS_CONTRACT = [
   },
 ];
 
-export function getContractAddress(type = "", chainId = 1001) {
+export function getContractAddress(type = "", chainId = 0) {
   const BASE_CONTRACT = ADDRESS_CONTRACT.find(
     (contract) => contract.chainId === chainId
   );
+
+  // console.log(type, chainId, BASE_CONTRACT);
 
   if (!BASE_CONTRACT) {
     console.error(`No contract found for chainId: ${chainId}`);
