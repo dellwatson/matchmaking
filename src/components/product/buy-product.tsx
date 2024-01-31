@@ -41,7 +41,9 @@ export default function BuyProduct({ product, tokenSelected, price = 25 }) {
     SHOP,
     "buyProduct",
     [
-      (product?.category === "ship" && !tokenSelected?.native) ?   product?.listedStoreId:  5,
+      product?.category === "ship" && !tokenSelected?.native
+        ? product?.listedStoreId
+        : 5,
       // product?.price[0]?.price * 1000000000000000000,
       // getContractAddress(TOKEN_GEM, selectedNetwork.chainId),
       // 1, // quantity
@@ -53,7 +55,7 @@ export default function BuyProduct({ product, tokenSelected, price = 25 }) {
       // 2,
       product?.category === "ship" ? _SECOND : 2,
     ],
-    tokenSelected?.native && 
+    tokenSelected?.native
       ? {
           value: parseEther("0.4"),
         }
