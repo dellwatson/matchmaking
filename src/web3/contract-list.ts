@@ -32,7 +32,7 @@ export const SHOP = "shop";
 
 const ADDRESS_CONTRACT = [
   {
-    name: "Aeron",
+    name: "Areon",
     chainId: 462,
     list: {
       ADDRESS_EXPOINTS: "0xE39C0AAA925337a5499A2cCe0D906cc38B5CEA54",

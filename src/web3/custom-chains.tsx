@@ -3,10 +3,10 @@ import { Chain } from "@wagmi/core";
 //   (module) => module.createWeb3Modal
 // );
 
-export const aeron_testnet = {
+export const Areon_testnet = {
   id: 462,
-  name: "Aeron Testnet",
-  network: "Aeron",
+  name: "Areon Testnet",
+  network: "Areon",
   nativeCurrency: {
     decimals: 18,
     name: "TAREA",
