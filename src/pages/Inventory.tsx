@@ -1,72 +1,18 @@
-import ProductDisplay from "@/components/product";
+import ListInventory from "@/components/inventory/ListInventory";
 import Layout from "@/components/lobby/LayoutHeader";
-import CornerBox from "@/components/_ui/box/CornerBox";
-import GlowingText from "@/components/_ui/text/glowing-text";
-import useReadContract from "@/helpers/hooks/useReadContract";
-import { PASS_NFT, SHIP_NFT, TICKET_NFT } from "@/web3/contract-list";
-import { useAccount } from "wagmi";
-import { formatUnits } from "viem";
+import React from "react";
 
-export default function InventoryPage() {
-  const { address } = useAccount();
-  const { data: dataShip, isLoading: loadingShip } = useReadContract(
-    SHIP_NFT,
-    "balanceOf",
-    [address]
-  );
-  const { data: dataPass, isLoading: loadingPass } = useReadContract(
-    PASS_NFT,
-    "balanceOf",
-    [address]
-  );
-  const { data: dataTicket, isLoading: loadingTicket } = useReadContract(
-    TICKET_NFT,
-    "balanceOf",
-    [address]
-  );
-
+export default function Inventory() {
   return (
-    <div className="absolute dark:bg-black  h-full w-full overflow-hidden">
+    <div className="bg-slate-900  !overflow-x-hidden border-green-500 w-full ">
       <Layout />
-      <div>
-        {/* <Shop /> */}
-        <ProductDisplay
-          {...{
-            // todo: refactor better load
-            data: {
-              ship: !!dataShip ? parseInt(dataShip) : 0,
-              pass: !!dataPass ? parseInt(dataPass) : 0,
-              ticket: !!dataTicket ? parseInt(dataTicket) : 0,
-            },
-          }}
-        />
-        {/* <div>test</div> */}
-        <br />
-        <br />
-        <CornerBox
-          border
-          classNameOutside="rounded-md"
-          className="p-16 rounded-md "
-          corner={false}
-        >
-          <div className="text-center mb-10 uppercase text-xl  text-red-500 font-bold">
-            Coming soon
-          </div>
-          <div className="w-full flex items-center">
-            <div>
-              <GlowingText className="font-bold">CRAFTING </GlowingText>
-            </div>
-            <div className="px-10">
-              Combine materials from gameplay, unlock fractions, and forge
-              unique items and abilities.
-              <br />
-              Tailor your ship for speed, defense, or strategy.
-              <br />
-              With endless possibilities, craft your cosmic arsenal and stand
-              out among the stars!
-            </div>
-          </div>
-        </CornerBox>
+      {/* BACK BUTTON */}
+      <div className="mt-24  ">
+        {/* <Detail /> */}
+        <ListInventory />
+        {/* {[1, 1, 1, 1, 1, 1, 1, 1, 1, 11].map((item, i) => (
+          <div className="m-10 h-[100px] w-40 bg-red-500">{i}</div>
+        ))} */}
       </div>
     </div>
   );

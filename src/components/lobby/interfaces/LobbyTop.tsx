@@ -6,33 +6,24 @@ import {
 import { MdLanguage } from "react-icons/md";
 import LobbySound from "./settings/sound";
 import { useState } from "react";
-import SettingsModal from "./settings/settings-modal";
-import Auth from "../auth";
+// import SettingsModal from "./settings/settings-modal";
 import NavHeader from "./NavHeader";
 import Drawer from "../drawer";
 import globalStore from "@/store/global-store";
 import { toast, useToast } from "react-toastify";
+import ModalSettings from "@/_ui/Modal/ModalSettings";
+import AuthButton from "@/_ui/Auth/AuthButton";
 
 const LobbyTop = () => {
-  const [showAnnounce, setShow] = useState(true);
   return (
     <>
-      {/* {showAnnounce && (
-        <div className="p-2 bg-red-800 font-bold uppercase flex justify-between  z-999 w-full">
-          <div />
-          Caldera testnet currently in problem, please try the other available
-          network
-          <div onClick={() => setShow(false)} className="mr-2 cursor-pointer">
-            X
-          </div>
-        </div>
-      )} */}
       <div className="absolute w-full flex justify-between p-4">
-        <div className="flex cursor-pointer w-full  ">
-          <Auth />
+        <div className=" flex cursor-pointer w-full  ">
+          {/* on mobile */}
+          <AuthButton />
         </div>
 
-        <div className="flex w-full  justify-center">
+        <div className="!hidden !lg:block flex w-full  justify-center">
           <NavHeader />
         </div>
         {/* <div>players active</div> */}
@@ -48,7 +39,7 @@ const LobbyTop = () => {
           <Notif />
           {/* <Language /> */}
           <Settings />
-          <FullScreen />
+          {/* <FullScreen /> */}
           <Drawer />
         </div>
       </div>
@@ -104,13 +95,20 @@ export const Settings = () => {
 
   return (
     <div className="p-2 " onClick={() => setVisible(!visible)}>
-      <SettingsModal
+      <ModalSettings
         {...{
           isOpen: visible,
           setIsOpen: setVisible,
           closeModal: () => setVisible(false),
         }}
       />
+      {/* <SettingsModal
+        {...{
+          isOpen: visible,
+          setIsOpen: setVisible,
+          closeModal: () => setVisible(false),
+        }}
+      /> */}
       <RiSettings3Line size={24} />
     </div>
   );

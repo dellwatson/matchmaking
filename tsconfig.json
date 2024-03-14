@@ -30,6 +30,6 @@
       "@game/*": ["src/_game/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", ".storybook/stories"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

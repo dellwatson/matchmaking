@@ -1,5 +1,5 @@
-import { Title } from "@/components/_ui/text";
-import ProgressBar from "@/components/_ui/utils/ProgressBar";
+import { Title } from "@/_ui/text";
+import ProgressBar from "@/_ui/utils/ProgressBar";
 import {
   useSpringRef,
   animated,

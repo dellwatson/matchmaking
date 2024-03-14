@@ -7,20 +7,15 @@ import "@unocss/reset/tailwind.css";
 // main.ts
 // import 'virtual:uno.css'
 import "./i18n.ts";
-import { WagmiConfig } from "wagmi";
-import { config } from "./web3";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { StarknetProvider } from "./web3/starknet-provider.tsx";
+import Web3HubProvider from "./_core/providers/hub.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <StarknetProvider>
-      <WagmiConfig config={config}>
-        <ToastContainer />
-        <App />
-      </WagmiConfig>
-    </StarknetProvider>
+    <Web3HubProvider>
+      <ToastContainer />
+      <App />
+    </Web3HubProvider>
   </React.StrictMode>
 );

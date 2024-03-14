@@ -1,11 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import Rarity from "../_ui/utils/Rarity";
-import ProgressBar from "../_ui/utils/ProgressBar";
-import Traits from "../_ui/block/traits";
+import Rarity from "../../_ui/utils/Rarity";
+import ProgressBar from "../../_ui/utils/ProgressBar";
+import Traits from "../../_ui/block/traits";
 import { shortenEthAddress } from "@/utils/ethaddress";
 import BuyProduct from "./buy-product";
-import NetworkSelect from "../_ui/select/NetworkSelect";
+import NetworkSelect from "../../_ui/select/NetworkSelect";
 import InfoNetwork from "./info-network";
 import { Listbox } from "@headlessui/react";
 import { FaCircleChevronUp, FaCircleChevronDown } from "react-icons/fa6";
@@ -229,7 +229,7 @@ const TokenOptions = ({
   );
 };
 
-const PurchaseOptions = ({ page, data }) => {
+export const PurchaseOptions = ({ page, data }) => {
   const [selectedPerson, setSelectedPerson] = useState(TOKENS_PAYMENT[0]);
 
   return (

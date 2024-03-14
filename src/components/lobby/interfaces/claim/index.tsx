@@ -1,4 +1,4 @@
-import CornerBox from "@/components/_ui/box/CornerBox";
+import CornerBox from "@/_ui/Box/CornerBox";
 import { useState } from "react";
 import ModalClaim from "./modal-claim";
 
@@ -15,9 +15,17 @@ export default function Claim() {
 
   return (
     <div className="relative">
-      <div onClick={() => openModal()} className=" flex  mb-4 font-bold">
-        <div className="bg-green-800 p-4 ">FREE CLAIMS</div>
-        <div className="bg-blue-500 p-4 px-6">3</div>
+      <div
+        onClick={() => openModal()}
+        className=" flex mb-4 font-bold rounded-sm">
+        <div className="relative  right-4 bottom-1 -rotate-10">
+          <div className="animate-bounce bg-red-700 p-4 px-6 text-xl absolute rounded-full ">
+            3
+          </div>
+        </div>
+        <div className=" p-4 bg-slate-800 ">
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FREE CLAIMS &nbsp;
+        </div>
       </div>
 
       <ModalClaim {...{ isOpen, setIsOpen, closeModal, openModal, data: [] }} />

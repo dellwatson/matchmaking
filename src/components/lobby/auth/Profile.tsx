@@ -1,4 +1,4 @@
-import Avatar from "@/components/_ui/profile/avatar";
+import Avatar from "@/_ui/profile/avatar";
 import useReadContract from "@/helpers/hooks/useReadContract";
 import networkStore from "@/store/network-store";
 import { GravatarUrl } from "@/utils/Gravatar";

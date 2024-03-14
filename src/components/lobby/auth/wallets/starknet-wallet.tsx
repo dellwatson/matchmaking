@@ -1,4 +1,4 @@
-import Avatar from "@/components/_ui/profile/avatar";
+import Avatar from "@/_ui/profile/avatar";
 import authStore from "@/store/auth-store";
 import { Button } from "@/stories/ui/Button/Button";
 import { GravatarUrl } from "@/utils/Gravatar";
@@ -32,8 +32,7 @@ function Wallets() {
         <div className="mx-2 " key={connector.id}>
           <button
             className=" bg-gradient-to-r from-orange-600 to-red-900 p-4 rounded-md px-10 font-bold uppercase"
-            onClick={() => connect({ connector })}
-          >
+            onClick={() => connect({ connector })}>
             {connector.name}
           </button>
         </div>

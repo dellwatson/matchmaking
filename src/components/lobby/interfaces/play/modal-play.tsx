@@ -1,5 +1,5 @@
 import useStore from "@/_game/store";
-import { Title } from "@/components/_ui/text";
+import { Title } from "@/_ui/text";
 import useReadContract from "@/helpers/hooks/useReadContract";
 import useTX from "@/helpers/hooks/useTX";
 import { EXPLORE_PLAY, TICKET_NFT } from "@/web3/contract-list";
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
-import NetworkSelect from "@/components/_ui/select/NetworkSelect";
+import NetworkSelect from "@/_ui/select/NetworkSelect";
 import networkStore from "@/store/network-store";
 
 export default function ModalPlay({

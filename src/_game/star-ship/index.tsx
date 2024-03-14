@@ -62,8 +62,7 @@ export default function SpaceShip() {
             <dodecahedronBufferGeometry args={[1.5, 0]} />
             <meshBasicMaterial color="lightblue" />
           </mesh>
-        }
-      >
+        }>
         {/* {directionalLight.current && (
             <primitive object={directionalLight.current.target} />
           )} */}

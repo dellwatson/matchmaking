@@ -8,11 +8,18 @@ import Theras from "./community/theras";
 
 export default function LobbyRight() {
   return (
-    <div className="absolute right-0 pt-18 z-10  h-full">
-      <NewsSection />
-      <Discord />
-      <br />
-      <Theras />
+    <div className="absolute right-0 pt-18 z-10  h-full ">
+      <div className="hidden md:block">
+        <NewsSection variant="box" />
+      </div>
+      <div className=" md:hidden">
+        <NewsSection variant="slide" />
+      </div>
+      <div className="hidden md:block">
+        <Discord />
+        <br />
+        <Theras />
+      </div>
       <br />
       {/* <Support /> */}
       {/* FEEDBACK MODAL */}

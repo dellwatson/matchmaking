@@ -1,4 +1,4 @@
-import CornerBox from "@/components/_ui/box/CornerBox";
+import CornerBox from "@/_ui/Box/CornerBox";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
@@ -46,8 +46,7 @@ export default function NavHeader() {
             if (!item?.disable) {
               navigate(item?.path);
             }
-          }}
-        >
+          }}>
           {item?.title}
         </CornerBox>
       ))}

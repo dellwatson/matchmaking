@@ -1,13 +1,14 @@
 import LobbyTop from "./interfaces/LobbyTop";
 import Garage from "./garage";
-import Play from "./interfaces/play";
+import Play from "../play";
 import Pass from "./interfaces/pass";
+import NewsSection from "./interfaces/news";
+import SeasonPass from "@/_ui/Lobby/SeasonPassBtn";
 
 export default function Layout() {
-  // mobile interfaces too
   return (
     <>
-      <div className="absolute z-10 w-full  ">
+      <div className="absolute  w-full fixed z-10 ">
         <LobbyTop />
         {/* <LobbyLeft /> */}
         {/* <LobbyRight /> */}
@@ -19,10 +20,21 @@ export default function Layout() {
 export function LobbyInterfaceBot() {
   // mobile interfaces too
   return (
-    <div className="absolute z-10 w-full ">
-      <Garage />
-      <Pass />
-      <Play />
+    <div className="absolute z-10 w-full border  ">
+      {/* <Garage /> */}
+      {/* <div className="lg:block hidden ">
+        <Pass />
+      </div> */}
+      <div className="lg:block hidden absolute bottom-0  p-4   ">
+        <SeasonPass />
+      </div>
+      {/* GameMode */}
+      <div className="lg:block hidden ">
+        <Play isMobile={false} />
+      </div>
+      <div className="lg:hidden ">
+        <Play isMobile />
+      </div>
     </div>
   );
 }
@@ -49,8 +61,7 @@ const Box = ({
     backdrop-blur-sm
     overflow-hidden
     ${className}
-    `}
-    >
+    `}>
       <div
         className={` 
         w-full h-full
@@ -63,8 +74,7 @@ const Box = ({
       <div
         className={` 
       ${classNameInside}
-      `}
-      >
+      `}>
         {children}
       </div>
     </div>

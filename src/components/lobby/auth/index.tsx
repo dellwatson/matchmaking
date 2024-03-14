@@ -6,7 +6,7 @@ import StarknetWallet, { shortenString } from "./wallets/starknet-wallet";
 import authStore from "@/store/auth-store";
 import ModalAuth from "./modal-auth";
 import { Button } from "@/stories/ui/Button/Button";
-import Avatar from "@/components/_ui/profile/avatar";
+import Avatar from "@/_ui/profile/avatar";
 import { GravatarUrl } from "@/utils/Gravatar";
 import { shortenEthAddress } from "@/utils/ethaddress";
 
