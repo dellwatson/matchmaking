@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import useStore, { mutation } from "./store";
+import useStore, { mutation } from "../store";
 import { useFrame } from "@react-three/fiber";
 
 export default function Gamestate() {
@@ -27,7 +27,7 @@ export default function Gamestate() {
       const movementDistance = SPEED * delta;
 
       // Update the ship's position based on the movement distance
-      ship.current.position.z += movementDistance;
+      // ship.current.position.z += movementDistance;
       increaseSpeed(SPEED + 0.08);
 
       // console.log(SPEED, "SPEED");

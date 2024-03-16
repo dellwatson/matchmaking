@@ -8,47 +8,46 @@
 // Title: Alien Spaceship - Big Fighter
 // */
 
-// import React, { useRef } from "react";
-// import { useGLTF } from "@react-three/drei";
-// // import MODEL_SHIP from "@assets/game/model/mock/mercedes";
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+// import MODEL_SHIP from "@assets/game/model/mock/mercedes";
 
-// export function Mercedes(props) {
-//   const { nodes, materials } = useGLTF("/scene-transformed.glb");
-//   return (
-//     <group scale={[0.4, 0.4, 0.4]} {...props} dispose={null}>
-//       <mesh
-//         geometry={
-//           nodes.alien_battle_fighter_ancient_procedural_stone_3_0.geometry
-//         }
-//         material={materials.ancient_procedural_stone_3}
-//         position={[0, 0, -5.531]}
-//         rotation={[-Math.PI / 2, 0, 0]}
-//         scale={0.01}
-//       />
-//       <mesh
-//         geometry={nodes.alien_battle_fighter_black_glass_0.geometry}
-//         material={materials.black_glass}
-//         position={[0, 0, -5.531]}
-//         rotation={[-Math.PI / 2, 0, 0]}
-//         scale={0.01}
-//       />
-//       <mesh
-//         geometry={nodes.alien_battle_fighter_engines_0.geometry}
-//         material={materials.engines}
-//         position={[0, 0, -5.531]}
-//         rotation={[-Math.PI / 2, 0, 0]}
-//         scale={0.01}
-//       />
-//       <mesh
-//         geometry={nodes.alien_battle_fighter_pulse_0.geometry}
-//         material={materials.pulse}
-//         position={[0, 0, -5.531]}
-//         rotation={[-Math.PI / 2, 0, 0]}
-//         scale={0.01}
-//       />
-//     </group>
-//   );
-// }
+export function Mercedes(props) {
+  const { nodes, materials } = useGLTF("/scene-transformed.glb");
+  return (
+    <group scale={[0.4, 0.4, 0.4]} {...props} dispose={null}>
+      <mesh
+        geometry={
+          nodes.alien_battle_fighter_ancient_procedural_stone_3_0.geometry
+        }
+        material={materials.ancient_procedural_stone_3}
+        position={[0, 0, -5.531]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.01}></mesh>
+      <mesh
+        geometry={nodes.alien_battle_fighter_black_glass_0.geometry}
+        material={materials.black_glass}
+        position={[0, 0, -5.531]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.01}></mesh>
+      <mesh
+        geometry={nodes.alien_battle_fighter_engines_0.geometry}
+        material={materials.engines}
+        position={[0, 0, -5.531]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.01}
+      />
+      <mesh
+        geometry={nodes.alien_battle_fighter_pulse_0.geometry}
+        material={materials.pulse}
+        position={[0, 0, -5.531]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.01}>
+        {/* <meshStandardMaterial color={[10, 0, 0]} /> */}
+      </mesh>
+    </group>
+  );
+}
 
 // useGLTF.preload("/scene-transformed.glb");
 
@@ -101,22 +100,22 @@ Source: https://sketchfab.com/3d-models/sparrow-fighter-spacecraft-9877408b0bbc4
 Title: SPARROW Fighter Spacecraft
 */
 
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+// import React, { useRef } from "react";
+// import { useGLTF } from "@react-three/drei";
 
-export function Mercedes(props) {
-  const { nodes, materials } = useGLTF("/scene-transformed.glb");
-  return (
-    <group scale={[0.5, 0.5, 0.5]} {...props} dispose={null}>
-      <mesh
-        geometry={nodes.Sparrow_Fighter_Sparrow_Fighter_0.geometry}
-        material={materials.Sparrow_Fighter}
-        position={[0, 0.911, 0]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.01}
-      />
-    </group>
-  );
-}
+// export function Mercedes(props) {
+//   const { nodes, materials } = useGLTF("/scene-transformed.glb");
+//   return (
+//     <group scale={[0.5, 0.5, 0.5]} {...props} dispose={null}>
+//       <mesh
+//         geometry={nodes.Sparrow_Fighter_Sparrow_Fighter_0.geometry}
+//         material={materials.Sparrow_Fighter}
+//         position={[0, 0.911, 0]}
+//         rotation={[-Math.PI / 2, 0, 0]}
+//         scale={0.01}
+//       />
+//     </group>
+//   );
+// }
 
 useGLTF.preload("/scene-transformed.glb");

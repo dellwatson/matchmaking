@@ -7,8 +7,10 @@ import * as THREE from "three";
 import useStore from "@/_game/store";
 import obstacleStore, { INTERVAL } from "./obstacle-store";
 import ROCK from "./rock.gltf";
-import Effects from "../../3d/Effects";
+import Effects from "../../graphics/Effects";
 import Particles from "../Particles";
+import ThunderClouds from "../ThunderClouds/ThunderClouds";
+import Puffycloud from "../ThunderClouds/PuffyClouds";
 
 export default function Obstacle() {
   const gltf = useLoader(GLTFLoader, ROCK);
@@ -113,13 +115,31 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
     }
   });
 
+  // return (
+  //   <group
+  //     ref={ref}
+  //     //   name="group-ROCK"
+  //     position={data.offset}
+  //     scale={[data.scale, data.scale, data.scale]}>
+  //     <Puffycloud seed={20} position={[0, 10, 0]} />
+  //     <Puffycloud seed={20} position={[0, 10, 0]} />
+  //     <Puffycloud seed={20} position={[0, 10, 0]} />
+
+  //     <ThunderClouds />
+  //     {/*
+  //       <boxGeometry args={[1, 1, 1]} />
+  //       <meshStandardMaterial color="hotpink" />
+  //     */}
+  //   </group>
+  // );
+
+  // box matrix
   return (
     <group
       ref={ref}
       //   name="group-ROCK"
       position={data.offset}
-      scale={[data.scale, data.scale, data.scale]}
-    >
+      scale={[data.scale, data.scale, data.scale]}>
       <mesh
         ref={ref}
         scale={[20, 20, 20]}
@@ -131,6 +151,7 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
     </group>
   );
 
+  // // rock assets
   // return (
   //   <group
   //     ref={ref}

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import useStore, { mutation } from "../store";
+import useStore, { mutation } from "../../store";
 import { useFrame } from "@react-three/fiber";
-import controlStore from "../hud/controller/control-store";
+import controlStore from "../../hud/controller/control-store";
 
 const MAX_FLIP = 0.5;
 // utils define -> left and right, or axis

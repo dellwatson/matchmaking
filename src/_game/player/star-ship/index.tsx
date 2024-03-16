@@ -1,8 +1,8 @@
 import Ship from "@/components/showroom/Ship";
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
-import useStore from "../store";
+import useStore from "../../store";
 import { useFrame } from "@react-three/fiber";
-import Buster from "../hud/abilities/category/shield/Buster";
+import Buster from "../../hud/abilities/category/shield/Buster";
 // import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
 // import { useControls } from "leva";
 // import ATOM_EFFECT from "./atom.json";
@@ -66,8 +66,6 @@ export default function SpaceShip() {
         {/* {directionalLight.current && (
             <primitive object={directionalLight.current.target} />
           )} */}
-
-        {/* move this into exhaust component children later */}
       </Ship>
     </>
   );

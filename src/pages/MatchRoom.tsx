@@ -14,12 +14,11 @@ export default function MatchRoomPage() {
       //   backgroundImage: `url(${ImageSpace})`,
       //   backgroundSize: "cover", // Adjust the sizing as needed
       // }}
-      className="absolute "
-    >
+      className="absolute ">
       {/* <div className="absolute matchRoom border " /> */}
       {/* MatchRoomx */}
       {/* <ShowRoom /> */}
-      <Interface />
+      {/* <Interface /> */}
       <SoloGameApp />
       <GameOverModal />
       {/* game over modal */}

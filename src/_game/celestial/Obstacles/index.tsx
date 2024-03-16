@@ -19,10 +19,8 @@ import ROCK from "./rock.gltf";
 export default function Obstacle() {
   //   const gltf = useLoader(GLTFLoader, "./rock.gltf");
   const gltf = useLoader(GLTFLoader, ROCK);
-  console.log(gltf, "gltf ?");
   const rocks = useStore((state) => state.rocks);
 
-  console.log(rocks, "rocks");
   const ship = useStore((s) => s.ship);
 
   const generateRandomPosition = () => {
@@ -97,8 +95,7 @@ const ClonedRock = React.memo(
         ref={ref}
         // scale={[20, 20, 20]}
         position={data.offset}
-        scale={[data.scale, data.scale, data.scale]}
-      >
+        scale={[data.scale, data.scale, data.scale]}>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial />
       </mesh>

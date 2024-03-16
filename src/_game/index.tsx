@@ -11,21 +11,24 @@ import {
   useTexture,
 } from "@react-three/drei";
 import TestTerrains from "./terrains/test-terrains";
-import SpaceShip from "./star-ship";
+import SpaceShip from "./player/star-ship";
 // import Effects from "./3d/Effects2";
-import Effects from "./3d/Effects";
-// import { Effects }d from "@components/showroom/Effects";
+import Effects from "./graphics/Effects";
+// import { Effects } from "@components/showroom/Effects";
 
 import { Suspense, useLayoutEffect, useRef, useState } from "react";
-import Stars from "./3d/Stars";
-import Gamestate from "./gamestate";
-import Camera from "./camera";
+import Stars from "./celestial/Stars";
+import Gamestate from "./system/gamestate";
+import Camera from "./control/camera";
 // import Controls from "./hud/controller/keyboard-stick";
-import Movement from "./movement";
+import Movement from "./control/movement";
 import Interface from "./hud";
 // import { LayerMaterial, Color, Depth } from 'lamina'
 import bgSpace from "@assets/4k_stars.jpg";
 import useStore from "./store";
+import ModelPortal from "./celestial/Portal/Portal";
+import BoostFlame from "./vfx/BoostFlame";
+import ThunderClouds from "./celestial/ThunderClouds/ThunderClouds";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function Scene() {
@@ -46,17 +49,22 @@ export default function SoloGameApp() {
       dpr={[1, 1.5]}
       onCreated={({ gl }) => {
         actions.init();
+        // gl.toneMapping = THREE.Uncharted2ToneMapping;
 
         // gl.toneMapping = THREE.ReinhardToneMapping;
         // gl.setClearColor(new THREE.Color("#020209"));
         // console.log("Tone Mapping:", gl.toneMapping);
         // console.log("Clear Color:", gl.getClearColor());
         // gl.toneMapping = THREE.Uncharted2ToneMapping;
-        gl.setClearColor(new THREE.Color("black"));
+        // gl.setClearColor(new THREE.Color("black"));
         // gl.setClearColor(new THREE.Color("indianred"));
 
+        // gl.setClearColor(new THREE.Color("#ADD8E6"));
         // gl.setClearColor(new THREE.Color("#020209"));
         // gl.setClearColor(new THREE.Color("#0x000000"));
+
+        gl.toneMapping = THREE.AgXToneMapping;
+        gl.setClearColor(0x000000, 0);
       }}
       gl={{
         alpha: false,
@@ -64,18 +72,17 @@ export default function SoloGameApp() {
         stencil: false,
         antialias: false,
         depth: true,
-      }}
-    >
+      }}>
       {/* <Suspense fallback={null}>
         <Scene />
       </Suspense> */}
 
-      {/* <spotLight
+      <spotLight
         intensity={1.5}
         position={[0, 0, 2000]}
         penumbra={1}
         color="red"
-      /> */}
+      />
 
       {/* <PivotControls
         autoTransform={false}
@@ -93,17 +100,24 @@ export default function SoloGameApp() {
           <meshStandardMaterial />
         </mesh>
       </PivotControls> */}
+      <Suspense>
+        <ModelPortal />
+        <BoostFlame />
+        <ThunderClouds />
+      </Suspense>
 
       {/* hierrachy order is important?? */}
-      <Movement />
+      {/* <Movement /> */}
       {/* <Perf position="top-left" /> */}
       {/* <fog attach="fog" args={["#070710", 100, 700]} /> */}
-      {/* <Stats /> */}
-      {/* <Stars /> */}
+      <Stats />
+      <Stars />
       <TestTerrains />
+      {/* 
       <SpaceShip />
-      <Environment preset="city" />
       <Gamestate />
+    */}
+      <Environment preset="city" />
       <Camera />
 
       {/* <Suspense fallback={null}>

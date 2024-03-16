@@ -10,6 +10,9 @@ export default defineConfig({
   server: {
     port: 3006,
   },
+  optimizeDeps: {
+    exclude: ["js-big-decimal"],
+  },
   plugins: [
     unocss(),
     react(),
@@ -39,6 +42,9 @@ export default defineConfig({
   assetsInclude: [
     "**/*.json",
     "**/*.gltf",
+    "**/*.glb",
+    "**/*.jpeg",
+    "**/*.png",
     "**/*.mp3",
     "**/*.cube",
     "**/*.hdr",
