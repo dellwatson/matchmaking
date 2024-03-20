@@ -2,7 +2,7 @@ import ProductDisplay from "@/components/product";
 import Layout from "@/components/lobby/LayoutHeader";
 import useReadContract from "@/helpers/hooks/useReadContract";
 import HorizontalScroll from "@/_ui/HorizontalScroll";
-import CardProduct from "@/_ui/card/CardStore";
+import CardProduct from "@/_ui/Card/CardStore";
 import GroupCards from "@/_ui/group/GroupCards";
 import { useNavigate } from "react-router-dom";
 import { MOCK_SHOP } from "@/components/product/mock-shop";
@@ -12,7 +12,7 @@ export default function ShopPage() {
   // read : groups, horizontal ? products
   const navigate = useNavigate();
   return (
-    <div className="absolute dark:bg-black  h-full w-full overflow-hidden">
+    <div className="absolute bg-slate-900  h-full w-full overflow-hidden">
       <Layout />
       {/* BACK BUTTON */}
       {/* <Shop /> */}

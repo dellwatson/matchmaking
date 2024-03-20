@@ -23,7 +23,7 @@ export default function Claim() {
             3
           </div>
         </div>
-        <div className=" p-4 bg-slate-800 ">
+        <div className=" p-4 bg-gray-900 rounded-md border border-gray-600">
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FREE CLAIMS &nbsp;
         </div>
       </div>

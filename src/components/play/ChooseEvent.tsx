@@ -9,7 +9,7 @@ import CardEvent from "./CardEvent";
 const MOCK_EVENTS = [
   {
     title: "survival",
-    bgColor: "bg-gradient-to-r from-cyan-500 to-blue-500",
+    bgColor: "bg-gradient-to-r from-gray-900 to-blue-800",
     desc: "Objects in the map get progressively destroyed Objects in the map get progressively destroyed Objects in the map get progressively destroyed",
     icon: GiTargeting,
     terrains: [
@@ -38,10 +38,11 @@ const MOCK_EVENTS = [
       //   info: "Require Ticket",
       // },
       {
-        name: <div className="text-blue-900">aptos zone</div>,
+        name: <div className="text-blue-400">aptos zone</div>,
         quests: [1, 1],
         eventImage:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRkGoj9sKXsaH_2rGckX_9ChezbTCl7Is8cA&usqp=CAU",
+          "https://cryptologos.cc/logos/versions/aptos-apt-logo-full.svg?v=029",
+        classNameImage: "",
         ticket: true,
         info: "Require Ticket",
       },

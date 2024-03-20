@@ -32,14 +32,14 @@ export default function NavHeader() {
   );
 
   return (
-    <div className=" flex space-x-4 ">
+    <div className="hidden xl:flex space-x-4 ">
       {PAGES.map((item, i) => (
         <CornerBox
           key={`navheader-${i}`}
           corner={false}
           border
           background={!item?.disable ? "rgba(132,212,188,0.2)" : "black"}
-          className={` p-4 px-6 min-w-[200px] text-center uppercase text-green-400 ${
+          className={` p-4 lg:px-6  xl:min-w-[200px] text-center uppercase text-green-400 ${
             !item?.disable ? "cursor-pointer" : "cursor-not-allowed"
           } `}
           onClick={() => {

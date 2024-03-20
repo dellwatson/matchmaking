@@ -1,4 +1,4 @@
-import Slider from "@/_ui/slider/slider";
+import Slider from "@/_ui/Slider/Slider";
 import useMediumRssFeed from "@/helpers/hooks/useMediumFeed";
 import React from "react";
 

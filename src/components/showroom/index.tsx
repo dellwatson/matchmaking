@@ -15,6 +15,10 @@ import useStore from "@/store/lobby-store";
 import { Mercedes } from "./Mercedes";
 import { SparrowModel } from "@/assets/game/model/mock/sparrow/Scene";
 import { OrchidModel } from "@/assets/game/model/mock/orchid/Scene";
+import { Model as MercyA } from "@/_backend/starship/mercyA/Scene";
+import { Model as OrchidA } from "@/_backend/starship/orchid/Scene";
+import { Model as SparrowA } from "@/_backend/starship/sparrow/Scene";
+import LoadStarship from "./LoadStarship";
 
 // todo: refactor ship component for modularity
 export default function ShowRoom() {
@@ -26,14 +30,15 @@ export default function ShowRoom() {
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 15], fov: 25 }}>
       {/* <Stats /> */}
-      <color attach="background" args={["darkblue"]} />
+      <color attach="background" args={["rgb(15, 23, 42)"]} />
       <Float
         floatingRange={[0, 0]} //
       >
-        <Mercedes />
-        {/* <SparrowModel /> */}
-        {/* <OrchidModel /> */}
-        {/* <Ship {...{ selected: selectedShip, isLobby: true }} /> */}
+        {/* <OrchidA scale={[1, 1, 0.8]} position={[0, 0.5, 0]} />
+        <MercyA scale={[0.5, 0.5, 0.5]} />
+        <SparrowA scale={[0.65, 0.65, 0.65]} /> */}
+
+        <LoadStarship />
       </Float>
       <hemisphereLight intensity={0.5} />
 
@@ -45,7 +50,7 @@ export default function ShowRoom() {
       // minPolarAngle={Math.PI / 2.2}
       // maxPolarAngle={Math.PI / 2.2}
       />
-      <AnimatedCamera />
+      {/* <AnimatedCamera /> */}
     </Canvas>
   );
 }
@@ -144,7 +149,6 @@ const Garage = () => (
         position={[0, 4, 9]}
         scale={[10, 1, 1]}
       />
-      {/* Sides */}
       <Lightformer
         intensity={2}
         rotation-y={Math.PI / 2}
