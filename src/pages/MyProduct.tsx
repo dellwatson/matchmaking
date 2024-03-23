@@ -1,10 +1,10 @@
 import { NFT_STARSHIP_A } from "@/_backend/_mockBackend/listInventory";
 import Layout from "@/components/lobby/LayoutHeader";
 import Detail from "@/components/product/detail";
-import { PRODUCT_STARSHIP_A } from "@/components/product/mock_products/starshipA";
+import { PRODUCT_STARSHIP_A } from "@/_backend/_mockBackend/listing";
 import { useNavigate } from "react-router-dom";
 
-export default function OwnProductPage() {
+export default function MyProductPage() {
   // const {} = useGetShopList()
   // read : groups, horizontal ? products
   const navigate = useNavigate();

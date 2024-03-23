@@ -10,7 +10,8 @@ const MOCK_EVENTS = [
   {
     title: "survival",
     bgColor: "bg-gradient-to-r from-gray-900 to-blue-800",
-    desc: "Objects in the map get progressively destroyed Objects in the map get progressively destroyed Objects in the map get progressively destroyed",
+    desc: "",
+    // desc: "Objects in the map get progressively destroyed Objects in the map get progressively destroyed Objects in the map get progressively destroyed",
     icon: GiTargeting,
     terrains: [
       {

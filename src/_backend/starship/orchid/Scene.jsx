@@ -8,7 +8,7 @@ Source: https://sketchfab.com/3d-models/orchid-manta-spaceship-pbr-cb321955546a4
 Title: Orchid Manta - spaceship PBR
 */
 
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import GLB_MODEL from "./scene-transformed.glb";
 
@@ -16,6 +16,12 @@ export function Model(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(GLB_MODEL);
   const { actions } = useAnimations(animations, group);
+  useLayoutEffect(() => {
+    Object.values(materials).forEach((material) => {
+      material.roughness = 0;
+    });
+  }, []);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

@@ -26,7 +26,7 @@ type TPrice = {
   bgToken: string;
   supply: string;
   price: string;
-  weiPrice: string;
+  price_in_wei: string;
   usdPrice: string;
   address: string;
   isNative: boolean;

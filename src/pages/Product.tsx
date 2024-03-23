@@ -1,7 +1,8 @@
 import Layout from "@/components/lobby/LayoutHeader";
 import Detail from "@/components/product/detail";
-import { PRODUCT_STARSHIP_A } from "@/components/product/mock_products/starshipA";
-import { useNavigate } from "react-router-dom";
+import { PRODUCT_STARSHIP_A } from "@/_backend/_mockBackend/listing";
+import { useNavigate, useParams } from "react-router-dom";
+import useListingProduct from "@/_core/hooks/useListingProduct";
 
 export default function ProductPage() {
   // const {} = useGetShopList()
@@ -13,15 +14,19 @@ export default function ProductPage() {
   // description?
   // sections
   // networks
+  const { listingId } = useParams();
 
-  const data = PRODUCT_STARSHIP_A;
+  const { data, isLoading } = useListingProduct(listingId);
 
+  console.log(data, "data");
   return (
     <div className="absolute bg-slate-900 h-full w-full ">
-      <Layout />
+      <Layout
+      // set name?
+      />
       {/* BACK BUTTON */}
       <div className="mt-24 h-full">
-        <Detail page="shop" data={data} />
+        {data && <Detail page="shop" data={data} />}
       </div>
     </div>
   );

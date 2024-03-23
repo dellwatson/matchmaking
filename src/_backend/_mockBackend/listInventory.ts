@@ -4,6 +4,16 @@ import {
   TOKEN_APTOS,
 } from "@/components/product/mock_products";
 
+// used in modelId too
+// {stateModel && LIST_STARSHIPS[stateModel?.modelId]}
+const ARR_NFTS_ID = [
+  //NFT_STARSHIP_A
+  1,
+  // NFT_STARSHIP_B
+  2,
+  // NFT_STARSHIP_C
+  3,
+];
 export const NFT_STARSHIP_A = {
   // address
   gameId: "",
@@ -22,6 +32,23 @@ export const NFT_STARSHIP_A = {
   for instantaneous interstellar jumps.`,
   rarity: "demo",
   supply: "",
+  nfts: [
+    {
+      productId: "",
+      network_logo: LOGO_APTOS,
+      blockExplorer: "",
+      network: "Aptos", //might not needed here
+      chainId: "",
+      bgChain: "bg-white p-1 rounded-full",
+      bgIcon: "bg-white p-1 rounded-full",
+      bgToken: "bg-white rounded-full",
+      provider: "move",
+      address:
+        "0xe895013a4360a07c13829974865fd90988d7287e13a41342a4e62d6f1be32576",
+      model_type: "MODEL_1",
+      // supply
+    },
+  ],
   minted: {
     productId: "",
     network_logo: LOGO_APTOS,
@@ -63,31 +90,31 @@ export const NFT_STARSHIP_A = {
     assetUrl: "/shops/starshipA/ship1.png", // portrait
     assetImage: "",
     classNameImage: " rounded-md object-cover",
-    prices: [
-      {
-        isCrypto: true,
-        chainId: "",
-        network: "Aptos",
-        token: "APT",
-        currency: "aptos",
-        symbol: "APT",
-        symbolUrl: TOKEN_APTOS,
-        network_logo: TOKEN_APTOS,
-        bgChain: "bg-white p-1 rounded-full",
-        bgToken: "bg-white rounded-full",
-        supply: "100",
-        price: "0.03",
-        weiPrice: "30000000000000000",
-        usdPrice: "",
-        address: "",
-        isNative: true,
-        fee: "",
-        archived: false,
-        hidden: false,
-        disable: false,
-        type: "direct", //wrapped //custody
-      },
-    ],
+    // prices: [
+    //   {
+    //     isCrypto: true,
+    //     chainId: "",
+    //     network: "Aptos",
+    //     token: "APT",
+    //     currency: "aptos",
+    //     symbol: "APT",
+    //     symbolUrl: TOKEN_APTOS,
+    //     network_logo: TOKEN_APTOS,
+    //     bgChain: "bg-white p-1 rounded-full",
+    //     bgToken: "bg-white rounded-full",
+    //     supply: "100",
+    //     price: "0.03",
+    //     price_in_wei: "30000000000000000",
+    //     usdPrice: "",
+    //     address: "",
+    //     isNative: true,
+    //     fee: "",
+    //     archived: false,
+    //     hidden: false,
+    //     disable: false,
+    //     type: "direct", //wrapped //custody
+    //   },
+    // ],
     // classNameImage: "object-fit -rotate-20 rounded-md ",
   }, //img | 3d mode | video
   traits: [
@@ -132,22 +159,38 @@ export const NFT_STARSHIP_A = {
 export const NFT_STARSHIP_C = {
   // address
   gameId: "",
-  modelId: 1,
-
+  modelId: 2,
   shopId: "",
   productId: "",
   id: "3",
   archived: false,
   disable: false,
-  title: "Skyblaze Mockup X",
+  title: "Mercedes X",
   category: "SHIP",
-  description: `The X-23 Starblaze Prototype, a pioneering spacecraft engineered by
+  description: `The Mercedes Prototype, a pioneering spacecraft engineered by
   Horizon Dynamics Corporation, epitomizes innovation in interstellar
   exploration. Fueled by the experimental Quasar Core Engine, the X-23
   achieves unparalleled speed and agility, complemented by a warp drive
   for instantaneous interstellar jumps.`,
   rarity: "epic",
   supply: "",
+  nfts: [
+    {
+      productId: "",
+      network_logo: LOGO_APTOS,
+      blockExplorer: "",
+      network: "Aptos", //might not needed here
+      chainId: "",
+      bgChain: "bg-white p-1 rounded-full",
+      bgIcon: "bg-white p-1 rounded-full",
+      bgToken: "bg-white rounded-full",
+      provider: "move",
+      address:
+        "0xe895013a4360a07c13829974865fd90988d7287e13a41342a4e62d6f1be32576",
+      model_type: "MODEL_3",
+      // supply
+    },
+  ],
   minted: {
     productId: "",
     network_logo: LOGO_APTOS,
@@ -203,7 +246,7 @@ export const NFT_STARSHIP_C = {
         bgToken: "bg-white rounded-full",
         supply: "100",
         price: "0.03",
-        weiPrice: "30000000000000000",
+        price_in_wei: "30000000000000000",
         usdPrice: "",
         address: "",
         isNative: true,
@@ -330,7 +373,7 @@ export const NFT_RANDOM = {
         bgToken: "bg-white rounded-full",
         supply: "100",
         price: "0.03",
-        weiPrice: "30000000000000000",
+        price_in_wei: "30000000000000000",
         usdPrice: "",
         address: "",
         isNative: true,
@@ -381,22 +424,39 @@ export const NFT_RANDOM = {
 export const NFT_STARSHIP_B = {
   // address
   gameId: "",
-  modelId: 2,
+  modelId: 1,
 
   shopId: "",
   productId: "",
-  id: "30",
+  id: "2",
   archived: false,
   disable: false,
-  title: "Skyblaze Mockup X",
+  title: "Z-9023 Mockup B",
   category: "SHIP",
-  description: `The X-23 Starblaze Prototype, a pioneering spacecraft engineered by
+  description: `Z-9023 Mockup, a pioneering spacecraft engineered by
   Horizon Dynamics Corporation, epitomizes innovation in interstellar
   exploration. Fueled by the experimental Quasar Core Engine, the X-23
   achieves unparalleled speed and agility, complemented by a warp drive
   for instantaneous interstellar jumps.`,
-  rarity: "demo",
+  rarity: "uncommon",
   supply: "",
+  nfts: [
+    {
+      productId: "",
+      network_logo: LOGO_APTOS,
+      blockExplorer: "",
+      network: "Aptos", //might not needed here
+      chainId: "",
+      bgChain: "bg-white p-1 rounded-full",
+      bgIcon: "bg-white p-1 rounded-full",
+      bgToken: "bg-white rounded-full",
+      provider: "move",
+      address:
+        "0xe895013a4360a07c13829974865fd90988d7287e13a41342a4e62d6f1be32576",
+      model_type: "MODEL_2",
+      // supply
+    },
+  ],
   minted: {
     productId: "",
     network_logo: LOGO_APTOS,
@@ -424,8 +484,8 @@ export const NFT_STARSHIP_B = {
     htmlTag: null,
   },
   footer: {
-    textColor: "text-gray-500",
-    bgColor: "backdrop-blur-md border",
+    textColor: "text-gray-800",
+    bgColor: "backdrop-blur-md ",
     htmlTag: null,
   },
 
@@ -438,31 +498,6 @@ export const NFT_STARSHIP_B = {
     assetUrl: "/shops/starshipB/starshipB.png", // portrait
     assetImage: "",
     classNameImage: " rounded-md object-cover",
-    prices: [
-      {
-        isCrypto: true,
-        chainId: "",
-        network: "Aptos",
-        token: "APT",
-        currency: "aptos",
-        symbol: "APT",
-        symbolUrl: TOKEN_APTOS,
-        network_logo: TOKEN_APTOS,
-        bgChain: "bg-white p-1 rounded-full",
-        bgToken: "bg-white rounded-full",
-        supply: "100",
-        price: "0.03",
-        weiPrice: "30000000000000000",
-        usdPrice: "",
-        address: "",
-        isNative: true,
-        fee: "",
-        archived: false,
-        hidden: false,
-        disable: false,
-        type: "direct", //wrapped //custody
-      },
-    ],
     // classNameImage: "object-fit -rotate-20 rounded-md ",
   }, //img | 3d mode | video
   traits: [
@@ -576,7 +611,7 @@ export const NFT_PASS = {
         bgToken: "bg-white rounded-full",
         supply: "100",
         price: "0.03",
-        weiPrice: "30000000000000000",
+        price_in_wei: "30000000000000000",
         usdPrice: "",
         address: "",
         isNative: true,
@@ -697,7 +732,7 @@ export const NFT_RANDOM_ETH = {
         bgToken: "bg-white rounded-full",
         supply: "100",
         price: "0.03",
-        weiPrice: "30000000000000000",
+        price_in_wei: "30000000000000000",
         usdPrice: "",
         address: "",
         isNative: true,
@@ -745,6 +780,14 @@ export const NFT_RANDOM_ETH = {
 
   // auction: false, // direct
 };
+
+export const ALL_PRODUCTS = [
+  NFT_STARSHIP_A,
+  NFT_STARSHIP_B,
+  NFT_STARSHIP_C,
+  NFT_PASS,
+  NFT_RANDOM,
+];
 export const MOCK_INVENTORY = [
   // APTOS
   NFT_STARSHIP_A,

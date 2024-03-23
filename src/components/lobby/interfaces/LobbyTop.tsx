@@ -13,20 +13,20 @@ import globalStore from "@/store/global-store";
 import { toast, useToast } from "react-toastify";
 import ModalSettings from "@/_ui/Modal/ModalSettings";
 import AuthButton from "@/_ui/Auth/AuthButton";
-import useViewAptos from "@/_core/hooks/contract/useViewAptos";
+// import useViewAptos from "@/_core/hooks/contract/useViewAptos";
 import { useLocation } from "react-router-dom";
 import { Title } from "@/_ui/Typography";
 
 const LobbyTop = () => {
-  useViewAptos({
-    contractAddress:
-      "0xcab918f5f28bab478e237cd15c3750b3fa3f95ec0505510a24aa663efb348dd3",
-    contractName: "main",
-    functionName: "has_aptogotchi",
-    args: [
-      "0xd475a64ba04ac64028c9b2c7ab61d68550a34062a579c89ffd331e7751cbfd4e",
-    ],
-  });
+  // useViewAptos({
+  //   contractAddress:
+  //     "0xcab918f5f28bab478e237cd15c3750b3fa3f95ec0505510a24aa663efb348dd3",
+  //   contractName: "main",
+  //   functionName: "has_aptogotchi",
+  //   args: [
+  //     "0xd475a64ba04ac64028c9b2c7ab61d68550a34062a579c89ffd331e7751cbfd4e",
+  //   ],
+  // });
   return (
     <>
       <div className="absolute w-full flex justify-between p-4 backdrop-blur-sm">

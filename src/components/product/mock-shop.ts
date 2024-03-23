@@ -1,6 +1,11 @@
 // token options
 
-import { PRODUCT_STARSHIP_A } from "./mock_products/starshipA";
+import {
+  PRODUCT_STARSHIP_A,
+  PRODUCT_STARSHIP_APTOS_A,
+  PRODUCT_STARSHIP_APTOS_B,
+  PRODUCT_STARSHIP_ETH_A,
+} from "../../_backend/_mockBackend/listing";
 
 // https://cryptologos.cc/logos/aptos-apt-logo.svg?v=029
 const LOGO_APTOS =
@@ -21,7 +26,14 @@ export const MOCK_SHOP = {
       // bgColor: "bg-gray-400",
       bgUrl: "",
       network: "", //mixed | polygon
-      sale_list: [PRODUCT_STARSHIP_A],
+      storeAddress: "",
+      // storeFunctionName: "",
+      // storeArgs: [],
+      sale_list: [
+        // PRODUCT_STARSHIP_A
+        PRODUCT_STARSHIP_APTOS_A,
+        PRODUCT_STARSHIP_APTOS_B,
+      ],
     },
     {
       archived: false,
@@ -29,76 +41,11 @@ export const MOCK_SHOP = {
       countdown: false,
       //
       shopId: "",
-      title: "Binance Sale", // sale title
-      bgColor: "bg-orange-400",
+      title: "Ethereum Sale", // sale title
+      bgColor: "",
       bgUrl: "",
       network: "", //mixed | polygon
-      sale_list: [
-        {
-          // product
-          //productId
-          id: "123",
-
-          //   archived: false,
-          //   disable: false,
-          // bg:
-          // type  ==> image | 3d
-          header: {
-            isTag: true,
-            header: "<div>hello + common</div>",
-          },
-          footer: null,
-          headerTitle: "",
-          //   rarity
-          content: {
-            // overlap_3d = false
-            contentId: "",
-            contentUrl: "./shops/season-pass.svg", // portrait
-            contentType: "image", //img | 3d mode | video
-            //className image?
-          }, //img | 3d mode | video
-          supply: "",
-          // network:
-          basePrice: "",
-          price: "", // array?
-          // auction: false, // direct
-          //   gameId: "",
-          //   shopId: "",
-          productId: "",
-        },
-        {
-          // product
-          //productId
-          id: "123",
-
-          //   archived: false,
-          //   disable: false,
-          // bg:
-          // type  ==> image | 3d
-          header: {
-            isTag: true,
-            header: "<div>hello + common</div>",
-          },
-          footer: null,
-          headerTitle: "",
-          //   rarity
-          content: {
-            // overlap_3d = false
-            contentId: "",
-            contentUrl: "./shops/season-pass.svg", // portrait
-            contentType: "image", //img | 3d mode | video
-            //className image?
-          }, //img | 3d mode | video
-          supply: "",
-          // network:
-          basePrice: "",
-          price: "", // array?
-          // auction: false, // direct
-          //   gameId: "",
-          //   shopId: "",
-          productId: "",
-        },
-      ],
+      sale_list: [PRODUCT_STARSHIP_ETH_A],
     },
   ],
 };
@@ -171,7 +118,7 @@ export const PAYMENT_OPTIONS = [
         bgToken: "bg-white rounded-full",
         supply: "100",
         price: "0.03",
-        weiPrice: "30000000000000000",
+        price_in_wei: "30000000000000000",
         usdPrice: "",
         address: "",
         isNative: true,

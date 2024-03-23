@@ -15,7 +15,7 @@ import FullScreen from "react-fullscreen-crossbrowser";
 import globalStore from "./store/global-store";
 import "@/_ui/styles/global.scss";
 import Product from "./pages/Product";
-import OwnProductPage from "./pages/OwnProduct";
+import MyProduct from "./pages/MyProduct";
 
 function App() {
   const { isFullScreen } = globalStore();
@@ -56,8 +56,8 @@ function App() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="match-room/*" element={<MatchRoom />} />
-        <Route path="product/*" element={<Product />} />
-        <Route path="own-product/*" element={<OwnProductPage />} />
+        <Route path="product/:listingId" element={<Product />} />
+        <Route path="own-product/*" element={<MyProduct />} />
       </Routes>
     </BrowserRouter>
     // </FullScreen>

@@ -8,12 +8,19 @@ Source: https://sketchfab.com/3d-models/sparrow-fighter-spacecraft-9877408b0bbc4
 Title: SPARROW Fighter Spacecraft
 */
 
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import GLB_MODEL from "./scene-transformed.glb";
 
 export function Model(props) {
   const { nodes, materials } = useGLTF(GLB_MODEL);
+
+  useLayoutEffect(() => {
+    Object.values(materials).forEach((material) => {
+      material.roughness = 0.5;
+    });
+  }, []);
+
   return (
     <group {...props} dispose={null}>
       <mesh
