@@ -92,19 +92,19 @@ export default function DailyPerformances() {
 const TASKS = [
   {
     title: "Claim your gems 10x",
-    progress: 67,
+    progress: 1,
   },
   {
     title: "Purchase 3 ships",
-    progress: 40,
+    progress: 1,
   },
 
   {
     title: "Play and get items 10x",
-    progress: 90,
+    progress: 1,
   },
   {
     title: "Feedback and subscribe 1x",
-    progress: 100,
+    progress: 1,
   },
 ];

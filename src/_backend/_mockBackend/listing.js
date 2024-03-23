@@ -369,8 +369,8 @@ export const PRODUCT_STARSHIP_APTOS_A = {
           disable: true,
           type: "direct", //wrapped //custody
         },
-        VISA("aptos", "1", false),
-        GPAY("aptos", "1", false),
+        // VISA("aptos", "1", false),
+        // GPAY("aptos", "1", false),
       ],
     },
     {

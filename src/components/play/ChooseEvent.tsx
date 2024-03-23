@@ -20,7 +20,8 @@ const MOCK_EVENTS = [
         eventImage:
           "https://effigy.im/a/0xA31A54e4C258B1BE8cE887a2724906BfCe88Cc6A.png",
         // ticket:
-        info: "3d 12h",
+        info: "Closed",
+        // info: "3d 12h",
       },
       {
         name: <div className="text-orange-400">binance zone</div>,
@@ -71,7 +72,8 @@ const MOCK_EVENTS = [
     disabled: true,
     bgColor:
       "bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%",
-    desc: "Objects in the map get progressively destroyed",
+    desc: "",
+
     icon: GiTargeting,
     terrains: [
       {
@@ -89,7 +91,8 @@ const MOCK_EVENTS = [
     title: "marathon",
     disabled: true,
     bgColor: "bg-gradient-to-r from-orange-500 from-10%  to-emerald-500 to-90%",
-    desc: "Objects in the map get progressively destroyed",
+    desc: "",
+
     terrains: [
       {
         name: "",

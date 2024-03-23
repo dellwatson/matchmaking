@@ -195,7 +195,8 @@ const getNFTs = async (ownerAddress: string, network: string) => {
   //
   // or from GRAPH
 
-  return [...result, ...result_real];
+  return result_real;
+  // return [...result, ...result_real];
 };
 
 function filterAndCombineObjects(products, tokens, network) {

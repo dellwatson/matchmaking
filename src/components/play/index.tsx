@@ -54,7 +54,8 @@ export default function Play({ isMobile = true }) {
 
         <CornerBox
           onClick={() => {
-            navigate("/match-room");
+            // navigate("/match-room");
+            alert("Events are closed");
             // RESET GAME STORE
           }}
           border

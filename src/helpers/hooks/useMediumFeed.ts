@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+const AAA = "aptoslabs";
 function useMediumRssFeed() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -8,7 +9,8 @@ function useMediumRssFeed() {
   useEffect(() => {
     // Define the API URL
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${
-      import.meta.env.VITE_CHAIN
+      // import.meta.env.VITE_CHAIN
+      AAA
     }`;
 
     // Make the API request

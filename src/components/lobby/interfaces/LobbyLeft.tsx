@@ -9,7 +9,7 @@ import SeasonPass from "@/_ui/Lobby/SeasonPassBtn";
 export default function LobbyLeft() {
   return (
     <div className="absolute left-0 mt-32 z-10  mx-4">
-      <Claim />
+      {/* <Claim /> */}
       <QuestLobby />
 
       <div className="lg:hidden relative mt-18">
