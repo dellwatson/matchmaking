@@ -42,14 +42,14 @@ export function Effects() {
 
   return (
     <EffectComposer disableNormalPass>
-      <SSR {...ssrProps} />
+      {/* <SSR {...ssrProps} /> */}
       <Bloom
         luminanceThreshold={0.2}
         mipmapBlur
         luminanceSmoothing={0}
         intensity={1.75}
       />
-      <LUT lut={texture} />
+      {/* <LUT lut={texture} /> */}
     </EffectComposer>
   );
 }
