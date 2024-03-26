@@ -22,6 +22,10 @@ export default function Interface() {
       </div>
       <div className="hidden md:flex border-gray-600  justify-end items-end ">
         {/* <Abilities /> */}
+        <img
+          src={"./keyControls.png"}
+          className="min-w-[200px] min-h-[200px] relative left-100 scale-75"
+        />
       </div>
     </div>
   );

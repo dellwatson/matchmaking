@@ -1,12 +1,24 @@
 import * as THREE from "three";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import useStore from "../store";
 
 export default function Enemies() {
+  const [renderEnemies, setRenderEnemies] = useState(true);
   const enemies = useStore((state) => state.enemies);
-  return enemies.map((data, i) => <Drone key={i} data={data} />);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRenderEnemies((prevRenderEnemies) => !prevRenderEnemies);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return renderEnemies
+    ? enemies.map((data, i) => <Drone key={i} data={data} />)
+    : null;
 }
 
 const box = new THREE.Box3();
