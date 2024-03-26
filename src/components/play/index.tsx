@@ -54,8 +54,8 @@ export default function Play({ isMobile = true }) {
 
         <CornerBox
           onClick={() => {
-            // navigate("/match-room");
-            alert("Events are closed");
+            navigate("/match-room");
+            // alert("Events are closed");
             // RESET GAME STORE
           }}
           border
@@ -63,7 +63,7 @@ export default function Play({ isMobile = true }) {
           className="flex justify-center items-center w-full h-full uppercase"
           background="rgba(0, 0, 0, 0.9)">
           <GlowingText color="red" effect="pulsate" unit="px" fontSize="24px">
-            PLAY
+            PRACTICE
           </GlowingText>
         </CornerBox>
       </div>
