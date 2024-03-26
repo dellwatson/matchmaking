@@ -9,6 +9,7 @@ import {
   Hud,
   PivotControls,
   useTexture,
+  Stars,
 } from "@react-three/drei";
 import TestTerrains from "./terrains/test-terrains";
 import SpaceShip from "./player/star-ship";
@@ -17,7 +18,7 @@ import Effects from "./graphics/Effects";
 // import { Effects } from "@components/showroom/Effects";
 
 import { Suspense, useLayoutEffect, useRef, useState } from "react";
-import Stars from "./celestial/Stars";
+// import Stars from "./celestial/Stars";
 import Gamestate from "./system/gamestate";
 import Camera from "./control/camera";
 // import Controls from "./hud/controller/keyboard-stick";
@@ -29,9 +30,11 @@ import useStore from "./store";
 import ModelPortal from "./celestial/Portal/Portal";
 import BoostFlame from "./vfx/BoostFlame";
 import ThunderClouds from "./celestial/ThunderClouds/ThunderClouds";
+import Rig from "./player/Rig";
+import Rings from "./celestial/Rings";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
-function Scene() {
+function SceneBackground() {
   const backgroundSpace = useTexture(bgSpace);
 
   return <primitive attach="background" object={backgroundSpace} />;
@@ -42,90 +45,66 @@ export default function SoloGameApp() {
   const actions = useStore((state) => state.actions);
 
   return (
-    <Canvas
-      linear
-      mode="concurrent"
-      style={{ height: "100vh", width: "100vw" }}
-      dpr={[1, 1.5]}
-      onCreated={({ gl }) => {
-        actions.init();
-        // gl.toneMapping = THREE.Uncharted2ToneMapping;
-
-        // gl.toneMapping = THREE.ReinhardToneMapping;
-        // gl.setClearColor(new THREE.Color("#020209"));
-        // console.log("Tone Mapping:", gl.toneMapping);
-        // console.log("Clear Color:", gl.getClearColor());
-        // gl.toneMapping = THREE.Uncharted2ToneMapping;
-        // gl.setClearColor(new THREE.Color("black"));
-        // gl.setClearColor(new THREE.Color("indianred"));
-
-        // gl.setClearColor(new THREE.Color("#ADD8E6"));
-        // gl.setClearColor(new THREE.Color("#020209"));
-        // gl.setClearColor(new THREE.Color("#0x000000"));
-
-        gl.toneMapping = THREE.AgXToneMapping;
-        gl.setClearColor(0x000000, 0);
-      }}
-      gl={{
-        alpha: false,
-        powerPreference: "high-performance",
-        stencil: false,
-        antialias: false,
-        depth: true,
-      }}>
-      {/* <Suspense fallback={null}>
-        <Scene />
+    <div
+      // style={{ backgroundColor: "green" }}
+      className="w-full h-full  ">
+      <Canvas
+        shadows={true}
+        mode="concurrent"
+        style={{
+          height: "100vh",
+          width: "100vw",
+          // background: "#00008B",
+        }}
+        dpr={[1, 1.5]}
+        onCreated={({ gl }) => {
+          actions.init();
+          gl.setClearColor(new THREE.Color("#020209"));
+        }}
+        gl={{
+          // alpha: false,
+          // powerPreference: "high-performance",
+          // stencil: false,
+          antialias: false,
+          depth: true,
+        }}>
+        {/* <Suspense fallback={null}>
+        <SceneBackground />
       </Suspense> */}
 
-      <spotLight
-        intensity={1.5}
-        position={[0, 0, 2000]}
-        penumbra={1}
-        color="red"
-      />
+        <ambientLight intensity={0.25} />
 
-      {/* <PivotControls
-        autoTransform={false}
-        activeAxes={[true, false, true]}
-        anchor={[0, 0, 0]}
-        depthTest={true}
-        scale={5000}
-        lineWidth={3}
-        onDragStart={() => null}
-        onDrag={() => null}
-        onDragEnd={() => null}
-      >
-        <mesh>
-          <boxGeometry args={[0, 0, 0]} />
-          <meshStandardMaterial />
-        </mesh>
-      </PivotControls> */}
-      <Suspense>
-        <ModelPortal />
-        <BoostFlame />
-        <ThunderClouds />
-      </Suspense>
+        {/* <spotLight
+          intensity={1.5}
+          position={[0, 0, 2000]}
+          penumbra={1}
+          color="red"
+        /> */}
 
-      {/* hierrachy order is important?? */}
-      {/* <Movement /> */}
-      {/* <Perf position="top-left" /> */}
-      {/* <fog attach="fog" args={["#070710", 100, 700]} /> */}
-      <Stats />
-      <Stars />
-      <TestTerrains />
-      {/* 
-      <SpaceShip />
-      <Gamestate />
-    */}
-      <Environment preset="city" />
-      <Camera />
+        {/* hierrachy order is important?? */}
+        <Movement />
+        {/* <Perf position="top-left" /> */}
+        {/* <fog attach="fog" args={["#070710", 100, 700]} /> */}
+        <Stats />
+        {/* <Stars radius={100} depth={100} count={10000} /> */}
+        <TestTerrains />
+        <Suspense>
+          {/* <Rig> */}
+          <SpaceShip />
+          {/* </Rig> */}
+          <Gamestate />
+        </Suspense>
+        {/* <Environment preset="city" /> */}
+        <Camera />
+        {/* <Rings /> */}
 
-      {/* <Suspense fallback={null}>
+        {/* <Suspense fallback={null}>
           <Rocks />
           <Planets />
         </Suspense> */}
-      <Effects />
-    </Canvas>
+        <Effects />
+      </Canvas>
+    </div>
   );
 }
 

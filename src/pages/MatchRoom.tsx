@@ -18,7 +18,7 @@ export default function MatchRoomPage() {
       {/* <div className="absolute matchRoom border " /> */}
       {/* MatchRoomx */}
       {/* <ShowRoom /> */}
-      {/* <Interface /> */}
+      <Interface />
       <SoloGameApp />
       <GameOverModal />
       {/* game over modal */}

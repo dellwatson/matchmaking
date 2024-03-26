@@ -39,6 +39,7 @@ export function Model(props) {
         geometry={nodes.Cube005_3.geometry}
         material={materials.Window_Frame}
       />
+      {props?.children}
       <mesh
         castShadow
         receiveShadow

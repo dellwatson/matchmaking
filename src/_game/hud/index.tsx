@@ -8,24 +8,20 @@ import Radar from "./radar";
 export default function Interface() {
   // divide to 4
   return (
-    <div className="border-red-500 w-full h-full grid grid-cols-2 grid-rows-2 bg-transparent absolute z-5 p-2">
-      <div className="border-gray-600 ">
+    <div className="border-red-500 w-full h-full grid md:grid-cols-2 md:grid-rows-2 bg-transparent absolute z-5 p-2">
+      <div className="hidden md:block border-gray-600 ">
         {/* MAP */}
-        <Radar />
+        {/* <Radar /> */}
       </div>
-      <div className="border border-gray-600 flex flex-col items-end ">
-        <div className="flex">
-          <Menu />
-        </div>
-        <div className="p-4 text-xl ">
-          <Distance />
-        </div>
+      <div className="hidden md:flex border-gray-600  flex-col items-end ">
+        <div className="flex">{/* <Menu /> */}</div>
+        <div className="p-4 text-xl ">{/* <Distance /> */}</div>
       </div>
-      <div className="border border-gray-600 relative ">
+      <div className=" border-gray-600 relative ">
         <Controller />
       </div>
-      <div className="border border-gray-600 flex justify-end items-end ">
-        <Abilities />
+      <div className="hidden md:flex border-gray-600  justify-end items-end ">
+        {/* <Abilities /> */}
       </div>
     </div>
   );

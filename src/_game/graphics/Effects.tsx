@@ -21,35 +21,35 @@ import useStore from "../store";
 export default function Effects() {
   // const texture = useLoader(LUTCubeLoader, '/F-6800-STD.cube')
 
-  const ship = useStore((s) => s.ship);
-  const composer = useRef();
-  const dofTarget = useRef(); // Create a ref for the DepthOfField target
+  // const ship = useStore((s) => s.ship);
+  // const composer = useRef();
+  // const dofTarget = useRef(); // Create a ref for the DepthOfField target
 
-  // Update the position of the DepthOfField target based on the ship's position
-  useFrame(() => {
-    if (ship.current && dofTarget.current) {
-      dofTarget?.current?.position.copy(ship.current.position);
-    }
-  });
+  // // Update the position of the DepthOfField target based on the ship's position
+  // useFrame(() => {
+  //   if (ship.current && dofTarget.current) {
+  //     dofTarget?.current?.position.copy(ship.current.position);
+  //   }
+  // });
 
   return (
-    <EffectComposer ref={composer} disableNormalPass>
-      <BrightnessContrast brightness={0} contrast={0.1} />
+    <EffectComposer disableNormalPass>
+      {/* <BrightnessContrast brightness={0} contrast={0.1} /> */}
       {/* <ToneMapping mode={ToneMappingMode.ACES_FILMIC} /> */}
       {/* <LUT lut={texture} /> */}
 
-      {/* <Bloom
-        luminanceThreshold={0}
+      <Bloom
+        luminanceThreshold={0.2}
         mipmapBlur
-        luminanceSmoothing={0.0}
-        intensity={6}
-      /> */}
-      <DepthOfField
+        luminanceSmoothing={1}
+        intensity={10}
+      />
+      {/* <DepthOfField
         target={dofTarget.current} // Set the target to the ref
         focalLength={1.5}
         // bokehScale={15}
         height={700}
-      />
+      /> */}
     </EffectComposer>
   );
 }

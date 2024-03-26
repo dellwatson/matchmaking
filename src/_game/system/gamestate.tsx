@@ -27,8 +27,8 @@ export default function Gamestate() {
       const movementDistance = SPEED * delta;
 
       // Update the ship's position based on the movement distance
-      // ship.current.position.z += movementDistance;
-      increaseSpeed(SPEED + 0.08);
+      ship.current.position.z += movementDistance;
+      increaseSpeed(SPEED + 0.0008);
 
       // console.log(SPEED, "SPEED");
       // console.log(movementDistance, "Movement Distance");

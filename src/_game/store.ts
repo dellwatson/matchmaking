@@ -57,8 +57,8 @@ const useStore = create((set, get) => {
     health: 100,
     lasers: [],
     explosions: [],
-    rocks: randomData(100, track, 150, 8, () => 1 + Math.random() * 2.5),
-    enemies: randomData(10, track, 20, 15, 1),
+    rocks: randomData(80, track, 10, 8, () => 1 + Math.random() * 2.5),
+    enemies: randomData(1, track, 20, 15, 1),
 
     mutation: {
       t: 0,
@@ -70,13 +70,7 @@ const useStore = create((set, get) => {
       fov: 70,
       hits: false,
       rings: randomRings(30, track),
-      particles: randomData(
-        1500,
-        track,
-        100,
-        1,
-        () => 0.5 + Math.random() * 0.8
-      ),
+      particles: randomData(7, track, 100, 1, () => 0.5 + Math.random() * 0.8),
       looptime: 40 * 1000,
       binormal: new THREE.Vector3(),
       normal: new THREE.Vector3(),

@@ -4,8 +4,8 @@ import useStore from "@/_game/store";
 // import useStore from '../store'
 
 // owner of the rings ? so each players have their own ring
-const geometry = new THREE.RingBufferGeometry(1, 1.01, 64);
-const material = new THREE.MeshBasicMaterial({
+const geometry = new THREE.RingGeometry(1, 1.01, 64);
+const material = new THREE.MeshStandardMaterial({
   color: new THREE.Color("lightgreen"),
   side: THREE.DoubleSide,
 });
@@ -13,7 +13,7 @@ const material = new THREE.MeshBasicMaterial({
 export default function Rings() {
   const { rings } = useStore((state) => state?.mutation);
 
-  // console.log(rings, "rings");
+  console.log(rings, "rings");
 
   return rings.map(([pos, matrix], i) => {
     const f = (Math.sin(i / 10) * Math.PI) / 2;

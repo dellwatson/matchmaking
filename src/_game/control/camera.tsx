@@ -10,40 +10,40 @@ export default function Camera() {
   const ship = useStore((s) => s.ship);
   const camera = useStore((s) => s.camera);
 
-  // useLayoutEffect(() => {
-  //   // camera.current.rotation.set(0, Math.PI, 0);
-  //   camera.current.position.set(0, 4, -9); // 0, 1.5, -8
-  //   camera.current.lookAt(
-  //     v.set(
-  //       ship.current.position.x,
-  //       ship.current.position.y,
-  //       ship.current.position.z + 4
-  //     )
-  //   );
-  //   // modify the camera tracking to look above the center of the ship
-  //   camera.current.rotation.z = Math.PI;
-  //   // ship.current.rotation.y = Math.PI;
-  // }, [ship, camera]);
+  useLayoutEffect(() => {
+    // camera.current.rotation.set(0, Math.PI, 0);
+    camera.current.position.set(0, 4, -9); // 0, 1.5, -8
+    camera.current.lookAt(
+      v.set(
+        ship.current.position.x,
+        ship.current.position.y,
+        ship.current.position.z + 4
+      )
+    );
+    // modify the camera tracking to look above the center of the ship
+    camera.current.rotation.z = Math.PI;
+    // ship.current.rotation.y = Math.PI;
+  }, [ship, camera]);
 
-  // useFrame((state, delta) => {
-  //   if (ship.current && camera.current) {
-  //     camera.current.position.z = ship.current.position.z - 12; // + 13.5
-  //     camera.current.position.y = ship.current.position.y + 7; // need to setup between the screen device?
-  //     camera.current.position.x = ship.current.position.x;
-  //   }
-  // });
+  useFrame((state, delta) => {
+    if (ship.current && camera.current) {
+      camera.current.position.z = ship.current.position.z - 12; // + 13.5
+      camera.current.position.y = ship.current.position.y + 7; // need to setup between the screen device?
+      camera.current.position.x = ship.current.position.x;
+    }
+  });
 
   return (
     <>
-      {/* <PerspectiveCamera
+      <PerspectiveCamera
         makeDefault
         ref={camera}
         // {...perscamera}
         // fov={100}
         // rotation={[0, 0, 0]}
         // position={[0, 10, -10]}
-      /> */}
-      <OrbitControls />
+      />
+      {/* <OrbitControls /> */}
     </>
   );
 }
