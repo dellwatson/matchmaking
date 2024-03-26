@@ -72,7 +72,7 @@ export default function SoloGameApp() {
         <SceneBackground />
       </Suspense> */}
 
-        <ambientLight intensity={0.25} />
+        <ambientLight intensity={0.5} />
 
         {/* <spotLight
           intensity={1.5}

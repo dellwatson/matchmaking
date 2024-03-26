@@ -3,8 +3,9 @@ import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import useStore from "../../store";
 import { useFrame } from "@react-three/fiber";
 import Buster from "../../hud/abilities/category/shield/Buster";
-import { Model } from "@/_backend/starship/starshipB/Scene";
+import { Model as StarshipB } from "@/_backend/starship/starshipB/Scene";
 import { Box, Stars } from "@react-three/drei";
+import { Model } from "@/_backend/starship/sparrow/Scene";
 // import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
 // import { useControls } from "leva";
 // import ATOM_EFFECT from "./atom.json";
@@ -68,23 +69,21 @@ export default function SpaceShip() {
           color="indianred"
         />
 
-        <Model>
-          {/* <pointLight
-            castShadow
-            position={[0, 0, -20]}
-            distance={10000}
-            intensity={300000}
-            // intensity={50000}
-            color="green"
-          /> */}
-
+        <Model scale={[0.3, 0.3, 0.3]}>
           <pointLight
+            castShadow
+            position={[0, 0, -100]}
+            distance={1000000}
+            intensity={100000}
+            color="green"
+          />
+          {/* <pointLight
             castShadow
             position={[0, 0, -20]}
             distance={1000000}
             intensity={100000}
             color="green"
-          />
+          /> */}
 
           <mesh
             ref={exhaust}
@@ -96,7 +95,7 @@ export default function SpaceShip() {
             <meshStandardMaterial
               color="lightblue"
               emissive="lightblue"
-              emissiveIntensity={2}
+              emissiveIntensity={1.3}
             />
           </mesh>
         </Model>
