@@ -170,6 +170,6 @@ const Garage = () => (
         onUpdate={(self) => self.lookAt(0, 0, 0)}
       />
     </Environment>
-    {/* <Effects /> */}
+    <Effects />
   </>
 );
