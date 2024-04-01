@@ -1,5 +1,6 @@
 import SoloGameApp from "@/_game";
 import Interface from "@/_game/hud";
+import WrapperInterface from "@/_game/hud/WrapperInterface";
 import GameOverModal from "@/components/gameover/gameover-modal";
 import ShowRoom from "@/components/showroom";
 import React from "react";
@@ -7,14 +8,7 @@ import React from "react";
 // canvas for gameplay
 export default function MatchRoomPage() {
   return (
-    <div
-      // style={{
-      //   width: "100%",
-      //   height: "100%",
-      //   backgroundImage: `url(${ImageSpace})`,
-      //   backgroundSize: "cover", // Adjust the sizing as needed
-      // }}
-      className="absolute ">
+    <WrapperInterface>
       {/* <div className="absolute matchRoom border " /> */}
       {/* MatchRoomx */}
       {/* <ShowRoom /> */}
@@ -23,7 +17,7 @@ export default function MatchRoomPage() {
       <GameOverModal />
       {/* game over modal */}
       {/* result match */}
-    </div>
+    </WrapperInterface>
   );
 }
 

@@ -1,3 +1,8 @@
+import { Model as AnimatedDragon } from "@/_backend/conveyance/animatedDragon/Animated_dragon";
+import { Model } from "@/_backend/conveyance/fireDragon/Fire_dragon";
+// import { Model } from "@/_backend/conveyance/demonDragon/Demon_dragon";
+import { Model as IcyDragon } from "@/_backend/conveyance/icyDragon/Icy_dragon";
+import { Model as Phoenix } from "@/_backend/conveyance/phoenix/Phoenix_bird";
 import { Model as MercyA } from "@/_backend/starship/mercyA/Scene";
 import { Model as OrchidA } from "@/_backend/starship/orchid/Scene";
 import { Model as SparrowA } from "@/_backend/starship/sparrow/Scene";
@@ -50,7 +55,14 @@ export default function LoadStarship() {
   return (
     <>
       {/* //   state */}
-      {stateModel && LIST_STARSHIPS[stateModel?.modelId]}
+      {/* {stateModel && LIST_STARSHIPS[stateModel?.modelId]} */}
+      {/* <Model scale={[10, 10, 10]} /> */}
+      {/* <Phoenix scale={[0.01, 0.01, 0.01]} position={[0, 0, 0]} /> */}
+      {/* <AnimatedDragon scale={[2, 2, 2]} /> */}
+      {/* <IcyDragon scale={[0.03, 0.03, 0.03]} /> */}
+      {/* <Model /> */}
+      {/* <AnimatedDragon /> */}
+      {/* <Model /> */}
     </>
   );
 }

@@ -17,7 +17,7 @@ export default function AptosWallet() {
     <div className=" bg-gradient-to-r from-black to-gray-500 p-4  my-2 rounded-md  ">
       <div className="text-center font-bold uppercase ">Aptos Wallet</div>
       <div className="flex p-4  rounded-md  justify-center  ">
-        <WalletButtons />
+        {/* <WalletButtons /> */}
       </div>
     </div>
   );

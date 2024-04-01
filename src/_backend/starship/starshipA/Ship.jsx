@@ -39,6 +39,7 @@ export function Model(props) {
         rotation={[-Math.PI / 2, 0, 0]}
         scale={[0.892, 1, 1]}
       />
+      {props?.children}
     </group>
   );
 }

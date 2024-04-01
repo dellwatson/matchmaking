@@ -37,12 +37,46 @@ const abilityStore = create((set, get) => {
   const initialState = {
     abilities,
     active: false,
+    stars: false,
   };
   return {
     set,
     get,
     ...initialState,
     activate: (v, duration = 5000) => {
+      // minus supply, or cd
+      set({
+        abilities: [
+          {
+            ...v,
+            supply: v?.supply - 1,
+          },
+          ...abilities.filter((o) => o?.title !== v?.title),
+        ],
+      });
+
+      if (get().active) {
+        // Handle the case where you want to replace the existing active ability
+        // You can implement custom logic here, e.g., cancel the previous ability
+
+        // For simplicity, let's just deactivate the existing ability
+        set({ active: false });
+      }
+
+      // Set the new active ability
+      set({
+        active: true,
+        // activeAbility: ability,
+      });
+
+      // Automatically deactivate the ability after the specified duration
+      if (duration !== null) {
+        setTimeout(() => {
+          set({ active: false });
+        }, duration);
+      }
+    },
+    setStars: (v, duration = 2000) => {
       // minus supply, or cd
       set({
         abilities: [

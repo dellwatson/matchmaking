@@ -7,9 +7,9 @@ export default function HubProvider({ children }) {
   return (
     <>
       <StarknetProvider>
-        <AptosProvider>
-          <WagmiConfig config={config}>{children}</WagmiConfig>
-        </AptosProvider>
+        {/* <AptosProvider> */}
+        <WagmiConfig config={config}>{children}</WagmiConfig>
+        {/* </AptosProvider> */}
       </StarknetProvider>
     </>
   );

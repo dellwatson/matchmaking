@@ -173,11 +173,11 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
       {/* <Stars radius={100} count={20} /> */}
       {/* <Stars radius={100} depth={50} count={10} factor={4} saturation={0} fade speed={1} />  */}
       {/* <Particles /> */}
-      <Stars radius={500} depth={50} count={20} />
-      <Particles />
+      {/* <Stars radius={500} depth={50} count={20} />
+      <Particles /> */}
       {/* <Enemies /> */}
-      {console.log(Math.random(), "math random")}
-      {Math.random() <= 0.2 && <Enemies />}
+      {/* {console.log(Math.random(), "math random")} */}
+      {/* {Math.random() <= 0.2 && <Enemies />} */}
       <group scale={[20, 20, 20]}>
         <mesh
           //   name="single-rock"
@@ -186,8 +186,8 @@ const ClonedRock = React.memo(({ nodes, materials, data }) => {
           material={materials.Material_52}
           // material-roughness={0.5}
           // material-metalness={0.4}
-          material-roughness={1}
-          material-metalness={1}
+          // material-roughness={1}
+          // material-metalness={1}
         />
       </group>
     </group>

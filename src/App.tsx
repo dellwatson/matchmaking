@@ -16,6 +16,7 @@ import globalStore from "./store/global-store";
 import "@/_ui/styles/global.scss";
 import Product from "./pages/Product";
 import MyProduct from "./pages/MyProduct";
+import Template from "./pages/Template";
 
 function App() {
   const { isFullScreen } = globalStore();
@@ -58,6 +59,7 @@ function App() {
         <Route path="match-room/*" element={<MatchRoom />} />
         <Route path="product/:listingId" element={<Product />} />
         <Route path="own-product/*" element={<MyProduct />} />
+        <Route path="template" element={<Template />} />
       </Routes>
     </BrowserRouter>
     // </FullScreen>

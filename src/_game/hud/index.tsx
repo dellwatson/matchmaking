@@ -14,18 +14,22 @@ export default function Interface() {
         {/* <Radar /> */}
       </div>
       <div className="hidden md:flex border-gray-600  flex-col items-end ">
-        <div className="flex">{/* <Menu /> */}</div>
+        <div className="flex">
+          <Menu />
+        </div>
         <div className="p-4 text-xl ">{/* <Distance /> */}</div>
       </div>
       <div className=" border-gray-600 relative ">
+        {/* <Abilities /> */}
+
         <Controller />
       </div>
       <div className="hidden md:flex border-gray-600  justify-end items-end ">
         {/* <Abilities /> */}
-        <img
+        {/* <img
           src={"./keyControls.png"}
-          className="min-w-[200px] min-h-[200px] relative left-100 scale-75"
-        />
+          className="min-w-[200px] min-h-[200px] relative left-105 scale-60 opacity-50"
+        /> */}
       </div>
     </div>
   );

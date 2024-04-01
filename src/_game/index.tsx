@@ -12,7 +12,7 @@ import {
   Stars,
 } from "@react-three/drei";
 import TestTerrains from "./terrains/test-terrains";
-import SpaceShip from "./player/star-ship";
+import SpaceShip from "./players/star-ship";
 // import Effects from "./3d/Effects2";
 import Effects from "./graphics/Effects";
 // import { Effects } from "@components/showroom/Effects";
@@ -30,12 +30,25 @@ import useStore from "./store";
 import ModelPortal from "./celestial/Portal/Portal";
 import BoostFlame from "./vfx/BoostFlame";
 import ThunderClouds from "./celestial/ThunderClouds/ThunderClouds";
-import Rig from "./player/Rig";
+import Rig from "./players/Rig";
 import Rings from "./celestial/Rings";
+import Desert from "./terrains/Desert";
+import SpaceV1 from "./terrains/Space/SpaceV1";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function SceneBackground() {
   const backgroundSpace = useTexture(bgSpace);
+
+  // Set opacity of the texture
+  backgroundSpace.encoding = THREE.LinearEncoding; // Ensure the texture is properly encoded
+  backgroundSpace.minFilter = THREE.LinearFilter; // Ensure smooth texture filtering
+  backgroundSpace.magFilter = THREE.LinearFilter;
+  backgroundSpace.wrapS = THREE.ClampToEdgeWrapping; // Ensure no wrapping
+  backgroundSpace.wrapT = THREE.ClampToEdgeWrapping;
+  backgroundSpace.anisotropy = 16; // Optionally set anisotropy for better texture quality
+
+  // Adjust opacity of the texture
+  backgroundSpace.opacity = 0.1; // Set opacity value (0 is fully transparent, 1 is fully opaque)
 
   return <primitive attach="background" object={backgroundSpace} />;
 }
@@ -69,35 +82,29 @@ export default function SoloGameApp() {
           depth: true,
         }}>
         {/* <Suspense fallback={null}>
-        <SceneBackground />
-      </Suspense> */}
+          <SceneBackground />
+        </Suspense> */}
 
         <ambientLight intensity={0.5} />
 
-        {/* <spotLight
-          intensity={1.5}
-          position={[0, 0, 2000]}
-          penumbra={1}
-          color="red"
-        /> */}
-
-        {/* hierrachy order is important?? */}
         <Movement />
         {/* <Perf position="top-left" /> */}
         {/* <fog attach="fog" args={["#070710", 100, 700]} /> */}
         <Stats />
         {/* <Stars radius={100} depth={100} count={10000} /> */}
-        <TestTerrains />
         <Suspense>
           {/* <Rig> */}
           <SpaceShip />
           {/* </Rig> */}
+          {/* <TestTerrains /> */}
+          <SpaceV1 />
+          <Camera />
           <Gamestate />
         </Suspense>
         {/* <Environment preset="city" /> */}
-        <Camera />
         {/* <Rings /> */}
 
+        {/* <Desert /> */}
         {/* <Suspense fallback={null}>
           <Rocks />
           <Planets />
