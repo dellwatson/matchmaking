@@ -7,9 +7,8 @@ export default function WrapperInterface({ children }) {
   return (
     <div className="absolute">
       {/* Announcement */}
-      <div className="absolute w-full h-full z-10 flex justify-center items-center">
-        {/* <Warning /> */}
-      </div>
+      {/* <div className="absolute w-full h-full z-10 flex justify-center items-center">
+      </div> */}
 
       {/* header */}
       <div className="absolute mt-4 xl:ml-4 p-2 z-10 ">
@@ -24,7 +23,7 @@ export default function WrapperInterface({ children }) {
       </div>
       <div className="absolute  z-10 w-full flex justify-center xl:mt-2">
         <div className="absolute mt-4">
-          <Title className="uppercase tracking-[10px]  !font-thin !text-2xl">{`Zone A`}</Title>
+          <Title className="uppercase tracking-[10px]  !font-thin !text-2xl">{`3 SEC EFFECTS`}</Title>
         </div>
         <SVGHeader />
       </div>

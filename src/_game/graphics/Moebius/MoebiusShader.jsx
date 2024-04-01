@@ -241,7 +241,7 @@ class MoebiusPass extends Pass {
 extend({ MoebiusPass });
 
 // Component that uses the custom effect
-export default function Moebius() {
+export default function MoebiusShader() {
   const { camera } = useThree();
 
   const depthRenderTarget = useFBO(window.innerWidth, window.innerHeight, {
@@ -260,3 +260,5 @@ export default function Moebius() {
     </Effects>
   );
 }
+
+export { MoebiusPass };

@@ -1,4 +1,4 @@
-import Moebius from "@/_game/graphics/Moebius/Moebius";
+import Moebius from "@/_game/graphics/Moebius/MoebiusShader";
 import React from "react";
 
 export default function Desert() {

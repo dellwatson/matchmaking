@@ -37,7 +37,8 @@ import Rings from "./celestial/Rings";
 import Desert from "./terrains/Desert";
 import SpaceV1 from "./terrains/Space/SpaceV1";
 import { MotionBlur } from "./vfx/MotionBlur/MotionBlur";
-import Moebius from "./graphics/Moebius/Moebius";
+import Moebius from "./graphics/Moebius/MoebiusShader";
+import CombinedEffects from "./graphics/CombinedEffects";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function SceneBackground() {
@@ -114,7 +115,8 @@ export default function SoloGameApp() {
           <Planets />
         </Suspense> */}
         {/* <Effects /> */}
-        <Moebius />
+        {/* <Moebius /> */}
+        <CombinedEffects />
       </Canvas>
     </div>
   );
