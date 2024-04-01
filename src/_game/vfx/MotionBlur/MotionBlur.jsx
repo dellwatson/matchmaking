@@ -43,10 +43,6 @@ class MotionBlurImpl extends Effect {
   }
 
   update(renderer, inputBuffer, deltaTime) {
-    console.log(
-      this.uniforms.get("strength").value,
-      ` this.uniforms.get("strength").value`
-    );
     this.uniforms.get("strength").value = 1;
   }
 }
@@ -54,6 +50,5 @@ class MotionBlurImpl extends Effect {
 // Effect component
 export const MotionBlur = forwardRef(({}, ref) => {
   const effect = useMemo(() => new MotionBlurImpl(), []);
-  console.log(effect, "EFFECT EXIST ?");
   return <primitive ref={ref} object={effect} dispose={null} />;
 });

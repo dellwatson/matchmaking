@@ -1,3 +1,22 @@
+import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
+import { Effects, useFBO } from "@react-three/drei";
+import * as THREE from "three";
+import { v4 as uuidv4 } from "uuid";
+import { Pass } from "postprocessing";
+import { FullScreenQuad } from "three-stdlib";
+
+// Vertex shader code
+const vertexShader = `
+varying vec2 vUv;
+
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`;
+
+// Fragment shader code
+const fragmentShader = `
 #include <packing>
 varying vec2 vUv;
 uniform sampler2D tDiffuse;
@@ -153,4 +172,91 @@ void main() {
   vec4 color = mix(pixelColor, outlineColor, outline);
 
   gl_FragColor = color;
+}
+
+`;
+
+// Shader setup
+const moebiusShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    tDepth: { value: null },
+    tNormal: { value: null },
+    cameraNear: { value: null },
+    cameraFar: { value: null },
+    resolution: { value: new THREE.Vector2() },
+    shadowType: { value: 3.0 },
+  },
+  vertexShader,
+  fragmentShader,
+};
+
+// MoebiusPass definition
+class MoebiusPass extends Pass {
+  constructor(args) {
+    super();
+
+    this.material = new THREE.ShaderMaterial(moebiusShader);
+    this.fsQuad = new FullScreenQuad(this.material);
+
+    this.depthRenderTarget = args.depthRenderTarget;
+    this.normalRenderTarget = args.normalRenderTarget;
+    this.camera = args.camera;
+
+    this.resolution = new THREE.Vector2(
+      window.innerWidth * Math.min(window.devicePixelRatio, 2),
+      window.innerHeight * Math.min(window.devicePixelRatio, 2)
+    );
+  }
+
+  dispose() {
+    this.material.dispose();
+    this.fsQuad.dispose();
+  }
+
+  render(renderer, writeBuffer, readBuffer) {
+    this.material.uniforms.tDiffuse.value = readBuffer.texture;
+    this.material.uniforms.tDepth.value = this.depthRenderTarget.depthTexture;
+    this.material.uniforms.tNormal.value = this.normalRenderTarget.texture;
+    this.material.uniforms.cameraNear.value = this.camera.near;
+    this.material.uniforms.cameraFar.value = this.camera.far;
+
+    this.material.uniforms.resolution.value = new THREE.Vector2(
+      window.innerWidth * Math.min(window.devicePixelRatio, 2),
+      window.innerHeight * Math.min(window.devicePixelRatio, 2)
+    );
+
+    if (this.renderToScreen) {
+      renderer.setRenderTarget(null);
+      this.fsQuad.render(renderer);
+    } else {
+      renderer.setRenderTarget(writeBuffer);
+      if (this.clear) renderer.clear();
+      this.fsQuad.render(renderer);
+    }
+  }
+}
+
+// Register the custom pass with r3f
+extend({ MoebiusPass });
+
+// Component that uses the custom effect
+export default function Moebius() {
+  const { camera } = useThree();
+
+  const depthRenderTarget = useFBO(window.innerWidth, window.innerHeight, {
+    depthBuffer: true,
+    depthTexture: new THREE.DepthTexture(window.innerWidth, window.innerHeight),
+  });
+
+  const normalRenderTarget = useFBO();
+
+  return (
+    <Effects key={uuidv4()}>
+      <moebiusPass
+        attachArray="passes"
+        args={[{ depthRenderTarget, normalRenderTarget, camera }]}
+      />
+    </Effects>
+  );
 }
