@@ -7,7 +7,8 @@ import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 const v = new Vector3();
 
 export default function Camera() {
-  const ship = useStore((s) => s.ship);
+  const PLAYER = useStore((s) => s.ship);
+  const SPEED = useStore((s) => s?.speed);
   const camera = useStore((s) => s.camera);
 
   useLayoutEffect(() => {
@@ -15,61 +16,72 @@ export default function Camera() {
     camera.current.position.set(0, 4, -9); // 0, 1.5, -8
     camera.current.lookAt(
       v.set(
-        ship.current.position.x,
-        ship.current.position.y,
-        ship.current.position.z + 4
+        PLAYER.current.position.x,
+        PLAYER.current.position.y,
+        PLAYER.current.position.z + 4
       )
     );
-    // modify the camera tracking to look above the center of the ship
     camera.current.rotation.z = Math.PI;
-    // ship.current.rotation.y = Math.PI;
-  }, [ship, camera]);
+    // camera.near = 1; // Minimum distance to start rendering objects
+    // camera.far = 10000; // Increase this value so the far parts of the model are not culled
+    // camera.updateProjectionMatrix(); // Important to apply the changes
+  }, [PLAYER, camera]);
 
   useFrame((state, delta) => {
-    if (ship.current && camera.current) {
-      camera.current.position.z = ship.current.position.z - 12; // + 13.5
-      camera.current.position.y = ship.current.position.y + 7; // need to setup between the screen device?
-      camera.current.position.x = ship.current.position.x;
+    if (PLAYER.current && camera.current) {
+      const targetPosition = new Vector3(
+        PLAYER.current.position.x,
+        PLAYER.current.position.y + 4,
+        PLAYER.current.position.z - 20
+      );
+
+      camera.current.position.lerp(targetPosition, 0.4); // Smoothly move towards the target
+      // const lerpFactor = Math.min(1, 0.5 + SPEED); // Example adjustment
+      // camera.current.position.lerp(targetPosition, lerpFactor);
+      camera.current.lookAt(
+        PLAYER.current.position.x,
+        PLAYER.current.position.y + 4,
+        PLAYER.current.position.z
+      ); // Adjust as needed
     }
   });
+  // useFrame((state, delta) => {
+  //   if (PLAYER.current && camera.current) {
+  //     const targetPosition = new Vector3(
+  //       PLAYER.current.position.x,
+  //       PLAYER.current.position.y + 2,
+  //       PLAYER.current.position.z + 30
+  //     );
+
+  //     // Example dynamic lerp factor adjustment
+  //     // Adjust this formula as needed to achieve the desired smoothing effect
+  //     const distanceToTarget =
+  //       camera.current.position.distanceTo(targetPosition);
+
+  //     const dynamicLerpFactor = Math.min(
+  //       1,
+  //       0.4 * delta * (distanceToTarget / 10)
+  //     );
+
+  //     camera.current.position.lerp(targetPosition, dynamicLerpFactor);
+  //     camera.current.lookAt(
+  //       PLAYER.current.position.x,
+  //       PLAYER.current.position.y + 4,
+  //       PLAYER.current.position.z + 30
+  //     );
+  //   }
+  // });
 
   return (
     <>
       <PerspectiveCamera
+        rotation={[0, 100, 0]}
         makeDefault
         ref={camera}
-        // {...perscamera}
-        // fov={100}
-        // rotation={[0, 0, 0]}
-        // position={[0, 10, -10]}
+        fov={60}
+        far={2000}
       />
       {/* <OrbitControls /> */}
     </>
   );
 }
-
-// camera.current.rotation.y = Math.PI;
-// camera.current.lookAt(
-//   v.set(
-//     ship.current.position.x,
-//     ship.current.position.y,
-//     ship.current.position.z
-//   )
-// );
-//either this position or camera?
-// ship.current.rotation.set(0, Math.PI, 0);
-
-// ship.current.rotation.z += 2;
-
-// const currentTime = performance.now();
-
-// // Check if the desired interval has passed
-// if (currentTime - lastRotationTime >= rotationInterval) {
-//   lastRotationTime = currentTime;
-//   rotationStartTime = currentTime;
-// }
-
-// // Check if rotation duration has not passed
-// if (currentTime - rotationStartTime <= rotationDuration && ship.current) {
-//   ship.current.rotation.z += 2; // Rotating over the course of the current frame
-// }

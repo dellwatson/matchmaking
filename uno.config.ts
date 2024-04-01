@@ -28,9 +28,9 @@ export default defineConfig({
   ],
   transformers: [transformerVariantGroup()],
   theme: {
-    colors: {
-      primary: "#7eebff",
-    },
+    // colors: {
+    //   primary: "#7eebff",
+    // },
     breakpoints: {
       xs: "320px",
       sm: "640px",

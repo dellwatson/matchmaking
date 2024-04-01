@@ -20,9 +20,11 @@ import Effects from "./graphics/Effects";
 import { Suspense, useLayoutEffect, useRef, useState } from "react";
 // import Stars from "./celestial/Stars";
 import Gamestate from "./system/gamestate";
-import Camera from "./control/camera";
+import Camera from "./control/cameraV2";
+// import Camera from "./control/camera";
 // import Controls from "./hud/controller/keyboard-stick";
-import Movement from "./control/movement";
+import Movement from "./control/movement/movementV2";
+// import Movement from "./control/movement";
 import Interface from "./hud";
 // import { LayerMaterial, Color, Depth } from 'lamina'
 import bgSpace from "@assets/4k_stars.jpg";
@@ -87,19 +89,19 @@ export default function SoloGameApp() {
 
         <ambientLight intensity={0.5} />
 
-        <Movement />
         {/* <Perf position="top-left" /> */}
         {/* <fog attach="fog" args={["#070710", 100, 700]} /> */}
         <Stats />
         {/* <Stars radius={100} depth={100} count={10000} /> */}
         <Suspense>
-          {/* <Rig> */}
           <SpaceShip />
+          <Gamestate />
+          <Camera />
+          <Movement />
+          {/* <Rig> */}
           {/* </Rig> */}
           {/* <TestTerrains /> */}
           <SpaceV1 />
-          <Camera />
-          <Gamestate />
         </Suspense>
         {/* <Environment preset="city" /> */}
         {/* <Rings /> */}

@@ -27,8 +27,8 @@ export default function SpaceShip() {
   // useEffect(() => {}, [ship]);
   useFrame((state, delta) => {
     // boundingBox?.setFromObject(ship.current);
-    exhaust.current.scale.x = 1 + Math.sin(clock.getElapsedTime() * 100);
-    exhaust.current.scale.y = 1 + Math.sin(clock.getElapsedTime() * 100);
+    exhaust.current.scale.x = 1 + Math.sin(clock.getElapsedTime() * 50);
+    exhaust.current.scale.y = 1 + Math.sin(clock.getElapsedTime() * 50);
   });
 
   return (
@@ -74,14 +74,16 @@ export default function SpaceShip() {
         />
         {/* <Phoenix scale={[0.015, 0.015, 0.015]} rotation={[0, 4.7, 0]} /> */}
         {/* <Model scale={[3, 3, 3]} position={[0, -6, 0]} /> */}
+        {/* <Model scale={[0.3, 0.3, 0.3]} /> */}
 
         <Model
           scale={[0.3, 0.3, 0.3]}
+          // scale={[0.5, 0.5, 0.5]}
           //
         >
           <pointLight
             castShadow
-            position={[0, 0, -100]}
+            position={[0, 0, -200]}
             distance={1000000}
             intensity={100000}
             color="green"
@@ -89,14 +91,14 @@ export default function SpaceShip() {
 
           <mesh
             ref={exhaust}
-            scale={[0.3, 1, 20]}
-            position={[0, -1, -29.5]}
+            scale={[0.3, 1, 10]}
+            position={[0, 0, -20]}
             rotation={[Math.PI, 0, 0]}>
             <dodecahedronGeometry args={[1.5, 0]} />
             <meshStandardMaterial
               color="lightblue"
               emissive="lightblue"
-              emissiveIntensity={1.3}
+              emissiveIntensity={1}
             />
           </mesh>
         </Model>
