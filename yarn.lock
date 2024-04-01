@@ -9748,11 +9748,6 @@ postcss@^8.4.28, postcss@^8.4.31:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postprocessing@6.35.2:
-  version "6.35.2"
-  resolved "https://registry.yarnpkg.com/postprocessing/-/postprocessing-6.35.2.tgz#7a7b42f7d3cc21cd2fded2505af645bf62276716"
-  integrity sha512-yGmidrVzA1dSEmExYGgWOGcRvyOVahvurNo9iuzOonRCY6f1hnJe6/HMVSnKV9ppjLtCTqzZOI9iz8CACkmijw==
-
 postprocessing@^6.32.1:
   version "6.33.3"
   resolved "https://registry.yarnpkg.com/postprocessing/-/postprocessing-6.33.3.tgz#d80103f6e68581263557aa2e5d9e26af3e0d7cfd"
@@ -11206,10 +11201,10 @@ three.quarks@^0.10.6:
   resolved "https://registry.yarnpkg.com/three.quarks/-/three.quarks-0.10.18.tgz#56006c21a2ba0914fe275edf77647d52c170c767"
   integrity sha512-TRuU2qOQXmraecvPow8qxChBbsUqgaVHxwz+9BL1PLEiXnGoxI1g66D+j1UJ0dibqvli5/wXeDEveX37UmtT5w==
 
-three@^0.160.0:
-  version "0.160.1"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.160.1.tgz#61fe2907312e8604b1f64187f58e047503847413"
-  integrity sha512-Bgl2wPJypDOZ1stAxwfWAcJ0WQf7QzlptsxkjYiURPz+n5k4RBDLsq+6f9Y75TYxn6aHLcWz+JNmwTOXWrQTBQ==
+three@^0.161.0:
+  version "0.161.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.161.0.tgz#38aafaa82fe5467fde2e33933515d1b6beb17d91"
+  integrity sha512-LC28VFtjbOyEu5b93K0bNRLw1rQlMJ85lilKsYj6dgTu+7i17W+JCCEbvrpmNHF1F3NAUqDSWq50UD7w9H2xQw==
 
 through2@^0.6.3:
   version "0.6.5"

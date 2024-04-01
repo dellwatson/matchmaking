@@ -14,6 +14,7 @@ import {
   BrightnessContrast,
 } from "@react-three/postprocessing";
 import useStore from "../store";
+import { MotionBlur } from "../vfx/MotionBlur/MotionBlur";
 // import { LUTCubeLoader, ToneMappingMode } from 'postprocessing'
 
 // extend({ EffectComposer, ShaderPass, RenderPass, UnrealBloomPass, FilmPass })
@@ -33,23 +34,26 @@ export default function Effects() {
   // });
 
   return (
-    <EffectComposer disableNormalPass>
-      {/* <BrightnessContrast brightness={0} contrast={0.1} /> */}
-      {/* <ToneMapping mode={ToneMappingMode.ACES_FILMIC} /> */}
-      {/* <LUT lut={texture} /> */}
+    <>
+      <EffectComposer>
+        {/* <BrightnessContrast brightness={0} contrast={0.1} /> */}
+        {/* <ToneMapping mode={ToneMappingMode.ACES_FILMIC} /> */}
+        {/* <LUT lut={texture} /> */}
+        {/* <MotionBlur /> */}
 
-      <Bloom
-        luminanceThreshold={0.2}
-        mipmapBlur
-        luminanceSmoothing={1}
-        intensity={10}
-      />
-      {/* <DepthOfField
+        <Bloom
+          luminanceThreshold={0.2}
+          mipmapBlur
+          luminanceSmoothing={1}
+          intensity={10}
+        />
+        {/* <DepthOfField
         target={dofTarget.current} // Set the target to the ref
         focalLength={1.5}
         // bokehScale={15}
         height={700}
       /> */}
-    </EffectComposer>
+      </EffectComposer>
+    </>
   );
 }

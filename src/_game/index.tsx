@@ -36,6 +36,7 @@ import Rig from "./players/Rig";
 import Rings from "./celestial/Rings";
 import Desert from "./terrains/Desert";
 import SpaceV1 from "./terrains/Space/SpaceV1";
+import { MotionBlur } from "./vfx/MotionBlur/MotionBlur";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function SceneBackground() {
