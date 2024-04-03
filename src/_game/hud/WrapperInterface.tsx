@@ -23,7 +23,7 @@ export default function WrapperInterface({ children }) {
       </div>
       <div className="absolute  z-10 w-full flex justify-center xl:mt-2">
         <div className="absolute mt-4">
-          <Title className="uppercase tracking-[10px]  !font-thin !text-2xl">{`3 SEC EFFECTS`}</Title>
+          <Title className="uppercase tracking-[10px]  !font-thin !text-2xl">{`STAR-EX`}</Title>
         </div>
         <SVGHeader />
       </div>

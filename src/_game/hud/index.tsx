@@ -6,6 +6,7 @@ import Distance from "./stats/distance";
 import Radar from "./radar";
 
 export default function Interface() {
+  // if (true) return null;
   // divide to 4
   return (
     <div className="border-red-500 w-full h-full grid md:grid-cols-2 md:grid-rows-2 bg-transparent absolute z-5 p-2">

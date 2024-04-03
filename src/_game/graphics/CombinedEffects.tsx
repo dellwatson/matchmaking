@@ -1,28 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { useThree } from "@react-three/fiber";
+import { extend, useThree } from "@react-three/fiber";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import MoebiusShader from "./Moebius/MoebiusShader";
 import { MotionBlur } from "../vfx/MotionBlur/MotionBlur";
 
 export default function CustomEffects() {
-  // Define a state variable to cycle through the effects
-  // 0: Moebius, 1: Bloom, 2: Bloom + MotionBlur
-  const [effectStage, setEffectStage] = useState(0);
+  const [mode, setMode] = useState(0); // Starts with Moebius
+  const { scene } = useThree();
 
   useEffect(() => {
-    // Set an interval to advance the effectStage every 3 seconds
     const interval = setInterval(() => {
-      setEffectStage((prevStage) => (prevStage + 1) % 3); // Cycle through 0, 1, 2
-    }, 3000);
+      setMode((prevMode) => (prevMode + 1) % 4); // Cycle through 0, 1, 2, 3
+    }, 5000); // Switch every 3000 milliseconds
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh && child.material) {
+        const materials = Array.isArray(child.material)
+          ? child.material
+          : [child.material];
+        materials.forEach((material) => {
+          material.wireframe = mode === 3; // Enable wireframe if mode is 3
+        });
+      }
+    });
+  }, [mode, scene]);
 
   return (
     <>
-      {effectStage === 0 ? (
+      {mode === 0 ? (
         <MoebiusShader />
-      ) : (
+      ) : mode === 1 ? (
         <EffectComposer>
           <Bloom
             mipmapBlur
@@ -30,9 +41,18 @@ export default function CustomEffects() {
             luminanceSmoothing={1}
             intensity={10}
           />
-          {effectStage === 2 && <MotionBlur />}
         </EffectComposer>
-      )}
+      ) : mode === 2 ? (
+        <EffectComposer>
+          <Bloom
+            mipmapBlur
+            luminanceThreshold={0.2}
+            luminanceSmoothing={1}
+            intensity={10}
+          />
+          <MotionBlur />
+        </EffectComposer>
+      ) : null}
     </>
   );
 }

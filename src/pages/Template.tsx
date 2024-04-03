@@ -18,7 +18,7 @@ export default function Template() {
         }}
         className="w-full h-full">
         <iframe
-          src="https://n-able.vercel.app/ "
+          src="http://localhost:5175"
           title="Widget"
           width="100%"
           height="100%"

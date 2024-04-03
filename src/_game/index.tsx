@@ -20,7 +20,8 @@ import Effects from "./graphics/Effects";
 import { Suspense, useLayoutEffect, useRef, useState } from "react";
 // import Stars from "./celestial/Stars";
 import Gamestate from "./system/gamestate";
-import Camera from "./control/cameraV2";
+import Camera from "./control/camera";
+import CameraV2 from "./control/cameraV2";
 // import Camera from "./control/camera";
 // import Controls from "./hud/controller/keyboard-stick";
 import Movement from "./control/movement/movementV2";
@@ -77,7 +78,7 @@ export default function SoloGameApp() {
         dpr={[1, 1.5]}
         onCreated={({ gl }) => {
           actions.init();
-          gl.setClearColor(new THREE.Color("#020209"));
+          // gl.setClearColor(new THREE.Color("#020209"));
         }}
         gl={{
           // alpha: false,
@@ -89,6 +90,11 @@ export default function SoloGameApp() {
         {/* <Suspense fallback={null}>
           <SceneBackground />
         </Suspense> */}
+        <color attach="background" args={["blue"]} />
+        {/* <color attach="background" args={["#1b1122"]} /> */}
+        {/* <color attach="background" args={["#ADD8E6"]} /> */}
+        {/* <color attach="background" args={["#020209"]} /> */}
+        {/* <color attach="background" args={["#260221"]} /> */}
 
         <ambientLight intensity={0.5} />
 
@@ -99,12 +105,16 @@ export default function SoloGameApp() {
         <Suspense>
           <SpaceShip />
           <Gamestate />
+          {/* <CameraV2 /> */}
           <Camera />
+          {/* <OrbitControls />*/}
           <Movement />
           {/* <Rig> */}
           {/* </Rig> */}
           {/* <TestTerrains /> */}
           <SpaceV1 />
+          {/* <ThunderClouds /> */}
+          {/* <BoostFlame position={[0, 20, 0]} /> */}
         </Suspense>
         {/* <Environment preset="city" /> */}
         {/* <Rings /> */}
@@ -115,8 +125,8 @@ export default function SoloGameApp() {
           <Planets />
         </Suspense> */}
         {/* <Effects /> */}
-        {/* <Moebius /> */}
-        <CombinedEffects />
+        <Moebius />
+        {/* <CombinedEffects /> */}
       </Canvas>
     </div>
   );

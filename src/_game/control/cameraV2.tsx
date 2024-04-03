@@ -33,24 +33,24 @@ export default function Camera() {
     // camera.updateProjectionMatrix(); // Important to apply the changes
   }, [PLAYER, camera]);
 
-  //   useFrame((state, delta) => {
-  //     if (PLAYER.current && camera.current) {
-  //       const targetPosition = new Vector3(
-  //         PLAYER.current.position.x,
-  //         PLAYER.current.position.y + 4,
-  //         PLAYER.current.position.z - 40
-  //       );
+  // useFrame((state, delta) => {
+  //   if (PLAYER.current && camera.current) {
+  //     const targetPosition = new Vector3(
+  //       PLAYER.current.position.x,
+  //       PLAYER.current.position.y + 4,
+  //       PLAYER.current.position.z - 8
+  //     );
 
-  //       camera.current.position.lerp(targetPosition, 0.4); // Smoothly move towards the target
-  //       // const lerpFactor = Math.min(1, 0.5 + SPEED); // Example adjustment
-  //       // camera.current.position.lerp(targetPosition, lerpFactor);
-  //       camera.current.lookAt(
-  //         PLAYER.current.position.x,
-  //         PLAYER.current.position.y + 4,
-  //         PLAYER.current.position.z
-  //       ); // Adjust as needed
-  //     }
-  //   });
+  //     camera.current.position.lerp(targetPosition, 0.4); // Smoothly move towards the target
+  //     // const lerpFactor = Math.min(1, 0.5 + SPEED); // Example adjustment
+  //     // camera.current.position.lerp(targetPosition, lerpFactor);
+  //     camera.current.lookAt(
+  //       PLAYER.current.position.x,
+  //       PLAYER.current.position.y + 4,
+  //       PLAYER.current.position.z + 4
+  //     ); // Adjust as needed
+  //   }
+  // });
   useFrame((state, delta) => {
     if (PLAYER.current && camera.current) {
       const targetPosition = new Vector3(
@@ -107,7 +107,8 @@ export default function Camera() {
         // rotation={[0, 100, 0]}
         makeDefault
         ref={camera}
-        fov={60}
+        // fov={60}
+        fov={100}
         far={3000}
       />
       {/* <OrbitControls /> */}

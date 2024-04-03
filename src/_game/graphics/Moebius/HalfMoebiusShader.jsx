@@ -4,9 +4,6 @@ import * as THREE from "three";
 import { v4 as uuidv4 } from "uuid";
 import { Pass } from "postprocessing";
 import { FullScreenQuad } from "three-stdlib";
-import GroundShader from "./GroundShader";
-import CustomNormalShader from "./CustomNormalShader";
-import { Pixelation } from "@react-three/postprocessing";
 
 // Vertex shader code
 const vertexShader = `
@@ -244,52 +241,15 @@ class MoebiusPass extends Pass {
 extend({ MoebiusPass });
 
 // Component that uses the custom effect
-export default function Moebius() {
+export default function HalfMoebiusShader() {
   const { camera } = useThree();
 
   const depthRenderTarget = useFBO(window.innerWidth, window.innerHeight, {
-    depthTexture: new THREE.DepthTexture(window.innerWidth, window.innerHeight),
     depthBuffer: true,
+    depthTexture: new THREE.DepthTexture(window.innerWidth, window.innerHeight),
   });
 
   const normalRenderTarget = useFBO();
-
-  useFrame((state) => {
-    const { gl, scene, camera, clock } = state;
-
-    // might can ignore too option here
-    gl.setRenderTarget(depthRenderTarget);
-    gl.setRenderTarget(normalRenderTarget);
-
-    const materials = [];
-
-    scene.traverse((obj) => {
-      if (obj.isMesh) {
-        materials.push(obj.material);
-        if (obj.name === "ground") {
-          obj.material = GroundShader;
-          obj.material.uniforms.uTime.value = clock.elapsedTime;
-          // obj.material.uniforms.lightPosition.value = lightPosition;
-        } else {
-          obj.material = CustomNormalShader;
-          // obj.material.uniforms.lightPosition.value = lightPosition;
-        }
-      }
-    });
-
-    // half-baked?
-    gl.render(scene, camera);
-
-    scene.traverse((obj) => {
-      if (obj.isMesh) {
-        obj.material = materials.shift();
-      }
-    });
-
-    gl.setRenderTarget(null);
-  });
-
-  // return null;
 
   return (
     <Effects key={uuidv4()}>
@@ -300,3 +260,5 @@ export default function Moebius() {
     </Effects>
   );
 }
+
+export { MoebiusPass };

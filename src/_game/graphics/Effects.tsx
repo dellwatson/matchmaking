@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 // import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 // import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
@@ -12,6 +12,9 @@ import {
   Noise,
   Vignette,
   BrightnessContrast,
+  Pixelation,
+  Glitch,
+  Scanline,
 } from "@react-three/postprocessing";
 import useStore from "../store";
 import { MotionBlur } from "../vfx/MotionBlur/MotionBlur";
@@ -32,6 +35,35 @@ export default function Effects() {
   //     dofTarget?.current?.position.copy(ship.current.position);
   //   }
   // });
+  // const densityRef = useRef(0.8);
+  // useFrame(() => {
+  //   if (densityRef?.current) {
+  //     densityRef.current = Math.random() * (0.8 - 0.5) + 0.5; // Random d
+  //   }
+  // });
+  const [density, setDensity] = useState(0.8);
+
+  // Update scanline density randomly within the range of 0.5 to 0.8
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setDensity(0.3 + Math.random() * 1.7); // 0.3
+  //   }, 50); // Change every second (adjust as needed)
+  //   return () => clearInterval(interval);
+  // }, []);
+
+  const [glitchActive, setGlitchActive] = useState(false);
+
+  useEffect(() => {
+    // Activate Glitch for 2 seconds
+    setGlitchActive(true);
+    const glitchTimeout = setTimeout(() => {
+      setGlitchActive(false);
+    }, 2000); // 2 seconds in milliseconds
+
+    return () => {
+      clearTimeout(glitchTimeout);
+    };
+  }, []);
 
   return (
     <>
@@ -40,12 +72,26 @@ export default function Effects() {
         {/* <ToneMapping mode={ToneMappingMode.ACES_FILMIC} /> */}
         {/* <LUT lut={texture} /> */}
         {/* <MotionBlur /> */}
+        {/* <Pixelation granularity={6} /> */}
+        {/*
+        {glitchActive && (
+          <Glitch
+            strength={[0.01, 0.2]} // min and max glitch strength
+            ratio={0.1}
+          />
+        )} */}
+        {/* <Glitch
+          strength={[0.01, 0.2]} // min and max glitch strength
+          ratio={0.1}
+        /> */}
+        {/* <Scanline density={density} /> */}
 
         <Bloom
           luminanceThreshold={0.2}
           mipmapBlur
           luminanceSmoothing={1}
-          intensity={10}
+          // intensity={3}
+          intensity={7}
         />
         {/* <DepthOfField
         target={dofTarget.current} // Set the target to the ref
