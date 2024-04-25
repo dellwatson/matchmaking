@@ -15,6 +15,7 @@ import {
   Pixelation,
   Glitch,
   Scanline,
+  ASCII,
 } from "@react-three/postprocessing";
 import useStore from "../store";
 import { MotionBlur } from "../vfx/MotionBlur/MotionBlur";
@@ -51,19 +52,19 @@ export default function Effects() {
   //   return () => clearInterval(interval);
   // }, []);
 
-  const [glitchActive, setGlitchActive] = useState(false);
+  // const [glitchActive, setGlitchActive] = useState(false);
 
-  useEffect(() => {
-    // Activate Glitch for 2 seconds
-    setGlitchActive(true);
-    const glitchTimeout = setTimeout(() => {
-      setGlitchActive(false);
-    }, 2000); // 2 seconds in milliseconds
+  // useEffect(() => {
+  //   // Activate Glitch for 2 seconds
+  //   setGlitchActive(true);
+  //   const glitchTimeout = setTimeout(() => {
+  //     setGlitchActive(false);
+  //   }, 2000); // 2 seconds in milliseconds
 
-    return () => {
-      clearTimeout(glitchTimeout);
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(glitchTimeout);
+  //   };
+  // }, []);
 
   return (
     <>
@@ -86,12 +87,13 @@ export default function Effects() {
         /> */}
         {/* <Scanline density={density} /> */}
 
+        {/* <ASCII color="lightgreen" /> */}
         <Bloom
           luminanceThreshold={0.2}
           mipmapBlur
           luminanceSmoothing={1}
-          // intensity={3}
-          intensity={7}
+          intensity={3}
+          // intensity={7}
         />
         {/* <DepthOfField
         target={dofTarget.current} // Set the target to the ref

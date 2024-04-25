@@ -1,11 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import Rarity from "../../_ui/utils/Rarity";
-import ProgressBar from "../../_ui/utils/ProgressBar";
-import Traits from "../../_ui/block/traits";
+import Rarity from "@theras_labs/ui/src/utils/Rarity";
+import ProgressBar from "@theras_labs/ui/src/utils/ProgressBar";
+import Traits from "@theras_labs/ui/src/block/traits";
 import { shortenEthAddress } from "@/utils/ethaddress";
 import BuyProduct from "./buy-product";
-import NetworkSelect from "../../_ui/select/NetworkSelect";
+import NetworkSelect from "@theras_labs/ui/src/select/NetworkSelect";
 import InfoNetwork from "./info-network";
 import { Listbox } from "@headlessui/react";
 import { FaCircleChevronUp, FaCircleChevronDown } from "react-icons/fa6";

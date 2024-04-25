@@ -1,4 +1,4 @@
-import CornerBox from "@/_ui/Box/CornerBox";
+import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
 import { useState } from "react";
 import ModalClaim from "./modal-claim";
 

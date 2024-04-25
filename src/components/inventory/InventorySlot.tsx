@@ -1,6 +1,6 @@
 import { equipmentStore } from "@/_core/hooks/useEquipment";
 import { profileStore } from "@/_core/hooks/useProfile";
-import BlockTitle from "@/_ui/block/BlockTitle";
+import BlockTitle from "@theras_labs/ui/src/block/BlockTitle";
 import React, { useState } from "react";
 
 export default function InventorySlot(props) {

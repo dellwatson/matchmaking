@@ -14,6 +14,7 @@ const ARR_NFTS_ID = [
   // NFT_STARSHIP_C
   3,
 ];
+
 export const NFT_STARSHIP_A = {
   // address
   gameId: "",

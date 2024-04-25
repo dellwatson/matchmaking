@@ -1,14 +1,14 @@
-import CornerBox from "@/_ui/Box/CornerBox";
+import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
 import React, { useState } from "react";
 import { FaScroll } from "react-icons/fa";
 import DailyPerformances from "../lobby/interfaces/performances";
-import ModalGameMode from "@/_ui/Modal/ModalGameMode";
-import { Label, Subtitle, Title } from "@/_ui/Typography";
+import ModalGameMode from "@theras_labs/ui/src/Modal/ModalGameMode";
+import { Label, Subtitle, Title } from "@theras_labs/ui/src/Typography";
 import { SiSololearn } from "react-icons/si";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { MdTask } from "react-icons/md";
 import CardEvent from "./CardEvent";
-// import GlowingText from "@/_ui/text/glowing-text";
+// import GlowingText from "@theras_labs/ui/text/glowing-text";
 
 export default function GameModeBtn() {
   const [visible, setVisible] = useState(false);

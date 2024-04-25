@@ -1,4 +1,4 @@
-import GlowingText from "@/_ui/text/glowing-text";
+import GlowingText from "@theras_labs/ui/src/text/glowing-text";
 
 import SeasonPassSvg from "@assets/svg/lobby/season-pass.svg";
 import { useState } from "react";

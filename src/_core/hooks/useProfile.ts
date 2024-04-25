@@ -10,7 +10,7 @@ import {
   WalletInfo,
 } from "@aptos-labs/wallet-adapter-core";
 import { useWallet as useWalletAptos } from "@aptos-labs/wallet-adapter-react";
-import { CHAIN_NAME_APTOS } from "@/_ui/Auth/Wallets/AptosWallet";
+import { CHAIN_NAME_APTOS } from "@theras_labs/ui/src/Auth/Wallets/AptosWallet";
 
 // describe account profiles here
 // gameID

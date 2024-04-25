@@ -24,6 +24,7 @@ const useStore = create((set, get) => {
     exhaust: createRef(),
     camera: createRef(),
     // camera: undefined,
+    explode: false,
     game_over: null,
     speed: 200,
     increaseSpeed: (v) => {
@@ -32,15 +33,29 @@ const useStore = create((set, get) => {
       });
     },
     updateGame: () => {
+      console.log("updating game state");
       // update game-over + modal + gamestate
       // need to get active from abilityStore
+
       const active = abilityStore.getState().active;
       console.log(active, "active?");
       if (!active) {
         set({
-          game_over: true,
+          explode: true,
+          speed: 0,
         });
+
+        // Delay setting the game_over state by 1 second
+        setTimeout(() => {
+          set({
+            game_over: true,
+            explode: false,
+            // ship: null,
+          });
+        }, 1000); // 1000 milliseconds = 1 second
       }
+
+      //
     },
 
     //

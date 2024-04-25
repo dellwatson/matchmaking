@@ -1,10 +1,10 @@
 // on mobile have peek
-import CornerBox from "@/_ui/Box/CornerBox";
+import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
 import DailyPerformances from "./performances";
 import Claim from "./claim";
 import QuestLobby from "@/components/quest/QuestLobby";
 import Pass from "./pass";
-import SeasonPass from "@/_ui/Lobby/SeasonPassBtn";
+import SeasonPass from "@theras_labs/ui/src/Lobby/SeasonPassBtn";
 
 export default function LobbyLeft() {
   return (

@@ -28,3 +28,6 @@ dist-ssr
 todo.txt
 *.txt
 *.note
+*storybook.log
+
+_ui

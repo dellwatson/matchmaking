@@ -11,11 +11,11 @@ import NavHeader from "./NavHeader";
 import Drawer from "../drawer";
 import globalStore from "@/store/global-store";
 import { toast, useToast } from "react-toastify";
-import ModalSettings from "@/_ui/Modal/ModalSettings";
-import AuthButton from "@/_ui/Auth/AuthButton";
+import ModalSettings from "@theras_labs/ui/src/Modal/ModalSettings";
+import AuthButton from "@theras_labs/ui/src/Auth/AuthButton";
 // import useViewAptos from "@/_core/hooks/contract/useViewAptos";
 import { useLocation } from "react-router-dom";
-import { Title } from "@/_ui/Typography";
+import { Title } from "@theras_labs/ui/src/Typography";
 
 const LobbyTop = () => {
   // useViewAptos({

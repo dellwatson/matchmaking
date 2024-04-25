@@ -1,4 +1,4 @@
-import { Label, Paragraph, Title } from "@/_ui/Typography";
+import { Label, Paragraph, Title } from "@theras_labs/ui/src/Typography";
 import React from "react";
 import { GiTargeting } from "react-icons/gi"; //logo survival
 import { IoTicket } from "react-icons/io5"; // ticket

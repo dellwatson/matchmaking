@@ -1,4 +1,4 @@
-import Avatar from "@/_ui/profile/avatar";
+import Avatar from "@theras_labs/ui/src/profile/avatar";
 import useReadContract from "@/helpers/hooks/useReadContract";
 import networkStore from "@/store/network-store";
 import { GravatarUrl } from "@/utils/Gravatar";

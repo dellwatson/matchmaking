@@ -4,7 +4,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import rockGLB from "../asset/obstacles/rock.gltf";
 import useStore from "../store";
 import { Box3, Vector3 } from "three";
-import * as THREE from "THREE";
 
 // level increasing
 // level size
@@ -20,8 +19,6 @@ function ProceduralObstacle({
   const { scene } = useThree();
   const obstaclesRef = useRef([]);
   const playerPosition = useStore((s) => s?.ship);
-  const { updateGame } = useStore();
-
   const model = useLoader(GLTFLoader, modelUrl);
 
   useLayoutEffect(() => {
@@ -93,34 +90,23 @@ function ProceduralObstacle({
 
   useFrame((state, delta) => {
     if (!playerPosition.current) return;
+    const playerZ = playerPosition.current.position.z;
 
-    const playerPositionVec = new THREE.Vector3().copy(
-      playerPosition.current.position
-    );
-    const shipBoundingBox = new THREE.Box3().setFromObject(
-      playerPosition.current
-    );
-    shipBoundingBox.expandByScalar(-0.2); // Adjust the scalar to make the bounding box slightly smaller than the ship
+    const shipBoundingBox = new Box3().setFromObject(playerPosition.current);
+    shipBoundingBox.expandByScalar(-0.2); // Adjust the scalar value as needed
 
     obstaclesRef.current.forEach((obstacle, index) => {
       if (!obstacle.userData.rotationSpeed) {
-        // Initialize rotation speed and direction for each axis when first created or reset
-        obstacle.userData.rotationSpeed = {
-          x: (Math.random() - 0.05) * 0.01, // Speed between -0.1 and 0.1 radians per frame
-          y: (Math.random() - 0.05) * 0.01,
-          z: (Math.random() - 0.05) * 0.01,
-        };
+        // Initialize rotation speed and direction for each obstacle
+        obstacle.userData.rotationSpeed = (Math.random() - 0.5) * 0.1; // Speed between -0.05 and 0.05 radians per frame
       }
 
-      if (
-        obstacle.position.z <
-        playerPosition.current.position.z - recycleDistance
-      ) {
+      if (obstacle.position.z < playerZ - recycleDistance) {
         // Recycle the obstacle to a new position
         obstacle.position.set(
           playerPosition.current.position.x + (Math.random() - 0.5) * 1000,
           playerPosition.current.position.y + (Math.random() - 0.5) * 1000,
-          playerPosition.current.position.z + (Math.random() * 200 + 500)
+          playerZ + (Math.random() * 200 + 500)
         );
 
         // Random scale
@@ -134,16 +120,13 @@ function ProceduralObstacle({
         obstacle.visible = true;
       }
 
-      // Continuous rotation based on the stored rotation speeds
-      obstacle.rotation.x += obstacle.userData.rotationSpeed.x;
-      obstacle.rotation.y += obstacle.userData.rotationSpeed.y;
-      obstacle.rotation.z += obstacle.userData.rotationSpeed.z;
+      // Continuous rotation based on the elapsed time and rotation speed
+      obstacle.rotation.y += obstacle.userData.rotationSpeed; // Continuously increase the y rotation
 
       // Collision detection
-      const obstacleBoundingBox = new THREE.Box3().setFromObject(obstacle);
+      const obstacleBoundingBox = new Box3().setFromObject(obstacle);
       if (shipBoundingBox.intersectsBox(obstacleBoundingBox)) {
         console.log(`Collision detected with obstacle ${index}`);
-        updateGame();
       }
     });
   });

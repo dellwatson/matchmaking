@@ -11,10 +11,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { toast } from "react-toastify";
 
 import styles from "./styles.module.scss";
-import DrawerTailwind from "@/_ui/Drawer/DrawerTailwind";
+import DrawerTailwind from "@theras_labs/ui/src/Drawer/DrawerTailwind";
 import { Link } from "react-router-dom";
 import { TitlePage } from "../interfaces/LobbyTop";
-import { Title } from "@/_ui/Typography";
+import { Title } from "@theras_labs/ui/src/Typography";
 export default function Drawer({ direction = "left" }) {
   const [open, set] = useState(false);
 

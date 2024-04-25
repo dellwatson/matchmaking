@@ -40,6 +40,7 @@ import SpaceV1 from "./terrains/Space/SpaceV1";
 import { MotionBlur } from "./vfx/MotionBlur/MotionBlur";
 import Moebius from "./graphics/Moebius/MoebiusShader";
 import CombinedEffects from "./graphics/CombinedEffects";
+import { Explosion } from "./vfx/Explosion/Explosion";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function SceneBackground() {
@@ -99,7 +100,7 @@ export default function SoloGameApp() {
         <ambientLight intensity={0.5} />
 
         {/* <Perf position="top-left" /> */}
-        {/* <fog attach="fog" args={["#070710", 100, 700]} /> */}
+        <fog attach="fog" args={["#070710", 100, 700]} />
         <Stats />
         {/* <Stars radius={100} depth={100} count={10000} /> */}
         <Suspense>
@@ -115,6 +116,8 @@ export default function SoloGameApp() {
           <SpaceV1 />
           {/* <ThunderClouds /> */}
           {/* <BoostFlame position={[0, 20, 0]} /> */}
+
+          {/* <Explosion position={[0, 0, 0]} scale={2} /> */}
         </Suspense>
         {/* <Environment preset="city" /> */}
         {/* <Rings /> */}
@@ -124,8 +127,8 @@ export default function SoloGameApp() {
           <Rocks />
           <Planets />
         </Suspense> */}
-        {/* <Effects /> */}
-        <Moebius />
+        <Effects />
+        {/* <Moebius /> */}
         {/* <CombinedEffects /> */}
       </Canvas>
     </div>

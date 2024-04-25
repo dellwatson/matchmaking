@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../_ui/Card";
+import Card from "@theras_labs/ui/src/Card";
 import {
   mocked_ammo,
   mocked_data,

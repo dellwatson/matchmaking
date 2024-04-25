@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 export default function useListingProduct(_id: string) {
   //
-
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
@@ -15,6 +14,8 @@ export default function useListingProduct(_id: string) {
       console.log(res, "res", ALL_LISTING_PRODUCTS, _id);
       setData(res);
     }
+
+    //
     loadData();
   }, [_id]);
 

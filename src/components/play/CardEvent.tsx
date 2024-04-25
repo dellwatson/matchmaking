@@ -1,7 +1,7 @@
 import { SiSololearn } from "react-icons/si";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { MdTask } from "react-icons/md";
-import { Label, Subtitle, Title } from "@/_ui/Typography";
+import { Label, Subtitle, Title } from "@theras_labs/ui/src/Typography";
 
 const CardEvent = ({
   icon: Icon = SiSololearn,

@@ -1,4 +1,4 @@
-import { Title } from "@/_ui/Typography";
+import { Title } from "@theras_labs/ui/src/Typography";
 import { TitlePage } from "@/components/lobby/interfaces/LobbyTop";
 import React from "react";
 import Warning from "./Announcement/Warning";

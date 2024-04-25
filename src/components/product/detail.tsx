@@ -7,20 +7,20 @@ import {
   Accent,
   Overline,
   Label,
-} from "@/_ui/Typography";
-import NetworkSelect from "@/_ui/select/NetworkSelect";
+} from "@theras_labs/ui/src/Typography";
+import NetworkSelect from "@theras_labs/ui/src/select/NetworkSelect";
 import { shortenEthAddress } from "@/utils/ethaddress";
 import { PurchaseOptions } from "./modal-detail-item";
-import Rarity from "@/_ui/utils/Rarity";
+import Rarity from "@theras_labs/ui/src/utils/Rarity";
 import InfoNetwork from "./info-network";
-import ProgressBar from "@/_ui/utils/ProgressBar";
-import IconBox from "@/_ui/Box/IconBox";
+import ProgressBar from "@theras_labs/ui/src/utils/ProgressBar";
+import IconBox from "@theras_labs/ui/src/Box/IconBox";
 import { Button } from "@/stories/ui/Button/Button";
 import { useState } from "react";
-import BlockTitle from "@/_ui/block/BlockTitle";
-import ListPayment from "@/_ui/Payment/ListPayment";
+import BlockTitle from "@theras_labs/ui/src/block/BlockTitle";
+import ListPayment from "@theras_labs/ui/src/Payment/ListPayment";
 import { PAYMENT_OPTIONS } from "./mock-shop";
-import DisplayList from "@/_ui/Display/DisplayList";
+import DisplayList from "@theras_labs/ui/src/Display/DisplayList";
 import InventorySlot from "../inventory/InventorySlot";
 // import React from "react";
 

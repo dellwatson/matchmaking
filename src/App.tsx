@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { getGPUTier } from "detect-gpu";
 import FullScreen from "react-fullscreen-crossbrowser";
 import globalStore from "./store/global-store";
-import "@/_ui/styles/global.scss";
+import "@theras_labs/ui/src/styles/global.scss";
 import Product from "./pages/Product";
 import MyProduct from "./pages/MyProduct";
 import Template from "./pages/Template";

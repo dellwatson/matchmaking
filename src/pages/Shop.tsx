@@ -1,9 +1,9 @@
 import ProductDisplay from "@/components/product";
 import Layout from "@/components/lobby/LayoutHeader";
 import useReadContract from "@/helpers/hooks/useReadContract";
-import HorizontalScroll from "@/_ui/HorizontalScroll";
-import CardProduct from "@/_ui/Card/CardStore";
-import GroupCards from "@/_ui/group/GroupCards";
+import HorizontalScroll from "@theras_labs/ui/src/HorizontalScroll";
+import CardProduct from "@theras_labs/ui/src/Card/CardStore";
+import GroupCards from "@theras_labs/ui/src/group/GroupCards";
 import { useNavigate } from "react-router-dom";
 import { MOCK_SHOP } from "@/components/product/mock-shop";
 

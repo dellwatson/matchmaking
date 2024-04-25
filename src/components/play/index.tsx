@@ -1,5 +1,5 @@
-import CornerBox from "@/_ui/Box/CornerBox";
-import GlowingText from "@/_ui/text/glowing-text";
+import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
+import GlowingText from "@theras_labs/ui/src/text/glowing-text";
 import { useNavigate } from "react-router-dom";
 
 import { useLayoutEffect, useState } from "react";

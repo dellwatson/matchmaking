@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
 import { CHAIN_ID, CLAIM_MANAGER, TOKEN_GEM } from "@/web3/contract-list";
-import NetworkSelect from "@/_ui/select/NetworkSelect";
+import NetworkSelect from "@theras_labs/ui/src/select/NetworkSelect";
 import { useTXStarknet } from "@/helpers/hooks/useTXStarknet";
 import networkStore from "@/store/network-store";
 

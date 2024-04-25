@@ -1,7 +1,7 @@
 import ProductDisplay from "@/components/product";
 import Layout from "@/components/lobby/LayoutHeader";
-import CornerBox from "@/_ui/Box/CornerBox";
-import GlowingText from "@/_ui/text/glowing-text";
+import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
+import GlowingText from "@theras_labs/ui/src/text/glowing-text";
 import useReadContract from "@/helpers/hooks/useReadContract";
 import { PASS_NFT, SHIP_NFT, TICKET_NFT } from "@/web3/contract-list";
 import { useAccount } from "wagmi";

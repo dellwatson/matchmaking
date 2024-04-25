@@ -1,8 +1,8 @@
-import CornerBox from "@/_ui/Box/CornerBox";
+import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
 import React, { useState } from "react";
 import { FaScroll } from "react-icons/fa";
 import DailyPerformances from "../lobby/interfaces/performances";
-import ModalQuest from "@/_ui/Modal/ModalQuest";
+import ModalQuest from "@theras_labs/ui/src/Modal/ModalQuest";
 import { MdTask } from "react-icons/md";
 
 export default function QuestLobby() {

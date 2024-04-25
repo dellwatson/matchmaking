@@ -1,4 +1,4 @@
-import Avatar from "@/_ui/profile/avatar";
+import Avatar from "@theras_labs/ui/src/profile/avatar";
 import authStore from "@/store/auth-store";
 import { Button } from "@/stories/ui/Button/Button";
 import { GravatarUrl } from "@/utils/Gravatar";

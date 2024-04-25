@@ -3,7 +3,7 @@ import Garage from "./garage";
 import Play from "../play";
 import Pass from "./interfaces/pass";
 import NewsSection from "./interfaces/news";
-import SeasonPass from "@/_ui/Lobby/SeasonPassBtn";
+import SeasonPass from "@theras_labs/ui/src/Lobby/SeasonPassBtn";
 
 export default function Layout() {
   return (

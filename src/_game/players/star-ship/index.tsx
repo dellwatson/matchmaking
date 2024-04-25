@@ -8,6 +8,7 @@ import { Model as StarshipB } from "@/_backend/starship/starshipB/Scene";
 import { Model as Phoenix } from "@/_backend/conveyance/phoenix/Phoenix_bird";
 // import { Model } from "@/_backend/conveyance/animatedDragon/Animated_dragon";
 import { Model } from "@/_backend/starship/sparrow/Scene";
+import { Explosion } from "@/_game/vfx/Explosion/Explosion";
 // import { Model } from "@/_backend/starship/starshipA/Ship";
 // import { Model } from "@/_backend/starship/mercyA/Scene";
 // import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
@@ -18,6 +19,7 @@ import { Model } from "@/_backend/starship/sparrow/Scene";
 
 export default function SpaceShip() {
   const mutation = useStore((state) => state.mutation);
+  const explode = useStore((state) => state.explode);
   const { clock } = mutation;
 
   const ship = useStore((s) => s?.ship);
@@ -56,6 +58,7 @@ export default function SpaceShip() {
           distance={500} // Maximum range of the light
           castShadow // Enable shadow casting
         /> */}
+        {explode && <Explosion position={[0, 0, 0]} scale={2} />}
         <Buster />
         {/* <pointLight
           // castShadow

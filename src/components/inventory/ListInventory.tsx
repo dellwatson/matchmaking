@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DetailProduct from "../product/detail";
-import { Title } from "@/_ui/Typography";
-import InventoryBox from "@/_ui/Box/InventoryBox";
+import { Title } from "@theras_labs/ui/src/Typography";
+import InventoryBox from "@theras_labs/ui/src/Box/InventoryBox";
 import useInventory from "@/_core/hooks/useInventory";
 // import useProfile from "@/_core/hooks/useProfile";
 

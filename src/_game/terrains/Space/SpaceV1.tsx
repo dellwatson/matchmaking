@@ -3,6 +3,7 @@ import React from "react";
 import rockGLB from "../../asset/obstacles/rock.gltf";
 import LinePath from "@/_game/celestial/Path/LinePath";
 import SkyboxStars from "@/_game/celestial/Skybox/SkyboxStars";
+import SphereProcedural from "@/_game/system/SphereProcedural";
 
 export default function SpaceV1() {
   return (
@@ -11,7 +12,13 @@ export default function SpaceV1() {
       <LinePath />
       <LinePath />
       <LinePath />
-      <ProceduralObstacle
+      {/* <ProceduralObstacle
+        {...{
+          modelUrl: rockGLB,
+        }}
+      /> */}
+
+      <SphereProcedural
         {...{
           modelUrl: rockGLB,
         }}
