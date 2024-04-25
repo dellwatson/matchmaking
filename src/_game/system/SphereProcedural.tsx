@@ -4,7 +4,8 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import rockGLB from "../asset/obstacles/rock.gltf";
 import useStore from "../store";
 import { Box3, Vector3, Sphere, MathUtils } from "three";
-import * as THREE from "THREE";
+import * as THREE from "three";
+
 function ProceduralObstacle({
   modelUrl = rockGLB,
   numObstacles = 350,
