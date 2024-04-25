@@ -82,9 +82,9 @@ function ProceduralObstacle({
       if (!obstacle.userData.rotationSpeed) {
         // Assign a random rotation speed and direction for each axis when first created or reset
         obstacle.userData.rotationSpeed = {
-          x: (Math.random() - 0.5) * 0.1, // Speed between -0.1 and 0.1 radians per frame
-          y: (Math.random() - 0.5) * 0.1,
-          z: (Math.random() - 0.5) * 0.1,
+          x: (Math.random() - 0.5) * 2, // Speed between -0.1 and 0.1 radians per frame
+          y: (Math.random() - 0.5) * 2,
+          z: (Math.random() - 0.5) * 2,
         };
       }
 
@@ -110,10 +110,10 @@ function ProceduralObstacle({
 
       // Collision detection
       const obstacleBoundingBox = new THREE.Box3().setFromObject(obstacle);
-      //   if (shipBoundingBox.intersectsBox(obstacleBoundingBox)) {
-      //     console.log(`Collision detected with obstacle ${index}`);
-      //     updateGame();
-      //   }
+      if (shipBoundingBox.intersectsBox(obstacleBoundingBox)) {
+        console.log(`Collision detected with obstacle ${index}`);
+        updateGame();
+      }
 
       //   obstacle.visible = true; // Ensure obstacle is visible
     });
