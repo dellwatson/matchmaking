@@ -5,6 +5,7 @@ import { create } from "zustand";
 import * as audio from "./audio";
 import { createRef } from "react";
 import abilityStore from "./hud/AbilitySlot/ability-store";
+import globalStore from "@/store/global-store";
 
 let guid = 1;
 
@@ -233,7 +234,8 @@ function randomRings(count, track) {
 }
 
 function playAudio(audio, volume = 1, loop = false) {
-  if (useStore.getState().sound) {
+  // globalStore
+  if (globalStore.getState().sound) {
     audio.currentTime = 0;
     audio.volume = volume;
     audio.loop = loop;

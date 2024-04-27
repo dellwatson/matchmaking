@@ -19,7 +19,7 @@ import MyProduct from "./pages/MyProduct";
 import Template from "./pages/Template";
 
 function App() {
-  const { isFullScreen } = globalStore();
+  const { isFullScreen, sound, setSoundActive } = globalStore();
   // const [block, setBlock] = useState(false);
 
   // DETECT WEBGL TOO
@@ -43,6 +43,25 @@ function App() {
   //     </div>
   //   );
   // }
+
+  // useActivateFirstSound
+  // zustand
+  useEffect(() => {
+    const activateSound = (event) => {
+      // detect from store already record or not
+      if (!sound) {
+        // enable sound and store it to state
+        // console.log("Click detected");
+        setSoundActive(true);
+      }
+    };
+    document.addEventListener("click", activateSound);
+    document.addEventListener("keydown", activateSound);
+    return () => {
+      document.removeEventListener("click", activateSound);
+      document.removeEventListener("keydown", activateSound);
+    };
+  }, []);
 
   return (
     // <FullScreen enabled={isFullScreen}>

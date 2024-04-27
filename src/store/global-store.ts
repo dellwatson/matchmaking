@@ -11,6 +11,11 @@ const globalStore = create((set, get) => {
         isFullScreen: val,
       });
     },
+    sound: false,
+    setSoundActive: (val: boolean) =>
+      set({
+        sound: val,
+      }),
   };
 });
 

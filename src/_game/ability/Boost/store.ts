@@ -31,7 +31,7 @@ const useBoostStore = create((set) => ({
           // This timeout still needs to call set, but it's not nested directly
           set({ superBoost: false, boostActive: false });
           console.log("Boost ended.");
-        }, 3000); // Deactivate super boost after 3 seconds
+        }, 6000); // Deactivate super boost after 3 seconds
         return { boostBars: newBoostBars, superBoost: true, boostActive: true };
       }
     }),

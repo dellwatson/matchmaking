@@ -40,24 +40,6 @@ export default function LobbyPage() {
   //   chainId: 4201,
   // });
 
-  // useActivateFirstSound
-  // zustand
-  // useEffect(() => {
-  //   const handleClick = (event) => {
-  //     // detect from store already record or not
-  //     // if(!record){
-  //     // enable sound and store it to state
-  //     //   console.log("Click detected");
-  //     // }
-  //   };
-
-  //   document.addEventListener("click", handleClick);
-
-  //   return () => {
-  //     document.removeEventListener("click", handleClick);
-  //   };
-  // }, []);
-
   return (
     <div className="absolute dark:bg-black  h-full w-full !overflow-hidden">
       <LobbyLeft />

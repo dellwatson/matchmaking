@@ -1,5 +1,5 @@
 import usePathStore from "@/_game/celestial/Path/store";
-import useStore from "@/_game/store";
+import useStore, { playAudio, audio } from "@/_game/store";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import useBoostStore from "./store";
@@ -18,7 +18,32 @@ export default function useLineBoost() {
     setChargeProgress,
     boostActive,
     chargeProgress,
+    superBoost,
+    boostBars,
   } = useBoostStore();
+
+  const audioPlayingRef = useRef(false); // Ref to track if audio is already playing
+
+  useEffect(() => {
+    // Only start the audio if it's not already playing and chargeProgress is greater than 0
+    if (boostBars !== 3 && !audioPlayingRef.current) {
+      console.log("Charge in progress - play sound");
+      playAudio(audio.boost_charging, 0.5, true); // Assuming you want the sound to loop
+      audioPlayingRef.current = true; // Set ref to true indicating audio is playing
+    } else if (chargeProgress === 0 && audioPlayingRef.current) {
+      console.log("Charge stopped - pause sound");
+      audio.boost_charging.pause();
+      audio.boost_charging.currentTime = 0; // Reset the time
+      audioPlayingRef.current = false; // Set ref to false indicating audio is stopped
+    }
+  }, [chargeProgress]); // Depend on chargeProgress
+
+  useEffect(() => {
+    // Only start the audio if it's not already playing and chargeProgress is greater than 0
+    if (superBoost) {
+      playAudio(audio.warp); // Assuming you want the sound to loop
+    }
+  }, [superBoost]); // Depend on chargeProgress
 
   useFrame(() => {
     if (!playerRef.current && Number(chargeProgress)) return;
@@ -35,7 +60,7 @@ export default function useLineBoost() {
         chargeStartTime.current = Date.now();
         chargeRef.current = setInterval(() => {
           const elapsed = Date.now() - chargeStartTime.current;
-          const progress = Math.min(100, (elapsed / 5000) * 100); // Convert time to progress percentage
+          const progress = Math.min(100, (elapsed / 3000) * 100); // Convert time to progress percentage
           setChargeProgress(progress);
           if (progress >= 100) {
             increaseBoostBars();
