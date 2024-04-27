@@ -1,22 +1,19 @@
 import React from "react";
 import { CiLock } from "react-icons/ci";
 import abilityStore from "./ability-store";
+import useBoostStore from "@/_game/ability/Boost/store";
+import useLineBoost from "@/_game/ability/Boost/useLineBoost";
 
 export default function Abilities() {
   // get from profile the ability
   const { abilities, activate } = abilityStore();
+
   return (
-    <div
-      className="flex space-x-2 cursor-pointer ,"
-      //   style={{
-      //     transform: `skew(5deg, 5deg)`,
-      //   }}
-    >
-      {abilities.map((item, i) => (
+    <div className="flex space-x-2 cursor-pointer ,">
+      {/* {abilities.map((item, i) => (
         <div
           key={`box-ability-${i}`}
-          className={"h-32 w-32  backdrop-blur-xl "}
-        >
+          className={"h-32 w-32  backdrop-blur-xl "}>
           {item?.locked ? (
             <div className="flex justify-center items-center w-full h-full border-3 border-gray-300 rounded-md ">
               <CiLock size={24} />
@@ -31,8 +28,7 @@ export default function Abilities() {
               }}
               className={`w-full h-full border-3 border-green-300 rounded-md  ${
                 !item?.supply && "opacity-50"
-              } `}
-            >
+              } `}>
               <div className="absolute z-10 text-xl p-1 font-bold">
                 {item?.supply}
               </div>
@@ -44,7 +40,34 @@ export default function Abilities() {
             </div>
           )}
         </div>
-      ))}
+      ))} */}
+      <BoostButton />
     </div>
   );
 }
+
+function BoostButton() {
+  const { boostBars, useBoost, chargeProgress, superBoost } = useBoostStore();
+
+  function handleLineBoost() {
+    if (!!boostBars && !superBoost) {
+      useBoost();
+    }
+  }
+  // const { handleLineBoost } = useLineBoost();
+  return (
+    <button
+      onClick={() => {
+        handleLineBoost();
+      }}>
+      super: {superBoost ? "yes" : "no"}
+      <br />
+      BOOST {boostBars}
+      <br />
+      {Math.round(chargeProgress)}
+      <br />
+    </button>
+  );
+}
+
+//

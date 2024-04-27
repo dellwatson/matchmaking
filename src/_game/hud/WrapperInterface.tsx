@@ -2,6 +2,7 @@ import { Title } from "@theras_labs/ui/src/Typography";
 import { TitlePage } from "@/components/lobby/interfaces/LobbyTop";
 import React from "react";
 import Warning from "./Announcement/Warning";
+import BoostBar from "./Stats/BoostBar";
 
 export default function WrapperInterface({ children }) {
   return (
@@ -20,6 +21,7 @@ export default function WrapperInterface({ children }) {
           X Collected
         </Title>
         <Title className=" tracking-[3px]  !font-thin !text-xl">X Speed</Title>
+        <BoostBar />
       </div>
       <div className="absolute  z-10 w-full flex justify-center xl:mt-2">
         <div className="absolute mt-4">

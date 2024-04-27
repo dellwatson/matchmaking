@@ -19,6 +19,8 @@ import {
 } from "@react-three/postprocessing";
 import useStore from "../store";
 import { MotionBlur } from "../vfx/MotionBlur/MotionBlur";
+import VisualEffect from "./VisualEffect";
+import useBoostStore from "../ability/Boost/store";
 // import { LUTCubeLoader, ToneMappingMode } from 'postprocessing'
 
 // extend({ EffectComposer, ShaderPass, RenderPass, UnrealBloomPass, FilmPass })
@@ -65,10 +67,13 @@ export default function Effects() {
   //     clearTimeout(glitchTimeout);
   //   };
   // }, []);
+  const superBoost = useBoostStore((state) => state?.superBoost);
 
   return (
     <>
       <EffectComposer>
+        {superBoost && <MotionBlur />}
+
         {/* <BrightnessContrast brightness={0} contrast={0.1} /> */}
         {/* <ToneMapping mode={ToneMappingMode.ACES_FILMIC} /> */}
         {/* <LUT lut={texture} /> */}

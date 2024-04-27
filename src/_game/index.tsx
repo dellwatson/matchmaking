@@ -91,10 +91,10 @@ export default function SoloGameApp() {
         {/* <Suspense fallback={null}>
           <SceneBackground />
         </Suspense> */}
-        <color attach="background" args={["blue"]} />
+        {/* <color attach="background" args={["blue"]} /> */}
         {/* <color attach="background" args={["#1b1122"]} /> */}
         {/* <color attach="background" args={["#ADD8E6"]} /> */}
-        {/* <color attach="background" args={["#020209"]} /> */}
+        <color attach="background" args={["#020209"]} />
         {/* <color attach="background" args={["#260221"]} /> */}
 
         <ambientLight intensity={0.5} />

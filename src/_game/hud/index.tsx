@@ -1,6 +1,6 @@
 import React from "react";
 import Controller from "./controller";
-import Abilities from "./abilities";
+import Abilities from "./AbilitySlot";
 import Menu from "./menu";
 import Distance from "./stats/distance";
 import Radar from "./radar";
@@ -26,7 +26,7 @@ export default function Interface() {
         <Controller />
       </div>
       <div className="hidden md:flex border-gray-600  justify-end items-end ">
-        {/* <Abilities /> */}
+        <Abilities />
         {/* <img
           src={"./keyControls.png"}
           className="min-w-[200px] min-h-[200px] relative left-105 scale-60 opacity-50"

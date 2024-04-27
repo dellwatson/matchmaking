@@ -4,7 +4,7 @@ import { addEffect } from "@react-three/fiber";
 import { create } from "zustand";
 import * as audio from "./audio";
 import { createRef } from "react";
-import abilityStore from "./hud/abilities/ability-store";
+import abilityStore from "./hud/AbilitySlot/ability-store";
 
 let guid = 1;
 

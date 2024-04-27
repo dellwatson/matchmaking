@@ -2,7 +2,7 @@ import Ship from "@/components/showroom/Ship";
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import useStore from "../../store";
 import { useFrame } from "@react-three/fiber";
-import Buster from "../../hud/abilities/category/shield/Buster";
+import Buster from "../../hud/AbilitySlot/category/shield/Buster";
 import { Box, Stars } from "@react-three/drei";
 import { Model as StarshipB } from "@/_backend/starship/starshipB/Scene";
 import { Model as Phoenix } from "@/_backend/conveyance/phoenix/Phoenix_bird";

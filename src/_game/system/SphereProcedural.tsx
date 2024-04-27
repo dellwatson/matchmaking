@@ -112,7 +112,7 @@ function ProceduralObstacle({
       const obstacleBoundingBox = new THREE.Box3().setFromObject(obstacle);
       if (shipBoundingBox.intersectsBox(obstacleBoundingBox)) {
         console.log(`Collision detected with obstacle ${index}`);
-        updateGame();
+        // updateGame();
       }
 
       //   obstacle.visible = true; // Ensure obstacle is visible

@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo } from "react";
+import React, { forwardRef, useEffect, useMemo } from "react";
 import { Uniform } from "three";
 import { Effect } from "postprocessing";
 // import { Effect } from "@react-three/postprocessing";
@@ -48,7 +48,8 @@ class MotionBlurImpl extends Effect {
 }
 
 // Effect component
-export const MotionBlur = forwardRef(({}, ref) => {
+export const MotionBlur = forwardRef(({ strength }, ref) => {
   const effect = useMemo(() => new MotionBlurImpl(), []);
+
   return <primitive ref={ref} object={effect} dispose={null} />;
 });

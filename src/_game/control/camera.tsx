@@ -3,13 +3,17 @@ import useStore from "../store";
 import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import useBoostStore from "../ability/Boost/store";
 
 const v = new Vector3();
+const BOOST_CAMERA = 36;
+const DEFAULT_CAMERA = 40;
 
 export default function Camera() {
   const PLAYER = useStore((s) => s.ship);
   const SPEED = useStore((s) => s?.speed);
   const camera = useStore((s) => s.camera);
+  const { superBoost } = useBoostStore();
 
   useLayoutEffect(() => {
     // camera.current.rotation.set(0, Math.PI, 0);
@@ -51,7 +55,7 @@ export default function Camera() {
       const targetPosition = new Vector3(
         PLAYER.current.position.x,
         PLAYER.current.position.y + 2,
-        PLAYER.current.position.z + 40
+        PLAYER.current.position.z + (superBoost ? BOOST_CAMERA : DEFAULT_CAMERA)
       );
 
       // Example dynamic lerp factor adjustment
