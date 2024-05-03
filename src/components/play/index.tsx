@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useLayoutEffect, useState } from "react";
 import ModalPlay from "../lobby/interfaces/play/modal-play";
 import GameEvent from "@/components/play/LobbyEvent";
+import useLobbyGame from "@/helpers/hooks/useLobbyGame";
+import LoadingBar from "./LoadingBar";
+import PlayArrow from "./PlayArrow";
 
 export default function Play({ isMobile = true }) {
   const navigate = useNavigate();
@@ -17,6 +20,8 @@ export default function Play({ isMobile = true }) {
   // function openModal() {
   //   setIsOpen(true);
   // }
+
+  const { gameState, handlePlay } = useLobbyGame();
 
   return (
     <>
@@ -54,7 +59,8 @@ export default function Play({ isMobile = true }) {
 
         <CornerBox
           onClick={() => {
-            navigate("/match-room");
+            handlePlay();
+            // navigate("/match-room");
             // alert("Events are closed");
             // RESET GAME STORE
           }}
@@ -62,9 +68,21 @@ export default function Play({ isMobile = true }) {
           classNameOutside={" p-6 lg:p-8 lg:w-[300px] w-full"}
           className="flex justify-center items-center w-full h-full uppercase"
           background="rgba(0, 0, 0, 0.9)">
-          <GlowingText color="red" effect="pulsate" unit="px" fontSize="24px">
-            PRACTICE
-          </GlowingText>
+          {/* <GlowingText color="red" effect="pulsate" unit="px" fontSize="24px"> */}
+          {gameState === "lobby" ? (
+            <>
+              {/* <div className="relative border border-red-500"> */}
+              PLAY
+              <PlayArrow />
+            </>
+          ) : (
+            <>
+              FINDING MATCH
+              <LoadingBar />
+            </>
+          )}
+          {/* loading */}
+          {/* </GlowingText> */}
         </CornerBox>
       </div>
       {/* <ModalPlay

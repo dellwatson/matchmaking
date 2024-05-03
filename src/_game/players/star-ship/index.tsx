@@ -1,14 +1,15 @@
 import Ship from "@/components/showroom/Ship";
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
-import useStore from "../../store";
+import useStore, { audio, playAudio } from "../../store";
 import { useFrame } from "@react-three/fiber";
 import Buster from "../../hud/AbilitySlot/category/shield/Buster";
-import { Box, Stars } from "@react-three/drei";
+import { Box, Sphere, Stars } from "@react-three/drei";
 import { Model as StarshipB } from "@/_backend/starship/starshipB/Scene";
 import { Model as Phoenix } from "@/_backend/conveyance/phoenix/Phoenix_bird";
 // import { Model } from "@/_backend/conveyance/animatedDragon/Animated_dragon";
 import { Model } from "@/_backend/starship/sparrow/Scene";
 import { Explosion } from "@/_game/vfx/Explosion/Explosion";
+
 // import { Model } from "@/_backend/starship/starshipA/Ship";
 // import { Model } from "@/_backend/starship/mercyA/Scene";
 // import { MirroredRepeatWrapping, Vector2, Vector3, Raycaster } from "three";
@@ -26,7 +27,16 @@ export default function SpaceShip() {
   const boundingBox = useStore((s) => s?.shipBox);
   const exhaust = useStore((s) => s?.exhaust);
 
-  // useEffect(() => {}, [ship]);
+  useEffect(() => {
+    playAudio(audio.engine, 0.5, true);
+    playAudio(audio.engine2, 0.2, true);
+
+    return () => {
+      audio.engine.pause();
+      audio.engine2.pause();
+    };
+  }, []);
+
   useFrame((state, delta) => {
     // boundingBox?.setFromObject(ship.current);
     exhaust.current.scale.x = 1 + Math.sin(clock.getElapsedTime() * 50);
@@ -78,7 +88,32 @@ export default function SpaceShip() {
         {/* <Phoenix scale={[0.015, 0.015, 0.015]} rotation={[0, 4.7, 0]} /> */}
         {/* <Model scale={[3, 3, 3]} position={[0, -6, 0]} /> */}
         {/* <Model scale={[0.3, 0.3, 0.3]} /> */}
+        <Sphere
+          scale={[0.5, 0.5, 0.5]}
+          //
+        >
+          <pointLight
+            castShadow
+            position={[0, 0, -200]}
+            distance={1000000}
+            intensity={100000}
+            color="green"
+          />
 
+          <mesh
+            ref={exhaust}
+            scale={[0.3, 1, 10]}
+            position={[0, 0, -20]}
+            rotation={[Math.PI, 0, 0]}>
+            <dodecahedronGeometry args={[1.5, 0]} />
+            <meshStandardMaterial
+              color="lightblue"
+              emissive="lightblue"
+              emissiveIntensity={1}
+            />
+          </mesh>
+        </Sphere>
+        {/* 
         <Model
           scale={[0.3, 0.3, 0.3]}
           // scale={[0.5, 0.5, 0.5]}
@@ -104,7 +139,7 @@ export default function SpaceShip() {
               emissiveIntensity={1}
             />
           </mesh>
-        </Model>
+        </Model> */}
         {/* <Ship
         {...{
           selected: {

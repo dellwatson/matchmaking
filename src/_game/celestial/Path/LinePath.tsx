@@ -3,8 +3,11 @@ import { useFrame } from "@react-three/fiber";
 import { Line } from "@react-three/drei";
 import usePathStore from "./store"; // Adjust the path to your store file
 import useStore from "@/_game/store";
+import useMessageStore from "@/_game/hud/Message/store";
 
 const LinePath = ({ pathLength = 4000, segments = 200, scale = 10 }) => {
+  const { setWarningLineDistance } = useMessageStore();
+  const { setGameOver } = useStore();
   const points = usePathStore((state) => state.points);
   const generatePoints = usePathStore((state) => state.generatePoints);
   const getPlayerDistanceToPath = usePathStore(
@@ -25,15 +28,23 @@ const LinePath = ({ pathLength = 4000, segments = 200, scale = 10 }) => {
       playerPosition.y,
       playerPosition.z,
     ]);
-    // console.log("Current distance to path:", currentDistance);
-    // if (currentDistance <= 10) {
-    //   console.log("Player is close to the path!");
-    // }
+
+    if (currentDistance <= 200) {
+      //
+      setWarningLineDistance(false);
+    } else {
+      setWarningLineDistance(true);
+    }
+    if (currentDistance > 400) {
+      // game-over
+      //
+      setGameOver();
+    }
   });
 
   if (!points.length) return null;
 
-  return <Line points={points} color="lightgreen" lineWidth={2} />;
+  return <Line points={points} color="lightgreen" lineWidth={3} />;
 };
 
 export default LinePath;

@@ -10,6 +10,7 @@ import "./i18n.ts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Web3HubProvider from "./_core/providers/hub.tsx";
+import { insertCoin } from "playroomkit";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

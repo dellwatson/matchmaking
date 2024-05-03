@@ -47,6 +47,7 @@ export default defineConfig({
     "**/*.glb",
     "**/*.jpeg",
     "**/*.png",
+    "**/*.lottie",
     "**/*.mp3",
     "**/*.cube",
     "**/*.hdr",

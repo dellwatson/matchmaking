@@ -28,8 +28,7 @@ const Ship = forwardRef((props, ref) => {
       // rotation={[Math.PI / 2, Math.PI, 0]}
       ref={ref}
       {...props}
-      dispose={null}
-    >
+      dispose={null}>
       {props?.children}
       <mesh
         castShadow
@@ -42,8 +41,7 @@ const Ship = forwardRef((props, ref) => {
         receiveShadow
         geometry={nodes.Cube005_1.geometry}
         material={materials.Mat1}
-        material-color={selected?.color}
-      >
+        material-color={selected?.color}>
         {selected?.materialMesh === "refraction" && (
           <MeshRefractionMaterial envMap={texture} toneMapped={true} />
         )}
@@ -69,11 +67,10 @@ const Ship = forwardRef((props, ref) => {
         geometry={nodes.Cube005_2.geometry}
         material={materials.Mat2}
         material-envMapIntensity={0.2}
-        material-color={selected?.color}
-      >
-        {selected?.materialMesh === "refraction" && (
+        material-color={selected?.color}>
+        {/* {selected?.materialMesh === "refraction" && (
           <MeshRefractionMaterial envMap={texture} toneMapped={true} />
-        )}
+        )} */}
         {selected?.materialMesh === "transmission" && (
           <MeshTransmissionMaterial
             backside
@@ -94,12 +91,11 @@ const Ship = forwardRef((props, ref) => {
         castShadow
         receiveShadow
         geometry={nodes.Cube005_3.geometry}
-        material={materials.Window_Frame}
-      >
-        {selected?.materialMesh === "refraction" && (
+        material={materials.Window_Frame}>
+        {/* {selected?.materialMesh === "refraction" && (
           <MeshRefractionMaterial envMap={texture} toneMapped={true} />
         )}
-        {props?.ExhaustMiddle}
+        {props?.ExhaustMiddle} */}
       </mesh>
       <mesh
         castShadow

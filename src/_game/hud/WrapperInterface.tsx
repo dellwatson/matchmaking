@@ -3,26 +3,23 @@ import { TitlePage } from "@/components/lobby/interfaces/LobbyTop";
 import React from "react";
 import Warning from "./Announcement/Warning";
 import BoostBar from "./Stats/BoostBar";
+import Message from "./Message";
+import Scores from "./Stats/Score/Scores";
 
 export default function WrapperInterface({ children }) {
   return (
     <div className="absolute">
+      {/* THE JOYSTICK -> but playroom joystick also?? */}
+
       {/* Announcement */}
       {/* <div className="absolute w-full h-full z-10 flex justify-center items-center">
       </div> */}
+      <Message />
 
       {/* header */}
-      <div className="absolute mt-4 xl:ml-4 p-2 z-10 ">
-        <Title className=" tracking-[3px]  !font-thin !text-xl">
-          X Distance
-        </Title>
-        {/* &nbsp; &nbsp; &nbsp; */}
-        <Title className=" tracking-[3px]  !font-thin !text-xl">
-          X Collected
-        </Title>
-        <Title className=" tracking-[3px]  !font-thin !text-xl">X Speed</Title>
-        <BoostBar />
-      </div>
+      <Scores />
+
+      {/* <BoostBar /> */}
       <div className="absolute  z-10 w-full flex justify-center xl:mt-2">
         <div className="absolute mt-4">
           <Title className="uppercase tracking-[10px]  !font-thin !text-2xl">{`STAR-EX`}</Title>
@@ -31,7 +28,8 @@ export default function WrapperInterface({ children }) {
       </div>
       {children}
       <div className="absolute z-10 bottom-0 px-2 capitalize !font-thin">
-        control: keyboard
+        {/*  */}
+        control: keyboard + joystick
       </div>
     </div>
   );

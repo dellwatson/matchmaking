@@ -23,31 +23,31 @@ const MOCK_EVENTS = [
         info: "Closed",
         // info: "3d 12h",
       },
-      {
-        name: <div className="text-orange-400">binance zone</div>,
-        quests: [1, 1],
-        eventImage:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0J5kNkqPxviBmYlRQ96wxHnKA6FU7-e1mdQ&usqp=CAU",
-        ticket: true,
-        info: "Require Ticket",
-      },
       // {
-      //   name: <div className="text-pruple-400">starknet zone</div>,
+      //   name: <div className="text-orange-400">binance zone</div>,
       //   quests: [1, 1],
       //   eventImage:
-      //     "https://miro.medium.com/v2/resize:fit:1400/0*ierL7m_u-z3q_cSx.jpg",
+      //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0J5kNkqPxviBmYlRQ96wxHnKA6FU7-e1mdQ&usqp=CAU",
       //   ticket: true,
       //   info: "Require Ticket",
       // },
-      {
-        name: <div className="text-blue-400">aptos zone</div>,
-        quests: [1, 1],
-        eventImage:
-          "https://cryptologos.cc/logos/versions/aptos-apt-logo-full.svg?v=029",
-        classNameImage: "",
-        ticket: true,
-        info: "Require Ticket",
-      },
+      // // {
+      // //   name: <div className="text-pruple-400">starknet zone</div>,
+      // //   quests: [1, 1],
+      // //   eventImage:
+      // //     "https://miro.medium.com/v2/resize:fit:1400/0*ierL7m_u-z3q_cSx.jpg",
+      // //   ticket: true,
+      // //   info: "Require Ticket",
+      // // },
+      // {
+      //   name: <div className="text-blue-400">aptos zone</div>,
+      //   quests: [1, 1],
+      //   eventImage:
+      //     "https://cryptologos.cc/logos/versions/aptos-apt-logo-full.svg?v=029",
+      //   classNameImage: "",
+      //   ticket: true,
+      //   info: "Require Ticket",
+      // },
     ],
   },
   {

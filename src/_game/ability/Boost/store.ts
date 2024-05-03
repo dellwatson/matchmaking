@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const useBoostStore = create((set) => ({
   // chargeRef:
-  boostBars: 1,
+  boostBars: 0,
   superBoost: false,
   boostActive: false,
   chargeProgress: 0, // New state for tracking charge progress

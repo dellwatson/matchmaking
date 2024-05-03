@@ -19,6 +19,7 @@ const useStore = create((set, get) => {
   return {
     set,
     get,
+    contdownStarting: false,
     ship: createRef(),
     shipBox: new THREE.Box3(new THREE.Vector3(), new THREE.Vector3()),
     // shipBox: new THREE.Box3(),
@@ -55,8 +56,43 @@ const useStore = create((set, get) => {
           });
         }, 1000); // 1000 milliseconds = 1 second
       }
-
       //
+    },
+    setGameOver: (v) => {
+      set({
+        game_over: true,
+        speed: 0,
+      });
+    },
+    crashes: 0,
+    addCrash: () => {
+      if (get().game_over) return;
+      set((state) => {
+        return { crashes: state?.crashes + 1 };
+      });
+    },
+    collect: 0,
+    addCollect: () => {
+      if (get().game_over) return;
+
+      set((state) => {
+        return { collect: state?.collect + 1 };
+      });
+    },
+    startTime: 0,
+    setStartTime: (v) => {
+      if (get().game_over) return;
+
+      console.log("START TIME CREATED");
+      set((state) => {
+        return { startTime: v };
+      });
+    },
+    endTime: 0,
+    setEndTime: (v) => {
+      set((state) => {
+        return { endTime: v };
+      });
     },
 
     //
@@ -75,7 +111,6 @@ const useStore = create((set, get) => {
     explosions: [],
     rocks: randomData(80, track, 10, 8, () => 1 + Math.random() * 2.5),
     enemies: randomData(1, track, 20, 15, 1),
-
     mutation: {
       t: 0,
       position: new THREE.Vector3(),

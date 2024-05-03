@@ -10,17 +10,19 @@ import * as THREE from "three";
 // level size
 function ProceduralObstacle({
   modelUrl = rockGLB,
-  numObstacles = 50,
+  numObstacles = 1,
   positionRange = { x: [-100, 200], y: [-100, 200], z: [300, 900] },
   // scaleRange = { min: 40, max: 100, variability: 0.1 },
-  scaleRange = { min: 200, max: 240, variability: 0.1 },
-  recycleDistance = 50,
+  scaleRange = { min: 0.1, max: 0.1, variability: 0.1 },
+  // scaleRange = { min: 200, max: 240, variability: 0.1 },
+  recycleDistance = 2,
+  // recycleDistance = 50,
+  collisionFn = () => {},
   // callback for
 }) {
   const { scene } = useThree();
   const obstaclesRef = useRef([]);
   const playerPosition = useStore((s) => s?.ship);
-  const { updateGame } = useStore();
 
   const model = useLoader(GLTFLoader, modelUrl);
 
@@ -142,8 +144,9 @@ function ProceduralObstacle({
       // Collision detection
       const obstacleBoundingBox = new THREE.Box3().setFromObject(obstacle);
       if (shipBoundingBox.intersectsBox(obstacleBoundingBox)) {
-        console.log(`Collision detected with obstacle ${index}`);
-        updateGame();
+        console.log(`Collision ${index}`);
+        // updateGame();
+        collisionFn();
       }
     });
   });

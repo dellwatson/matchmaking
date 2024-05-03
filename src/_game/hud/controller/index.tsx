@@ -17,9 +17,8 @@ function Controller() {
             // zIndex: 100,
             // position: "relative",
           }
-        }
-      >
-        <Joystick />
+        }>
+        {/* <Joystick /> */}
       </div>
     </>
   );

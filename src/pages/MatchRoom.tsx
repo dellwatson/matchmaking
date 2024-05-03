@@ -13,7 +13,7 @@ export default function MatchRoomPage() {
       {/* MatchRoomx */}
       {/* <ShowRoom /> */}
       <Interface />
-      <SoloGameApp />
+      {/* <SoloGameApp /> */}
       <GameOverModal />
       {/* game over modal */}
       {/* result match */}

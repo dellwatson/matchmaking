@@ -1,3 +1,6 @@
+import { useGameData } from "@/_backend/data/useGameData";
+import authStore from "@/store/auth-store";
+import { getDateId } from "@/utils/date";
 import { atom, useAtom } from "jotai";
 import {
   isHost,
@@ -18,36 +21,48 @@ export default function useLobbyGame() {
   const navigate = useNavigate();
   const [gameState, setGameState] = useMultiplayerState("gameState", "lobby");
 
+  // console.log(gameState, "gameState");
+  const { insertData } = useGameData();
+  const me = myPlayer();
+  const { profiles } = authStore();
+  // addProfile({
+  //   provider: "EVM",
+  //   address: addressEVM,
+  //   network: chainEVM?.name,
+  //   chainId: chainEVM?.id,
+  // });
+
   // get from local if lobby has done or not
 
   useEffect(() => {
     // check if game start
-    async function startGame() {
-      // const room_code = await getRoomCode();
-      // console.log(room_code, "room code");
-
-      const res = await insertCoin(
-        {
-          skipLobby: true,
-          gameId: "6QKkBbt8OJnIBlIQSMi8",
-          discord: true,
-          matchmaking: true,
-          // avatars: // eth
-          // roomCode // -> get roomcode from match supabase?
-          // enableBots
-          // reconnectGracePeriod
-          // maxPlayersPerRoom
-        }
-        // ,onLaunchCallback
-        // ondisconnect
-      );
-
-      console.log(res, "res");
-    }
-    startGame();
-
+    // startGame();
     // re-trigger
   }, []);
+  async function startGame() {
+    // const room_code = await getRoomCode();
+    // console.log(room_code, "room code");
+
+    await insertCoin(
+      {
+        skipLobby: true,
+        gameId: "6QKkBbt8OJnIBlIQSMi8",
+        discord: true,
+        matchmaking: true,
+        reconnectGracePeriod: 300,
+        maxPlayersPerRoom: 1,
+        // avatars: // eth
+        // roomCode // -> get roomcode from match supabase?
+        // enableBots
+        // reconnectGracePeriod
+        // maxPlayersPerRoom
+      }
+      // ,onLaunchCallback
+      // ondisconnect
+    );
+
+    // console.log(res, "res");
+  }
 
   // set name on
 
@@ -58,35 +73,60 @@ export default function useLobbyGame() {
 
   // create match
   const handlePlay = async () => {
-    // // set terrain
-    // // set
-    // // navigate
-    // // player -> 1 -> multiplayer ?
-    // setGameState("loading");
-    // console.log("matchmaking - loading");
-    // const x = await startMatchmaking();
-    // console.log("matchmaking find-game", x);
-    // setGameState("game");
-    // console.log("get room code");
+    // MUST CLEAR ROOM CODE ///////////////
+    navigate("/");
 
-    // const room_code = await getRoomCode();
-    // console.log(room_code, "room code");
+    //
+    // set terrain
+    // set
+    // navigate
+    // player -> 1 -> multiplayer ?
+    setGameState("loading");
+    console.log("matchmaking - loading");
 
-    // // supabase account + room_code
-    // // -> account send
-    // // date-today + room_code=> id  ->
-    // // -> add account joining -> time
-    // // finished
+    // change it for solo
+    // await startMatchmaking(); // FOR MULTIPLAYER
+    await startGame();
+    console.log("get room code");
 
-    // // navigate to match-room#
-    // //navigate
-    // navigate("/match-room?#r=R" + room_code);
-    navigate("/match-room?#r=R");
+    const room_code = await getRoomCode();
+    console.log(room_code, "room code");
+    // http://localhost:5174/#r=RPUB_O9BQZH_3EDO9JYS3
+    setGameState("game");
+    console.log("matchmaking find-game");
+
+    // const id  = `${getDateId()}_${room_code}`
+    if (profiles?.length) {
+      //not a guest
+
+      await insertData({
+        id: room_code,
+        players: [
+          {
+            // provider: "guest", //discord //wallet // guest
+            // account: "", /// guest (use playroom id)
+            ...profiles[0],
+          },
+        ],
+      });
+    }
+
+    // supabase account + room_code
+    // -> account send
+    // date-today + room_code=> id  ->
+    // -> add account joining -> time
+    // finished
+
+    // navigate to match-room#
+    //navigate
+    navigate("/match-room?#r=R" + room_code);
+    // navigate("/match-room?#r=R");
   };
 
   //
   return {
     handlePlay,
+    gameState,
   };
 }
 

@@ -3,6 +3,7 @@ import useStore, { playAudio, audio } from "@/_game/store";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import useBoostStore from "./store";
+import useStatStore from "@/_game/hud/Stats/store";
 
 export default function useLineBoost() {
   // playerRef
@@ -11,6 +12,7 @@ export default function useLineBoost() {
   const chargeRef = useRef(null);
   const chargeStartTime = useRef(null); // To track when charging started
   const { points, getPlayerDistanceToPath } = usePathStore();
+  const setLineDistance = useStatStore((s) => s.setLineDistance);
   const {
     increaseBoostBars,
     activateSuperBoost,
@@ -53,9 +55,10 @@ export default function useLineBoost() {
       [playerPosition.x, playerPosition.y, playerPosition.z],
       points
     );
+    setLineDistance(currentDistance);
 
     // Charge boost bars if within range
-    if (currentDistance > 1 && currentDistance <= 100) {
+    if (currentDistance > 1 && currentDistance <= 50) {
       if (!chargeRef.current) {
         chargeStartTime.current = Date.now();
         chargeRef.current = setInterval(() => {

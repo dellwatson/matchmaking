@@ -41,6 +41,8 @@ import { MotionBlur } from "./vfx/MotionBlur/MotionBlur";
 import Moebius from "./graphics/Moebius/MoebiusShader";
 import CombinedEffects from "./graphics/CombinedEffects";
 import { Explosion } from "./vfx/Explosion/Explosion";
+import useMatchmaking from "@/helpers/hooks/useMatchmaking";
+import Cable from "./celestial/Path/Cable";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function SceneBackground() {
@@ -63,6 +65,10 @@ function SceneBackground() {
 export default function SoloGameApp() {
   //   const { fov } = useStore((state) => state.mutation);
   const actions = useStore((state) => state.actions);
+  const { stage } = useMatchmaking();
+  // console.log(stage, "in-game");
+  // if starting -> countdown -> useStore
+  // hud: if stage === winner ->
 
   return (
     <div
@@ -106,6 +112,7 @@ export default function SoloGameApp() {
         <Suspense>
           <SpaceShip />
           <Gamestate />
+
           {/* <CameraV2 /> */}
           <Camera />
           {/* <OrbitControls />*/}
@@ -114,6 +121,7 @@ export default function SoloGameApp() {
           {/* </Rig> */}
           {/* <TestTerrains /> */}
           <SpaceV1 />
+          <Cable />
           {/* <ThunderClouds /> */}
           {/* <BoostFlame position={[0, 20, 0]} /> */}
 

@@ -16,7 +16,7 @@ function ProceduralObstacle({
   const { scene, camera } = useThree();
   const obstaclesRef = useRef([]);
   const playerPosition = useStore((s) => s?.ship);
-  const { updateGame } = useStore();
+  const { updateGame, addCrash } = useStore();
   const model = useLoader(GLTFLoader, modelUrl);
 
   useEffect(() => {
@@ -110,46 +110,63 @@ function ProceduralObstacle({
 
       // Collision detection
       const obstacleBoundingBox = new THREE.Box3().setFromObject(obstacle);
-      if (shipBoundingBox.intersectsBox(obstacleBoundingBox)) {
+      // if (shipBoundingBox.intersectsBox(obstacleBoundingBox)) {
+      //   console.log(`Collision detected with obstacle ${index}`);
+      //   // updateGame();
+      //   // add crashes
+      //   addCrash();
+      // }
+
+      if (
+        shipBoundingBox.intersectsBox(obstacleBoundingBox) &&
+        !obstacle.collided // Check if obstacle has already collided
+      ) {
         console.log(`Collision detected with obstacle ${index}`);
-        // updateGame();
+        obstaclesRef.current[index].collided = true; // Mark obstacle as collided
+        addCrash();
+      }
+
+      if (
+        obstacle.position.distanceTo(playerPositionVec) > outerRadius &&
+        obstacle.collided
+      ) {
+        obstaclesRef.current[index].collided = false; // Reset collided flag when respawning obstacle
       }
 
       //   obstacle.visible = true; // Ensure obstacle is visible
     });
   });
 
-  //   useFrame(() => {
-  //     if (!playerPosition.current) return;
-  //     obstaclesRef.current.forEach((obstacle, index) => {
-  //       const distance = obstacle.position.distanceTo(
-  //         playerPosition?.current.position
-  //       );
-  //       if (distance > outerRadius) {
-  //         positionObstacle(obstacle); // Reposition if outside the outer sphere
-  //       }
-  //     });
-  //   });
-
-  //   useFrame(() => {
-  //     if (!playerPosition.current) return;
-  //     const playerZ = playerPosition.current.position.z;
-  //     const movementThreshold = 50; // Distance player needs to move before updating obstacles
-  //     // Check if player has crossed the threshold since last update
-  //     if (Math.abs(playerZ - lastPlayerZ) > movementThreshold) {
-  //       lastPlayerZ = playerZ; // Update the last position
-  //       obstaclesRef.current.forEach(obstacle => {
-  //         const distance = obstacle.position.distanceTo(camera.position);
-  //         if (distance > outerRadius || distance < innerRadius) {
-  //           positionObstacle(obstacle); // Reposition to maintain within the habitable zone
-  //         }
-  //       });
-  //     }
-  //   });
-  // let lastPlayerZ = playerPosition.current.position.z;
-
   return null;
 }
+//   useFrame(() => {
+//     if (!playerPosition.current) return;
+//     obstaclesRef.current.forEach((obstacle, index) => {
+//       const distance = obstacle.position.distanceTo(
+//         playerPosition?.current.position
+//       );
+//       if (distance > outerRadius) {
+//         positionObstacle(obstacle); // Reposition if outside the outer sphere
+//       }
+//     });
+//   });
+
+//   useFrame(() => {
+//     if (!playerPosition.current) return;
+//     const playerZ = playerPosition.current.position.z;
+//     const movementThreshold = 50; // Distance player needs to move before updating obstacles
+//     // Check if player has crossed the threshold since last update
+//     if (Math.abs(playerZ - lastPlayerZ) > movementThreshold) {
+//       lastPlayerZ = playerZ; // Update the last position
+//       obstaclesRef.current.forEach(obstacle => {
+//         const distance = obstacle.position.distanceTo(camera.position);
+//         if (distance > outerRadius || distance < innerRadius) {
+//           positionObstacle(obstacle); // Reposition to maintain within the habitable zone
+//         }
+//       });
+//     }
+//   });
+// let lastPlayerZ = playerPosition.current.position.z;
 
 export default React.memo(ProceduralObstacle);
 

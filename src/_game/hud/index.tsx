@@ -3,7 +3,10 @@ import Controller from "./controller";
 import Abilities from "./AbilitySlot";
 import Menu from "./menu";
 import Distance from "./stats/distance";
-import Radar from "./radar";
+import Radar from "./Radar";
+import Scores from "./Stats/Score/Scores";
+import DistanceBar from "./Stats/DistanceBar/DistanceBar";
+import BoostBar from "./Stats/BoostBar/BoostBar";
 
 export default function Interface() {
   // if (true) return null;
@@ -18,6 +21,7 @@ export default function Interface() {
         <div className="flex">
           <Menu />
         </div>
+        <DistanceBar />
         <div className="p-4 text-xl ">{/* <Distance /> */}</div>
       </div>
       <div className=" border-gray-600 relative ">
@@ -26,7 +30,12 @@ export default function Interface() {
         <Controller />
       </div>
       <div className="hidden md:flex border-gray-600  justify-end items-end ">
-        <Abilities />
+        <div>
+          <Abilities />
+          <br />
+
+          <BoostBar />
+        </div>
         {/* <img
           src={"./keyControls.png"}
           className="min-w-[200px] min-h-[200px] relative left-105 scale-60 opacity-50"

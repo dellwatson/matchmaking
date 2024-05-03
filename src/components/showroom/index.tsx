@@ -7,6 +7,7 @@ import {
   Float,
   PerspectiveCamera,
   Stats,
+  Sphere,
 } from "@react-three/drei";
 import { Effects } from "./Effects";
 import Ship from "./Ship";
@@ -35,10 +36,13 @@ export default function ShowRoom() {
         floatingRange={[0, 0]} //
       >
         {/* <OrchidA scale={[1, 1, 0.8]} position={[0, 0.5, 0]} />
-        <MercyA scale={[0.5, 0.5, 0.5]} />
         <SparrowA scale={[0.65, 0.65, 0.65]} /> */}
+        {/* <MercyA scale={[0.5, 0.5, 0.5]} /> */}
 
-        <LoadStarship />
+        {/* <Ship /> */}
+        <Sphere />
+
+        {/* <LoadStarship /> */}
       </Float>
       <hemisphereLight intensity={0.5} />
 

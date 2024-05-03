@@ -17,6 +17,17 @@ import "@theras_labs/ui/src/styles/global.scss";
 import Product from "./pages/Product";
 import MyProduct from "./pages/MyProduct";
 import Template from "./pages/Template";
+import useLobbyGame from "./helpers/hooks/useLobbyGame";
+
+import {
+  isHost,
+  myPlayer,
+  startMatchmaking,
+  useMultiplayerState,
+  usePlayersList,
+  insertCoin,
+  getRoomCode,
+} from "playroomkit";
 
 function App() {
   const { isFullScreen, sound, setSoundActive } = globalStore();
@@ -72,6 +83,7 @@ function App() {
         available network
       </div> */}
       <Routes>
+        {/* <Route path="/" element={<MatchRoom />} /> */}
         <Route path="/" element={<LobbyPage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/inventory" element={<InventoryPage />} />

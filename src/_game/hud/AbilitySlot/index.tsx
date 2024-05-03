@@ -60,12 +60,13 @@ function BoostButton() {
       onClick={() => {
         handleLineBoost();
       }}>
-      super: {superBoost ? "yes" : "no"}
-      <br />
-      BOOST {boostBars}
+      {/* super: {superBoost ? "yes" : "no"}
+      <br /> */}
+      BOOST
+      {/* {boostBars}
       <br />
       {Math.round(chargeProgress)}
-      <br />
+      <br /> */}
     </button>
   );
 }
