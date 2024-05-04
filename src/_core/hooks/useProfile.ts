@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { create } from "zustand";
 import {
   useAccount as useAccountWagmi,
-  useNetwork as useNetworkWagmi,
+  // useNetwork as useNetworkWagmi,
+  useAccountEffect,
 } from "wagmi";
 import {
   AccountInfo,
@@ -16,19 +17,32 @@ import { CHAIN_NAME_APTOS } from "@theras_labs/ui/src/Auth/Wallets/AptosWallet";
 // gameID
 export default function useProfile() {
   //
-  const { address: addressEVM } = useAccountWagmi();
-  const { chain: chainEVM } = useNetworkWagmi();
+  const { address: addressEVM, chain: chainEVM } = useAccountWagmi();
+
+  // const { chain: chainEVM } = useNetworkWagmi();
   const { account: accountAptos } = useWalletAptos();
   const { addProfile, profileExists, getProfileProvider, removeProfile } =
     profileStore();
 
-  useEffect(() => {
-    // detect disconnect wagmi
-    const _profileNow = getProfileProvider("EVM");
-    if (!addressEVM && _profileNow) {
+  // useEffect(() => {
+  //   // detect disconnect wagmi
+  //   const _profileNow = getProfileProvider("evm");
+  //   if (!addressEVM && _profileNow) {
+  //     removeProfile(_profileNow);
+  //   }
+  // }, [addressEVM]);
+
+  useAccountEffect({
+    onConnect(data) {
+      // will switching account, trigeerd
+      console.log("Connected!", data);
+    },
+    onDisconnect() {
+      // console.log("Disconnected!");
+      const _profileNow = getProfileProvider("evm");
       removeProfile(_profileNow);
-    }
-  }, [addressEVM]);
+    },
+  });
 
   useEffect(() => {
     // check profile on store/backend exist
@@ -37,7 +51,7 @@ export default function useProfile() {
       // store it to global state
       // load profile Name, balance, etc
       addProfile({
-        provider: "EVM",
+        provider: "evm",
         address: addressEVM,
         network: chainEVM?.name,
         chainId: chainEVM?.id,

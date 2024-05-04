@@ -5,14 +5,7 @@ import ShowRoom from "@components/showroom";
 import LobbyLeft from "@/components/lobby/interfaces/LobbyLeft";
 // import connect from "@/web3/connect";
 import { useEffect } from "react";
-import {
-  erc20ABI,
-  erc721ABI,
-  useAccount,
-  useContractRead,
-  useContractWrite,
-  useNetwork,
-} from "wagmi";
+import { erc20ABI, erc721ABI, useAccount } from "wagmi";
 import LSP8ABI from "../web3/abis/lsp8";
 import ERCGEM from "../web3/abis/erc20";
 import { parseEther } from "viem";
@@ -25,15 +18,9 @@ import {
   usePlayersList,
 } from "playroomkit";
 
-
 export default function LobbyPage() {
   // load from DB? and wallet?
   // set main vehicle on lobby
-  const { chain, chains } = useNetwork();
-  const { address } = useAccount();
-  const [gameState, setGameState] = useMultiplayerState("gameState", "lobby");
-
-
 
   return (
     <div className="absolute dark:bg-black  h-full w-full !overflow-hidden">
