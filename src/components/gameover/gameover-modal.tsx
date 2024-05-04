@@ -37,8 +37,8 @@ export default function GameOverModal({ closeModal = () => {} }) {
     <>
       <Transition
         appear
-        // show={!!game_over}
-        show
+        show={!!game_over}
+        // show
         as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child

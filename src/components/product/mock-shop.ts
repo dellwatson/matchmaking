@@ -5,6 +5,8 @@ import {
   PRODUCT_STARSHIP_APTOS_A,
   PRODUCT_STARSHIP_APTOS_B,
   PRODUCT_STARSHIP_ETH_A,
+  PRODUCT_STARSHIP_SEPOLIA_A,
+  PRODUCT_STARSHIP_TARAXA_A,
 } from "../../_backend/_mockBackend/listing";
 
 // https://cryptologos.cc/logos/aptos-apt-logo.svg?v=029
@@ -15,6 +17,30 @@ const TOKEN_APTOS = "https://cryptologos.cc/logos/aptos-apt-logo.svg?v=029";
 export const MOCK_SHOP = {
   gameId: "",
   shop_list: [
+    {
+      archived: false,
+      disable: false,
+      countdown: false,
+      //
+      shopId: "",
+      title: "Taraxa Testnet Sale", // sale title
+      bgColor: "",
+      bgUrl: "",
+      network: "testnet-taraxa", //mixed | polygon
+      sale_list: [PRODUCT_STARSHIP_TARAXA_A],
+    },
+    {
+      archived: false,
+      disable: false,
+      countdown: false,
+      //
+      shopId: "",
+      title: "Sepolia Sale", // sale title
+      bgColor: "",
+      bgUrl: "",
+      network: "sepolia", //mixed | polygon
+      sale_list: [PRODUCT_STARSHIP_SEPOLIA_A],
+    },
     {
       archived: false,
       disable: false,
@@ -35,18 +61,18 @@ export const MOCK_SHOP = {
         PRODUCT_STARSHIP_APTOS_B,
       ],
     },
-    {
-      archived: false,
-      disable: false,
-      countdown: false,
-      //
-      shopId: "",
-      title: "Ethereum Sale", // sale title
-      bgColor: "",
-      bgUrl: "",
-      network: "", //mixed | polygon
-      sale_list: [PRODUCT_STARSHIP_ETH_A],
-    },
+    // {
+    //   archived: false,
+    //   disable: false,
+    //   countdown: false,
+    //   //
+    //   shopId: "",
+    //   title: "Ethereum Sale", // sale title
+    //   bgColor: "",
+    //   bgUrl: "",
+    //   network: "", //mixed | polygon
+    //   sale_list: [PRODUCT_STARSHIP_ETH_A],
+    // },
   ],
 };
 

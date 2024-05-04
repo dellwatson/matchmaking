@@ -35,8 +35,9 @@ export default function ShowRoom() {
       <Float
         floatingRange={[0, 0]} //
       >
+        {/* <SparrowA scale={[0.65, 0.65, 0.65]} /> */}
         {/* <OrchidA scale={[1, 1, 0.8]} position={[0, 0.5, 0]} />
-        <SparrowA scale={[0.65, 0.65, 0.65]} /> */}
+         */}
         {/* <MercyA scale={[0.5, 0.5, 0.5]} /> */}
 
         {/* <Ship /> */}

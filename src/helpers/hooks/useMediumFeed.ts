@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const AAA = "aptoslabs";
+const AAA = "taraxa-project";
 function useMediumRssFeed() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

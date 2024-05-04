@@ -23,6 +23,8 @@ export default function Play({ isMobile = true }) {
 
   const { gameState, handlePlay } = useLobbyGame();
 
+  console.log(gameState, "gameState nOT RESPONSIVE?");
+
   return (
     <>
       {!isMobile && (

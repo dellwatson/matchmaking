@@ -6,7 +6,7 @@ import { Label, Subtitle, Title } from "@theras_labs/ui/src/Typography";
 const CardEvent = ({
   icon: Icon = SiSololearn,
   title = "SOLO SURVIVAL",
-  subtitle = "Random Zone",
+  subtitle = "Mini Game Zone",
   bgColor = "bg-gradient-to-r from-gray-900 to-blue-800",
   // labelEvent = "New Event in: 3d 12h",
   labelEvent = "Closed",

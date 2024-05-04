@@ -548,12 +548,11 @@ export const PRODUCT_STARSHIP_ETH_A = {
           fee: "",
           archived: false,
           hidden: false,
-          disable: true,
+          disable: false,
           type: "direct", //wrapped //custody
         },
         {
           isCrypto: true,
-
           chain: "1",
           network: "ethereum",
           token: "usdc",
@@ -602,9 +601,155 @@ export const PRODUCT_STARSHIP_ETH_A = {
   ],
   // auction: false, // direct
 };
+export const PRODUCT_STARSHIP_SEPOLIA_A = {
+  ...NFT_STARSHIP_A,
+  listingId: "4",
+  payments: [
+    {
+      network: "sepolia",
+      bgIcon: "bg-white",
+      network_logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029",
+      chainId: 11155111,
+      layer: 1,
+      current_supply: 99,
+      total_supply: 99,
+      nft_address: "0xE41B1f5d9C4d8d1c309118b034C807126D87FcB4",
+      block_explorer: "https://",
+      payment_options: [
+        {
+          shop_address: "0x07Ab9eed2d023dB86a1E6F38bC71565f76d561Fb",
+          product_address: "0xE41B1f5d9C4d8d1c309118b034C807126D87FcB4",
+          price_in_wei: "23000000000000000",
+          provider: "evm",
+          isCrypto: true,
+          chain: "11155111",
+          network: "sepolia",
+          network_logo:
+            "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029",
+          token: "eth",
+          currency: "eth",
+          symbol: "eth",
+          symbolUrl: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029",
+          supply: "100",
+          price: "0.023",
+          usdPrice: "",
+          address: "",
+          isNative: true,
+          fee: "",
+          archived: false,
+          hidden: false,
+          disable: false,
+          type: "direct", //wrapped //custody
+        },
+        // {
+        //   isCrypto: true,
+        //   chain: "11155111",
+        //   network: "ethereum",
+        //   token: "usdc",
+        //   currency: "usdc",
+        //   symbol: "usdc",
+        //   symbolUrl:
+        //     " https://cryptologos.cc/logos/usd-coin-usdc-logo.svg?v=029",
+        //   supply: "100",
+        //   network_logo:
+        //     "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029",
+        //   price: "1000",
+        //   usdPrice: "",
+        //   address: "", // ADDRESS
+        //   isNative: false,
+        //   fee: "",
+        //   archived: false,
+        //   hidden: false,
+        //   disable: true,
+        //   type: "direct", //wrapped //custody
+        // },
+        // VISA(),
+        // GPAY(),
+      ],
+    },
+  ],
+  // auction: false, // direct
+};
+export const PRODUCT_STARSHIP_TARAXA_A = {
+  ...NFT_STARSHIP_A,
+  listingId: "5",
+  payments: [
+    {
+      // describing the NFT DETAIL
+      network: "testnet-taraxa",
+      bgIcon: "bg-white",
+      network_logo:
+        "https://s2.coinmarketcap.com/static/img/coins/64x64/8715.png",
+      chainId: 842,
+      layer: 1,
+      current_supply: 99,
+      total_supply: 99,
+      nft_address: "0xd65d3146f6a46158741DB47E56da197115879938",
+      shop_address: "0x9D2067BeB1c165FDE0F89E40Bd97f3276C153385",
+      block_explorer: "https://",
+      payment_options: [
+        {
+          // describing the PAYMENT DIRECTION
+          shop_address: "0x9D2067BeB1c165FDE0F89E40Bd97f3276C153385",
+          // function_name:
+          product_address: "0xd65d3146f6a46158741DB47E56da197115879938",
+          provider: "evm",
+          isCrypto: true,
+          chain: "842",
+          network: "testnet-taraxa",
+          network_logo:
+            "https://s2.coinmarketcap.com/static/img/coins/64x64/8715.png",
+          token: "tara",
+          currency: "tara",
+          symbol: "tara",
+          symbolUrl:
+            "https://s2.coinmarketcap.com/static/img/coins/64x64/8715.png",
+          supply: "100",
+          price: "0.023",
+          price_in_wei: "23000000000000000",
+          usdPrice: "",
+          address: "",
+          isNative: true,
+          fee: "",
+          archived: false,
+          hidden: false,
+          disable: false,
+          type: "direct", //wrapped //custody
+        },
+        // {
+        //   isCrypto: true,
+        //   chain: "11155111",
+        //   network: "ethereum",
+        //   token: "usdc",
+        //   currency: "usdc",
+        //   symbol: "usdc",
+        //   symbolUrl:
+        //     " https://cryptologos.cc/logos/usd-coin-usdc-logo.svg?v=029",
+        //   supply: "100",
+        //   network_logo:
+        //     "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029",
+        //   price: "1000",
+        //   usdPrice: "",
+        //   address: "", // ADDRESS
+        //   isNative: false,
+        //   fee: "",
+        //   archived: false,
+        //   hidden: false,
+        //   disable: true,
+        //   type: "direct", //wrapped //custody
+        // },
+        // VISA(),
+        // GPAY(),
+      ],
+    },
+  ],
+  // auction: false, // direct
+};
 
 export const ALL_LISTING_PRODUCTS = [
   PRODUCT_STARSHIP_APTOS_A,
   PRODUCT_STARSHIP_APTOS_B,
   PRODUCT_STARSHIP_ETH_A,
+  PRODUCT_STARSHIP_SEPOLIA_A,
+  PRODUCT_STARSHIP_TARAXA_A,
 ];

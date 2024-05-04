@@ -9,11 +9,11 @@ export default function Message() {
   const { countdownStarting, warningLineDistance } = useMessageStore();
 
   return (
-    <div className="absolute w-full h-full z-10 flex justify-center items-center bg-transparent">
+    <>
       {/* Announcment: */}
       {/* tutorial */}
       {countdownStarting && <Countdown />}
       {warningLineDistance && <WarningLine />}
-    </div>
+    </>
   );
 }

@@ -88,10 +88,18 @@ export const DATA_NAVBAR = [
     enable: true,
   },
   {
+    name: "Claim",
+    description: "#f5f7fa → #c3cfe2",
+    css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+    height: 400,
+    enable: true,
+  },
+  {
     name: "CRAFTING",
     description: "#a8edea → #fed6e3",
     css: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
     height: 200,
+    enable: true,
   },
 
   {
@@ -100,24 +108,25 @@ export const DATA_NAVBAR = [
     css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
     height: 400,
   },
+
   {
     name: "Leaderboard",
     description: "#f5f7fa → #c3cfe2",
     css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
     height: 400,
   },
-  {
-    name: "Inbox",
-    description: "#f5f7fa → #c3cfe2",
-    css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
-    height: 400,
-  },
-  {
-    name: "Friends",
-    description: "#f5f7fa → #c3cfe2",
-    css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
-    height: 400,
-  },
+  // {
+  //   name: "Inbox",
+  //   description: "#f5f7fa → #c3cfe2",
+  //   css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+  //   height: 400,
+  // },
+  // {
+  //   name: "Friends",
+  //   description: "#f5f7fa → #c3cfe2",
+  //   css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+  //   height: 400,
+  // },
   {
     name: "DAO Mapmaker",
     description: "#f5f7fa → #c3cfe2",

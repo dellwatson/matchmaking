@@ -49,6 +49,20 @@ export const NFT_STARSHIP_A = {
       model_type: "MODEL_1",
       // supply
     },
+    {
+      productId: "",
+      network_logo: LOGO_ETHEREUM,
+      blockExplorer: "",
+      network: "Sepolia", //might not needed here
+      chainId: "11155111",
+      bgChain: "bg-white p-1 rounded-full",
+      bgIcon: "bg-white p-1 rounded-full",
+      bgToken: "bg-white rounded-full",
+      provider: "move",
+      address: "0xE41B1f5d9C4d8d1c309118b034C807126D87FcB4",
+      model_type: "MODEL_1",
+      // supply
+    },
   ],
   minted: {
     productId: "",
