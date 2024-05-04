@@ -2,11 +2,8 @@ import React from "react";
 import Controller from "./controller";
 import Abilities from "./AbilitySlot";
 import Menu from "./menu";
-import Distance from "./stats/distance";
-import Radar from "./Radar";
-import Scores from "./Stats/Score/Scores";
-import DistanceBar from "./Stats/DistanceBar/DistanceBar";
-import BoostBar from "./Stats/BoostBar/BoostBar";
+import DistanceBar from "./StatsBoard/DistanceBar/DistanceBar";
+import BoostBar from "./StatsBoard/BoostBar/BoostBar";
 
 export default function Interface() {
   // if (true) return null;

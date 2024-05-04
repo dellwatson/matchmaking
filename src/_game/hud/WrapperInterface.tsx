@@ -2,9 +2,9 @@ import { Title } from "@theras_labs/ui/src/Typography";
 import { TitlePage } from "@/components/lobby/interfaces/LobbyTop";
 import React from "react";
 import Warning from "./Announcement/Warning";
-import BoostBar from "./Stats/BoostBar";
+import BoostBar from "./StatsBoard/BoostBar";
 import Message from "./Message";
-import Scores from "./Stats/Score/Scores";
+import Scores from "./StatsBoard/Score/Scores";
 
 export default function WrapperInterface({ children }) {
   return (

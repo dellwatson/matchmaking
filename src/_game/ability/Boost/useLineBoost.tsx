@@ -3,7 +3,7 @@ import useStore, { playAudio, audio } from "@/_game/store";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import useBoostStore from "./store";
-import useStatStore from "@/_game/hud/Stats/store";
+import useStatStore from "@/_game/hud/StatsBoard/store";
 
 export default function useLineBoost() {
   // playerRef

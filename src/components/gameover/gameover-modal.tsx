@@ -3,8 +3,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link, useNavigate } from "react-router-dom";
 import ItemDrop from "./item-drop";
-import useStatStore from "@/_game/hud/Stats/store";
-import { calculateScore } from "@/_game/hud/Stats/Score/calculationScore";
+import useStatStore from "@/_game/hud/StatsBoard/store";
+import { calculateScore } from "@/_game/hud/StatsBoard/Score/calculationScore";
 import Prize from "./prize";
 
 export default function GameOverModal({ closeModal = () => {} }) {

@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import useBoostStore from "../ability/Boost/store";
 import useMatchmaking from "@/helpers/hooks/useMatchmaking";
-import useStatStore from "../hud/Stats/store";
+import useStatStore from "../hud/StatsBoard/store";
 import usePathStore from "../celestial/Path/store";
 
 export const TOTAL_LENGTH_RACE = 40000;
