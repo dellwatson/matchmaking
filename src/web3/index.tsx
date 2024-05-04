@@ -17,6 +17,7 @@ import { Chain } from "@wagmi/core";
 import { klaytnBaobab } from "viem/chains";
 import {
   Areon_testnet,
+  Taraxa_testnet,
   inevm_caldera,
   klaytn_testnet,
   lukso_testnet,
@@ -27,8 +28,9 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
     // klaytnBaobab, //1001
-    inevm_caldera,
-    Areon_testnet,
+    Taraxa_testnet,
+    // inevm_caldera,
+    // Areon_testnet,
     // viction_testnet,
     // klaytn_testnet,
     // lukso_testnet, //4201

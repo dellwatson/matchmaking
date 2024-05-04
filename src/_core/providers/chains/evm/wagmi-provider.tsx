@@ -6,7 +6,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { WALLETCONNECT_ID } from "@/utils/constant/wallet-helper";
-import { polygon, polygonMumbai } from "viem/chains";
+import { polygon, polygonMumbai, sepolia } from "viem/chains";
 import { defaultWagmiConfig, createWeb3Modal } from "@web3modal/wagmi/react";
 
 import { Chain } from "@wagmi/core";
@@ -16,6 +16,7 @@ import { Chain } from "@wagmi/core";
 import { klaytnBaobab } from "viem/chains";
 import {
   Areon_testnet,
+  Taraxa_testnet,
   inevm_caldera,
   klaytn_testnet,
   lukso_testnet,
@@ -26,8 +27,10 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
     // klaytnBaobab, //1001
-    inevm_caldera,
-    Areon_testnet,
+    Taraxa_testnet,
+    sepolia,
+    // inevm_caldera,
+    // Areon_testnet,
     // viction_testnet,
     // klaytn_testnet,
     // lukso_testnet, //4201

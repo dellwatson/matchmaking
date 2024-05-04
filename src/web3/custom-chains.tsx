@@ -27,6 +27,32 @@ export const Areon_testnet = {
     },
   },
 } as const satisfies Chain;
+
+export const Taraxa_testnet = {
+  id: 842,
+  name: "Taraxa Testnet",
+  network: "Taraxa",
+  nativeCurrency: {
+    decimals: 18,
+    name: "TARA",
+    symbol: "TARA",
+  },
+  rpcUrls: {
+    public: { http: ["https://rpc.testnet.taraxa.io"] },
+    default: { http: ["https://rpc.testnet.taraxa.io"] },
+  },
+  blockExplorers: {
+    etherscan: {
+      name: "Explorer",
+      url: "https://explorer.testnet.taraxa.io",
+    },
+    default: {
+      name: "Explorer",
+      url: "https://explorer.testnet.taraxa.io",
+    },
+  },
+} as const satisfies Chain;
+
 export const inevm_caldera = {
   id: 11822,
   name: "Artela testnet",

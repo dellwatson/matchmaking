@@ -29,18 +29,18 @@ export const MOCK_SHOP = {
       network: "testnet-taraxa", //mixed | polygon
       sale_list: [PRODUCT_STARSHIP_TARAXA_A],
     },
-    {
-      archived: false,
-      disable: false,
-      countdown: false,
-      //
-      shopId: "",
-      title: "Sepolia Sale", // sale title
-      bgColor: "",
-      bgUrl: "",
-      network: "sepolia", //mixed | polygon
-      sale_list: [PRODUCT_STARSHIP_SEPOLIA_A],
-    },
+    // {
+    //   archived: false,
+    //   disable: false,
+    //   countdown: false,
+    //   //
+    //   shopId: "",
+    //   title: "Sepolia Sale", // sale title
+    //   bgColor: "",
+    //   bgUrl: "",
+    //   network: "sepolia", //mixed | polygon
+    //   sale_list: [PRODUCT_STARSHIP_SEPOLIA_A],
+    // },
     {
       archived: false,
       disable: false,
