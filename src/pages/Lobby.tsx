@@ -26,7 +26,13 @@ export default function LobbyPage() {
     <div className="absolute dark:bg-black  h-full w-full !overflow-hidden">
       <LobbyLeft />
       <LobbyRight />
-
+      {/* <iframe
+        src="https://discord.com/widget?id=1193320377632424058&theme=dark"
+        width="350"
+        height="300"
+        allowtransparency="true"
+        frameborder="0"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe> */}
       <Layout />
       {/* <Canvas /> */}
       <ShowRoom />

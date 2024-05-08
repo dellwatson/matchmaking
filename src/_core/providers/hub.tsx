@@ -6,9 +6,29 @@ import { StarknetProvider } from "./chains/starknet/starknet-provider";
 
 import { createWeb3Modal } from "@web3modal/wagmi/react";
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
-import { mainnet, sepolia, taraxaTestnet } from "wagmi/chains";
+import {
+  bitTorrent,
+  bitTorrentTestnet,
+  mainnet,
+  sepolia,
+  taraxaTestnet,
+} from "wagmi/chains";
 import { http, createConfig, WagmiProvider } from "wagmi";
 import { walletConnect, injected, coinbaseWallet } from "wagmi/connectors";
+
+import { defineChain } from "viem";
+
+export const bttcDonaou = defineChain({
+  id: 1029,
+  name: "BTTC Testnet",
+  nativeCurrency: { name: "BTT", symbol: "BTT", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://pre-rpc.bt.io/"] },
+  },
+  blockExplorers: {
+    default: { name: "testscan", url: "https://testscan.bt.io" },
+  },
+});
 
 // 1. Get projectId at https://cloud.walletconnect.com
 const projectId = "861ef743dceed75deb813e6d390dc4a8";
@@ -21,7 +41,7 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [taraxaTestnet, sepolia] as const;
+const chains = [bttcDonaou, taraxaTestnet, sepolia] as const;
 // const config = defaultWagmiConfig({
 //   chains,
 //   projectId,
@@ -32,6 +52,7 @@ const chains = [taraxaTestnet, sepolia] as const;
 const config = createConfig({
   chains,
   transports: {
+    [bttcDonaou.id]: http(),
     [taraxaTestnet.id]: http(),
     [sepolia.id]: http(),
   },

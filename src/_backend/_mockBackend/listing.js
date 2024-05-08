@@ -745,11 +745,87 @@ export const PRODUCT_STARSHIP_TARAXA_A = {
   ],
   // auction: false, // direct
 };
+export const PRODUCT_STARSHIP_BTTC_A = {
+  ...NFT_STARSHIP_A,
+  listingId: "6",
+  payments: [
+    {
+      // describing the NFT DETAIL
+      network: "testnet-bttc",
+      bgIcon: "bg-white",
+      network_logo:
+        "https://cryptologos.cc/logos/bittorrent-bttold-logo.png?v=032",
+      chainId: 842,
+      layer: 1,
+      current_supply: 99,
+      total_supply: 99,
+      nft_address: "0xD8f003dc5C270aAeDd94B4104402095c4EcE814C",
+      shop_address: "0xE39C0AAA925337a5499A2cCe0D906cc38B5CEA54",
+      block_explorer: "https://",
+      payment_options: [
+        {
+          // describing the PAYMENT DIRECTION
+          shop_address: "0xE39C0AAA925337a5499A2cCe0D906cc38B5CEA54",
+          // function_name:
+          product_address: "0xD8f003dc5C270aAeDd94B4104402095c4EcE814C",
+          provider: "evm",
+          isCrypto: true,
+          chain: "1029",
+          network: "testnet-bttc",
+          network_logo:
+            "https://cryptologos.cc/logos/bittorrent-bttold-logo.png?v=032",
+          token: "BTT",
+          currency: "BTT",
+          symbol: "BTT",
+          symbolUrl:
+            "https://cryptologos.cc/logos/bittorrent-bttold-logo.png?v=032",
+          supply: "100",
+          price: "0.023",
+          price_in_wei: "23000000000000000",
+          usdPrice: "",
+          address: "",
+          isNative: true,
+          fee: "",
+          archived: false,
+          hidden: false,
+          disable: false,
+          type: "direct", //wrapped //custody
+        },
+        // {
+        //   isCrypto: true,
+        //   chain: "11155111",
+        //   network: "ethereum",
+        //   token: "usdc",
+        //   currency: "usdc",
+        //   symbol: "usdc",
+        //   symbolUrl:
+        //     " https://cryptologos.cc/logos/usd-coin-usdc-logo.svg?v=029",
+        //   supply: "100",
+        //   network_logo:
+        //     "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029",
+        //   price: "1000",
+        //   usdPrice: "",
+        //   address: "", // ADDRESS
+        //   isNative: false,
+        //   fee: "",
+        //   archived: false,
+        //   hidden: false,
+        //   disable: true,
+        //   type: "direct", //wrapped //custody
+        // },
+        // VISA(),
+        // GPAY(),
+      ],
+    },
+  ],
+  // auction: false, // direct
+};
 
 export const ALL_LISTING_PRODUCTS = [
   PRODUCT_STARSHIP_APTOS_A,
   PRODUCT_STARSHIP_APTOS_B,
   PRODUCT_STARSHIP_ETH_A,
   PRODUCT_STARSHIP_SEPOLIA_A,
+  PRODUCT_STARSHIP_BTTC_A,
   PRODUCT_STARSHIP_TARAXA_A,
 ];

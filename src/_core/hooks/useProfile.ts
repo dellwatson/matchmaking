@@ -24,13 +24,13 @@ export default function useProfile() {
   const { addProfile, profileExists, getProfileProvider, removeProfile } =
     profileStore();
 
-  // useEffect(() => {
-  //   // detect disconnect wagmi
-  //   const _profileNow = getProfileProvider("evm");
-  //   if (!addressEVM && _profileNow) {
-  //     removeProfile(_profileNow);
-  //   }
-  // }, [addressEVM]);
+  useEffect(() => {
+    // detect disconnect wagmi
+    const _profileNow = getProfileProvider("evm");
+    if (!addressEVM && _profileNow) {
+      removeProfile(_profileNow);
+    }
+  }, [addressEVM]);
 
   useAccountEffect({
     onConnect(data) {

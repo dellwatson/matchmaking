@@ -4,6 +4,7 @@ import {
   PRODUCT_STARSHIP_A,
   PRODUCT_STARSHIP_APTOS_A,
   PRODUCT_STARSHIP_APTOS_B,
+  PRODUCT_STARSHIP_BTTC_A,
   PRODUCT_STARSHIP_ETH_A,
   PRODUCT_STARSHIP_SEPOLIA_A,
   PRODUCT_STARSHIP_TARAXA_A,
@@ -23,11 +24,11 @@ export const MOCK_SHOP = {
       countdown: false,
       //
       shopId: "",
-      title: "Taraxa Testnet Sale", // sale title
+      title: "BTTC Testnet Sale", // sale title
       bgColor: "",
       bgUrl: "",
-      network: "testnet-taraxa", //mixed | polygon
-      sale_list: [PRODUCT_STARSHIP_TARAXA_A],
+      network: "testnet-bttc", //mixed | polygon
+      sale_list: [PRODUCT_STARSHIP_BTTC_A],
     },
     {
       archived: false,
@@ -35,12 +36,24 @@ export const MOCK_SHOP = {
       countdown: false,
       //
       shopId: "",
-      title: "Sepolia Sale", // sale title
+      title: "Taraxa Testnet Sale", // sale title
       bgColor: "",
       bgUrl: "",
-      network: "sepolia", //mixed | polygon
-      sale_list: [PRODUCT_STARSHIP_SEPOLIA_A],
+      network: "testnet-taraxa", //mixed | polygon
+      sale_list: [PRODUCT_STARSHIP_TARAXA_A],
     },
+    // {
+    //   archived: false,
+    //   disable: false,
+    //   countdown: false,
+    //   //
+    //   shopId: "",
+    //   title: "Sepolia Sale", // sale title
+    //   bgColor: "",
+    //   bgUrl: "",
+    //   network: "sepolia", //mixed | polygon
+    //   sale_list: [PRODUCT_STARSHIP_SEPOLIA_A],
+    // },
     {
       archived: false,
       disable: false,

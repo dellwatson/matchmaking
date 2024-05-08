@@ -27,7 +27,7 @@ export default function useWriteEVM(
   //   28,
   // ];
 
-  console.log(args, "newly args");
+  // console.log(args, "newly args");
   const additional =
     args[0] === false
       ? {}
@@ -44,8 +44,8 @@ export default function useWriteEVM(
     isPending: isLoading,
   } = useWriteContract();
   // config
-  console.log("useEVM", contractAddress, error);
-  console.log(chain?.id, rest?.chainId);
+  // console.log("useEVM", contractAddress, error);
+  // console.log(chain?.id, rest?.chainId);
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
