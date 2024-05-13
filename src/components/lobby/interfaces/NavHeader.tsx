@@ -46,7 +46,8 @@ export default function NavHeader() {
             if (!item?.disable) {
               navigate(item?.path);
             }
-          }}>
+          }}
+        >
           {item?.title}
         </CornerBox>
       ))}

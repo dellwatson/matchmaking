@@ -16,11 +16,13 @@ export default function QuestLobby() {
           onClick={() => setVisible(true)}
           classNameOutside=" w-[360px] cursor-pointer "
           className="w-full h-full "
-          background="rgba(0, 0, 0, 0.9)">
+          background="rgba(0, 0, 0, 0.9)"
+        >
           <DailyPerformances />
           <div
             onClick={() => setVisible(true)}
-            className="p-2 capitalize cursor-pointer">
+            className="p-2 capitalize cursor-pointer"
+          >
             see more
           </div>
         </CornerBox>
@@ -34,7 +36,8 @@ const MobileQuest = ({ visible, setVisible }) => {
     <div className="lg:hidden">
       <button
         onClick={() => setVisible(true)}
-        className="p-2 rounded-sm flex items-center bg-slate-900 font-bold uppercase">
+        className="p-2 rounded-sm flex items-center bg-slate-900 font-bold uppercase"
+      >
         <div className="animate-pulse relative  right-6 bottom-7 ">
           <MdTask
             size={50}

@@ -35,7 +35,8 @@ export default function DetailProduct({ data = {}, page = "inventory" }) {
       <div
         className={`overflow-scroll grid ${
           !isInventory && `xl:grid-cols-2`
-        }  px-8 h-full xl:my-6 `}>
+        }  px-8 h-full xl:my-6 `}
+      >
         <div className="col-span-1">
           <VisualContent data={data} />
         </div>
@@ -54,10 +55,10 @@ const VisualContent = ({ data }) => {
     <>
       <div className="text-center">
         <Subtitle className="tracking-[10px] uppercase ">
-          {data?.category}
+          {data?.detail?.asset[0]?.category || "Category"}
         </Subtitle>
-        <Title className="text-gray-500 my-2 mb-6">{data?.title}</Title>
-        <Rarity>{data?.rarity}</Rarity>
+        <Title className="text-gray-500 my-2 mb-6">{data?.detail?.title}</Title>
+        <Rarity>{data?.detail?.asset[0]?.rarity}</Rarity>
       </div>
 
       <DisplayList data={data} />
@@ -73,7 +74,26 @@ const VisualContent = ({ data }) => {
 const AssetContent = ({ data, page }) => {
   // load inventory/shop here
   const [tab, setTab] = useState(0);
+  console.log(data, "data", page);
+  const chains = data?.detail?.chains;
+  const itemId = data?.highlight?.product_token?.network?.id; // network.id
 
+  const itemToMove = chains?.find((o) => o?.network?.id === itemId); // aarray
+  if (itemId && itemToMove) {
+    // Remove the item from the 'chains' array
+    const index = chains.indexOf(itemToMove);
+    chains.splice(index, 1);
+    // Add the item to the beginning of the 'chains' array
+    chains.unshift(itemToMove);
+  }
+  // chains
+  const selectedChain = chains[tab];
+  const paymentOptions = data?.detail?.payments?.filter(
+    (o) => o?.product_token?.network?.id === selectedChain?.network?.id
+  );
+  // payments [] => need to be filtered
+
+  console.log(paymentOptions, "paymentOptions");
   return (
     <div className="px-4 pb-40">
       <NetworkTabs
@@ -83,6 +103,7 @@ const AssetContent = ({ data, page }) => {
           setTab,
           data,
           page,
+          chains,
         }}
       />
       {/*  */}
@@ -91,6 +112,9 @@ const AssetContent = ({ data, page }) => {
           {...{
             tab,
             data,
+            chains,
+            selectedChain,
+            paymentOptions,
           }}
         />
       )}
@@ -105,7 +129,7 @@ const AssetContent = ({ data, page }) => {
   );
 };
 
-const NetworkTabs = ({ tab, setTab, data, page }) => {
+const NetworkTabs = ({ tab, setTab, data, page, chains }) => {
   if (page === "inventory") {
     return (
       <>
@@ -122,21 +146,25 @@ const NetworkTabs = ({ tab, setTab, data, page }) => {
         </div>
       </>
     );
-  } else
+  }
+  // on product should also tell, if i owned this or not
+  else
     return (
       <>
         <BlockTitle title="network chain" />
         <div className="grid grid-cols-2 gap-6 ">
           {/* load up to four */}
-          {data?.payments?.length &&
-            data?.payments?.map((item, i) => (
+          {chains?.length &&
+            chains?.map((item, i) => (
               <div className="col-span-1 ">
                 <IconBox
                   {...item}
                   hasBorder={tab === i}
-                  onClick={() => setTab(i)}>
+                  onClick={() => setTab(i)}
+                >
+                  {/* todo: load supply by itself */}
                   <Subtitle>
-                    {item?.current_supply} <Label> supply</Label>
+                    {item?.current_supply ?? "-"} <Label> supply</Label>
                     {/* {props?.current_supply} <Label>/{props?.total_supply}</Label> */}
                   </Subtitle>
                 </IconBox>
@@ -154,7 +182,7 @@ const Description = ({ data }) => {
     <>
       <BlockTitle title="description" className="mt-12" variant="desc" />
       <Paragraph className="text-gray-300 my-8 font-medium ">
-        {data?.description}
+        {data?.detail?.description || "DESCRIPTION EMPTY"}
       </Paragraph>
     </>
   );
@@ -162,13 +190,14 @@ const Description = ({ data }) => {
 
 // // details
 const Traits = ({ data }) => {
+  // instead should load from the metadata nft
   return (
     <>
       <BlockTitle title="traits" className="mt-12" variant="detail" />
       <div className="grid grid-cols-3 my-8">
-        {data?.traits?.map((item, i) => (
+        {/* {data?.traits?.map((item, i) => (
           <BlockTrait key={i} {...item} />
-        ))}
+        ))} */}
       </div>
     </>
   );

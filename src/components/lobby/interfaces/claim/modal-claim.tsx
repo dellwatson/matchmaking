@@ -26,7 +26,8 @@ export default function ModalClaim({
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0">
+            leaveTo="opacity-0"
+          >
             <div className="fixed inset-0 bg-black opacity-75" />
           </Transition.Child>
 
@@ -39,11 +40,13 @@ export default function ModalClaim({
                 enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95">
+                leaveTo="opacity-0 scale-95"
+              >
                 <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-200">
+                    className="text-lg font-medium leading-6 text-gray-200"
+                  >
                     GET YOUR DAILY FREE CLAIM
                   </Dialog.Title>
                   <br />
@@ -113,7 +116,8 @@ const TicketClaim = ({ isStarknet = false }) => {
           } else {
             write?.();
           }
-        }}>
+        }}
+      >
         {isLoading ? "loading" : "Claim"}
       </button>
     </div>
@@ -142,7 +146,8 @@ const GemClaim = () => {
         onClick={async () => {
           toast("Making transaction");
           write?.();
-        }}>
+        }}
+      >
         {isLoading ? "loading" : "Claim"}
       </button>
     </div>
@@ -174,7 +179,8 @@ const PointsClaim = () => {
         onClick={async () => {
           toast("Making transaction");
           write?.();
-        }}>
+        }}
+      >
         {isLoading ? "loading" : "Claim"}
       </button>
     </div>

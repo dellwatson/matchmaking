@@ -1,5 +1,5 @@
 // on mobile have peek
-import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
+// import CornerBox from "@theras_labs/ui/src/Box/CornerBox";
 import DailyPerformances from "./performances";
 import Claim from "./claim";
 import QuestLobby from "@/components/quest/QuestLobby";

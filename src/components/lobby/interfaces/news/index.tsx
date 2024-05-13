@@ -9,7 +9,8 @@ const NewsSection = ({ variant = "box" }) => {
     <div
       className={` z-0 relative  ${
         isMobile ? "h-[150px] " : "max-h-[400px] h-[400px]"
-      }`}>
+      }`}
+    >
       {/* <div className="relative max-h-[400px] h-[400px] z-0 "> */}
 
       {/* <div className="relative  z-0 "> */}

@@ -30,7 +30,8 @@ export default function InventorySlot(props) {
                 }}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                className="w-full p-4 bg-green-600 hover:bg-orange-600 rounded-md uppercase font-medium">
+                className="w-full p-4 bg-green-600 hover:bg-orange-600 rounded-md uppercase font-medium"
+              >
                 {hovered ? "Unequip" : "Equipped"}
               </button>
             ) : (
@@ -43,7 +44,8 @@ export default function InventorySlot(props) {
                     alert("Account is not connected");
                   }
                 }}
-                className="w-full p-4 bg-green-600 rounded-md uppercase font-medium">
+                className="w-full p-4 bg-green-600 rounded-md uppercase font-medium"
+              >
                 Equip
               </button>
             )}
@@ -52,18 +54,21 @@ export default function InventorySlot(props) {
 
         <button
           disabled
-          className="!cursor-not-allowed w-full p-4 bg-blue-600 rounded-md uppercase font-medium">
+          className="!cursor-not-allowed w-full p-4 bg-blue-600 rounded-md uppercase font-medium"
+        >
           create order
         </button>
         <button
           disabled
-          className="!cursor-not-allowed w-full p-4 bg-gray-600 rounded-md uppercase font-medium">
+          className="!cursor-not-allowed w-full p-4 bg-gray-600 rounded-md uppercase font-medium"
+        >
           Craft
         </button>
         {props?.category?.toLowerCase() === "ship" && (
           <button
             disabled
-            className="!cursor-not-allowed w-full p-4 bg-gray-600 rounded-md uppercase font-medium">
+            className="!cursor-not-allowed w-full p-4 bg-gray-600 rounded-md uppercase font-medium"
+          >
             Staking
           </button>
         )}

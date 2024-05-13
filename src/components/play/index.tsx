@@ -35,7 +35,8 @@ export default function Play({ isMobile = true }) {
       <div
         className={`absolute bottom-4 ${
           isMobile ? "px-2" : "right-4"
-        } font-bold cursor-pointer   ${isMobile && " w-full "} `}>
+        } font-bold cursor-pointer   ${isMobile && " w-full "} `}
+      >
         {isMobile && (
           <div className="w-full  mb-2 ">
             <GameEvent />
@@ -69,7 +70,8 @@ export default function Play({ isMobile = true }) {
           border
           classNameOutside={" p-6 lg:p-8 lg:w-[300px] w-full"}
           className="flex justify-center items-center w-full h-full uppercase"
-          background="rgba(0, 0, 0, 0.9)">
+          background="rgba(0, 0, 0, 0.9)"
+        >
           {/* <GlowingText color="red" effect="pulsate" unit="px" fontSize="24px"> */}
           {gameState === "lobby" ? (
             <>

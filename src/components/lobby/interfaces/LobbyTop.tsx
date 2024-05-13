@@ -12,6 +12,7 @@ import Drawer from "../drawer";
 import globalStore from "@/store/global-store";
 import { toast, useToast } from "react-toastify";
 import ModalSettings from "@theras_labs/ui/src/Modal/ModalSettings";
+// import AuthButton from "@theras_labs/ui/src/Auth/AuthButton";
 import AuthButton from "@theras_labs/ui/src/Auth/AuthButton";
 // import useViewAptos from "@/_core/hooks/contract/useViewAptos";
 import { useLocation } from "react-router-dom";
@@ -32,6 +33,7 @@ const LobbyTop = () => {
       <div className="absolute w-full flex justify-between p-4 backdrop-blur-sm">
         <div className=" flex cursor-pointer w-full  ">
           {/* on mobile */}
+          {/* <AuthButton /> */}
           <AuthButton />
         </div>
 

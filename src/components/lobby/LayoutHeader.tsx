@@ -61,7 +61,8 @@ const Box = ({
     backdrop-blur-sm
     overflow-hidden
     ${className}
-    `}>
+    `}
+    >
       <div
         className={` 
         w-full h-full
@@ -74,7 +75,8 @@ const Box = ({
       <div
         className={` 
       ${classNameInside}
-      `}>
+      `}
+      >
         {children}
       </div>
     </div>

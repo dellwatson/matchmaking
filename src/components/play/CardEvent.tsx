@@ -25,7 +25,8 @@ const CardEvent = ({
       className={` relative lg:min-w-[500px] rounded-md ${
         disabled ? "cursor-not-allowed" : "cursor-pointer"
       } ${className}`}
-      {...props}>
+      {...props}
+    >
       <div className="mb-1 bg-slate-900 flex justify-between rounded-md">
         <div className="relative">
           {/* length upto 4 */}
@@ -49,7 +50,8 @@ const CardEvent = ({
       <div
         className={`${bgColor} relative lg:min-w-[500px] flex items-center ${
           bottomPart ? "rounded-t-md" : `rounded-md`
-        } backdrop-blur-xl `}>
+        } backdrop-blur-xl `}
+      >
         <div className="opacity-30 rounded-md w-full h-full absolute -z-1" />
 
         <div className="mx-6">
@@ -64,7 +66,8 @@ const CardEvent = ({
       </div>
       {bottomPart && (
         <div
-          className={`bg-green-800 relative h-24 lg:min-w-[500px] flex rounded-b-md backdrop-blur-xl overflow-hidden`}>
+          className={`bg-green-800 relative h-24 lg:min-w-[500px] flex rounded-b-md backdrop-blur-xl overflow-hidden`}
+        >
           {bottomImgUrl && (
             <img
               src={bottomImgUrl}

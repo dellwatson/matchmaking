@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import {
   // useContractWrite,
   useWriteContract,
@@ -12,27 +13,42 @@ import {
   useWaitForTransactionReceipt,
 } from "wagmi";
 
+export function useCheckNetworkChain() {
+  const { chain } = useAccount();
+  const { switchChain, error } = useSwitchChain();
+
+  const changingNetwork = (productChain) => {
+    // move to here, as it will always trigger
+    switchChain({ chainId: Number(productChain) });
+
+    if (chain?.id !== Number(productChain)) {
+      // todo: switch network 1st
+      // notify
+      // toast?.error("Error, wrong network");
+      // switchChain({ chainId: Number(productChain) });
+      toast("Please change your network");
+    }
+  };
+  return {
+    changingNetwork,
+    error,
+  };
+}
+
 export default function useWriteEVM(
   { contractAddress = "", contractName = "", functionName = "", args = [] },
   rest = {}
 ) {
   // reconnect = () => {}
-  // const { chain } = useNetwork();
-  const { chain } = useAccount();
-  const { switchChain, error: errorSwitch } = useSwitchChain();
 
-  // args[10] = [
-  //   "0x5912a6272ca96d20e991d7959d1e7818bf966fd1299807e817c9dc63e4c35d00",
-  //   "0x6b9fa67af3200a539ed3309228a32f08661d2899b7be21152682f96738e7858e",
-  //   28,
-  // ];
+  const { changingNetwork } = useCheckNetworkChain();
 
   // console.log(args, "newly args");
   const additional =
     args[0] === false
       ? {}
       : {
-          value: args[3], // price
+          value: args[3], // use price for native token
         };
 
   // const { data: hash, error, isPending, writeContract } = useWriteContract();
@@ -53,28 +69,37 @@ export default function useWriteEVM(
     });
 
   const _write = (v) => {
+    // console.log("final-args", args, chain?.id, rest.chainId);
     // check current client chain and product chain
-    if (chain?.id !== Number(rest?.chainId)) {
-      // todo: switch network 1st
-      // toast?.error("Error, wrong network");
-      switchChain({ chainId: Number(rest?.chainId) });
-    }
+
+    changingNetwork(rest?.chainId);
+    //if v exist use args v
+
     //change into
     return writeContract?.({
       address: contractAddress,
       abi: rest?.ABI, //getContractABI
       functionName,
-      args,
+      args: v ? v : args,
       chainId: rest?.chainId, //product chain
       ...additional,
       //   ...rest,
     });
   };
+  console.log(
+    isLoading,
+    isSuccess,
+    isConfirmed,
+    isConfirming,
+    "confirming status"
+  );
 
   return {
     data,
     isLoading,
     isSuccess,
+    isConfirming,
+    isConfirmed,
     write: _write,
     error,
   };

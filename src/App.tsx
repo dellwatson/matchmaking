@@ -83,7 +83,6 @@ function App() {
         available network
       </div> */}
       <Routes>
-        {/* <Route path="/" element={<MatchRoom />} /> */}
         <Route path="/" element={<LobbyPage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/inventory" element={<InventoryPage />} />

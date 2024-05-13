@@ -2,6 +2,7 @@ import { TProvider } from "@/_type/Contract";
 import React from "react";
 import useWriteAptos from "./contract/useWriteAptos";
 import useWriteEVM from "./contract/useWriteEVM";
+import useGetNetwork from "@/_backend/data/useGetNetwork";
 
 // // get from useContract shop ?
 // export default function usePurchase(
@@ -43,23 +44,24 @@ import useWriteEVM from "./contract/useWriteEVM";
 
 export default function usePurchase(
   provider: TProvider = "evm",
-  network: string = "sepolia",
+  network: string = "",
+  chainId: any,
+  //use chainId
   { contractAddress = "", contractName = "", functionName = "", args = [] }
 ) {
   console.log(args, "AGAIN ARGS");
   let writeHook, isLoadingHook, errorHook;
+  // const { data } = useGetNetwork(network);
+  // perhaps getAbi too ?
 
   // instead get from DB, abi (CONTRACT-NAME), and chainId here
   // but if there's  rest ={} then it replace it with rest
 
   // -----------------------------------
   // get network-chain-id
-  let chainId;
-  if (network === "testnet-taraxa") {
-    chainId = 842;
-  } else if (network === "sepolia") {
-    chainId = 11155111;
-  }
+
+  // const chainId = data ? data?.chain_id : null;
+
   // -----------------------------------
 
   switch (provider) {

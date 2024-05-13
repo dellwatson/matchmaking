@@ -27,7 +27,8 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
       <button
         type="button"
         onClick={!data?.locked ? openModal : () => {}}
-        className="rounded-md uppercase bg-black/50 px-4 py-2 text-sm font-thin text-white hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+        className="rounded-md uppercase bg-black/50 px-4 py-2 text-sm font-thin text-white hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+      >
         {!data?.locked ? "VIEW MORE" : "out of stock"}
       </button>
 
@@ -40,7 +41,8 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0">
+            leaveTo="opacity-0"
+          >
             <div className="fixed inset-0 bg-black/50" />
           </Transition.Child>
 
@@ -53,14 +55,16 @@ export default function ModalDetail({ data = {}, page = "inventory" }) {
                 enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95">
+                leaveTo="opacity-0 scale-95"
+              >
                 <Dialog.Panel className="w-full  xl:max-w-3/4 max-w-full  transform overflow-scroll rounded-2xl bg-gray-700 p-6 text-left align-middle shadow-xl transition-all">
                   <div className="header-modal flex justify-between items-center mb-4">
                     <NetworkSelect />
 
                     <Dialog.Title
                       as="h3"
-                      className="text-xl  leading-6 text-gray-300 font-bold">
+                      className="text-xl  leading-6 text-gray-300 font-bold"
+                    >
                       {data?.title || "TITLE"}
                     </Dialog.Title>
                     <div className="font-bold">
@@ -195,7 +199,8 @@ const TokenOptions = ({
             as={Fragment}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0">
+            leaveTo="opacity-0"
+          >
             <Listbox.Options>
               {TOKEN_LIST.map((token) => (
                 <Listbox.Option
@@ -209,7 +214,8 @@ const TokenOptions = ({
                         active || selected
                           ? "bg-blue-500 text-white"
                           : "bg-white text-black"
-                      }`}>
+                      }`}
+                    >
                       {price} &nbsp;
                       {token?.native
                         ? selectedNetwork?.native
@@ -275,7 +281,8 @@ export const PurchaseOptions = ({ page, data }) => {
             onClick={() => {
               alert("Staking feature is not available yet");
             }}
-            className="bg-orange-500 p-4 rounded-md font-bold uppercase px-8">
+            className="bg-orange-500 p-4 rounded-md font-bold uppercase px-8"
+          >
             "STAKE"
           </button>
         )}

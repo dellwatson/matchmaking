@@ -47,7 +47,8 @@ export default function InventoryPage() {
           border
           classNameOutside="rounded-md"
           className="p-16 rounded-md "
-          corner={false}>
+          corner={false}
+        >
           <div className="text-center mb-10 uppercase text-xl  text-red-500 font-bold">
             Coming soon
           </div>

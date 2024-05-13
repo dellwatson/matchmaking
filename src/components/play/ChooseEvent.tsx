@@ -114,7 +114,8 @@ function TabsMode() {
           key={i}
           className={`p-2 lg:p-8 lg:px-12 font-bold lg:text-2xl uppercase ${
             i === 0 ? "cursor-pointer " : "cursor-not-allowed text-gray-800"
-          }`}>
+          }`}
+        >
           {item}
         </div>
       ))}

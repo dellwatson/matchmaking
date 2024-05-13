@@ -18,14 +18,16 @@ export default function Pass({ isMobile = false }) {
     <>
       <div
         onClick={() => openModal()}
-        className="absolute bottom-0  cursor-pointer ">
+        className="absolute bottom-0  cursor-pointer "
+      >
         <div className="absolute w-full h-full flex justify-center items-center">
           {isMobile ? (
             <GlowingText
               color="green"
               effect="pulsate"
               unit="px"
-              fontSize="16px">
+              fontSize="16px"
+            >
               SEASON PASS
             </GlowingText>
           ) : (
@@ -34,7 +36,8 @@ export default function Pass({ isMobile = false }) {
               effect="pulsate"
               size={20}
               unit="px"
-              fontSize="24px">
+              fontSize="24px"
+            >
               SEASON PASS
             </GlowingText>
           )}

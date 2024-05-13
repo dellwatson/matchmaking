@@ -17,7 +17,8 @@ export default function Claim() {
     <div className="relative">
       <div
         onClick={() => openModal()}
-        className=" flex mb-4 font-bold rounded-sm">
+        className=" flex mb-4 font-bold rounded-sm"
+      >
         <div className="relative  right-4 bottom-1 -rotate-10">
           <div className="animate-bounce bg-red-700 p-4 px-6 text-xl absolute rounded-full ">
             3

@@ -45,22 +45,74 @@ export const supabase = createClient(
 //   } catch (errorx) {
 //     console.log(errorx, "error trycantc");
 //   }
+
 // }
 
 async function loadData() {
   // load material by id
   try {
     let { data, error } = await supabase
-      .from("__required_components")
-      .select(
-        `
-      *,
-    detail: starex_nft_asset!final_id (id, detail ( * ))
-    `
-      )
-      .eq("material_id", 1); // Adding filter for material_id
+      // .from("__sale_products")
+      // .select(
+      //   `
+      //     *,
+      //     detail: draft_product! product_id (
+      //       *,
+      //       asset: starex_nft_asset! id ( * ),
+      //       chains: __product_chain! product_detail (
+      //           *,
+      //           network: network! network ( * ),
+      //           smart_contract: smart_contract! smart_contract (
+      //               *,
+      //               network: network! network ( * )
+      //           )
+      //       ),
+      //       payments: payment! product_id (
+      //           *,
+      //           crypto: crypto! crypto_token (
+      //               *,
+      //               network: network! network ( * ),
+      //               currency: currency! currency ( * )
+      //           ),
+      //           product_token:  __product_chain! product_chain_token (
+      //             *,
+      //             network: network! network ( * ),
+      //             smart_contract: smart_contract! smart_contract (
+      //                 *,
+      //                 network: network! network ( * )
+      //                 )
+      //             )
+      //         )
+      //     ),
+      //     highlight: payment! highlight_price (
+      //       *,
+      //       crypto: crypto! crypto_token (
+      //         *,
+      //         currency: currency! currency ( * )
+      //       ),
+      //       product_token:  __product_chain! product_chain_token (
+      //         *,
+      //         network: network! network ( * ),
+      //         smart_contract: smart_contract! smart_contract (
+      //             *,
+      //             network: network! network ( * )
+      //             )
+      //         )
+      //     )
+      //     `
+      // )
+      .from("network")
+      .select(` * `)
+      .eq("name", "Taraxa Testnet")
+      .single();
 
-    console.log(data, error);
+    // //got the product id
+    console.log(data);
+    // let { data: dataReal, error: errorReal } = await supabase
+    //   .from("starex_nft_asset")
+    //   .select(`     *    `)
+    //   .eq("detail", data?.detail.id)
+    //   .single();
   } catch (errorx) {
     console.log(errorx, "error trycantc");
   }
@@ -74,3 +126,21 @@ loadData();
 // query __require_components with match material.id
 // get lists of rows from require_components
 // use that rows to load starex_nft_assets?
+
+// chain:
+// {
+//   id: 4,
+//   network: 8,
+//   token_id: 1,
+//   created_at: '2024-05-06T08:40:15.431624+00:00',
+//   description: 'opbnb starship demo',
+//   product_detail: 4,
+//   smart_contract: {
+//     id: 4,
+//     address: '0x12e96cef6CdB9DD974152113C2f679086E4d14E0',
+//     network: [Object],
+//     badge_id: 3,
+//     created_at: '2024-05-06T05:28:01.538076+00:00',
+//     description: 'opBNB testnet starex- starship'
+//   }
+// }

@@ -42,7 +42,7 @@ export default defineConfig({
   //   target: "esnext",
   // },
   assetsInclude: [
-    "**/*.json",
+    // "**/*.json",
     "**/*.gltf",
     "**/*.glb",
     "**/*.jpeg",
@@ -58,12 +58,31 @@ export default defineConfig({
   //     transformMixedEsModules: true,
   //   },
   // },
+  // testing for wagmi-v2
   // build: {
   //   rollupOptions: {
-  //     // external: [
-  //     //   "node_modules/@wagmi/connectors/node_modules/@coinbase/wallet-sdk/dist/index.js",
-  //     //   "node_modules/@rollup/plugin-node-resolve/dist/es/index.js",
-  //     // ],
+  //     // this is included because it breaks the build if not included
+  //     // this is almost certainly a bug in wagmi (or these libraries transatively
+  //     // and likely can be removed in the future
+  //     external: [
+  //       "@safe-globalThis/safe-apps-provider",
+  //       "@safe-globalThis/safe-apps-sdk",
+  //     ],
+  //   },
+  // },
+  // define: {
+  //   global: "globalThis",
+  // },
+
+  //trying fix wagmiv2
+  // build: {
+  //   rollupOptions: {
+  //     external: [
+  //       "node_modules/@wagmi/connectors/node_modules/@coinbase/wallet-sdk/dist/index.js",
+  //       "node_modules/@rollup/plugin-node-resolve/dist/es/index.js",
+  //       "@safe-globalThis/safe-apps-provider",
+  //       "@safe-globalThis/safe-apps-sdk",
+  //     ],
   //     plugins: [
   //       // require("@rollup/plugin-json")(),
   //       // require("@rollup/plugin-node-resolve")({
