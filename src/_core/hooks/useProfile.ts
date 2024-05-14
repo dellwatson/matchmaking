@@ -27,10 +27,15 @@ export default function useProfile() {
   useEffect(() => {
     // detect disconnect wagmi
     const _profileNow = getProfileProvider("evm");
+    console.log(_profileNow);
     if (!addressEVM && _profileNow) {
       removeProfile(_profileNow);
     }
-  }, [addressEVM]);
+
+    if (_profileNow && Number(_profileNow?.chainId) !== Number(chainEVM)) {
+      removeProfile(_profileNow);
+    }
+  }, [addressEVM, chainEVM]);
 
   useAccountEffect({
     onConnect(data) {

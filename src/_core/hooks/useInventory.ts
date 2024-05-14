@@ -10,14 +10,24 @@ import { viewAptos } from "./contract/useViewAptos";
 import { equipmentStore } from "./useEquipment";
 import { getAptosNFTs } from "@/_backend/_mockBackend/loadAptos";
 
+//v1
 // inventory require to load from backend
 // need to combine and separate the NFT from different blockchain?
-// combine them all in backend
+// combine them all in backend ----->
+
+//v2
+// load nfts from evm-accounts.
+// if connected or disconnect or change network or change address -> must release the equipment (using local instead?)
+// and later on the game verifying -> backend simply verify, if curent address has NFT...
+//
+//
 export default function useInventory() {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const { profiles } = profileStore();
   const { equipments } = equipmentStore();
+
+  //useEVMReadContracts
 
   //equipments
   useEffect(() => {
@@ -29,22 +39,31 @@ export default function useInventory() {
           (equip) =>
             equip?.id === item?.id && equip?.category?.toLowerCase() === "ship"
         );
+
         if (equipment) {
           return { ...item, equipped: true };
         }
+
         return item;
       });
+
       // Update the state or do whatever you need with the updatedData
       // For example, if you're using hooks:
       setData(updatedData);
     }
   }, []);
 
+  // v2: everytime profile evm change
+  // or other profile added, it will change the list available
+  // limit equipment to have all in same network chain ??
+  //
   useEffect(() => {
     // load from contracts, and fetch metadata?
     // load the detail products ?
     // combined them
+
     async function load() {
+      setLoading(true);
       // load NFTs
       // console.log(profiles, "profiles");
       if (!profiles?.length) return;
@@ -55,9 +74,13 @@ export default function useInventory() {
         //     "0xe895013a4360a07c13829974865fd90988d7287e13a41342a4e62d6f1be32576"
         //   );
         // }
-        const res = await getNFTs(item?.address, item?.network);
+
+        const res = await getNFTs(item?.address, item?.network); // item chain
         console.log("total nfts", res);
-        setData([...data, ...res]);
+        setData([...res]);
+        // setData([...data, ...res]);
+
+        setLoading(false);
       });
 
       // 2 equips (aptos and eth)
@@ -79,7 +102,11 @@ export default function useInventory() {
       // setData(MOCK_INVENTORY);
     }
     load();
-  }, [profiles?.length]);
+  }, [
+    profiles?.length,
+
+    //
+  ]);
   // todo: reload after changing acc
   // detect network / account change...
 
@@ -140,10 +167,27 @@ const getAllproductsMeta = () => {
 // allAssetContracts as 3rd arguments instead
 // move it to backend !
 
-// network
+const prepareLoadNFTs = async (
+  ownerAddress: string,
+  network: string,
+  chainId: any
+) => {
+  //
+  // get network chainId of the contracts
+  const listContracts = [];
+  //  set store?
+  //
+  // if EVM -> load
+  //
+  // read contracts
+};
+
 // ownerAddress
+// network
 // collectionId
-const getNFTs = async (ownerAddress: string, network: string) => {
+// chainId
+const getNFTs = async (ownerAddress: string, network: string, chainId: any) => {
+  //
   // load network contract address;
   // dataContractAddress
   const allAssetContracts = getAssetContracts(network) as any; // [nfts,nfts,nfts_address]
@@ -157,6 +201,7 @@ const getNFTs = async (ownerAddress: string, network: string) => {
 
   let result_real = [];
   // allAssetContracts?.map((item, i) =>
+
   await Promise.all(
     allAssetContracts?.map(async (item) => {
       if (item?.provider === "evm") {
@@ -188,6 +233,7 @@ const getNFTs = async (ownerAddress: string, network: string) => {
       }
     })
   );
+
   // load each address on contracts and return inventory
   // read if contracts type evm
   // else read by Aptos

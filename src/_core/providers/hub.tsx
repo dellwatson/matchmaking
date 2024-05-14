@@ -9,6 +9,7 @@ import { createWeb3Modal } from "@web3modal/wagmi/react";
 import {
   bitTorrent,
   bitTorrentTestnet,
+  liskSepolia,
   mainnet,
   sepolia,
   taraxaTestnet,
@@ -18,6 +19,47 @@ import { walletConnect, injected, coinbaseWallet } from "wagmi/connectors";
 
 import { defineChain } from "viem";
 
+export const liskTestnet = defineChain({
+  id: 4202,
+  name: "Lisk Sepolia",
+  nativeCurrency: { name: "LISK", symbol: "LISK", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://rpc.sepolia-api.lisk.com"] },
+  },
+  blockExplorers: {
+    default: { name: "testscan", url: "https://sepolia-blockscout.lisk.com" },
+  },
+});
+export const mantaSepolia = defineChain({
+  id: 3441006,
+  name: "Manta Sepolia",
+  nativeCurrency: { name: "MANTA", symbol: "MANTA", decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ["https://pacific-rpc.sepolia-testnet.manta.network/http"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "testscan",
+      url: "https://pacific-explorer.sepolia-testnet.manta.network",
+    },
+  },
+});
+export const mantaTestnet = defineChain({
+  id: 3441005,
+  name: "Manta Testnet",
+  nativeCurrency: { name: "MANTA", symbol: "MANTA", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://manta-testnet.calderachain.xyz/http"] },
+  },
+  blockExplorers: {
+    default: {
+      name: "testscan",
+      url: "https://pacific-explorer.testnet.manta.network",
+    },
+  },
+});
 export const bttcDonaou = defineChain({
   id: 1029,
   name: "BTTC Testnet",
@@ -52,7 +94,16 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [bttcDonaou, taraxaTestnet, opBnbTestnet, sepolia] as const;
+const chains = [
+  bttcDonaou,
+  taraxaTestnet,
+  opBnbTestnet,
+  sepolia,
+
+  mantaSepolia,
+  mantaTestnet,
+  liskTestnet,
+] as const;
 // const config = defaultWagmiConfig({
 //   chains,
 //   projectId,
@@ -66,8 +117,10 @@ const config = createConfig({
     [bttcDonaou.id]: http(),
     [taraxaTestnet.id]: http(),
     [opBnbTestnet.id]: http(),
-
     [sepolia.id]: http(),
+    [mantaSepolia.id]: http(),
+    [mantaTestnet.id]: http(),
+    [liskTestnet.id]: http(),
   },
   connectors: [
     walletConnect({
