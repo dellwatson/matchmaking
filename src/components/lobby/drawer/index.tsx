@@ -35,7 +35,7 @@ export default function Drawer({ direction = "left" }) {
               {`STAR-EX`}
             </Title>
           </Link>
-          <span style={{ fontSize: 12 }}>v2.0.8b</span>
+          <span style={{ fontSize: 12 }}>v2.0.8c</span>
         </div>
 
         {DATA_NAVBAR.map((item, i) => (
