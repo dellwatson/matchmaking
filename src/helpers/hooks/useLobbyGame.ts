@@ -1,4 +1,7 @@
 import { useGameData } from "@/_backend/data/useGameData";
+import { equipmentStore } from "@/_core/hooks/useEquipment";
+import useLoadStarship from "@/_core/hooks/useLoadStarship";
+import { profileStore } from "@/_core/hooks/useProfile";
 import authStore from "@/store/auth-store";
 import { getDateId } from "@/utils/date";
 import { atom, useAtom } from "jotai";
@@ -13,6 +16,7 @@ import {
 } from "playroomkit";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // because of not enough player, the game is on solo 1st mostly, then change into multiplayer later
 
@@ -21,6 +25,8 @@ export default function useLobbyGame() {
   const navigate = useNavigate();
   const [gameState, setGameState] = useMultiplayerState("gameState", "lobby");
   const [loading, setLoading] = useState(false);
+
+  const { stateModel } = useLoadStarship();
   // const []
 
   // console.log(gameState, "gameState");
@@ -78,6 +84,10 @@ export default function useLobbyGame() {
     // MUST CLEAR ROOM CODE ///////////////
     navigate("/");
     console.log("CONTINUE TO GAME START");
+    if (!stateModel) {
+      toast("You need to equip a starship to play!");
+      return;
+    }
 
     setLoading(true);
     // -----> check equipment ready

@@ -8,6 +8,7 @@ import GameEvent from "@/components/play/LobbyEvent";
 import useLobbyGame from "@/helpers/hooks/useLobbyGame";
 import LoadingBar from "./LoadingBar";
 import PlayArrow from "./PlayArrow";
+import useLoadStarship from "@/_core/hooks/useLoadStarship";
 
 export default function Play({ isMobile = true }) {
   const navigate = useNavigate();
