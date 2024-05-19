@@ -2,30 +2,46 @@ import { equipmentStore } from "@/_core/hooks/useEquipment";
 import { profileStore } from "@/_core/hooks/useProfile";
 import BlockTitle from "@theras_labs/ui/src/block/BlockTitle";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
+// tools -> inventory add visual -> just add address and network
+
+//inventory
+//equipment store on local-> address, network, chainId, category [starship, ability1, ability2, aiTool1] + tokenId (to differentiate)
+
+// can connect to multiple -> but only 1 profile/inventory, [0] will be the main, and can just switch the profile
+
+//----- todo: security
+// after switchin network/address -> recheck the ownership again
+// when playing state -> still had?
 export default function InventorySlot(props) {
   // load status here
 
-  const { getProfileNetwork } = profileStore();
+  const { getProfileNetwork, getProfileChainId } = profileStore();
   const { addEquipment, isEquipped, removeEquipment } = equipmentStore();
   const [hovered, setHovered] = useState(false);
+
+  console.log("INVENTORY SLOT", props);
+  //
   return (
     <div className="mt-12">
       <div className="grid xl:grid-cols-2 !uppercase gap-5 mb-12">
-        {props?.category?.toLocaleLowerCase() === "ship" && (
+        {
+          // props?.category?.toLocaleLowerCase() === "ship" &&
           <>
             {isEquipped(props) ? (
               <button
                 onClick={() => {
-                  const res = getProfileNetwork(props?.minted?.network);
+                  const res = getProfileChainId(props?.minted?.chainId);
                   if (!!res) {
                     removeEquipment(
-                      props,
-                      res?.address,
-                      props?.minted?.network
+                      props
+                      // res?.address,
+                      // props?.minted?.network
                     );
+                    toast("Unequip the product");
                   } else {
-                    alert("Account is not connected");
+                    toast("Account is not even connected");
                   }
                 }}
                 onMouseEnter={() => setHovered(true)}
@@ -37,11 +53,22 @@ export default function InventorySlot(props) {
             ) : (
               <button
                 onClick={() => {
-                  const res = getProfileNetwork(props?.minted?.network);
+                  // check if profile matched with
+                  //
+                  const res = getProfileChainId(props?.minted?.chainId);
+                  console.log(
+                    res,
+                    "props?.minted?.chainId",
+                    props?.minted?.chainId
+                  );
+
                   if (!!res) {
                     addEquipment(props, res?.address, props?.minted?.network);
+                    //
+                    toast("Product Equipped");
                   } else {
-                    alert("Account is not connected");
+                    // alert("Account is not connected");
+                    toast("Account is not even connected");
                   }
                 }}
                 className="w-full p-4 bg-green-600 rounded-md uppercase font-medium"
@@ -50,7 +77,7 @@ export default function InventorySlot(props) {
               </button>
             )}
           </>
-        )}
+        }
 
         <button
           disabled

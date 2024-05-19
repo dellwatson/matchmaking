@@ -21,7 +21,7 @@ export default function Play({ isMobile = true }) {
   //   setIsOpen(true);
   // }
 
-  const { gameState, handlePlay } = useLobbyGame();
+  const { gameState, handlePlay, loading } = useLobbyGame();
 
   console.log(gameState, "gameState nOT RESPONSIVE?");
 
@@ -73,7 +73,8 @@ export default function Play({ isMobile = true }) {
           background="rgba(0, 0, 0, 0.9)"
         >
           {/* <GlowingText color="red" effect="pulsate" unit="px" fontSize="24px"> */}
-          {gameState === "lobby" ? (
+          {!loading ? (
+            // {gameState === "lobby" ? (
             <>
               {/* <div className="relative border border-red-500"> */}
               PLAY

@@ -55,10 +55,12 @@ const VisualContent = ({ data }) => {
     <>
       <div className="text-center">
         <Subtitle className="tracking-[10px] uppercase ">
-          {data?.detail?.asset[0]?.category || "Category"}
+          {data?.detail?.metadata?.category ||
+            data?.detail?.category ||
+            "Category"}
         </Subtitle>
         <Title className="text-gray-500 my-2 mb-6">{data?.detail?.title}</Title>
-        <Rarity>{data?.detail?.asset[0]?.rarity}</Rarity>
+        <Rarity>{data?.detail?.metadata?.rarity}</Rarity>
       </div>
 
       <DisplayList data={data} />
@@ -74,7 +76,8 @@ const VisualContent = ({ data }) => {
 const AssetContent = ({ data, page }) => {
   // load inventory/shop here
   const [tab, setTab] = useState(0);
-  console.log(data, "data", page);
+  // console.log(data, "data", page);
+
   const chains = data?.detail?.chains;
   const itemId = data?.highlight?.product_token?.network?.id; // network.id
 
@@ -87,7 +90,7 @@ const AssetContent = ({ data, page }) => {
     chains.unshift(itemToMove);
   }
   // chains
-  const selectedChain = chains[tab];
+  const selectedChain = chains[tab]; // for inventory will be from minted ?
   const paymentOptions = data?.detail?.payments?.filter(
     (o) => o?.product_token?.network?.id === selectedChain?.network?.id
   );
@@ -118,6 +121,7 @@ const AssetContent = ({ data, page }) => {
           }}
         />
       )}
+
       {page === "inventory" && <InventorySlot {...data} />}
       <Offers />
       <Listing />
@@ -131,13 +135,19 @@ const AssetContent = ({ data, page }) => {
 
 const NetworkTabs = ({ tab, setTab, data, page, chains }) => {
   if (page === "inventory") {
+    const mintedChain = data?.minted;
+    // const mintedChain = chains?.find(
+    //   (o) => o?.chain_id === data?.minted?.chainId
+    // );
+    // console.log(mintedChain, "mintedChain");
     return (
       <>
         <BlockTitle title="network chain" />
         <div className="grid grid-cols-2 gap-6 ">
           <div className="col-span-1 ">
-            <IconBox {...data?.minted} hasBorder>
+            <IconBox {...mintedChain} hasBorder>
               <Subtitle className="font-thin ">
+                {/* gonna use block-explorer from database */}
                 {data?.minted?.address &&
                   shortenEthAddress(data?.minted?.address)}
               </Subtitle>
@@ -283,7 +293,6 @@ const Listing = ({ data }) => {
 //       },
 //       {
 //         isCrypto: true,
-
 //         chain: "1",
 //         network: "ethereum",
 //         token: "usdc",

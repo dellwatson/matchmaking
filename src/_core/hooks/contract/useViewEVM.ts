@@ -8,6 +8,7 @@ import { useReadContracts } from "wagmi";
 function useViewEVM(
   { contractAddress = "", contractName = "", functionName = "", args = [] },
   rest = {}
+  //   contracts
 ) {
   // useEffect contracts changed ?
 

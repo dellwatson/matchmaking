@@ -9,7 +9,9 @@ import { Model as SparrowA } from "@/_backend/starship/sparrow/Scene";
 import { Model as StarshipA } from "@/_backend/starship/starshipA/Ship";
 import { Model as StarshipB } from "@/_backend/starship/starshipB/Scene";
 import { equipmentStore } from "@/_core/hooks/useEquipment";
+import useLoadStarship from "@/_core/hooks/useLoadStarship";
 import { profileStore } from "@/_core/hooks/useProfile";
+import { Sphere } from "@react-three/drei";
 
 import React, { useEffect, useState } from "react";
 
@@ -21,41 +23,19 @@ const LIST_STARSHIPS = [
   <MercyA scale={[0.5, 0.5, 0.5]} />,
 ];
 
+const STARSHIP_MODELS = {
+  4: <StarshipA scale={[1.1, 1.1, 1.1]} position={[0, 0, 0]} />,
+  3: <StarshipB scale={[1.3, 1.3, 1.3]} />,
+  130: <MercyA scale={[0.5, 0.5, 0.5]} />,
+};
+
 export default function LoadStarship() {
-  const [stateModel, setStateModel] = useState(null);
-  const { loadEquipment } = equipmentStore();
-  const { profiles } = profileStore();
-
-  // todo: check if changing account, or network will remove and goes into guest mode state
-  useEffect(() => {
-    function loadModel() {
-      if (!profiles?.length) return;
-      let dataFound = false; // Flag to track whether data is found
-      //   console.log(profiles?.length);
-      // console.log(profiles);
-      profiles?.forEach((item, i) => {
-        // console.log(dataFound, "dataFound", i);
-        if (dataFound) return;
-        const data = loadEquipment(item?.address, item?.network, "ship");
-        // console.log(data, "data FROM", item?.address, item?.network);
-        // console.log(data, "DATA ?", item?.address, item?.network);
-
-        if (!!data) {
-          //
-          setStateModel(data);
-          //todo: move it to store/backend for game
-          // game match: create id match + data of starship used there. finished: true/false
-          // on game, must load backend match + profile used sync
-        }
-      });
-    }
-    loadModel();
-  }, [profiles]);
-
+  const { stateModel } = useLoadStarship();
   return (
     <>
       {/* //   state */}
-      {/* {stateModel && LIST_STARSHIPS[stateModel?.modelId]} */}
+      {stateModel && STARSHIP_MODELS[stateModel?.detail?.id]}
+      {!stateModel && <Sphere />}
       {/* <Model scale={[10, 10, 10]} /> */}
       {/* <Phoenix scale={[0.01, 0.01, 0.01]} position={[0, 0, 0]} /> */}
       {/* <AnimatedDragon scale={[2, 2, 2]} /> */}

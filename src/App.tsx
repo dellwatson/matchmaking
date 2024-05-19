@@ -15,7 +15,7 @@ import FullScreen from "react-fullscreen-crossbrowser";
 import globalStore from "./store/global-store";
 import "@theras_labs/ui/src/styles/global.scss";
 import Product from "./pages/Product";
-import MyProduct from "./pages/MyProduct";
+import InventoryProduct from "./pages/InventoryProduct";
 import Template from "./pages/Template";
 import useLobbyGame from "./helpers/hooks/useLobbyGame";
 
@@ -88,7 +88,7 @@ function App() {
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="match-room/*" element={<MatchRoom />} />
         <Route path="product/:listingId" element={<Product />} />
-        <Route path="own-product/*" element={<MyProduct />} />
+        <Route path="my-product/:productId*" element={<InventoryProduct />} />
         <Route path="template" element={<Template />} />
       </Routes>
     </BrowserRouter>

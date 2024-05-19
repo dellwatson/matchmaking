@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../client";
 
 // load listing
-const useGameAsset = (listing_id = 1) => {
+const useGameAsset = (product_id = 1) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,56 +13,21 @@ const useGameAsset = (listing_id = 1) => {
     const fetchData = async () => {
       setLoading(true);
       let query = supabase
-        .from("__sale_products")
+        .from("draft_product")
         .select(
           `
             *,
-            detail: draft_product! product_id (
-              *,
-              asset: starex_nft_asset! id ( * ),
-              chains: __product_chain! product_detail (
-                  *,
-                  network: network! network ( * ),
-                  smart_contract: smart_contract! smart_contract (
-                      *,
-                      network: network! network ( * )
-                  )
-              ),
-              payments: payment! product_id (
-                  *,
-                  crypto: crypto! crypto_token ( 
-                      *,
-                      network: network! network ( * ),
-                      currency: currency! currency ( * )
-                  ),
-                  product_token:  __product_chain! product_chain_token (
-                    *,
-                    network: network! network ( * ),
-                    smart_contract: smart_contract! smart_contract (
-                        *,
-                        network: network! network ( * )
-                        )
-                    )
-                )
-            ),
-            highlight: payment! highlight_price ( 
-              *,
-              crypto: crypto! crypto_token ( 
-                *,
-                currency: currency! currency ( * )
-              ),
-              product_token:  __product_chain! product_chain_token (
+            chains: __product_chain! product_detail (
                 *,
                 network: network! network ( * ),
                 smart_contract: smart_contract! smart_contract (
                     *,
                     network: network! network ( * )
-                    )
                 )
             )
             `
         )
-        .eq("id", listing_id)
+        .eq("id", product_id)
         .single();
       //   // Apply title filter if provided
       //   if (title) {

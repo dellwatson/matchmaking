@@ -12,10 +12,13 @@ import {
   useSwitchChain,
   useWaitForTransactionReceipt,
 } from "wagmi";
+import { profileStore } from "../useProfile";
 
 export function useCheckNetworkChain() {
   const { chain } = useAccount();
   const { switchChain, error } = useSwitchChain();
+
+  const { isProfileNetworkFound } = profileStore();
 
   const changingNetwork = (productChain) => {
     // move to here, as it will always trigger
@@ -31,6 +34,7 @@ export function useCheckNetworkChain() {
   };
   return {
     changingNetwork,
+    isProfileNetworkFound,
     error,
   };
 }
@@ -40,6 +44,7 @@ export default function useWriteEVM(
   rest = {}
 ) {
   // reconnect = () => {}
+  const { chain } = useAccount();
 
   const { changingNetwork } = useCheckNetworkChain();
 
@@ -64,9 +69,7 @@ export default function useWriteEVM(
   // console.log(chain?.id, rest?.chainId);
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
-    useWaitForTransactionReceipt({
-      hash: data,
-    });
+    useWaitForTransactionReceipt({ hash: data });
 
   const _write = (v) => {
     // console.log("final-args", args, chain?.id, rest.chainId);
@@ -75,6 +78,15 @@ export default function useWriteEVM(
     changingNetwork(rest?.chainId);
     //if v exist use args v
 
+    console.log("EXECUTING contract:----->", {
+      address: contractAddress,
+      abi: rest?.ABI, //getContractABI
+      functionName,
+      args: v ? v : args,
+      chainId: rest?.chainId, //product chain
+      ...additional,
+      //   ...rest,
+    });
     //change into
     return writeContract?.({
       address: contractAddress,
@@ -91,7 +103,9 @@ export default function useWriteEVM(
     isSuccess,
     isConfirmed,
     isConfirming,
-    "confirming status"
+    "confirming status",
+    data,
+    error
   );
 
   return {
@@ -102,5 +116,6 @@ export default function useWriteEVM(
     isConfirmed,
     write: _write,
     error,
+    chain,
   };
 }

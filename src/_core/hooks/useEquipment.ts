@@ -83,16 +83,27 @@ export const equipmentStore = create((set, get) => {
     setEquipments: (equipments: TOwnedProduct) => {
       set({ equipments });
     },
-    addEquipment: (nft: TOwnedProduct, address, network) => {
+    addEquipment: (props: any, address) => {
       // cannot have same category
       // if(nft?.category) //
       // get().removeEquipment(nft);
+      // ------------------------------------------------
+      const OWNER_ADDRESS = props?.minted?.owner;
+      const CHAIN_ID = props?.minted?.chainId;
+      const PROVIDER =
+        props?.minted?.network?.provider_name ||
+        props?.minted?.network?.provider;
+      const CATEGORY = "ship";
+      const TOKEN_ID = props?.detail?.id || props?.detail?.minted.tokenId;
+      // ------------------------------------------------
       // // to localStorage
-      const PAYLOAD_NAME = `${address}_${nft?.minted?.network}_${nft?.category}_${nft?.id}`;
+      const PAYLOAD_NAME = `${OWNER_ADDRESS}_${CHAIN_ID}_${PROVIDER}_${CATEGORY}_${TOKEN_ID}`;
+
+      // payload will be inventory
       const payload = {
-        ...nft,
-        owner: address,
-        network: nft?.minted?.network,
+        ...props,
+        owner: OWNER_ADDRESS,
+        // network: props?.minted?.network,
       };
 
       setStorage(PAYLOAD_NAME, payload);
@@ -100,14 +111,18 @@ export const equipmentStore = create((set, get) => {
       set({ equipments: [...get().equipments, payload] });
 
       // Determine the pattern to search for existing entries
-      const pattern = `${address}_${nft?.minted?.network}_${nft?.category}_`;
-
+      const pattern = `${OWNER_ADDRESS}_${CHAIN_ID}_${PROVIDER}_${CATEGORY}_`;
       // Retrieve the array of previously stored equipment entries
       const payloadEquipments = getStorage("EQUIPMENTS_ARRAY");
+
+      // todo: remove the other equipment category using pattern or from array?
+      // do it from array
 
       // if not null
       if (!!payloadEquipments?.length) {
         let fullString = "";
+
+        //
         const updatedEquipments = payloadEquipments?.filter((entry) => {
           if (entry.startsWith(pattern)) {
             fullString = entry;
@@ -128,10 +143,26 @@ export const equipmentStore = create((set, get) => {
         setStorage("EQUIPMENTS_ARRAY", [PAYLOAD_NAME]);
       }
     },
-    removeEquipment: (nft: TOwnedProduct, address, network) => {
+    removeEquipment: (props: any, address, network) => {
+      // remove by category...
       try {
+        const OWNER_ADDRESS = props?.minted?.owner;
+        const CHAIN_ID = props?.minted?.chainId;
+        const PROVIDER =
+          props?.minted?.network?.provider_name ||
+          props?.minted?.network?.provider;
+
+        const CATEGORY = "ship";
+
+        const TOKEN_ID = props?.detail?.id || props?.detail?.minted.tokenId;
+        const PAYLOAD_NAME = `${OWNER_ADDRESS}_${CHAIN_ID}_${PROVIDER}_${CATEGORY}_${TOKEN_ID}`;
+
+        // ------------------------------------------------
+        // // to localStorage
+
         // Determine the pattern to search for existing entries
-        const pattern = `${address}_${nft?.minted?.network}_${nft?.category}_`;
+        const PATTERN = `${OWNER_ADDRESS}_${CHAIN_ID}_${PROVIDER}_${CATEGORY}_`;
+        // const pattern = `${address}_${nft?.minted?.network}_${nft?.category}_`;
 
         // Retrieve the array of previously stored equipment entries
         const payloadEquipments = getStorage("EQUIPMENTS_ARRAY");
@@ -139,33 +170,48 @@ export const equipmentStore = create((set, get) => {
         if (payloadEquipments && payloadEquipments?.length) {
           // Find and remove the equipment entry that matches the pattern
           const updatedEquipments = payloadEquipments?.filter(
-            (entry) => !entry.startsWith(pattern)
+            (entry) => !entry.startsWith(PATTERN)
           );
 
           // Update the main array state without the removed equipment
           setStorage("EQUIPMENTS_ARRAY", updatedEquipments);
 
-          // Iterate over the removed equipment entries and remove them from Local Storage
-          payloadEquipments?.forEach((entry) => {
-            if (entry.startsWith(pattern)) {
-              removeStorage(entry);
-            }
-          });
+          // // Iterate over the removed equipment entries and remove them from Local Storage
+          // payloadEquipments?.forEach((entry) => {
+          //   if (entry.startsWith(pattern)) {
+          //     removeStorage(entry);
+          //   }
+          removeStorage(PAYLOAD_NAME);
+
+          // });
         }
       } catch (error) {
         // Handle errors appropriately (e.g., log the error)
         console.error("Error removing equipment:", error);
       }
     },
-    isEquipped: (nft) => {
+    isEquipped: (props) => {
+      // instead of using profile, also directly props?
       // load supposed profile
-      const account = profileStore
+      const PROFILE_OWNER = profileStore
         ?.getState()
-        .getProfileNetwork(nft?.minted?.network);
+        .getProfileChainId(props?.minted?.chainId);
+      // .getProfileIdentity(nft?.minted?.network?.chain_id);
 
-      // // read from equipments array
-      const PAYLOAD_NAME = `${account?.address}_${nft?.minted?.network}_${nft?.category}_${nft?.id}`;
+      // ------------------------------------------------
+      // const OWNER_ADDRESS = props?.minted?.owner;
+      const CHAIN_ID = props?.minted?.chainId;
+      const PROVIDER =
+        props?.minted?.network?.provider_name ||
+        props?.minted?.network?.provider;
+      const CATEGORY = "ship";
+      const TOKEN_ID = props?.detail?.id || props?.detail?.minted.tokenId;
+      // ------------------------------------------------
+      // // to localStorage
+      const PAYLOAD_NAME = `${PROFILE_OWNER?.address}_${CHAIN_ID}_${PROVIDER}_${CATEGORY}_${TOKEN_ID}`;
+      // // read from equipments array --> provider + chainId
       const res = getStorage(PAYLOAD_NAME);
+      console.log("this is checkign equipped or not, ", PAYLOAD_NAME);
 
       if (res) {
         return true;
@@ -173,21 +219,27 @@ export const equipmentStore = create((set, get) => {
 
       return false;
     },
-    loadEquipment: (address, network, category) => {
+    loadEquipment: (address, provider, chainId, category) => {
       try {
         // Get all equipped equipment names
         const allEquipped = get()?.getEquipments() as string[];
+
         if (!allEquipped || !Array.isArray(allEquipped)) {
           console.error("Error: Unable to retrieve equipped equipment names.");
           return null;
         }
+
+        console.log(allEquipped, "gets allEquipped ");
+        // if array [ include ship_sepolia_1 , ship_manta_3] ? -> t
+
         // console.log(allEquipped, "allEquipped", address, network, category);
         const result = allEquipped?.find((item) => {
           // item?.owner === address &&
           return (
-            item?.minted?.network?.toLowerCase() === network.toLowerCase() &&
-            item?.category?.toLowerCase() === category?.toLowerCase() &&
-            item?.owner?.toLowerCase() === address?.toLowerCase()
+            Number(item?.minted?.chainId) === Number(chainId) &&
+            // item?.minted?.provider?.toLowerCase() === provider.toLowerCase() &&
+            // item?.category?.toLowerCase() === category?.toLowerCase() &&
+            item?.minted?.owner?.toLowerCase() === address?.toLowerCase()
           );
         });
         // console.log(result, "result");

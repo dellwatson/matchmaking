@@ -27,13 +27,15 @@ export default function ShopPage() {
       >
         {data?.length &&
           data?.map((item, i) => {
-            return (
-              <GroupCards
-                key={i}
-                onNavigate={(_idPath) => navigate("/product/" + _idPath)} //ID LISTING or starex nft ID  ?
-                {...item}
-              />
-            );
+            if (!item?.archived) {
+              return (
+                <GroupCards
+                  key={i}
+                  onNavigate={(_idPath) => navigate("/product/" + _idPath)} //ID LISTING or starex nft ID  ?
+                  {...item}
+                />
+              );
+            }
           })}
       </HorizontalScroll>
     </div>

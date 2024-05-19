@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 
-const MIX_NEWS = ["taraxa-project", "tron-foundation"];
+const MIX_NEWS = [
+  // "taraxa-project",
+  "tron-foundation",
+];
 
 const TOTAL_TOPICS = 10;
 const ROTATE_INTERVAL = 30000; // 30 seconds

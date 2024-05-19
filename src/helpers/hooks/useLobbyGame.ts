@@ -20,6 +20,8 @@ export default function useLobbyGame() {
   // insert coin, skipLobby, roomCode, maxPlayersPerRoom
   const navigate = useNavigate();
   const [gameState, setGameState] = useMultiplayerState("gameState", "lobby");
+  const [loading, setLoading] = useState(false);
+  // const []
 
   // console.log(gameState, "gameState");
   const { insertData } = useGameData();
@@ -75,14 +77,18 @@ export default function useLobbyGame() {
   const handlePlay = async () => {
     // MUST CLEAR ROOM CODE ///////////////
     navigate("/");
+    console.log("CONTINUE TO GAME START");
 
-    //
-    // set terrain
-    // set
-    // navigate
-    // player -> 1 -> multiplayer ?
-    setGameState("loading");
-    console.log("matchmaking - loading");
+    setLoading(true);
+    // -----> check equipment ready
+    // -----> check the validity of ownership equipment
+    // //
+    // // set terrain
+    // // set
+    // // navigate
+    // // player -> 1 -> multiplayer ?
+    // setGameState("loading");
+    // console.log("matchmaking - loading");
 
     // change it for solo
     // await startMatchmaking(); // FOR MULTIPLAYER
@@ -91,25 +97,25 @@ export default function useLobbyGame() {
 
     const room_code = await getRoomCode();
     console.log(room_code, "room code");
-    // http://localhost:5174/#r=RPUB_O9BQZH_3EDO9JYS3
-    setGameState("game");
-    console.log("matchmaking find-game");
+    // // http://localhost:5174/#r=RPUB_O9BQZH_3EDO9JYS3
+    // setGameState("game");
+    // console.log("matchmaking find-game");
 
-    // const id  = `${getDateId()}_${room_code}`
-    if (profiles?.length) {
-      //not a guest
+    // // const id  = `${getDateId()}_${room_code}`
+    // if (profiles?.length) {
+    //   //not a guest
 
-      await insertData({
-        id: room_code,
-        players: [
-          {
-            // provider: "guest", //discord //wallet // guest
-            // account: "", /// guest (use playroom id)
-            ...profiles[0],
-          },
-        ],
-      });
-    }
+    //   await insertData({
+    //     id: room_code,
+    //     players: [
+    //       {
+    //         // provider: "guest", //discord //wallet // guest
+    //         // account: "", /// guest (use playroom id)
+    //         ...profiles[0],
+    //       },
+    //     ],
+    //   });
+    // }
 
     // supabase account + room_code
     // -> account send
@@ -119,6 +125,8 @@ export default function useLobbyGame() {
 
     // navigate to match-room#
     //navigate
+    setLoading(false);
+
     navigate("/match-room?#r=R" + room_code);
     // navigate("/match-room?#r=R");
   };
@@ -127,6 +135,7 @@ export default function useLobbyGame() {
   return {
     handlePlay,
     gameState,
+    loading,
   };
 }
 

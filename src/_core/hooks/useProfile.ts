@@ -12,13 +12,14 @@ import {
 } from "@aptos-labs/wallet-adapter-core";
 import { useWallet as useWalletAptos } from "@aptos-labs/wallet-adapter-react";
 import { CHAIN_NAME_APTOS } from "@theras_labs/ui/src/Auth/Wallets/AptosWallet";
+import usePrepareInventory from "./usePrepareInventory";
 
 // describe account profiles here
 // gameID
 export default function useProfile() {
   //
   const { address: addressEVM, chain: chainEVM } = useAccountWagmi();
-
+  const { updateInventoryContracts } = usePrepareInventory();
   // const { chain: chainEVM } = useNetworkWagmi();
   const { account: accountAptos } = useWalletAptos();
   const { addProfile, profileExists, getProfileProvider, removeProfile } =
@@ -55,12 +56,17 @@ export default function useProfile() {
     if (addressEVM && !profileExists(chainEVM?.name, addressEVM)) {
       // store it to global state
       // load profile Name, balance, etc
-      addProfile({
+      const payload = {
         provider: "evm",
         address: addressEVM,
         network: chainEVM?.name,
         chainId: chainEVM?.id,
-      });
+      };
+
+      addProfile(payload);
+
+      // loadInventory updateInventoryContracts
+      updateInventoryContracts(payload);
     }
     // check aptos
     if (
@@ -122,6 +128,25 @@ export const profileStore = create((set, get) => {
     getProfileNetwork: (network: string) => {
       return get().profiles.find(
         (profile: TProfile) => profile.network === network
+      );
+    },
+    getProfileChainId: (chainId: any) => {
+      return get().profiles.find(
+        (profile: TProfile) => Number(profile.chainId) === Number(chainId)
+      );
+    },
+    getProfileNetworkIdentity: (chainId: string, provider: string) => {
+      return get().profiles.find(
+        (profile: TProfile) =>
+          Number(profile.chainId) === Number(chainId) &&
+          provider === profile?.provider
+      );
+    },
+    isProfileNetworkFound: (chainId: any, provider: any) => {
+      return !!get().profiles.find(
+        (profile: TProfile) =>
+          Number(profile.chainId) === Number(chainId) &&
+          profile?.provider === provider
       );
     },
   };

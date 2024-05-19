@@ -50,7 +50,7 @@ export default function usePurchase(
   { contractAddress = "", contractName = "", functionName = "", args = [] }
 ) {
   console.log(args, "AGAIN ARGS");
-  let writeHook, isLoadingHook, errorHook;
+  let writeHook, isLoadingHook, errorHook, chain;
   // const { data } = useGetNetwork(network);
   // perhaps getAbi too ?
 
@@ -70,6 +70,7 @@ export default function usePurchase(
         write: writeHook,
         isLoading: isLoadingHook,
         error: errorHook,
+        chain,
       } = useWriteEVM(
         {
           contractAddress,
@@ -93,6 +94,30 @@ export default function usePurchase(
       } = useWriteAptos({ contractAddress, contractName, functionName, args }));
       break;
 
+    case "ink":
+      ({
+        write: writeHook,
+        isLoading: isLoadingHook,
+        error: errorHook,
+      } = useWriteAptos({ contractAddress, contractName, functionName, args }));
+      break;
+
+    case "cosmos":
+      ({
+        write: writeHook,
+        isLoading: isLoadingHook,
+        error: errorHook,
+      } = useWriteAptos({ contractAddress, contractName, functionName, args }));
+      break;
+
+    case "solana":
+      ({
+        write: writeHook,
+        isLoading: isLoadingHook,
+        error: errorHook,
+      } = useWriteAptos({ contractAddress, contractName, functionName, args }));
+      break;
+
     case "aptos":
       ({
         write: writeHook,
@@ -109,7 +134,12 @@ export default function usePurchase(
       break;
   }
 
-  return { write: writeHook, isLoading: isLoadingHook, error: errorHook };
+  return {
+    write: writeHook,
+    isLoading: isLoadingHook,
+    error: errorHook,
+    chain,
+  };
 }
 
 const ABI_THERAS_SHOP = [

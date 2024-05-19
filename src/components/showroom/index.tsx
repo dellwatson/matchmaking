@@ -42,9 +42,8 @@ export default function ShowRoom() {
         {/* <MercyA scale={[0.5, 0.5, 0.5]} /> */}
 
         {/* <Ship /> */}
-        <Sphere />
 
-        {/* <LoadStarship /> */}
+        <LoadStarship />
       </Float>
       <hemisphereLight intensity={0.5} />
 
@@ -56,7 +55,7 @@ export default function ShowRoom() {
       // minPolarAngle={Math.PI / 2.2}
       // maxPolarAngle={Math.PI / 2.2}
       />
-      {/* <AnimatedCamera /> */}
+      <AnimatedCamera />
     </Canvas>
   );
 }

@@ -31,8 +31,11 @@ export default function Drawer({ direction = "left" }) {
         </div> */}
         <div className="-mt-4 mb-8">
           <Link to="/">
-            <Title className="uppercase tracking-[10px] !font-thin">{`STAR-EX`}</Title>
+            <Title className="uppercase tracking-[10px] !font-thin">
+              {`STAR-EX`}
+            </Title>
           </Link>
+          <span style={{ fontSize: 12 }}>v2.0.8b</span>
         </div>
 
         {DATA_NAVBAR.map((item, i) => (

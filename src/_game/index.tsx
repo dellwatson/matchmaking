@@ -43,6 +43,9 @@ import CombinedEffects from "./graphics/CombinedEffects";
 import { Explosion } from "./vfx/Explosion/Explosion";
 import useMatchmaking from "@/helpers/hooks/useMatchmaking";
 import Cable from "./celestial/Path/Cable";
+import useProfile from "@/_core/hooks/useProfile";
+import useLoadStarship from "@/_core/hooks/useLoadStarship";
+import gameshipStore from "./players/star-ship/starship-store";
 // import bgSpace from "@assets/hydra_constellation.jpg";
 
 function SceneBackground() {
@@ -62,18 +65,24 @@ function SceneBackground() {
   return <primitive attach="background" object={backgroundSpace} />;
 }
 
+// using backend -> send id-match + starship id
+// then on game load param-id + starship id?
 export default function SoloGameApp() {
   //   const { fov } = useStore((state) => state.mutation);
+  // useProfile();
+  const { loading } = useLoadStarship();
+  // useProfile();
+  // const { ship_detail } = gameshipStore();
   const actions = useStore((state) => state.actions);
   const { stage } = useMatchmaking();
   // console.log(stage, "in-game");
   // if starting -> countdown -> useStore
   // hud: if stage === winner ->
-
   return (
     <div
       // style={{ backgroundColor: "green" }}
-      className="w-full h-full  ">
+      className="w-full h-full  "
+    >
       <Canvas
         shadows={true}
         mode="concurrent"
@@ -93,7 +102,8 @@ export default function SoloGameApp() {
           // stencil: false,
           antialias: false,
           depth: true,
-        }}>
+        }}
+      >
         {/* <Suspense fallback={null}>
           <SceneBackground />
         </Suspense> */}
@@ -109,24 +119,25 @@ export default function SoloGameApp() {
         <fog attach="fog" args={["#070710", 100, 700]} />
         <Stats />
         {/* <Stars radius={100} depth={100} count={10000} /> */}
-        <Suspense>
-          <SpaceShip />
-          <Gamestate />
+        {/* {ship_detail && ( */}
+        {!loading && (
+          <Suspense>
+            <SpaceShip />
+            <Gamestate />
+            <Camera />
+            <Movement />
+            {/* <Rig> */}
+            {/* </Rig> */}
+            {/* <TestTerrains /> */}
+            <SpaceV1 />
+            <Cable />
+            {/* <ThunderClouds /> */}
+            {/* <BoostFlame position={[0, 20, 0]} /> */}
 
-          {/* <CameraV2 /> */}
-          <Camera />
-          {/* <OrbitControls />*/}
-          <Movement />
-          {/* <Rig> */}
-          {/* </Rig> */}
-          {/* <TestTerrains /> */}
-          <SpaceV1 />
-          <Cable />
-          {/* <ThunderClouds /> */}
-          {/* <BoostFlame position={[0, 20, 0]} /> */}
-
-          {/* <Explosion position={[0, 0, 0]} scale={2} /> */}
-        </Suspense>
+            {/* <Explosion position={[0, 0, 0]} scale={2} /> */}
+          </Suspense>
+        )}
+        {/* )} */}
         {/* <Environment preset="city" /> */}
         {/* <Rings /> */}
 
@@ -142,6 +153,25 @@ export default function SoloGameApp() {
     </div>
   );
 }
+
+//  <Suspense>
+//         <SpaceShip />
+//         <Gamestate />
+
+//         {/* <CameraV2 /> */}
+//         <Camera />
+//         {/* <OrbitControls />*/}
+//         <Movement />
+//         {/* <Rig> */}
+//         {/* </Rig> */}
+//         {/* <TestTerrains /> */}
+//         <SpaceV1 />
+//         <Cable />
+//         {/* <ThunderClouds /> */}
+//         {/* <BoostFlame position={[0, 20, 0]} /> */}
+
+//         {/* <Explosion position={[0, 0, 0]} scale={2} /> */}
+//       </Suspense>
 
 // function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
 //   const group = useRef()

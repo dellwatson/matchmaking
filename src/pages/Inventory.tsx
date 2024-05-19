@@ -1,8 +1,11 @@
+import usePrepareInventory from "@/_core/hooks/usePrepareInventory";
 import ListInventory from "@/components/inventory/ListInventory";
 import Layout from "@/components/lobby/LayoutHeader";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Inventory() {
+  //move this into hooks
+
   return (
     <div className="bg-slate-900  !overflow-x-hidden  w-full ">
       <Layout />

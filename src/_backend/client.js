@@ -101,10 +101,33 @@ async function loadData() {
       //     )
       //     `
       // )
-      .from("network")
-      .select(` * `)
-      .eq("name", "Taraxa Testnet")
-      .single();
+      // .from("network")
+      // .select(` * `)
+      // .eq("name", "Taraxa Testnet")
+      // .single();
+
+      // .from("network")
+      // .select(
+      //   `
+      //   *,
+      //   smart_contract: smart_contract! network (
+      //     *
+      //   )
+
+      // `
+      // )
+      // .eq("chain_id", chainId)
+      // .eq("provider_name", provider);
+
+      .from("smart_contract")
+      .select(
+        ` *, network: network! inner ( * )
+      
+      `
+      )
+      .eq("project_id", 1)
+      .eq("network.chain_id", 4202)
+      .eq("network.provider_name", "evm");
 
     // //got the product id
     console.log(data);

@@ -427,6 +427,35 @@ export const ABI_TRC1155 = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
+    name: "balanceOfAll",
+    outputs: [
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address[]",
         name: "accounts",
         type: "address[]",
@@ -649,7 +678,7 @@ export const ABI_TRC1155 = [
       },
       {
         internalType: "uint256",
-        name: "tokenId",
+        name: "id",
         type: "uint256",
       },
       {
