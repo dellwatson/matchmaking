@@ -28,6 +28,8 @@ import {
   insertCoin,
   getRoomCode,
 } from "playroomkit";
+import SampleMatch from "./pages/SampleMatch";
+import SampleMatch2 from "./pages/SampleMatch2";
 
 function App() {
   const { isFullScreen, sound, setSoundActive } = globalStore();
@@ -87,6 +89,8 @@ function App() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="match-room/*" element={<MatchRoom />} />
+        <Route path="match-room-sample/*" element={<SampleMatch />} />
+        <Route path="match-room-sample2/*" element={<SampleMatch2 />} />
         <Route path="product/:listingId" element={<Product />} />
         <Route path="my-product/:productId*" element={<InventoryProduct />} />
         <Route path="template" element={<Template />} />
