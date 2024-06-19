@@ -1,6 +1,0 @@
-import { MOCK_LIST_ALL_APTOS_CONTRACT } from "./aptosContracts";
-
-export const MOCK_LIST_ALL_CONTRACTS = [
-  MOCK_LIST_ALL_APTOS_CONTRACT,
-  // MOCK_LIST_ALL_GOERLI_CONTRACT,
-];
